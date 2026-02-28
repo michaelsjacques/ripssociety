@@ -391,7 +391,42 @@ const PLAYER_TRENDS = [
    signalReason:"Career winding down off elite stage. Rotate into Mbappe/Bellingham.",
    years:["2004","2014","2018"],sets:["Panini Prizm","Topps","Upper Deck"],
    keyCards:[{set:"2004 Panini RC",grade:"PSA 9",val:2500,pop:380}]}
-
+,
+  {id:"kyrie",name:"Kyrie Irving",sport:"Basketball",team:"Mavericks",pos:"PG",signal:"HOLD",color:"#00538C",change:"+1.8%",
+   data:[420,425,430,422,435,440,445,448],
+   mktDesc:"2012 Prizm RC $448 · NT Auto /99 $5,400 · Select Tie-Dye /25 $2,200 · Stable with floor",
+   note:"Legacy secured. Market flat but very liquid. High pop counts cap upside.",
+   signalReason:"Stable hold. Iconic player with loyal collector base.",
+   years:["2011","2012"],sets:["Panini Prizm","National Treasures"],
+   keyCards:[{set:"2012 Prizm RC",grade:"PSA 10",val:448,pop:3800}]},
+  {id:"trae",name:"Trae Young",sport:"Basketball",team:"Hawks",pos:"PG",signal:"WATCH",color:"#E03A3E",change:"-3.2%",
+   data:[310,305,298,290,280,274,268,262],
+   mktDesc:"2018 Prizm RC $262 · NT Auto /99 $3,800 · Select Gold /10 $4,200 · Slow decline",
+   note:"Elite scorer but Hawks missing playoffs. Market softening slowly.",
+   signalReason:"Wait for breakout playoff run before buying. Slight downtrend.",
+   years:["2018","2019"],sets:["Panini Prizm","National Treasures"],
+   keyCards:[{set:"2018 Prizm RC",grade:"PSA 10",val:262,pop:2600}]},
+  {id:"lance",name:"Bryce Young",sport:"Football",team:"Panthers",pos:"QB",signal:"SELL",color:"#0085CA",change:"-14.2%",
+   data:[180,160,142,125,110,96,84,74],
+   mktDesc:"2023 Prizm RC $74 · Auto /149 $320 · All tiers collapsing under poor performance",
+   note:"#1 overall pick but historic struggles in Year 1. Franchise decisions looming.",
+   signalReason:"Performance gap between draft capital and results is widest in the hobby.",
+   years:["2023"],sets:["Panini Prizm","Topps Chrome"],
+   keyCards:[{set:"2023 Prizm RC",grade:"PSA 10",val:74,pop:3200}]},
+  {id:"shohei2",name:"Fernando Tatis Jr.",sport:"Baseball",team:"Padres",pos:"SS/OF",signal:"BUY",color:"#2F241D",change:"+14.2%",
+   data:[380,400,420,408,438,458,472,485],
+   mktDesc:"2019 Prizm RC $485 · Bowman Chrome Auto $1,800 · Topps RC $220 · Post-suspension comeback",
+   note:"Fully back and producing. Padres window open. Elite marketing appeal.",
+   signalReason:"Suspension discount fully cleared. Elite talent narrative fully restored.",
+   years:["2019","2020"],sets:["Panini Prizm","Bowman Chrome","Topps"],
+   keyCards:[{set:"2019 Topps Update RC",grade:"PSA 10",val:485,pop:2800}]},
+  {id:"petey",name:"Peter Forsberg",sport:"Hockey",team:"Avalanche",pos:"C",signal:"HOLD",color:"#6F263D",change:"+6.8%",
+   data:[1200,1240,1280,1260,1310,1350,1375,1395],
+   mktDesc:"1990 Score RC $1,395 · Upper Deck Young Guns $2,400 · The Cup Auto $14,000 · Vintage legend",
+   note:"Greatest hockey player ever by many accounts. Vintage market appreciating.",
+   signalReason:"Legacy cards always appreciate. Strong floor with upside from new collectors.",
+   years:["1990","1991","1992"],sets:["Score","Upper Deck","Bowman"],
+   keyCards:[{set:"1990 Score Rookie",grade:"PSA 10",val:1395,pop:280}]}
 ];
 
 const SERIES_TRENDS = [
@@ -3505,80 +3540,32 @@ const CollectionStorySubPage = ({onBack}) => {
                   ))
                 )
               ),
-              React.createElement(Panel,{style:{padding:'16px',flex:1},hover:true,onClick:()=>setView('players')},
-                React.createElement('div',{style:{fontSize:9,color:'#666',fontFamily:mono,letterSpacing:'0.1em',marginBottom:10}},'ACTIVE BUY SIGNALS'),
+              React.createElement(Panel,{style:{padding:'18px'},accent:'#22c55e',hover:true,onClick:()=>setView('players')},
+                React.createElement('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:12}},
+                  React.createElement('div',{style:{display:'flex',alignItems:'center',gap:8}},
+                    React.createElement('div',{style:{width:8,height:8,borderRadius:2,background:'#22c55e',boxShadow:'0 0 6px #22c55e66'}}),
+                    React.createElement('div',{style:{fontSize:9,color:'#22c55e',fontFamily:mono,letterSpacing:'0.1em',fontWeight:700}},'ACTIVE BUY SIGNALS')
+                  ),
+                  React.createElement('span',{style:{fontSize:9,padding:'2px 8px',background:'rgba(34,197,94,0.1)',color:'#22c55e',border:'1px solid rgba(34,197,94,0.2)',borderRadius:3,fontFamily:mono,fontWeight:700}},
+                    PLAYER_TRENDS.filter(p=>p.signal==='BUY').length+' ACTIVE'
+                  )
+                ),
                 React.createElement('div',{style:{display:'flex',flexDirection:'column',gap:5}},
-                  PLAYER_TRENDS.filter(p=>p.signal==='BUY').slice(0,5).map((p,i)=>React.createElement('div',{key:i,style:{display:'flex',justifyContent:'space-between',alignItems:'center',padding:'5px 0',borderBottom:i<4?'1px solid #0a0a0a':'none'}},
+                  PLAYER_TRENDS.filter(p=>p.signal==='BUY').slice(0,8).map((p,i)=>React.createElement('div',{key:i,
+                    style:{display:'flex',justifyContent:'space-between',alignItems:'center',padding:'7px 10px',background:'rgba(34,197,94,0.03)',border:'1px solid rgba(34,197,94,0.08)',borderRadius:4,cursor:'pointer',transition:'border-color 0.15s'},
+                    onMouseEnter:e=>e.currentTarget.style.borderColor='rgba(34,197,94,0.2)',
+                    onMouseLeave:e=>e.currentTarget.style.borderColor='rgba(34,197,94,0.08)'
+                  },
                     React.createElement('div',null,
-                      React.createElement('div',{style:{fontSize:10,fontWeight:700}},p.name.split(' ').pop()),
-                      React.createElement('div',{style:{fontSize:8,color:'#666',fontFamily:mono}},p.sport)
+                      React.createElement('div',{style:{fontSize:11,fontWeight:700,marginBottom:1}},p.name),
+                      React.createElement('div',{style:{fontSize:8,color:'#666',fontFamily:mono}},p.sport+' · '+p.team)
                     ),
-                    React.createElement('div',{style:{display:'flex',gap:6,alignItems:'center'}},
-                      React.createElement('span',{style:{fontSize:10,fontWeight:700,color:'#22c55e',fontFamily:mono}},p.change),
+                    React.createElement('div',{style:{display:'flex',gap:8,alignItems:'center'}},
+                      React.createElement('div',{style:{fontSize:12,fontWeight:900,fontFamily:mono,color:'#22c55e'}},p.change),
                       React.createElement(Sig,{s:'BUY'})
                     )
                   ))
                 )
-              )
-            )
-          ),
-
-          // ── Row 4: Nav cards grid ────────────────────────────────────────
-          React.createElement('div',{style:{display:'grid',gridTemplateColumns:isMobile?'1fr':'1fr 1fr',gap:12,marginBottom:16}},
-            // Top SELL players
-            React.createElement(Panel,{style:{padding:'18px'},accent:'#ef4444'},
-              React.createElement('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:12}},
-                React.createElement('div',{style:{display:'flex',alignItems:'center',gap:8}},
-                  React.createElement('div',{style:{width:8,height:8,borderRadius:2,background:'#ef4444',boxShadow:'0 0 6px #ef444466'}}),
-                  React.createElement('div',{style:{fontSize:9,color:'#ef4444',fontFamily:mono,letterSpacing:'0.1em',fontWeight:700}},'TOP SELL SIGNALS')
-                ),
-                React.createElement('span',{style:{fontSize:9,padding:'2px 8px',background:'rgba(239,68,68,0.1)',color:'#ef4444',border:'1px solid rgba(239,68,68,0.2)',borderRadius:3,fontFamily:mono,fontWeight:700}},
-                  PLAYER_TRENDS.filter(p=>p.signal==='SELL').length+' ACTIVE'
-                )
-              ),
-              React.createElement('div',{style:{display:'flex',flexDirection:'column',gap:5}},
-                PLAYER_TRENDS.filter(p=>p.signal==='SELL').slice(0,6).map((p,i)=>React.createElement('div',{key:i,onClick:()=>{setSelPlayer(p);setView('players');},
-                  style:{display:'flex',justifyContent:'space-between',alignItems:'center',padding:'8px 10px',background:'rgba(239,68,68,0.03)',border:'1px solid rgba(239,68,68,0.08)',borderRadius:4,cursor:'pointer',transition:'border-color 0.15s'},
-                  onMouseEnter:e=>e.currentTarget.style.borderColor='rgba(239,68,68,0.2)',
-                  onMouseLeave:e=>e.currentTarget.style.borderColor='rgba(239,68,68,0.08)'
-                },
-                  React.createElement('div',null,
-                    React.createElement('div',{style:{fontSize:11,fontWeight:700,marginBottom:1}},p.name),
-                    React.createElement('div',{style:{fontSize:8,color:'#666',fontFamily:mono}},p.sport+' · '+p.team)
-                  ),
-                  React.createElement('div',{style:{display:'flex',gap:8,alignItems:'center'}},
-                    React.createElement('div',{style:{fontSize:12,fontWeight:900,fontFamily:mono,color:'#ef4444'}},p.change),
-                    React.createElement(Sig,{s:'SELL'})
-                  )
-                ))
-              )
-            ),
-            // Top WATCH players
-            React.createElement(Panel,{style:{padding:'18px'},accent:'#38bdf8'},
-              React.createElement('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:12}},
-                React.createElement('div',{style:{display:'flex',alignItems:'center',gap:8}},
-                  React.createElement('div',{style:{width:8,height:8,borderRadius:2,background:'#38bdf8',boxShadow:'0 0 6px #38bdf866'}}),
-                  React.createElement('div',{style:{fontSize:9,color:'#38bdf8',fontFamily:mono,letterSpacing:'0.1em',fontWeight:700}},'ON WATCH LIST')
-                ),
-                React.createElement('span',{style:{fontSize:9,padding:'2px 8px',background:'rgba(56,189,248,0.1)',color:'#38bdf8',border:'1px solid rgba(56,189,248,0.2)',borderRadius:3,fontFamily:mono,fontWeight:700}},
-                  PLAYER_TRENDS.filter(p=>p.signal==='WATCH').length+' ACTIVE'
-                )
-              ),
-              React.createElement('div',{style:{display:'flex',flexDirection:'column',gap:5}},
-                PLAYER_TRENDS.filter(p=>p.signal==='WATCH').concat(PLAYER_TRENDS.filter(p=>p.signal==='HOLD').slice(0,3)).slice(0,5).map((p,i)=>React.createElement('div',{key:i,onClick:()=>{setSelPlayer(p);setView('players');},
-                  style:{display:'flex',justifyContent:'space-between',alignItems:'center',padding:'8px 10px',background:'rgba(56,189,248,0.03)',border:'1px solid rgba(56,189,248,0.08)',borderRadius:4,cursor:'pointer',transition:'border-color 0.15s'},
-                  onMouseEnter:e=>e.currentTarget.style.borderColor='rgba(56,189,248,0.2)',
-                  onMouseLeave:e=>e.currentTarget.style.borderColor='rgba(56,189,248,0.08)'
-                },
-                  React.createElement('div',null,
-                    React.createElement('div',{style:{fontSize:11,fontWeight:700,marginBottom:1}},p.name),
-                    React.createElement('div',{style:{fontSize:8,color:'#666',fontFamily:mono}},p.sport+' · '+p.team)
-                  ),
-                  React.createElement('div',{style:{display:'flex',gap:8,alignItems:'center'}},
-                    React.createElement('div',{style:{fontSize:12,fontWeight:900,fontFamily:mono,color:parseFloat(p.change)>=0?'#888':'#f59e0b'}},p.change),
-                    React.createElement(Sig,{s:p.signal})
-                  )
-                ))
               )
             )
           ),
@@ -4185,37 +4172,42 @@ const CollectionStorySubPage = ({onBack}) => {
 
     // ── Rookie rankings by sport ─────────────────────────────────────────
     const TOP_ROOKIES = {
-      Basketball: [
-        {rank:1,name:'Victor Wembanyama',team:'Spurs',note:'Generational — no ceiling',signal:'BUY',color:'#4FC3F7'},
-        {rank:2,name:'Chet Holmgren',team:'Thunder',note:'OKC dynasty piece',signal:'BUY',color:'#007AC1'},
-        {rank:3,name:'Scoot Henderson',team:'Trail Blazers',note:'Athletic upside + low pop',signal:'WATCH',color:'#E03A3E'},
-        {rank:4,name:'Victor Wembanyama YG',team:'Spurs',note:'Earliest RC variant',signal:'BUY',color:'#4FC3F7'},
-      ],
-      Football: [
-        {rank:1,name:'Jayden Daniels',team:'Commanders',note:'Fastest rising 2024 RC',signal:'BUY',color:'#5A1414'},
-        {rank:2,name:'Caleb Williams',team:'Bears',note:'#1 pick + big market',signal:'BUY',color:'#0B162A'},
-        {rank:3,name:'Marvin Harrison Jr.',team:'Cardinals',note:'Elite receiver pedigree',signal:'BUY',color:'#97233F'},
-        {rank:4,name:'Drake Maye',team:'Patriots',note:'Long runway in Boston',signal:'WATCH',color:'#002244'},
-      ],
-      Baseball: [
-        {rank:1,name:'Paul Skenes',team:'Pirates',note:'Most electric debut since Kershaw',signal:'BUY',color:'#FFD700'},
-        {rank:2,name:'Jackson Holliday',team:'Orioles',note:'Top prospect pedigree',signal:'BUY',color:'#DF4601'},
-        {rank:3,name:'Wyatt Langford',team:'Rangers',note:'WS champ org + upside',signal:'WATCH',color:'#003278'},
-        {rank:4,name:'James Wood',team:'Nationals',note:'Elite athleticism, 6\'7"',signal:'WATCH',color:'#AB0003'},
-      ],
-      Hockey: [
-        {rank:1,name:'Connor Bedard',team:'Blackhawks',note:'Next McDavid — smallest pop',signal:'BUY',color:'#CF0A2C'},
-        {rank:2,name:'Matvei Michkov',team:'Flyers',note:'Russian flair, explosive',signal:'BUY',color:'#F74902'},
-        {rank:3,name:'Leo Carlsson',team:'Ducks',note:'Top-5 pick, building',signal:'WATCH',color:'#FC4C02'},
-        {rank:4,name:'Zach Benson',team:'Sabres',note:'Electric scorer',signal:'WATCH',color:'#003E7E'},
-      ],
-      Soccer: [
-        {rank:1,name:'Lamine Yamal',team:'Barcelona',note:'16 years old — GOAT trajectory',signal:'BUY',color:'#A50044'},
-        {rank:2,name:'Endrick',team:'Real Madrid',note:'Brazilian next chapter',signal:'BUY',color:'#FEBE10'},
-        {rank:3,name:'Pedri',team:'Barcelona',note:'Midfield maestro',signal:'BUY',color:'#A50044'},
-        {rank:4,name:'Kobbie Mainoo',team:'Man United',note:'England\'s next star',signal:'WATCH',color:'#DA291C'},
-      ],
-    };
+        Basketball: [
+          {rank:1,name:'Zaccharie Risacher',team:'Hawks',card:'2024-25 Prizm RC',price:'$45',signal:'BUY'},
+          {rank:2,name:'Alex Sarr',team:'Wizards',card:'2024-25 Prizm RC',price:'$38',signal:'BUY'},
+          {rank:3,name:'Reed Sheppard',team:'Rockets',card:'2024-25 Select RC',price:'$28',signal:'BUY'},
+          {rank:4,name:'Dalton Knecht',team:'Lakers',card:'2024-25 Hoops RC',price:'$22',signal:'WATCH'},
+          {rank:5,name:'Rob Dillingham',team:'Timberwolves',card:'2024-25 Prizm RC',price:'$18',signal:'WATCH'},
+        ],
+        Football: [
+          {rank:1,name:'Jayden Daniels',team:'Commanders',card:'2024 Prizm RC Auto /149',price:'$2,200',signal:'BUY'},
+          {rank:2,name:'Caleb Williams',team:'Bears',card:'2024 Prizm RC',price:'$220',signal:'BUY'},
+          {rank:3,name:'Marvin Harrison Jr.',team:'Cardinals',card:'2024 Prizm RC',price:'$140',signal:'BUY'},
+          {rank:4,name:'Drake Maye',team:'Patriots',card:'2024 Prizm RC',price:'$160',signal:'BUY'},
+          {rank:5,name:'Rome Odunze',team:'Bears',card:'2024 Prizm RC',price:'$80',signal:'WATCH'},
+        ],
+        Baseball: [
+          {rank:1,name:'Paul Skenes',team:'Pirates',card:'2024 Bowman Chrome Auto /499',price:'$1,200',signal:'BUY'},
+          {rank:2,name:'Jackson Holliday',team:'Orioles',card:'2024 Topps Update RC',price:'$85',signal:'BUY'},
+          {rank:3,name:'Wyatt Langford',team:'Rangers',card:'2024 Topps Chrome RC',price:'$48',signal:'WATCH'},
+          {rank:4,name:'James Wood',team:'Nationals',card:'2024 Bowman Chrome RC',price:'$35',signal:'WATCH'},
+          {rank:5,name:'Jackson Chourio',team:'Brewers',card:'2024 Topps Update RC',price:'$28',signal:'WATCH'},
+        ],
+        Hockey: [
+          {rank:1,name:'Macklin Celebrini',team:'Sharks',card:'2024-25 UD Young Guns RC',price:'$180',signal:'BUY'},
+          {rank:2,name:'Matvei Michkov',team:'Flyers',card:'2024-25 UD Young Guns RC',price:'$95',signal:'BUY'},
+          {rank:3,name:'Will Smith',team:'Sharks',card:'2024-25 UD Young Guns RC',price:'$65',signal:'BUY'},
+          {rank:4,name:'Beckett Sennecke',team:'Ducks',card:'2024-25 SP Auth Auto',price:'$55',signal:'WATCH'},
+          {rank:5,name:'Cayden Lindstrom',team:'Red Wings',card:'2024-25 OPC Platinum RC',price:'$42',signal:'WATCH'},
+        ],
+        Soccer: [
+          {rank:1,name:'Lamine Yamal',team:'Barcelona',card:'2024 Prizm RC Auto',price:'$1,800',signal:'BUY'},
+          {rank:2,name:'Endrick',team:'Real Madrid',card:'2024 Topps Chrome RC',price:'$320',signal:'BUY'},
+          {rank:3,name:'Kobbie Mainoo',team:'Man United',card:'2024 Prizm RC',price:'$85',signal:'BUY'},
+          {rank:4,name:'Mathys Tel',team:'Bayern Munich',card:'2024 Prizm RC',price:'$55',signal:'WATCH'},
+          {rank:5,name:'Alejandro Garnacho',team:'Man United',card:'2024 Topps Chrome RC',price:'$48',signal:'WATCH'},
+        ],
+      }
 
     // ── Products by quality/price ─────────────────────────────────────────
     const PRODUCTS_RANKED = [
@@ -4408,63 +4400,34 @@ const CollectionStorySubPage = ({onBack}) => {
           React.createElement('div',{style:{display:'grid',gridTemplateColumns:isMobile?'1fr':'1fr 1fr',gap:12}},
             SIG_BREAKS.map((sb,i)=>{
               const [open,setOpen]=React.useState(false);
-              return React.createElement('div',{key:i,style:{background:'#080808',border:'1px solid #141414',borderRadius:8,overflow:'hidden'}},
-                React.createElement('div',{onClick:()=>setOpen(!open),style:{padding:'16px 18px',cursor:'pointer',display:'flex',alignItems:'center',gap:12,justifyContent:'space-between'},
-                  onMouseEnter:e=>e.currentTarget.parentNode.style.borderColor='#1e1e1e',
-                  onMouseLeave:e=>e.currentTarget.parentNode.style.borderColor='#141414'
-                },
+              return React.createElement('div',{key:i,style:{background:'#080808',border:'1px solid #141414',borderRadius:8,overflow:'hidden',transition:'border-color 0.15s'},
+                onMouseEnter:e=>e.currentTarget.style.borderColor='#222',
+                onMouseLeave:e=>e.currentTarget.style.borderColor='#141414'
+              },
+                React.createElement('div',{onClick:()=>setOpen(!open),style:{padding:'14px 18px',cursor:'pointer',display:'flex',alignItems:'center',gap:12,justifyContent:'space-between'}},
                   React.createElement('div',{style:{display:'flex',alignItems:'center',gap:12,flex:1,minWidth:0}},
-                    React.createElement('div',{style:{fontSize:22,flexShrink:0}},sb.icon),
+                    React.createElement('div',{style:{fontSize:20,flexShrink:0}},sb.icon),
                     React.createElement('div',{style:{flex:1,minWidth:0}},
-                      React.createElement('div',{style:{display:'flex',alignItems:'center',gap:8,flexWrap:'wrap'}},
-                        React.createElement('div',{style:{fontSize:15,fontWeight:400,fontFamily:bb,letterSpacing:'0.04em'}},sb.name),
+                      React.createElement('div',{style:{display:'flex',alignItems:'center',gap:8,flexWrap:'wrap',marginBottom:4}},
+                        React.createElement('div',{style:{fontSize:14,fontWeight:400,fontFamily:bb,letterSpacing:'0.04em'}},sb.name),
                         sb.hot&&React.createElement('span',{style:{fontSize:8,padding:'2px 7px',background:'rgba(196,30,30,0.12)',color:'#C41E1E',border:'1px solid rgba(196,30,30,0.25)',borderRadius:100,fontFamily:mono,fontWeight:700,letterSpacing:'0.06em'}},'🔥 HOT'),
                         React.createElement('span',{style:{fontSize:8,color:'#555',fontFamily:mono}},sb.time)
                       ),
-                      React.createElement('div',{style:{display:'flex',gap:4,flexWrap:'wrap',marginTop:5}},
+                      React.createElement('div',{style:{display:'flex',gap:4,flexWrap:'wrap'}},
                         sb.channels.map((ch,j)=>React.createElement('span',{key:j,style:chStyle(ch)},ch))
                       )
                     )
                   ),
-                  React.createElement('div',{style:{fontSize:11,color:'#444',fontFamily:mono,flexShrink:0,transition:'transform 0.2s',transform:open?'rotate(180deg)':'rotate(0deg)'}}, '▾')
+                  React.createElement('div',{style:{fontSize:10,color:'#333',fontFamily:mono,flexShrink:0,transition:'transform 0.2s',transform:open?'rotate(180deg)':'rotate(0)'}}, '▾')
                 ),
                 open&&React.createElement('div',{style:{padding:'0 18px 16px',borderTop:'1px solid #0d0d0d'}},
-                  React.createElement('p',{style:{fontSize:12,color:'#888',fontFamily:mono,lineHeight:1.75,margin:'14px 0 10px'}},sb.desc),
+                  React.createElement('p',{style:{fontSize:12,color:'#888',fontFamily:mono,lineHeight:1.75,margin:'14px 0 8px'}},sb.desc),
                   React.createElement('div',{style:{fontSize:9,color:'#555',fontFamily:mono}},sb.format)
                 )
               );
             })
           )
         ),
-
-        // ── Top Rookies ────────────────────────────────────────────────
-        React.createElement('div',{style:{marginBottom:52}},
-          React.createElement('div',{style:{fontSize:9,color:'#555',fontFamily:mono,letterSpacing:'0.14em',marginBottom:20}},'TOP ROOKIES TO CHASE — 2024'),
-          React.createElement('div',{style:{display:'grid',gridTemplateColumns:isMobile?'1fr':'repeat(5,1fr)',gap:10}},
-            Object.entries(TOP_ROOKIES).map(([sport,rookies])=>{
-              const sc = {Basketball:'#4FC3F7',Football:'#E31837',Baseball:'#FFD700',Hockey:'#FF4C00',Soccer:'#F48FB1'}[sport]||'#C41E1E';
-              return React.createElement('div',{key:sport,style:{background:'#080808',border:'1px solid #141414',borderTop:`2px solid ${sc}`,borderRadius:8,padding:'16px'}},
-                React.createElement('div',{style:{fontSize:10,fontWeight:400,fontFamily:bb,letterSpacing:'0.08em',color:sc,marginBottom:12}},sport.toUpperCase()),
-                React.createElement('div',{style:{display:'flex',flexDirection:'column',gap:7}},
-                  rookies.map((r,j)=>React.createElement('div',{key:j,style:{display:'flex',gap:8,alignItems:'flex-start',paddingBottom:j<4?7:0,borderBottom:j<4?'1px solid #0a0a0a':'none'}},
-                    React.createElement('div',{style:{fontSize:11,fontWeight:900,fontFamily:mono,color:j===0?sc:'#444',flexShrink:0,width:14}},r.rank),
-                    React.createElement('div',{style:{flex:1,minWidth:0}},
-                      React.createElement('div',{style:{fontSize:11,fontWeight:700,overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap',color:'rgba(255,255,255,0.85)'}},r.name),
-                      React.createElement('div',{style:{fontSize:8,color:'#555',fontFamily:mono,overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}},r.team),
-                      React.createElement('div',{style:{display:'flex',alignItems:'center',gap:5,marginTop:3}},
-                        React.createElement('span',{style:{fontSize:8,color:j===0?sc:'#555',fontFamily:mono,fontWeight:700}},r.price),
-                        React.createElement('span',{style:{fontSize:7,color:'#333',fontFamily:mono,overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap',flex:1}},r.card)
-                      )
-                    ),
-                    React.createElement('span',{style:{fontSize:7,padding:'2px 5px',background:({BUY:'rgba(34,197,94,0.12)',WATCH:'rgba(56,189,248,0.12)'})[r.signal]||'#111',color:({BUY:'#22c55e',WATCH:'#38bdf8'})[r.signal]||'#555',border:`1px solid ${({BUY:'rgba(34,197,94,0.3)',WATCH:'rgba(56,189,248,0.3)'})[r.signal]||'#1a1a1a'}`,borderRadius:2,fontFamily:mono,fontWeight:800,flexShrink:0}},r.signal)
-                  ))
-                )
-              );
-            })
-          )
-        ),
-
-        // ── Products ranked ─────────────────────────────────────────────
         React.createElement('div',{style:{marginBottom:52}},
           React.createElement('div',{style:{fontSize:9,color:'#555',fontFamily:mono,letterSpacing:'0.14em',marginBottom:20}},'PRODUCTS BY PRICE POINT & QUALITY'),
           React.createElement('div',{style:{display:'flex',flexDirection:'column',gap:8}},
