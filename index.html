@@ -1068,9 +1068,29 @@ function RIPSSociety() {
   const totalGain = totalValue - totalCost;
 
   const navigateTo = (p) => {
-    if (["book","market"].includes(p) && !user) { setAuthModal("login"); return; }
+    if (["book","collection","market"].includes(p) && !user) { setAuthModal("login"); return; }
     setPage(p);
+    try { window.history.pushState({ page: p }, "", "#" + p); } catch(e) {}
+    window.scrollTo(0, 0);
   };
+
+  // History API: handle back/forward buttons
+  useEffect(() => {
+    const onPop = (e) => {
+      if (e.state && e.state.page) { setPage(e.state.page); }
+      else {
+        const hash = window.location.hash.replace("#","");
+        setPage(hash || "home");
+      }
+      window.scrollTo(0, 0);
+    };
+    window.addEventListener("popstate", onPop);
+    // Set initial state
+    const initHash = window.location.hash.replace("#","");
+    if (initHash) setPage(initHash);
+    try { window.history.replaceState({ page: initHash || "home" }, "", "#" + (initHash || "home")); } catch(e) {}
+    return () => window.removeEventListener("popstate", onPop);
+  }, []);
 
   const handleLogin = () => {
     if (authEmail === DEMO_USER.email && authPassword === DEMO_USER.password) {
@@ -1160,12 +1180,12 @@ function RIPSSociety() {
             , authModal === "signup" && (
               React.createElement('div', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 649}}
                 , React.createElement('div', { style: { fontSize:10, color:"#444", fontFamily:"'DM Mono',monospace", letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:6 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 650}}, "Full Name" )
-                , React.createElement('input', { style: S.input, value: authName, onChange: e=>setAuthName(e.target.value), placeholder: "Your name" , __self: this, __source: {fileName: _jsxFileName2, lineNumber: 651}})
+                , React.createElement('input', { style: S.input, value: authName, onChange: e=>setAuthName(e.target.value), placeholder: "Your name", autoComplete: "name", autoCorrect: "off", spellCheck: false , __self: this, __source: {fileName: _jsxFileName2, lineNumber: 651}})
               )
             )
             , React.createElement('div', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 654}}
               , React.createElement('div', { style: { fontSize:10, color:"#444", fontFamily:"'DM Mono',monospace", letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:6 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 655}}, "Email")
-              , React.createElement('input', { style: S.input, type: "email", autoComplete: "email", autoCorrect: "off", autoCapitalize: "off", spellCheck: false, value: authEmail, onChange: e=>setAuthEmail(e.target.value), placeholder: "your@email.com", __self: this, __source: {fileName: _jsxFileName2, lineNumber: 656}})
+              , React.createElement('input', { style: S.input, type: "email", autoComplete: "email", autoCorrect: "off", autoCapitalize: "off", spellCheck: false, inputMode: "email", value: authEmail, onChange: e=>setAuthEmail(e.target.value), placeholder: "your@email.com", __self: this, __source: {fileName: _jsxFileName2, lineNumber: 656}})
             )
             , React.createElement('div', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 658}}
               , React.createElement('div', { style: { fontSize:10, color:"#444", fontFamily:"'DM Mono',monospace", letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:6 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 659}}, "Password")
@@ -1191,7 +1211,7 @@ function RIPSSociety() {
   //
   const Nav = () => (
     React.createElement('nav', { style: S.nav, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 681}}
-      , React.createElement('div', { style: { display:"flex", alignItems:"center", gap:8, cursor:"pointer", flex: isMobile ? 1 : "none" }, onClick: () => { setPage("home"); setMobileMenuOpen(false); }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 682}}
+      , React.createElement('div', { style: { display:"flex", alignItems:"center", gap:8, cursor:"pointer", flex: isMobile ? 1 : "none" }, onClick: () => { navigateTo("home"); setMobileMenuOpen(false); }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 682}}
         , React.createElement('div', { style:{height:22,display:"flex",alignItems:"center"} },
           React.createElement('svg', { viewBox:"0 0 649 59.88", height:"16", xmlns:"http://www.w3.org/2000/svg", style:{display:"block"} },
             React.createElement('path', { fill:"#cc3333", d:"M74.86,0h14v59.88h-14V0Z" }),
@@ -1223,7 +1243,7 @@ function RIPSSociety() {
             , user ? (
               React.createElement(React.Fragment, null
                 , React.createElement('span', { style: { fontSize:12, color:"#666", marginRight:6 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 700}}, user.name.split(" ")[0])
-                , React.createElement('button', { onClick: () => { setUser(null); setPage("home"); }, style: { background:"transparent", border:"1px solid #333", borderRadius:4, padding:"5px 10px", color:"#888", fontSize:11, cursor:"pointer" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 701}}, "Out")
+                , React.createElement('button', { onClick: () => { setUser(null); navigateTo("home"); }, style: { background:"transparent", border:"1px solid #333", borderRadius:4, padding:"5px 10px", color:"#888", fontSize:11, cursor:"pointer" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 701}}, "Out")
               )
             ) : (
               React.createElement(React.Fragment, null
@@ -1282,7 +1302,7 @@ function RIPSSociety() {
           React.createElement(Icon,{name:'search',size:16}),
           React.createElement('input',{style:{background:'transparent',border:'none',outline:'none',color:'#fff',fontSize:15,flex:1,fontFamily:'inherit'},placeholder:'Search player, set...',readOnly:true,onClick:()=>{setAuthModal('login');setMobileMenuOpen(false);}})
         ),
-        [['home','Home','home'],['market','Market Pulse','trending'],['book','Collection','collection'],['breaks','Breakers','live']].map(([id,label,icon])=>
+        [['home','Home','home'],['market','Market Pulse','trending'],['collection','Collection','collection'],['breaks','Breakers','live']].map(([id,label,icon])=>
           React.createElement('button',{key:id,onClick:()=>{navigateTo(id);setMobileMenuOpen(false);},style:{width:'100%',display:'flex',alignItems:'center',gap:16,padding:'18px 16px',marginBottom:6,background:page===id?'#111':'transparent',border:page===id?'1px solid #1e1e1e':'1px solid transparent',borderRadius:10,cursor:'pointer',textAlign:'left',color:page===id?'#fff':'rgba(255,255,255,0.65)'}},
             React.createElement(Icon,{name:icon,size:22}),
             React.createElement('span',{style:{fontSize:18,fontWeight:600}},label)
@@ -1293,7 +1313,7 @@ function RIPSSociety() {
         user
           ? React.createElement('div',{style:{display:'flex',gap:10,alignItems:'center'}},
               React.createElement('div',{style:{flex:1,fontSize:13,color:'#888'}},'Signed in as ',user.name),
-              React.createElement('button',{onClick:()=>{setUser(null);setPage('home');setMobileMenuOpen(false);},style:{background:'transparent',border:'1px solid #333',borderRadius:6,padding:'10px 16px',color:'#888',fontSize:13,cursor:'pointer'}},'Log out')
+              React.createElement('button',{onClick:()=>{setUser(null);navigateTo('home');setMobileMenuOpen(false);},style:{background:'transparent',border:'1px solid #333',borderRadius:6,padding:'10px 16px',color:'#888',fontSize:13,cursor:'pointer'}},'Log out')
             )
           : React.createElement('div',{style:{display:'flex',gap:10}},
               React.createElement('button',{onClick:()=>{setAuthModal('login');setMobileMenuOpen(false);},style:{flex:1,background:'transparent',border:'1px solid #444',borderRadius:8,padding:'15px',color:'#fff',fontSize:15,fontWeight:600,cursor:'pointer'}},'Log In'),
@@ -1306,7 +1326,7 @@ function RIPSSociety() {
   //
   const MobileBottomNav = () => !isMobile ? null : (
     React.createElement('div', { style: { position:"fixed", bottom:0, left:0, right:0, zIndex:48, background:"#000", borderTop:"1px solid #1a1a1a", display:"flex", paddingBottom:"env(safe-area-inset-bottom)" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 758}}
-      , [["home","home","Home"],["market","trending","Market"],["book","book","Collection"],["breaks","live","Breaks"]].map(([id,icon,label]) => (
+      , [["home","home","Home"],["market","trending","Market"],["collection","book","Collection"],["breaks","live","Breaks"]].map(([id,icon,label]) => (
         React.createElement('button', { key: id, onClick: () => navigateTo(id), style: { flex:1, display:"flex", flexDirection:"column", alignItems:"center", gap:3, padding:"10px 0 8px", background:"transparent", border:"none", color:page===id?"#C41E1E":"#555", cursor:"pointer" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 760}}
           , React.createElement(Icon, { name: icon, size: 20, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 761}})
           , React.createElement('span', { style: { fontSize:9, fontWeight:600, fontFamily:"'DM Mono',monospace", letterSpacing:"0.06em" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 762}}, label.toUpperCase())
@@ -1623,7 +1643,7 @@ function RIPSSociety() {
             style:{padding:isMobile?"12px 28px":"13px 36px",background:"#C41E1E",color:"#fff",border:"none",fontSize:11,fontWeight:700,cursor:"pointer",fontFamily:"'DM Mono',monospace",letterSpacing:"0.14em",transition:"background 0.2s"},
             onMouseEnter:e=>e.currentTarget.style.background="#a01818",
             onMouseLeave:e=>e.currentTarget.style.background="#C41E1E"
-          },"GET STARTED FREE"),
+          },"JOIN THE SOCIETY"),
           React.createElement('button',{
             onClick:()=>setPage("market"),
             style:{padding:isMobile?"12px 28px":"13px 36px",background:"transparent",color:"rgba(255,255,255,0.3)",border:"1px solid rgba(255,255,255,0.07)",fontSize:11,fontWeight:700,cursor:"pointer",fontFamily:"'DM Mono',monospace",letterSpacing:"0.14em",transition:"all 0.2s"},
@@ -2079,7 +2099,7 @@ function RIPSSociety() {
         React.createElement('p', {style:{fontSize:15,color:"#444",lineHeight:1.7,margin:"0 0 36px"}}, "Join thousands of collectors using AI to scan, value, and trade with confidence."),
         React.createElement('button', {onClick:()=>setAuthModal("signup"),
           style:{padding:"16px 40px",fontSize:14,fontWeight:700,background:"#C41E1E",color:"#fff",border:"none",borderRadius:2,cursor:"pointer",fontFamily:"'DM Mono',monospace",letterSpacing:"0.1em"}},
-          "GET STARTED FREE")
+          "JOIN THE SOCIETY")
       )
     )
   );
@@ -3138,7 +3158,7 @@ const CollectionStorySubPage = ({onBack}) => {
                 React.createElement('div',{style:{fontSize:11,fontWeight:700,marginBottom:2}},'Looking for '+selectedCard.player+' comps on market?'),
                 React.createElement('div',{style:{fontSize:10,color:'#888',fontFamily:MONO}},'See how this card stacks up against active listings')
               ),
-              React.createElement('button',{onClick:()=>setPage('market'),style:{padding:'9px 16px',background:'transparent',border:'1px solid #1a1a1a',borderRadius:4,color:'#999',fontFamily:MONO,fontSize:10,letterSpacing:'0.08em',cursor:'pointer',whiteSpace:'nowrap'}},'MARKET PULSE →')
+              React.createElement('button',{onClick:()=>navigateTo('market'),style:{padding:'9px 16px',background:'transparent',border:'1px solid #1a1a1a',borderRadius:4,color:'#999',fontFamily:MONO,fontSize:10,letterSpacing:'0.08em',cursor:'pointer',whiteSpace:'nowrap'}},'MARKET PULSE →')
             )
           ),
 
@@ -4594,8 +4614,8 @@ const CollectionStorySubPage = ({onBack}) => {
 
       , React.createElement(Nav, {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1703}})
       , React.createElement(MobileBottomNav, {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1704}})
-      , page==="home"&&React.createElement(HomePage, {isMobile, setPage, setAuthModal, user})
-      , page==="collection"&&React.createElement(CollectionPage, null)
+      , page==="home"&&React.createElement(HomePage, {isMobile, setPage: navigateTo, setAuthModal, user})
+      , (page==="collection"||page==="book")&&React.createElement(CollectionPage, null)
       , page==="market"&&React.createElement(MarketPage, {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1707}})
       , page==="breaks"&&React.createElement(BreakersPage, {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1708}})
       , React.createElement(Footer, {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1709}})
