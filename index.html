@@ -1247,36 +1247,61 @@ function RIPSSociety() {
           )
         )
       )
-
-      , isMobile && mobileMenuOpen && (
-        React.createElement('div', { style: { position:"fixed", top:0, left:0, right:0, bottom:0, background:"#000", zIndex:200, display:"flex", flexDirection:"column", padding:"72px 24px 100px", gap:4, overflowY:"auto" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 727}}
-          , React.createElement('div', { style: { flex:1, minWidth:0, display:"flex", alignItems:"center", gap:8, background:"#111", border:"1px solid #1e1e1e", borderRadius:8, padding:"10px 14px", marginBottom:16 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 728}}
-            , React.createElement(Icon, { name: "search", size: 14, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 729}})
-            , React.createElement('input', { style: { background:"transparent", border:"none", outline:"none", color:"#fff", fontSize:14, flex:1, fontFamily:"inherit" }, placeholder: "Search player, set..."  , readOnly: true, onClick: () => { setAuthModal("login"); setMobileMenuOpen(false); }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 730}})
-          )
-          , [["home","Home","home"],["market","Market Trends","trending"],["book","Collection","collection"],["breaks","Breakers","live"]].map(([id,label,icon]) => (
-            React.createElement('button', { key: id, onClick: () => { navigateTo(id); setMobileMenuOpen(false); }, style: { display:"flex", alignItems:"center", gap:14, padding:"16px 12px", background:page===id?"#111":"transparent", border:page===id?"1px solid #1e1e1e":"1px solid transparent", borderRadius:10, cursor:"pointer", textAlign:"left", color:page===id?"#fff":"#888" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 733}}
-              , React.createElement(Icon, { name: icon, size: 20, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 734}})
-              , React.createElement('span', { style: { fontSize:16, fontWeight:600 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 735}}, label)
-            )
-          ))
-          , React.createElement('div', { style: { marginTop:"auto", borderTop:"1px solid #1a1a1a", paddingTop:20, display:"flex", gap:10 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 738}}
-            , user ? (
-              React.createElement(React.Fragment, null
-                , React.createElement('div', { style: { flex:1, fontSize:13, color:"#888" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 741}}, "Signed in as "   , user.name)
-                , React.createElement('button', { onClick: () => { setUser(null); setPage("home"); setMobileMenuOpen(false); }, style: { background:"transparent", border:"1px solid #333", borderRadius:6, padding:"10px 16px", color:"#888", fontSize:13, cursor:"pointer" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 742}}, "Log out" )
-              )
-            ) : (
-              React.createElement(React.Fragment, null
-                , React.createElement('button', { onClick: () => { setAuthModal("login"); setMobileMenuOpen(false); }, style: { flex:1, background:"transparent", border:"1px solid #333", borderRadius:6, padding:"12px", color:"#fff", fontSize:14, fontWeight:600, cursor:"pointer" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 746}}, "Log In" )
-                , React.createElement('button', { onClick: () => { setAuthModal("signup"); setMobileMenuOpen(false); }, style: { flex:1, background:"#C41E1E", border:"none", borderRadius:6, padding:"12px", color:"#fff", fontSize:14, fontWeight:700, cursor:"pointer" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 747}}, "Join Free" )
-              )
-            )
-          )
-        )
-      )
     )
   );
+
+
+
+  const MobileMenu = () => {
+    React.useEffect(() => {
+      if (mobileMenuOpen) {
+        document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        document.body.style.width = '100%';
+      } else {
+        document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.width = '';
+      }
+      return () => {
+        document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.width = '';
+      };
+    }, [mobileMenuOpen]);
+    if (!mobileMenuOpen) return null;
+    return React.createElement('div', {
+      style: {position:'fixed',top:0,left:0,right:0,height:'100%',zIndex:9999,backgroundColor:'#000',display:'flex',flexDirection:'column',WebkitOverflowScrolling:'touch',overflowY:'hidden'}
+    },
+      React.createElement('div',{style:{height:56,flexShrink:0,display:'flex',alignItems:'center',justifyContent:'space-between',padding:'0 20px',borderBottom:'1px solid #1a1a1a'}},
+        React.createElement('span',{style:{fontFamily:"'Bebas Neue','Arial Narrow',sans-serif",fontSize:20,letterSpacing:'0.06em',color:'#fff'}},'RIPS SOCIETY'),
+        React.createElement('button',{onClick:()=>setMobileMenuOpen(false),style:{background:'transparent',border:'1px solid #333',borderRadius:6,padding:'6px 14px',color:'#aaa',cursor:'pointer',fontSize:24,lineHeight:1}},'×')
+      ),
+      React.createElement('div',{style:{flex:1,overflowY:'auto',padding:'16px 20px',WebkitOverflowScrolling:'touch'}},
+        React.createElement('div',{style:{background:'#111',border:'1px solid #1e1e1e',borderRadius:8,padding:'12px 16px',marginBottom:24,display:'flex',alignItems:'center',gap:10}},
+          React.createElement(Icon,{name:'search',size:16}),
+          React.createElement('input',{style:{background:'transparent',border:'none',outline:'none',color:'#fff',fontSize:15,flex:1,fontFamily:'inherit'},placeholder:'Search player, set...',readOnly:true,onClick:()=>{setAuthModal('login');setMobileMenuOpen(false);}})
+        ),
+        [['home','Home','home'],['market','Market Pulse','trending'],['book','Collection','collection'],['breaks','Breakers','live']].map(([id,label,icon])=>
+          React.createElement('button',{key:id,onClick:()=>{navigateTo(id);setMobileMenuOpen(false);},style:{width:'100%',display:'flex',alignItems:'center',gap:16,padding:'18px 16px',marginBottom:6,background:page===id?'#111':'transparent',border:page===id?'1px solid #1e1e1e':'1px solid transparent',borderRadius:10,cursor:'pointer',textAlign:'left',color:page===id?'#fff':'rgba(255,255,255,0.65)'}},
+            React.createElement(Icon,{name:icon,size:22}),
+            React.createElement('span',{style:{fontSize:18,fontWeight:600}},label)
+          )
+        )
+      ),
+      React.createElement('div',{style:{padding:'16px 20px',borderTop:'1px solid #1a1a1a',paddingBottom:'calc(20px + env(safe-area-inset-bottom))'}},
+        user
+          ? React.createElement('div',{style:{display:'flex',gap:10,alignItems:'center'}},
+              React.createElement('div',{style:{flex:1,fontSize:13,color:'#888'}},'Signed in as ',user.name),
+              React.createElement('button',{onClick:()=>{setUser(null);setPage('home');setMobileMenuOpen(false);},style:{background:'transparent',border:'1px solid #333',borderRadius:6,padding:'10px 16px',color:'#888',fontSize:13,cursor:'pointer'}},'Log out')
+            )
+          : React.createElement('div',{style:{display:'flex',gap:10}},
+              React.createElement('button',{onClick:()=>{setAuthModal('login');setMobileMenuOpen(false);},style:{flex:1,background:'transparent',border:'1px solid #444',borderRadius:8,padding:'15px',color:'#fff',fontSize:15,fontWeight:600,cursor:'pointer'}},'Log In'),
+              React.createElement('button',{onClick:()=>{setAuthModal('signup');setMobileMenuOpen(false);},style:{flex:1,background:'#C41E1E',border:'none',borderRadius:8,padding:'15px',color:'#fff',fontSize:15,fontWeight:700,cursor:'pointer'}},'Join Free')
+            )
+      )
+    );
+  };
 
   //
   const MobileBottomNav = () => !isMobile ? null : (
@@ -4577,6 +4602,7 @@ const CollectionStorySubPage = ({onBack}) => {
       , React.createElement(AuthModal, {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1710}})
       , React.createElement(CardDetailModal, {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1711}})
       , React.createElement(AddCardModal, {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1712}})
+      , React.createElement(MobileMenu, null)
 
       , !isMobile && (
         React.createElement('div', { style: S.liveBar, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1715}}
