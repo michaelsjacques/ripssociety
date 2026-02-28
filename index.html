@@ -151,6 +151,45 @@ const PARALLELS_RAINBOW = [
   { name:"Orange Prizm /49", owned:true },{ name:"Gold Prizm /10", owned:false },{ name:"Black Prizm /1", owned:false },
 ];
 
+
+const TEAM_COLORS = {
+  // NBA
+  "Spurs":"#C4CED4","Lakers":"#FDB927","Warriors":"#FFC72C","Celtics":"#007A33",
+  "Heat":"#98002E","Bulls":"#CE1141","Knicks":"#006BB6","Nets":"#000000",
+  "Bucks":"#00471B","Suns":"#E56020","Mavericks":"#00538C","Nuggets":"#0E2240",
+  "76ers":"#006BB6","Cavaliers":"#860038","Timberwolves":"#236192",
+  "San Antonio Spurs":"#C4CED4","Los Angeles Lakers":"#FDB927","Golden State Warriors":"#FFC72C",
+  // NFL
+  "KC Chiefs":"#E31837","Chiefs":"#E31837","Bills":"#00338D","Bengals":"#FB4F14",
+  "Cowboys":"#003594","Eagles":"#004C54","49ers":"#AA0000","Packers":"#203731",
+  "Rams":"#003594","Texans":"#03202F","Broncos":"#FB4F14","Ravens":"#241773",
+  "Steelers":"#FFB612","Patriots":"#002244","Bears":"#0B162A","Giants":"#0B2265",
+  "Kansas City Chiefs":"#E31837","Houston Texans":"#03202F","Buffalo Bills":"#00338D",
+  // MLB
+  "Dodgers":"#005A9C","Yankees":"#003087","Red Sox":"#BD3039","Braves":"#CE1141",
+  "Mets":"#002D72","Cubs":"#0E3386","Cardinals":"#C41E3A","Astros":"#002D62",
+  "Angels":"#BA0021","Indians":"#0C2340","Phillies":"#E81828","LA Dodgers":"#005A9C",
+  // NHL
+  "Oilers":"#FF4C00","Maple Leafs":"#00205B","Canadiens":"#AF1E2D","Bruins":"#FFB81C",
+  "Penguins":"#FCB514","Blackhawks":"#CF0A2C","Rangers":"#0038A8","Capitals":"#041E42",
+  "Lightning":"#002868","Blues":"#002F87","Flames":"#C8102E","Avalanche":"#6F263D",
+  "Edmonton Oilers":"#FF4C00","Toronto Maple Leafs":"#00205B",
+  // Soccer
+  "Real Madrid":"#FEBE10","Barcelona":"#A50044","Man City":"#6CABDD",
+  "Liverpool":"#C8102E","Chelsea":"#034694","Arsenal":"#EF0107","PSG":"#004170",
+  "Inter Miami":"#F7B5CD","Juventus":"#000000","Bayern Munich":"#DC052D",
+};
+const getTeamColor = (team) => {
+  if (!team) return "#C41E1E";
+  const t = team.trim();
+  if (TEAM_COLORS[t]) return TEAM_COLORS[t];
+  // partial match
+  for (const [k,v] of Object.entries(TEAM_COLORS)) {
+    if (t.includes(k) || k.includes(t)) return v;
+  }
+  return "#C41E1E";
+};
+
 const SPORTS_LIST = ["Football","Basketball","Baseball","Hockey","Soccer","Other"];
 const CONDITIONS = ["Raw","PSA 7","PSA 8","PSA 9","PSA 10","BGS 9","BGS 9.5","BGS 10"];
 
@@ -244,6 +283,131 @@ const SportCardFace = ({ player, sport, team, year, set, parallel, number, grade
       parallel && React.createElement('div', { style:{display:"inline-block",fontSize:Math.round(7*size),color:ac,border:"1px solid "+ac+"44",borderRadius:2,padding:"1px "+Math.round(4*size)+"px",fontFamily:"'DM Mono',monospace",fontWeight:700} }, parallel)
     ),
     React.createElement('div', { style:{position:"absolute",inset:0,background:"linear-gradient(135deg,rgba(255,255,255,0.025) 0%,transparent 50%,rgba(255,255,255,0.015) 100%)",pointerEvents:"none",zIndex:5} })
+  );
+};
+
+
+const PremiumCard = ({ player, team, sport, year, set, parallel, number, grade, estValue, momentum, signal, imgSrc, espnId, espnSport, onClick, width }) => {
+  width = width || 200;
+  const aspect = 1.4;
+  const h = Math.round(width * aspect);
+  const teamColor = getTeamColor(team);
+  const gradNum = grade ? parseFloat(grade.replace(/[^0-9.]/g,"")) : 0;
+  const gradeColor = gradNum >= 10 ? "#FFD700" : gradNum >= 9.5 ? "#e8e8e8" : gradNum >= 9 ? "#cd7f32" : "#aaa";
+  const [imgErr, setImgErr] = React.useState(false);
+  const src = imgSrc || (espnId && espnSport ? `https://a.espncdn.com/i/headshots/${espnSport}/players/full/${espnId}.png` : null);
+  const sportEmoji = {Football:"🏈",Basketball:"🏀",Baseball:"⚾",Hockey:"🏒",Soccer:"⚽"}[sport] || "🃏";
+  const up = momentum && !String(momentum).startsWith("-");
+
+  // Rainbow gradient for bottom strip
+  const rainbow = "linear-gradient(90deg,#FF0000,#FF7700,#FFFF00,#00CC00,#0000FF,#8B00FF)";
+
+  return React.createElement('div', {
+    onClick, style:{cursor:onClick?"pointer":"default", width, flexShrink:0,
+      filter:"drop-shadow(0 8px 24px rgba(0,0,0,0.7))",
+      transition:"transform 0.2s,filter 0.2s",
+    },
+    onMouseEnter: onClick ? e=>{e.currentTarget.style.transform="translateY(-4px)";e.currentTarget.style.filter="drop-shadow(0 16px 32px rgba(0,0,0,0.8))";} : null,
+    onMouseLeave: onClick ? e=>{e.currentTarget.style.transform="";e.currentTarget.style.filter="drop-shadow(0 8px 24px rgba(0,0,0,0.7))";} : null,
+  },
+    // Card body
+    React.createElement('div', { style:{
+      width, height:h, borderRadius:Math.round(12*(width/200)),
+      border:`3px solid ${teamColor}`,
+      background:"#0a0a0a", overflow:"hidden", position:"relative",
+      boxShadow:`inset 0 0 0 1px rgba(255,255,255,0.04), 0 0 0 1px ${teamColor}44`,
+      display:"flex", flexDirection:"column",
+    }},
+      // Top bar: sport + serial number
+      React.createElement('div', { style:{
+        height:Math.round(22*(width/200)), flexShrink:0,
+        background:`linear-gradient(90deg, ${teamColor}ee, ${teamColor}88)`,
+        display:"flex", alignItems:"center", justifyContent:"space-between",
+        padding:`0 ${Math.round(8*(width/200))}px`,
+      }},
+        React.createElement('span', { style:{fontSize:Math.round(7*(width/200)),fontWeight:900,letterSpacing:"0.08em",color:"#fff",fontFamily:"'DM Mono',monospace",textShadow:"0 1px 2px rgba(0,0,0,0.5)"} }, (sport||"SPORTS").toUpperCase()),
+        number && React.createElement('span', { style:{fontSize:Math.round(9*(width/200)),fontWeight:900,color:"#fff",background:"rgba(0,0,0,0.5)",borderRadius:3,padding:`1px ${Math.round(5*(width/200))}px`,fontFamily:"'DM Mono',monospace"} }, number)
+      ),
+
+      // Photo area — center of card
+      React.createElement('div', { style:{flex:1,position:"relative",overflow:"hidden",background:`linear-gradient(145deg, ${teamColor}22, #050505)`} },
+        React.createElement('div', { style:{position:"absolute",inset:0,background:"linear-gradient(to bottom,transparent 40%,rgba(0,0,0,0.85) 100%)",zIndex:2} }),
+        src && !imgErr
+          ? React.createElement('img', { src, alt:player||"", style:{width:"100%",height:"100%",objectFit:"cover",objectPosition:"top center",transform:"scale(1.06)"}, onError:()=>setImgErr(true) })
+          : React.createElement('div', { style:{width:"100%",height:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:4} },
+              React.createElement('div', { style:{fontSize:Math.round(36*(width/200)),lineHeight:1} }, sportEmoji),
+              React.createElement('div', { style:{fontSize:Math.round(8*(width/200)),color:"#444",fontFamily:"'DM Mono',monospace"} }, "NO IMAGE")
+            ),
+        // Grade badge
+        grade && React.createElement('div', { style:{position:"absolute",top:Math.round(5*(width/200)),left:Math.round(6*(width/200)),zIndex:3,background:gradeColor,borderRadius:3,padding:`${Math.round(2*(width/200))}px ${Math.round(6*(width/200))}px`,fontSize:Math.round(8*(width/200)),fontWeight:900,color:"#000",fontFamily:"'DM Mono',monospace"} }, grade),
+        // Signal badge
+        signal && React.createElement('div', { style:{position:"absolute",top:Math.round(5*(width/200)),right:Math.round(6*(width/200)),zIndex:3} },
+          React.createElement(SignalBadge, { signal })
+        ),
+        // Player name overlay at bottom of photo
+        React.createElement('div', { style:{position:"absolute",bottom:0,left:0,right:0,zIndex:3,padding:`0 ${Math.round(8*(width/200))}px ${Math.round(6*(width/200))}px`} },
+          React.createElement('div', { style:{fontSize:Math.round(13*(width/200)),fontWeight:900,letterSpacing:"-0.02em",lineHeight:1.1,textShadow:"0 2px 6px rgba(0,0,0,0.9)"} }, player||""),
+          React.createElement('div', { style:{fontSize:Math.round(8*(width/200)),color:"rgba(255,255,255,0.55)",fontFamily:"'DM Mono',monospace",marginTop:1} }, team||"")
+        )
+      ),
+
+      // Rainbow gradient strip + stats
+      React.createElement('div', { style:{flexShrink:0} },
+        React.createElement('div', { style:{height:Math.round(4*(width/200)),background:rainbow} }),
+        React.createElement('div', { style:{background:"#060606",padding:`${Math.round(7*(width/200))}px ${Math.round(8*(width/200))}px`} },
+          React.createElement('div', { style:{fontSize:Math.round(7.5*(width/200)),color:"#888",fontFamily:"'DM Mono',monospace",marginBottom:Math.round(3*(width/200)),overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"} },
+            (year||"")+" · "+(set||"")
+          ),
+          parallel && React.createElement('div', { style:{fontSize:Math.round(7*(width/200)),color:teamColor,fontFamily:"'DM Mono',monospace",marginBottom:Math.round(3*(width/200)),fontWeight:700,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"} }, parallel),
+          React.createElement('div', { style:{display:"flex",justifyContent:"space-between",alignItems:"center"} },
+            estValue && React.createElement('span', { style:{fontSize:Math.round(13*(width/200)),fontWeight:900,color:"#fff"} }, "$"+estValue),
+            momentum && React.createElement('span', { style:{fontSize:Math.round(9*(width/200)),fontWeight:700,color:up?"#22c55e":"#ef4444",fontFamily:"'DM Mono',monospace"} }, momentum)
+          )
+        )
+      ),
+
+      // Holographic shimmer
+      React.createElement('div', { style:{position:"absolute",inset:0,background:"linear-gradient(135deg,rgba(255,255,255,0.04) 0%,transparent 45%,rgba(255,255,255,0.02) 100%)",pointerEvents:"none",zIndex:10,borderRadius:Math.round(10*(width/200))} })
+    )
+  );
+};
+
+const MultiLineChart = ({ datasets, h, showLabels }) => {
+  h = h || 120;
+  if (!datasets || !datasets.length) return React.createElement('div', { style:{height:h,background:"#0a0a0a",borderRadius:6} });
+  const allVals = datasets.flatMap(d => d.data || []);
+  const mn = Math.min(...allVals), mx = Math.max(...allVals);
+  const range = mx - mn || 1;
+  const W = 300, H = h;
+  const pts = (data) => {
+    if (!data || data.length < 2) return "";
+    return data.map((v,i) => {
+      const x = (i/(data.length-1))*W;
+      const y = H - ((v-mn)/range)*(H-8) - 4;
+      return `${x},${y}`;
+    }).join(" ");
+  };
+  return React.createElement('svg', { viewBox:`0 0 ${W} ${H}`, style:{width:"100%",height:h,display:"block"}, preserveAspectRatio:"none" },
+    React.createElement('rect', { width:W, height:H, fill:"#080808", rx:4 }),
+    datasets.map((ds,di) => {
+      const data = ds.data || [];
+      if (data.length < 2) return null;
+      const points = pts(data);
+      const lastX = ((data.length-1)/(data.length-1))*W;
+      const lastY = H - ((data[data.length-1]-mn)/range)*(H-8) - 4;
+      return React.createElement('g', { key:ds.id||di },
+        React.createElement('polyline', { points, fill:"none", stroke:ds.color||"#22c55e", strokeWidth:1.5, strokeLinecap:"round", strokeLinejoin:"round", opacity:0.9 }),
+        React.createElement('circle', { cx:lastX, cy:lastY, r:2.5, fill:ds.color||"#22c55e" })
+      );
+    }),
+    showLabels !== false && React.createElement('g', null,
+      [0,1,2,3,4,5,6,7].map(i => {
+        const ds0 = datasets[0];
+        if (!ds0 || !ds0.data || i >= ds0.data.length) return null;
+        const x = (i/(ds0.data.length-1))*W;
+        return React.createElement('line', { key:i, x1:x, y1:0, x2:x, y2:H, stroke:"#1a1a1a", strokeWidth:0.5 });
+      })
+    )
   );
 };
 
@@ -804,7 +968,7 @@ function RIPSSociety() {
             , React.createElement('input', { style: { background:"transparent", border:"none", outline:"none", color:"#fff", fontSize:13, flex:1, fontFamily:"inherit" }, placeholder: "Search player, set, cert #"    , readOnly: true, onClick: () => setAuthModal("login"), __self: this, __source: {fileName: _jsxFileName2, lineNumber: 691}})
           )
           , React.createElement('div', { style: { display:"flex", alignItems:"center", gap:4 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 693}}
-            , [["market","MARKET"],["book","VAULT"],["breaks","BREAKS"]].map(([id,label]) => (
+            , [["market","MARKET"],["book","CARD BOOK"],["breaks","BREAKS"]].map(([id,label]) => (
               React.createElement('button', { key: id, onClick: () => navigateTo(id), style: { background:"transparent", border:"none", color:page===id?"#fff":"#666", fontSize:11, fontWeight:600, letterSpacing:"0.06em", cursor:"pointer", padding:"6px 10px", fontFamily:"inherit" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 695}}, label)
             ))
             , React.createElement('div', { style: { width:1, height:18, background:"#222", margin:"0 6px" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 697}})
@@ -842,7 +1006,7 @@ function RIPSSociety() {
             , React.createElement(Icon, { name: "search", size: 14, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 729}})
             , React.createElement('input', { style: { background:"transparent", border:"none", outline:"none", color:"#fff", fontSize:14, flex:1, fontFamily:"inherit" }, placeholder: "Search player, set..."  , readOnly: true, onClick: () => { setAuthModal("login"); setMobileMenuOpen(false); }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 730}})
           )
-          , [["home","Home","home"],["market","Market Trends","trending"],["book","My Vault","book"],["breaks","Breakers","live"]].map(([id,label,icon]) => (
+          , [["home","Home","home"],["market","Market Trends","trending"],["book","Card Book","book"],["breaks","Breakers","live"]].map(([id,label,icon]) => (
             React.createElement('button', { key: id, onClick: () => { navigateTo(id); setMobileMenuOpen(false); }, style: { display:"flex", alignItems:"center", gap:14, padding:"16px 12px", background:page===id?"#111":"transparent", border:page===id?"1px solid #1e1e1e":"1px solid transparent", borderRadius:10, cursor:"pointer", textAlign:"left", color:page===id?"#fff":"#888" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 733}}
               , React.createElement(Icon, { name: icon, size: 20, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 734}})
               , React.createElement('span', { style: { fontSize:16, fontWeight:600 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 735}}, label)
@@ -869,7 +1033,7 @@ function RIPSSociety() {
   //
   const MobileBottomNav = () => !isMobile ? null : (
     React.createElement('div', { style: { position:"fixed", bottom:0, left:0, right:0, zIndex:48, background:"#000", borderTop:"1px solid #1a1a1a", display:"flex", paddingBottom:"env(safe-area-inset-bottom)" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 758}}
-      , [["home","home","Home"],["market","trending","Market"],["book","book","Vault"],["breaks","live","Breaks"]].map(([id,icon,label]) => (
+      , [["home","home","Home"],["market","trending","Market"],["book","book","Card Book"],["breaks","live","Breaks"]].map(([id,icon,label]) => (
         React.createElement('button', { key: id, onClick: () => navigateTo(id), style: { flex:1, display:"flex", flexDirection:"column", alignItems:"center", gap:3, padding:"10px 0 8px", background:"transparent", border:"none", color:page===id?"#C41E1E":"#555", cursor:"pointer" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 760}}
           , React.createElement(Icon, { name: icon, size: 20, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 761}})
           , React.createElement('span', { style: { fontSize:9, fontWeight:600, fontFamily:"'DM Mono',monospace", letterSpacing:"0.06em" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 762}}, label.toUpperCase())
@@ -969,8 +1133,10 @@ function RIPSSociety() {
               ))
             )
           )
-          , React.createElement('div', { style: {position:"relative",overflow:"hidden"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 857}}
-                                , React.createElement('div', { style: {position:"relative",width:"100%",height:"100%",minHeight:500}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 858}}
+          , React.createElement('div', { style: {position:"relative",overflow:"hidden"} }
+            , React.createElement('img', { src:"hero-cards.jpg", alt:"Sports cards collection", style:{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover",objectPosition:"center"} })
+            , React.createElement('div', { style:{position:"absolute",inset:0,background:"linear-gradient(90deg,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.1) 60%,transparent 100%)"} })
+            , React.createElement('div', { style: {position:"relative",width:"100%",height:"100%",minHeight:500}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 858}}
               , HERO_CARDS.map((c,i)=>(
                 React.createElement('div', { key: i, style: {position:"absolute",top:"50%",left:"50%",transform:`translate(-50%,-50%) translate(${c.tx}px,${c.ty}px) rotate(${c.rot}deg)`,zIndex:c.z,filter:"drop-shadow(0 16px 32px rgba(0,0,0,0.5))"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 860}}
                   , React.createElement('div', { style: {width:130,background:"#0a0a0a",borderRadius:8,overflow:"hidden",border:"1px solid rgba(255,255,255,0.07)"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 861}}
@@ -1121,7 +1287,7 @@ function RIPSSociety() {
         , bookTab === "tour" && (
           React.createElement('div', { style: {maxWidth:720,margin:"0 auto"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1007}}
             , React.createElement('div', { style: {textAlign:"center",marginBottom:isMobile?28:48}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1008}}
-              , React.createElement('h2', { style: {fontSize:isMobile?"1.5rem":"2rem",fontWeight:900,letterSpacing:"-0.03em",marginBottom:12}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1009}}, "Welcome to Your Card Vault"    )
+              , React.createElement('h2', { style: {fontSize:isMobile?"1.5rem":"2rem",fontWeight:900,letterSpacing:"-0.03em",marginBottom:12}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1009}}, "Welcome to Your Card Book"    )
               , React.createElement('p', { style: {fontSize:13,color:"#888",lineHeight:1.75,maxWidth:440,margin:"0 auto",fontFamily:"'DM Mono',monospace"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1010}}, "Track every card, see what it is worth, and know exactly when to buy, hold, or sell."                )
             )
             , React.createElement('div', { style: {display:"grid",gridTemplateColumns:isMobile?"1fr":"1fr 1fr",gap:12,marginBottom:28}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1012}}
@@ -1133,7 +1299,7 @@ function RIPSSociety() {
               ))
             )
             , React.createElement('div', { style: {display:"flex",gap:10,flexDirection:isMobile?"column":"row"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1020}}
-              , React.createElement('button', { style: {...S.btnPrimary,flex:1,padding:"13px"}, onClick: ()=>setBookTab("collection"), __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1021}}, "Open My Vault"  )
+              , React.createElement('button', { style: {...S.btnPrimary,flex:1,padding:"13px"}, onClick: ()=>setBookTab("collection"), __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1021}}, "Open Card Book"  )
               , React.createElement('button', { style: {...S.btnSecondary,flex:1,padding:"13px"}, onClick: ()=>{setBookTab("collection");setTimeout(()=>setShowAddCard(true),100);}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1022}}, "Add First Card"  )
             )
           )
@@ -1443,7 +1609,7 @@ function RIPSSociety() {
       ),
       React.createElement('div', { style:{display:"flex",gap:10,paddingTop:8,borderTop:"1px solid #1a1a1a"} },
         React.createElement('button', { style:{...S.btnSecondary,flex:1,padding:"11px"}, onClick:onClose }, "Cancel"),
-        React.createElement('button', { style:{...S.btnPrimary,flex:1,padding:"11px",opacity:form.player?1:0.4}, onClick:submit, disabled:!form.player }, "Add to Vault")
+        React.createElement('button', { style:{...S.btnPrimary,flex:1,padding:"11px",opacity:form.player?1:0.4}, onClick:submit, disabled:!form.player }, "Add to Book")
       )
     );
   };
@@ -1452,7 +1618,7 @@ function RIPSSociety() {
     React.createElement('div', { style: {...S.modal,alignItems:isMobile?"flex-end":"center",padding:isMobile?0:24}, onClick: e=>e.target===e.currentTarget&&setShowAddCard(false), __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1229}}
       , React.createElement('div', { style: {...S.card,maxWidth:isMobile?"100%":520,borderRadius:isMobile?"16px 16px 0 0":"10px",width:"100%"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1230}}
         , React.createElement('div', { style: { display:"flex", justifyContent:"space-between", padding:"22px 26px", borderBottom:"1px solid #141414" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1231}}
-          , React.createElement('div', { style: { fontSize:18, fontWeight:700 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1232}}, "Add Card to Vault"   )
+          , React.createElement('div', { style: { fontSize:18, fontWeight:700 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1232}}, "Add Card to Book"   )
           , React.createElement('button', { onClick: ()=>setShowAddCard(false), style: { background:"transparent", border:"1px solid #1C1C1C", borderRadius:7, padding:"6px 9px", color:"#444", cursor:"pointer" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1233}}, React.createElement(Icon, { name: "x", size: 14, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1233}}))
         )
         , React.createElement(AddCardContent, { onClose:()=>setShowAddCard(false), onAdd:(card)=>{setCards([...cards,card]);setShowAddCard(false);}, isMobile, S })
@@ -1914,7 +2080,7 @@ function RIPSSociety() {
       , React.createElement(MobileBottomNav, {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1704}})
       , page==="home"&&React.createElement(HomePage, {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1705}})
       , page==="book"&&user&&React.createElement(CardBookPage, {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1706}})
-      , page==="market"&&user&&React.createElement(MarketPage, {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1707}})
+      , page==="market"&&React.createElement(MarketPage, {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1707}})
       , page==="breaks"&&React.createElement(BreakersPage, {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1708}})
       , React.createElement(Footer, {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1709}})
       , React.createElement(AuthModal, {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1710}})
