@@ -58,50 +58,102 @@ const DEMO_USER = { email: "collector@rips.com", password: "rips2025", name: "Ri
 const MONTHS = ["Jul","Aug","Sep","Oct","Nov","Dec","Jan","Feb"];
 
 const PLAYER_TRENDS = [
-  { id:"wemby", name:"Victor Wembanyama", sport:"Basketball", team:"Spurs", pos:"PF", indexCard:"2023 Prizm Base RC", change:"+38.4%", data:[180,220,280,310,350,410,480,520], hot:true, rookie:true, color:"#4FC3F7", signal:"BUY", signalReason:"Historic rookie ceiling, jersey number scarcity driving demand" },
-  { id:"stroud", name:"C.J. Stroud", sport:"Football", team:"Texans", pos:"QB", indexCard:"2023 Bowman Chrome Auto /99", change:"+44.2%", data:[120,180,240,300,340,380,420,480], hot:true, rookie:true, color:"#FFCC80", signal:"BUY", signalReason:"Sophomore breakout locked in, AFC wild card factor" },
-  { id:"mbappe", name:"Kylian Mbappé", sport:"Soccer", team:"Real Madrid", pos:"FW", indexCard:"2018 Prizm WC RC", change:"+28.7%", data:[900,980,1100,1050,1150,1250,1300,1400], hot:true, rookie:false, color:"#F48FB1", signal:"BUY", signalReason:"Global market, new club driving international collector base" },
-  { id:"ohtani", name:"Shohei Ohtani", sport:"Baseball", team:"Dodgers", pos:"DH/P", indexCard:"2018 Bowman Chrome Auto RC", change:"+22.1%", data:[1800,1950,2100,2000,2200,2400,2550,2700], hot:true, rookie:false, color:"#FFA726", signal:"HOLD", signalReason:"Dodgers move priced in, monitor WS run for catalyst" },
-  { id:"luka", name:"Luka Dončić", sport:"Basketball", team:"Mavericks", pos:"PG", indexCard:"2018 Prizm Base RC PSA 10", change:"+11.6%", data:[3200,3400,3600,3300,3500,3700,3900,4100], hot:false, rookie:false, color:"#66BB6A", signal:"HOLD", signalReason:"Established floor, championship window is the catalyst" },
-  { id:"mahomes", name:"Patrick Mahomes", sport:"Football", team:"KC Chiefs", pos:"QB", indexCard:"2023 Topps Chrome RC /99", change:"+4.2%", data:[280,290,310,295,305,320,315,330], hot:false, rookie:false, color:"#E8212B", signal:"HOLD", signalReason:"Stable dynasty card, dynasty narrative fully priced in" },
-  { id:"mcdavid", name:"Connor McDavid", sport:"Hockey", team:"Oilers", pos:"C", indexCard:"2015 UD Young Guns PSA 10", change:"+15.8%", data:[1400,1500,1550,1480,1600,1700,1750,1820], hot:false, rookie:false, color:"#80DEEA", signal:"BUY", signalReason:"Undervalued vs peers, Stanley Cup window open" },
-  { id:"judge", name:"Aaron Judge", sport:"Baseball", team:"Yankees", pos:"RF", indexCard:"2017 Topps Chrome RC PSA 9", change:"-2.3%", data:[420,410,440,415,400,420,390,410], hot:false, rookie:false, color:"#CE93D8", signal:"HOLD", signalReason:"Minor correction, WS contention = price recovery expected" },
+  {id:"wemby",name:"Victor Wembanyama",sport:"Basketball",team:"Spurs",pos:"C",rookie:true,hot:true,signal:"BUY",color:"#4FC3F7",change:"+38.4%",data:[180,220,280,310,350,410,480,520],indexCard:"2023 Panini Prizm RC",note:"Historic rookie ceiling. 7'4 wingspan creating global hype.",signalReason:"Low PSA pop + rookie contract year",years:["2023"],sets:["Panini Prizm","Bowman Chrome","Topps Chrome"],keyCards:[{set:"2023 Prizm Base RC",grade:"PSA 10",val:520,pop:1204},{set:"2023 Prizm Silver RC",grade:"PSA 10",val:1800,pop:312},{set:"2023 Prizm Auto /99",grade:"BGS 9.5",val:4200,pop:44}]},
+  {id:"mahomes",name:"Patrick Mahomes",sport:"Football",team:"Chiefs",pos:"QB",hot:true,signal:"HOLD",color:"#E31837",change:"+4.2%",data:[210,225,230,218,240,255,260,265],indexCard:"2017 Panini Prizm RC",note:"Peak dynasty. 3x SB champion. Market stable at premium.",signalReason:"High pop counts limiting upside",years:["2017","2018","2019"],sets:["Panini Prizm","National Treasures","Topps Chrome"],keyCards:[{set:"2017 Prizm Base RC",grade:"PSA 10",val:330,pop:4210},{set:"2018 NT Auto /99",grade:"BGS 9",val:8500,pop:88},{set:"2017 Topps Chrome RC",grade:"PSA 10",val:180,pop:6100}]},
+  {id:"ohtani",name:"Shohei Ohtani",sport:"Baseball",team:"Dodgers",pos:"DH/P",hot:true,signal:"BUY",color:"#005A9C",change:"+22.1%",data:[1800,2100,2400,2200,2600,2700,2800,2900],indexCard:"2018 Bowman Chrome Auto",note:"GOAT two-way player. Dodgers move amplifying demand.",signalReason:"Record contract + WS push = all-time upside",years:["2018","2019","2020"],sets:["Bowman Chrome","Topps","Panini Prizm"],keyCards:[{set:"2018 Bowman Chrome Auto /499",grade:"PSA 10",val:2700,pop:280},{set:"2021 Topps Update RC",grade:"PSA 10",val:220,pop:5400},{set:"2018 Prizm RC",grade:"PSA 9",val:890,pop:3100}]},
+  {id:"luka",name:"Luka Doncic",sport:"Basketball",team:"Lakers",pos:"PG",signal:"HOLD",color:"#FDB927",change:"+8.3%",data:[1200,1350,1420,1380,1500,1600,1700,1750],indexCard:"2018 Panini Prizm RC",note:"Trade to Lakers creating new demand wave.",signalReason:"New market = new buyers. Monitor closely.",years:["2018","2019","2020"],sets:["Panini Prizm","National Treasures","Topps Chrome"],keyCards:[{set:"2018 Prizm Base RC",grade:"PSA 10",val:1750,pop:2100},{set:"2018 Prizm Silver Auto /125",grade:"PSA 10",val:28000,pop:45}]},
+  {id:"mcdavid",name:"Connor McDavid",sport:"Hockey",team:"Oilers",pos:"C",hot:true,signal:"BUY",color:"#FF4C00",change:"+15.8%",data:[900,1000,1100,1050,1200,1500,1700,1820],indexCard:"2015 UD Young Guns RC",note:"Greatest hockey player alive. Market underpriced vs other sports.",signalReason:"Stanley Cup run + international hockey growth",years:["2015","2016","2017"],sets:["Upper Deck Young Guns","The Cup","Ice"],keyCards:[{set:"2015 UD Young Guns RC",grade:"PSA 10",val:1820,pop:890},{set:"2015-16 The Cup Auto /99",grade:"BGS 9.5",val:12000,pop:22}]},
+  {id:"messi",name:"Lionel Messi",sport:"Soccer",team:"Inter Miami",pos:"FW",signal:"BUY",color:"#F48FB1",change:"+31.5%",data:[2200,2500,2800,3000,3200,3400,3500,3800],indexCard:"2006 Panini WC RC",note:"MLS move opened massive American collector market.",signalReason:"US market discovery + GOAT status = long-term hold",years:["2006","2014","2018","2022"],sets:["Panini","Topps","Prizm","Chrome"],keyCards:[{set:"2006 Panini WC Sticker RC",grade:"PSA 9",val:3200,pop:180},{set:"2014 Prizm WC RC",grade:"PSA 10",val:8400,pop:88}]},
+  {id:"stroud",name:"C.J. Stroud",sport:"Football",team:"Texans",pos:"QB",rookie:true,signal:"WATCH",color:"#03202F",change:"+12.1%",data:[120,145,180,160,200,240,260,280],indexCard:"2023 Bowman Chrome RC",note:"Texans franchise QB. Sophomore year proving grounds.",signalReason:"Consistency needed before full BUY",years:["2023"],sets:["Panini Prizm","Bowman Chrome","Topps Chrome"],keyCards:[{set:"2023 Prizm Base RC",grade:"PSA 10",val:280,pop:3400},{set:"2023 Prizm Auto /149",grade:"PSA 10",val:1400,pop:190}]},
+  {id:"judge",name:"Aaron Judge",sport:"Baseball",team:"Yankees",pos:"RF",signal:"HOLD",color:"#003087",change:"+9.8%",data:[400,420,450,430,480,510,530,550],indexCard:"2013 Topps Chrome RC",note:"Yankees legend. MVP. Market very stable at premium.",signalReason:"High pop, steady appreciation",years:["2013","2017","2022"],sets:["Topps Chrome","Bowman Chrome","Prizm"],keyCards:[{set:"2013 Topps Chrome RC",grade:"PSA 10",val:550,pop:4800},{set:"2017 Topps Chrome Orange /25",grade:"PSA 10",val:8200,pop:12}]},
+  {id:"bedard",name:"Connor Bedard",sport:"Hockey",team:"Blackhawks",pos:"C",rookie:true,hot:true,signal:"BUY",color:"#CF0A2C",change:"+44.8%",data:[80,120,180,240,300,380,440,520],indexCard:"2023 Upper Deck YG RC",note:"Generational hockey talent. Next McDavid. Extremely early.",signalReason:"Pop still tiny. Window open now.",years:["2023"],sets:["Upper Deck","O-Pee-Chee Platinum","SP Authentic"],keyCards:[{set:"2023 UD Young Guns RC",grade:"PSA 10",val:520,pop:320},{set:"2023 SP Auth Auto /999",grade:"PSA 10",val:2800,pop:88}]},
+  {id:"skenes",name:"Paul Skenes",sport:"Baseball",team:"Pirates",pos:"SP",rookie:true,hot:true,signal:"BUY",color:"#FFD700",change:"+67.2%",data:[60,100,160,220,300,380,460,540],indexCard:"2024 Bowman Chrome Auto",note:"#1 overall pick. Electric debut. Kershaw-tier ceiling.",signalReason:"Bowman Chrome autos still affordable. Get in now.",years:["2024"],sets:["Bowman Chrome","Topps","Panini Prizm"],keyCards:[{set:"2024 Bowman Chrome Auto /499",grade:"PSA 10",val:1200,pop:88},{set:"2024 Topps Update RC",grade:"PSA 10",val:180,pop:1800}]},
+  {id:"daniels",name:"Jayden Daniels",sport:"Football",team:"Commanders",pos:"QB",rookie:true,hot:true,signal:"BUY",color:"#5A1414",change:"+67.2%",data:[80,130,200,280,360,440,500,560],indexCard:"2024 Panini Prizm RC",note:"Heisman to Commanders. Instant franchise savior.",signalReason:"Fastest-rising 2024 RC. Still time to enter.",years:["2024"],sets:["Panini Prizm","Topps Chrome","Bowman Chrome"],keyCards:[{set:"2024 Prizm Base RC",grade:"PSA 10",val:380,pop:1800},{set:"2024 Prizm Auto /149",grade:"PSA 10",val:2200,pop:88}]},,
+  {id:"lebron",name:"LeBron James",sport:"Basketball",team:"Lakers",pos:"SF",signal:"HOLD",color:"#552583",change:"+3.8%",data:[2800,2900,2950,2900,3000,3050,3100,3120],indexCard:"2003 Topps Chrome RC",note:"GOAT debate card. Stable premium. Post-career anticipation building.",signalReason:"High pop but name recognition holds value",years:["2003","2004","2005"],sets:["Topps Chrome","Bowman","Exquisite"],keyCards:[{set:"2003 Topps Chrome RC",grade:"PSA 10",val:2800,pop:3200},{set:"2003 Exquisite RC Auto /99",grade:"BGS 9.5",val:320000,pop:12}]},
+  {id:"curry",name:"Stephen Curry",sport:"Basketball",team:"Warriors",pos:"PG",signal:"HOLD",color:"#FFC72C",change:"+5.2%",data:[800,850,880,860,910,940,960,980],indexCard:"2009 Topps Chrome RC",note:"4x champion. Post-prime but GOAT-tier legacy holding value.",signalReason:"Championships priced in. Watch for HOF induction pump.",years:["2009","2010","2011"],sets:["Topps Chrome","Panini Prizm","SP Authentic"],keyCards:[{set:"2009 Topps Chrome RC",grade:"PSA 10",val:980,pop:2800},{set:"2013 Prizm RC",grade:"PSA 10",val:380,pop:4400}]},
+  {id:"tatum",name:"Jayson Tatum",sport:"Basketball",team:"Celtics",pos:"SF",signal:"BUY",color:"#007A33",change:"+18.2%",data:[280,310,340,320,380,420,460,490],indexCard:"2017 Panini Prizm RC",note:"2024 NBA Champion. Peak prime years. Championship ring adds significant premium.",signalReason:"Ring winner + young = long runway",years:["2017","2018","2019"],sets:["Panini Prizm","National Treasures","Optic"],keyCards:[{set:"2017 Prizm RC",grade:"PSA 10",val:490,pop:2100},{set:"2017 NT Auto /99",grade:"BGS 9.5",val:8800,pop:44}]},
+  {id:"giannis",name:"Giannis Antetokounmpo",sport:"Basketball",team:"Bucks",pos:"PF",signal:"HOLD",color:"#00471B",change:"+6.1%",data:[1200,1280,1340,1300,1380,1420,1460,1480],indexCard:"2013 Panini Prizm RC",note:"2x MVP, champion. Market mature but stable. Greek Freak cards always liquid.",signalReason:"Peak likely passed, but floor is very high",years:["2013","2014","2015"],sets:["Panini Prizm","National Treasures","Hoops"],keyCards:[{set:"2013 Prizm RC",grade:"PSA 10",val:1480,pop:1800},{set:"2013 NT Auto /99",grade:"BGS 9.5",val:22000,pop:28}]},
+  {id:"soto",name:"Juan Soto",sport:"Baseball",team:"Mets",pos:"OF",signal:"BUY",color:"#002D72",change:"+28.4%",data:[180,210,240,220,260,290,320,360],indexCard:"2018 Bowman Chrome RC",note:"$765M contract. Most expensive player ever. Market reacting strongly.",signalReason:"Biggest contract in history = collector attention",years:["2018","2019","2020"],sets:["Bowman Chrome","Topps","Prizm"],keyCards:[{set:"2018 Bowman Chrome Auto /499",grade:"PSA 10",val:680,pop:480},{set:"2019 Topps Chrome RC",grade:"PSA 10",val:180,pop:5200}]},
+  {id:"rodriguez",name:"Julio Rodriguez",sport:"Baseball",team:"Mariners",pos:"CF",rookie:true,signal:"BUY",color:"#005C5C",change:"+14.8%",data:[120,145,168,155,180,200,220,240],indexCard:"2022 Bowman Chrome RC",note:"5-tool star locked in Seattle long-term. Elite prospect pedigree holding.",signalReason:"Young, locked up, elite tools",years:["2022","2023"],sets:["Bowman Chrome","Topps","Prizm"],keyCards:[{set:"2022 Bowman Chrome Auto /499",grade:"PSA 10",val:380,pop:820},{set:"2022 Topps Update RC",grade:"PSA 10",val:120,pop:3800}]},
+  {id:"mbappe",name:"Kylian Mbappe",sport:"Soccer",team:"Real Madrid",pos:"FW",signal:"BUY",color:"#00529F",change:"+24.6%",data:[880,980,1080,1040,1180,1280,1340,1420],indexCard:"2018 Panini Prizm WC RC",note:"Real Madrid move unlocking new European collector market. Next Messi/Ronaldo era.",signalReason:"Age 25, peak ahead, biggest club in world",years:["2018","2019","2020"],sets:["Panini","Topps","Prizm"],keyCards:[{set:"2018 Prizm WC RC",grade:"PSA 10",val:1420,pop:680},{set:"2021 Prizm Silver",grade:"PSA 10",val:680,pop:1200}]},
+  {id:"vinicius",name:"Vinicius Jr.",sport:"Soccer",team:"Real Madrid",pos:"FW",signal:"BUY",color:"#00529F",change:"+31.2%",data:[220,280,340,310,380,430,480,520],indexCard:"2018 Panini Prizm RC",note:"Ballon d'Or contender. Brazilian flair making him most exciting player in world.",signalReason:"Awards recognition driving card premium",years:["2018","2019","2020"],sets:["Panini","Topps Chrome","Prizm"],keyCards:[{set:"2018 Prizm RC",grade:"PSA 10",val:520,pop:820},{set:"2022 Prizm Silver",grade:"PSA 10",val:280,pop:1400}]},
+  {id:"cobb",name:"Ty Cobb",sport:"Baseball",team:"Tigers",pos:"OF",signal:"HOLD",color:"#0C2340",change:"+8.1%",data:[4200,4400,4600,4500,4700,4800,4900,5000],indexCard:"T206 Tobacco Card",note:"Prewar legend. T206 cards represent cornerstone of vintage baseball collecting.",signalReason:"Blue chip vintage. Always liquid.",years:["1909","1910","1911"],sets:["T206","E90","M101"],keyCards:[{set:"T206 Portrait Red",grade:"PSA 5",val:8800,pop:48},{set:"T206 Green Background",grade:"PSA 4",val:5200,pop:88}]},
+  {id:"mantle",name:"Mickey Mantle",sport:"Baseball",team:"Yankees",pos:"CF",signal:"BUY",color:"#003087",change:"+12.4%",data:[18000,19000,20500,20000,22000,24000,25000,26000],indexCard:"1952 Topps RC",note:"Hobby holy grail. 1952 Topps #311 is the most iconic modern card ever made.",signalReason:"Record sales continuing to break. Blue chip vintage.",years:["1951","1952","1953"],sets:["1952 Topps","1953 Topps","Bowman"],keyCards:[{set:"1952 Topps #311",grade:"PSA 9",val:12600000,pop:1},{set:"1952 Topps #311",grade:"PSA 8",val:480000,pop:8}]},
+  {id:"parsons",name:"Micah Parsons",sport:"Football",team:"Cowboys",pos:"LB",signal:"WATCH",color:"#003594",change:"+7.2%",data:[180,195,210,200,220,235,245,255],indexCard:"2021 Panini Prizm RC",note:"Best defensive player in NFL. Defensive cards less liquid but Parsons is exception.",signalReason:"Extension deal incoming could spark demand",years:["2021","2022"],sets:["Panini Prizm","Mosaic","Select"],keyCards:[{set:"2021 Prizm RC",grade:"PSA 10",val:255,pop:2800},{set:"2021 NT Auto /99",grade:"BGS 9.5",val:1800,pop:48}]},
+  {id:"lamb",name:"CeeDee Lamb",sport:"Football",team:"Cowboys",pos:"WR",signal:"BUY",color:"#003594",change:"+22.8%",data:[140,165,195,180,220,260,290,320],indexCard:"2020 Panini Prizm RC",note:"WR1 of his generation. $34M/year extension. Most targeted WR in NFL.",signalReason:"Elite production + Cowboys brand = premium",years:["2020","2021","2022"],sets:["Panini Prizm","Mosaic","Optic"],keyCards:[{set:"2020 Prizm RC",grade:"PSA 10",val:320,pop:3200},{set:"2020 NT Auto /99",grade:"BGS 9.5",val:2800,pop:38}]}
 ];
 
 const SERIES_TRENDS = [
-  { id:"prizm_bball", name:"Panini Prizm Basketball", year:"2023", category:"Basketball", change:"+19.4%", indexVal:445, data:[320,340,365,355,390,420,435,450], desc:"Driven by Wembanyama RC hype and Rookie Class depth.", color:"#4FC3F7" },
-  { id:"topps_chrome", name:"Topps Chrome Football", year:"2023", category:"Football", change:"+8.3%", indexVal:312, data:[270,280,295,285,300,310,308,318], desc:"Industry benchmark. Consistent demand across all grades.", color:"#E8212B" },
-  { id:"prizm_soccer", name:"Panini Prizm Soccer WC", year:"2022", category:"Soccer", change:"+31.2%", indexVal:520, data:[320,350,380,370,410,460,500,522], desc:"Global audience driving unprecedented growth.", color:"#F48FB1" },
-  { id:"bowman_chrome", name:"Bowman Chrome Baseball", year:"2023", category:"Baseball", change:"+5.1%", indexVal:188, data:[170,175,182,178,184,186,190,193], desc:"Prospects still performing. Jackson Holliday key driver.", color:"#66BB6A" },
-  { id:"ud_young_guns", name:"UD Young Guns Hockey", year:"2023", category:"Hockey", change:"+12.6%", indexVal:228, data:[180,188,195,190,200,210,218,228], desc:"NHL popularity surge globally; European market expanding.", color:"#80DEEA" },
-  { id:"nat_treasures", name:"National Treasures Football", year:"2023", category:"Football", change:"+6.8%", indexVal:2800, data:[2400,2500,2600,2550,2680,2700,2750,2800], desc:"High-end stable performer. Patch auto RCs drive volume.", color:"#FFCC80" },
+  {id:"prizm_bball_23",name:"Panini Prizm Basketball",year:"2023",category:"Basketball",manufacturer:"Panini",change:"+19.4%",indexVal:445,data:[320,340,365,355,390,420,435,450],color:"#4FC3F7",desc:"Driven by Wembanyama RC hype and strong rookie class depth.",hobby:220,blaster:89,parallels:["Silver","Gold","Red","Green","Orange","Black 1/1"],topCard:"Wembanyama Silver Prizm Auto /25 BGS 9.5 — $18,400"},
+  {id:"prizm_fb_24",name:"Panini Prizm Football",year:"2024",category:"Football",manufacturer:"Panini",change:"+31.2%",indexVal:380,data:[200,230,260,280,310,340,365,390],color:"#E31837",desc:"2024 rookie class: Daniels, Williams, Nix fueling massive demand.",hobby:280,blaster:99,parallels:["Silver","Gold","Red","Blue Wave","Black 1/1"],topCard:"Jayden Daniels Silver Prizm Auto /25 PSA 10 — $8,800"},
+  {id:"topps_chrome_fb",name:"Topps Chrome Football",year:"2023",category:"Football",manufacturer:"Topps",change:"+8.3%",indexVal:312,data:[270,280,295,288,305,310,312,315],color:"#E8212B",desc:"Steady performer. Stroud RCs anchoring value.",hobby:180,blaster:65,parallels:["Refractor","Blue","Orange /25","Gold /50","SuperFractor 1/1"],topCard:"CJ Stroud Gold Refractor /50 PSA 10 — $4,200"},
+  {id:"prizm_soccer_wc",name:"Panini Prizm World Cup",year:"2022",category:"Soccer",manufacturer:"Panini",change:"+31.2%",indexVal:520,data:[300,340,390,380,430,480,505,525],color:"#F48FB1",desc:"Qatar WC set. Messi final WC. All-time grail product.",hobby:420,blaster:120,parallels:["Silver","Gold","Pink","Hyper","Black 1/1"],topCard:"Messi Silver Prizm PSA 10 — $8,400"},
+  {id:"bowman_chrome_bb",name:"Bowman Chrome Baseball",year:"2024",category:"Baseball",manufacturer:"Topps",change:"+5.1%",indexVal:280,data:[240,245,258,252,265,270,275,282],color:"#66BB6A",desc:"Prospect product. Skenes first Bowman Chrome creating landmark set.",hobby:160,blaster:55,parallels:["Refractor","Blue /150","Gold /50","SuperFractor 1/1"],topCard:"Paul Skenes Auto /499 PSA 10 — $1,200"},
+  {id:"ud_yg_hockey",name:"Upper Deck Young Guns",year:"2023",category:"Hockey",manufacturer:"Upper Deck",change:"+12.6%",indexVal:228,data:[180,188,200,195,208,215,222,230],color:"#80DEEA",desc:"Bedard 1st year Young Guns driving the entire set.",hobby:200,blaster:null,parallels:["Base YG","Canvas","Exclusives","Black Diamond 1/1"],topCard:"Bedard Young Guns RC PSA 10 — $520"},
+  {id:"nat_treasures_fb",name:"National Treasures Football",year:"2024",category:"Football",manufacturer:"Panini",change:"+6.8%",indexVal:2800,data:[2400,2500,2600,2550,2650,2750,2780,2820],color:"#F59E0B",desc:"Premier high-end product. Booklet autos and patch cards.",hobby:1800,blaster:null,parallels:["Platinum /25","Gold /10","Shield 1/1"],topCard:"Daniels NT Auto Patch /99 BGS 9.5 — $5,800"},
+  {id:"chrome_bball_24",name:"Topps Chrome Basketball",year:"2024",category:"Basketball",manufacturer:"Topps",change:"+22.4%",indexVal:310,data:[200,220,245,240,265,285,300,315],color:"#81D4FA",desc:"New product challenging Prizm. Strong Wemby RC presence.",hobby:180,blaster:65,parallels:["Refractor","Pink /75","Gold /50","SuperFractor 1/1"],topCard:"Wembanyama Chrome Refractor PSA 10 — $380"},
 ];
 
 const SPORT_INDEX = [
-  { sport:"Basketball", change:"+21.3%", val:148, data:[100,108,115,112,122,134,141,148], color:"#4FC3F7", desc:"Hottest category. Rookie class + international demand." },
-  { sport:"Soccer", change:"+29.1%", val:162, data:[100,106,115,112,128,145,155,162], color:"#F48FB1", desc:"Fastest growing globally. World Cup cycle building momentum." },
-  { sport:"Football", change:"+7.4%", val:115, data:[100,103,107,105,109,112,113,115], color:"#E8212B", desc:"Stable blue chip. Consistent demand floor." },
-  { sport:"Baseball", change:"+9.2%", val:118, data:[100,102,105,104,110,113,116,118], color:"#66BB6A", desc:"Prospect market recovering. Ohtani catalyst." },
-  { sport:"Hockey", change:"+13.5%", val:122, data:[100,103,106,104,110,116,119,122], color:"#80DEEA", desc:"Undervalued with growing collector base." },
+  {sport:"Basketball",change:"+21.3%",val:148,data:[100,108,115,112,122,134,141,148],color:"#4FC3F7",desc:"Hottest category. Rookie class + international demand.",ytd:"+38%",avgPSA10:"$420",topMover:"Wembanyama"},
+  {sport:"Soccer",change:"+29.1%",val:162,data:[100,106,115,112,128,145,155,162],color:"#F48FB1",desc:"Fastest growing globally. World Cup cycle building.",ytd:"+52%",avgPSA10:"$310",topMover:"Messi"},
+  {sport:"Football",change:"+7.4%",val:115,data:[100,103,107,105,109,112,113,115],color:"#E31837",desc:"Stable blue chip. 2024 rookie class refresh incoming.",ytd:"+18%",avgPSA10:"$280",topMover:"Daniels"},
+  {sport:"Baseball",change:"+9.2%",val:118,data:[100,102,105,104,110,113,116,118],color:"#66BB6A",desc:"Prospect market heating up. Skenes era begins.",ytd:"+22%",avgPSA10:"$190",topMover:"Skenes"},
+  {sport:"Hockey",change:"+13.5%",val:122,data:[100,103,106,104,110,116,119,122],color:"#80DEEA",desc:"Undervalued vs other sports. Bedard effect just starting.",ytd:"+28%",avgPSA10:"$240",topMover:"Bedard"},
 ];
+
+const YEAR_DATA = {
+  "2017":{label:"2017 — Mahomes Era",desc:"Mahomes rookie year. NFL golden era begins.",change:"+340%",sport:"Football",cards:[{name:"Mahomes Prizm RC",val:330},{name:"Kareem Hunt RC",val:40},{name:"Deshaun Watson RC",val:28}]},
+  "2018":{label:"2018 — Luka Class",desc:"Luka, Trae Young rookies. NBA crown jewel year.",change:"+410%",sport:"Basketball",cards:[{name:"Luka Prizm RC",val:1750},{name:"Trae Young Prizm RC",val:280},{name:"Deandre Ayton RC",val:45}]},
+  "2019":{label:"2019 — Zion & Ja",desc:"Zion, Ja Morant — modern NBA royalty.",change:"+280%",sport:"Basketball",cards:[{name:"Zion Prizm RC",val:1200},{name:"Ja Morant Prizm RC",val:580},{name:"RJ Barrett RC",val:30}]},
+  "2020":{label:"2020 — Pandemic Class",desc:"LaMelo, Edwards. Low print runs due to COVID.",change:"+190%",sport:"Basketball",cards:[{name:"LaMelo Prizm RC",val:380},{name:"Anthony Edwards RC",val:420},{name:"Tyrese Haliburton RC",val:120}]},
+  "2021":{label:"2021 — Cade & Mobley",desc:"Cade Cunningham, Evan Mobley lead class.",change:"+45%",sport:"Basketball",cards:[{name:"Cade Cunningham RC",val:180},{name:"Evan Mobley RC",val:90},{name:"Scottie Barnes RC",val:110}]},
+  "2022":{label:"2022 — Paolo & Jabari",desc:"Paolo Banchero, Jabari Smith. Long-term holds.",change:"+28%",sport:"Multi",cards:[{name:"Paolo Banchero RC",val:140},{name:"Jabari Smith RC",val:60},{name:"Chet Holmgren RC",val:90}]},
+  "2023":{label:"2023 — Wembanyama",desc:"Generational talent. Collecting landmark moment.",change:"+82%",sport:"Multi",cards:[{name:"Wembanyama Prizm RC",val:520},{name:"Wemby Auto RC",val:8800},{name:"Bedard Young Guns RC",val:520}]},
+  "2024":{label:"2024 — New Class",desc:"Daniels, Williams lead stacked NFL class. Skenes MLB.",change:"+67%",sport:"Multi",cards:[{name:"Jayden Daniels Prizm RC",val:380},{name:"Caleb Williams RC",val:220},{name:"Paul Skenes Chrome Auto",val:1200}]},
+};
+
 
 const NON_SPORTS_CATEGORIES = [
-  { id:"onepiece", name:"One Piece TCG", change:"+82.5%", val:241, data:[100,120,148,155,178,200,225,241], color:"#EF5350", desc:"Explosive growth. Bandai print scarcity fueling demand.", hot:true },
-  { id:"pokemon", name:"Pokémon TCG", change:"+44.2%", val:188, data:[100,115,128,120,142,162,175,188], color:"#FFD700", desc:"Nostalgia cycle + new set releases driving historic highs.", hot:true },
-  { id:"lorcana", name:"Disney Lorcana", change:"+38.6%", val:174, data:[100,112,128,122,140,158,168,174], color:"#2196F3", desc:"Newcomer disrupting the space. Disney IP crossover.", hot:true },
-  { id:"star_wars", name:"Star Wars Unlimited", change:"+29.3%", val:158, data:[100,108,118,115,130,144,152,158], color:"#607D8B", desc:"New entry gaining traction fast. IP loyalty driving early collector interest.", hot:true },
-  { id:"yugioh", name:"Yu-Gi-Oh! TCG", change:"+22.8%", val:142, data:[100,106,112,110,120,130,137,142], color:"#FF9800", desc:"Tournament demand + vintage sealed product driving speculative buying.", hot:false },
-  { id:"mtg", name:"Magic: The Gathering", change:"+15.3%", val:128, data:[100,104,109,107,114,119,124,128], color:"#9C27B0", desc:"Reserved list cards seeing renewed interest.", hot:false },
-  { id:"dbs", name:"Dragon Ball Super TCG", change:"+18.9%", val:135, data:[100,105,111,109,118,126,131,135], color:"#FF5722", desc:"Rare vintage Dragon Ball sealed seeing auction records.", hot:false },
-  { id:"digimon", name:"Digimon TCG", change:"+11.4%", val:119, data:[100,103,107,105,110,115,117,119], color:"#4CAF50", desc:"Steady niche. Dedicated competitive player base.", hot:false },
+  {id:"pokemon",name:"Pokémon TCG",change:"+44.2%",val:188,data:[100,115,128,120,142,162,175,188],color:"#FFD700",desc:"Nostalgia cycle + new set releases driving sustained demand. Vintage 1st ed base set PSA 10s continue to appreciate.",hot:true,signal:"BUY",topCard:"Charizard 1st Ed PSA 10 — $420,000"},
+  {id:"onepiece",name:"One Piece TCG",change:"+82.5%",val:241,data:[100,120,148,155,178,200,225,241],color:"#EF5350",desc:"Explosive growth. Bandai print scarcity fueling demand. Fastest growing TCG market globally.",hot:true,signal:"BUY",topCard:"Luffy Gear 5 OP-01 Secret Rare PSA 10 — $4,800"},
+  {id:"mtg",name:"Magic: The Gathering",change:"+18.4%",val:142,data:[100,108,115,110,122,130,138,142],color:"#6B21A8",desc:"Reserved List cards continuing steady appreciation. Power 9 remains the most liquid TCG investment.",signal:"HOLD",topCard:"Black Lotus Alpha BGS 8 — $120,000"},
+  {id:"yugioh",name:"Yu-Gi-Oh!",change:"+29.6%",val:168,data:[100,110,122,118,135,148,160,168],color:"#F59E0B",desc:"1st edition LOB cards surging. Tournament-legal cards also seeing collector crossover demand.",hot:true,signal:"BUY",topCard:"Blue-Eyes White Dragon LOB 1st Ed PSA 9 — $18,000"},
+  {id:"lorcana",name:"Disney Lorcana",change:"+41.2%",val:195,data:[100,118,140,148,165,178,188,195],color:"#60A5FA",desc:"Newest major TCG seeing explosive growth. Low pop counts on early sets creating premium prices.",hot:true,signal:"BUY",topCard:"Elsa Into the Unknown Enchanted PSA 10 — $2,400"},
+  {id:"fleshandblood",name:"Flesh & Blood",change:"+22.8%",val:155,data:[100,108,118,115,128,138,148,155],color:"#10B981",desc:"Premium card quality driving collector interest. Alpha/1st print runs commanding serious premiums.",signal:"WATCH",topCard:"Prism Awakening Alpha PSA 10 — $8,200"},
+  {id:"swuniverse",name:"Star Wars Unlimited",change:"+35.1%",val:178,data:[100,112,130,128,148,160,170,178],color:"#6366F1",desc:"Disney IP combined with FFG quality driving massive demand. Showcase variant chasing.",hot:true,signal:"BUY",topCard:"Luke Skywalker Showcase PSA 10 — $1,800"},
+  {id:"sorcery",name:"Sorcery: Contested Realm",change:"+58.3%",val:212,data:[100,115,138,145,165,185,200,212],color:"#F97316",desc:"Ultra-limited print runs making this the most scarce modern TCG. Collectors scrambling.",hot:true,signal:"BUY",topCard:"Alpha Set Showcase PSA 10 — $3,200"},
 ];
 
-const BREAK_ODDS = [
-  { set:"2023 Topps Chrome Football", type:"Hobby Box", hits:"2 Autos per box", rookieOdds:"1:4 packs", refractorOdds:"1:2 packs", superShortPrint:"1:192 packs", avgBoxCost:180, avgHitValue:95, roi:-47 },
-  { set:"2023 Panini Prizm Basketball", type:"Hobby Box", hits:"1 Auto per box", rookieOdds:"1:3 packs", refractorOdds:"1:1 pack", superShortPrint:"1:288 packs", avgBoxCost:220, avgHitValue:160, roi:-27 },
-  { set:"2022 Panini Prizm Soccer WC", type:"Blaster Box", hits:"1 Auto per 5 boxes", rookieOdds:"1:6 packs", refractorOdds:"1:2 packs", superShortPrint:"1:144 packs", avgBoxCost:35, avgHitValue:28, roi:-20 },
-  { set:"2023 Bowman Chrome Baseball", type:"Hobby Box", hits:"3 Autos per box", rookieOdds:"1:2 packs", refractorOdds:"1:1 pack", superShortPrint:"1:96 packs", avgBoxCost:110, avgHitValue:85, roi:-23 },
-  { set:"2023 Upper Deck Hockey YG", type:"Series 1 Hobby", hits:"1 RC per pack", rookieOdds:"1:1 pack", refractorOdds:"N/A", superShortPrint:"1:72 packs", avgBoxCost:145, avgHitValue:88, roi:-39 },
+const PRODUCT_DATA = [
+  {id:"prizm",name:"Panini Prizm",manufacturer:"Panini",sport:"Multi",years:"2012–Present",tier:"Mid",hobbyPrice:220,hotParallel:"Silver Prizm",desc:"Gold standard of modern cards. Rainbow parallels for every player and sport.",trend:"+24%"},
+  {id:"nt",name:"National Treasures",manufacturer:"Panini",sport:"Multi",years:"2010–Present",tier:"Ultra-Premium",hobbyPrice:1800,hotParallel:"Logoman 1/1",desc:"Most premium product available. Patch autos, booklets, on-card signatures.",trend:"+12%"},
+  {id:"topps_chrome",name:"Topps Chrome",manufacturer:"Topps",sport:"Baseball/Football",years:"1996–Present",tier:"Mid",hobbyPrice:160,hotParallel:"SuperFractor 1/1",desc:"The original refractor technology. Baseball's most iconic modern set.",trend:"+8%"},
+  {id:"bowman_chrome",name:"Bowman Chrome",manufacturer:"Topps",sport:"Baseball",years:"2001–Present",tier:"Mid",hobbyPrice:160,hotParallel:"Gold Refractor /50",desc:"Prospect market bible. 1st Bowman Chromes of future stars.",trend:"+15%"},
+  {id:"ud_yg",name:"Upper Deck Young Guns",manufacturer:"Upper Deck",sport:"Hockey",years:"1990–Present",tier:"Mid",hobbyPrice:200,hotParallel:"Canvas RC",desc:"Hockey's most iconic rookie cards. McDavid, Crosby, Bedard all here.",trend:"+13%"},
+  {id:"sp_auth",name:"SP Authentic",manufacturer:"Upper Deck",sport:"Hockey/Basketball",years:"1997–Present",tier:"Premium",hobbyPrice:400,hotParallel:"Future Watch Auto /999",desc:"Iconic Future Watch autographs. Best bang for buck auto product.",trend:"+9%"},
+  {id:"select",name:"Panini Select",manufacturer:"Panini",sport:"Multi",years:"2014–Present",tier:"Low-Mid",hobbyPrice:120,hotParallel:"Tie-Dye Prizm",desc:"3-tier system: Concourse, Premier, Field Level. Collector favorite.",trend:"+6%"},
+  {id:"optic",name:"Donruss Optic",manufacturer:"Panini",sport:"Football/Basketball",years:"2016–Present",tier:"Budget",hobbyPrice:85,hotParallel:"Gold Velocity",desc:"Entry-level premium. Great for player collectors on a budget.",trend:"+4%"},
+];
+
+
+const TEAM_MARKET_DATA = [
+  {team:"Kansas City Chiefs",sport:"Football",color:"#E31837",change:"+12%",stars:["Mahomes","Kelce"],desc:"Dynasty team premium. Every Chiefs card trades at a markup. Mahomes anchors the entire roster.",avgPSA10:280},
+  {team:"Los Angeles Lakers",sport:"Basketball",color:"#FDB927",change:"+18%",stars:["LeBron","Luka"],desc:"Luka trade to Lakers created the biggest demand wave of 2024. LeBron cards still premium.",avgPSA10:420},
+  {team:"Los Angeles Dodgers",sport:"Baseball",color:"#005A9C",change:"+22%",stars:["Ohtani","Betts","Freeman"],desc:"Ohtani's arrival made this the most valuable baseball roster ever assembled.",avgPSA10:350},
+  {team:"Edmonton Oilers",sport:"Hockey",color:"#FF4C00",change:"+16%",stars:["McDavid","Draisaitl"],desc:"Back-to-back Stanley Cup finals. Premium on all Oilers cards, especially McDavid 1st year.",avgPSA10:310},
+  {team:"Golden State Warriors",sport:"Basketball",color:"#FFC72C",change:"+5%",stars:["Curry","Thompson"],desc:"Dynasty era winding down but Curry cards remain blue chip. Splash Brothers still liquid.",avgPSA10:380},
+  {team:"Washington Commanders",sport:"Football",color:"#5A1414",change:"+44%",stars:["Daniels"],desc:"Fastest rising team market in 2024. Daniels mania transforming Commanders card market.",avgPSA10:190},
+  {team:"Pittsburgh Pirates",sport:"Baseball",color:"#FFD700",change:"+38%",stars:["Skenes"],desc:"Skenes effect: entire Pirates card market seeing appreciation on #1 pick debut.",avgPSA10:180},
+  {team:"Chicago Blackhawks",sport:"Hockey",color:"#CF0A2C",change:"+41%",stars:["Bedard"],desc:"Bedard's generational talent driving Blackhawks card renaissance. Pop counts still low.",avgPSA10:220},
+  {team:"San Antonio Spurs",sport:"Basketball",color:"#C4CED4",change:"+55%",stars:["Wembanyama"],desc:"Wembanyama effect dwarfs anything in modern collecting. Entire Spurs market elevated.",avgPSA10:480},
+  {team:"Real Madrid",sport:"Soccer",color:"#00529F",change:"+28%",stars:["Mbappe","Vini Jr"],desc:"Mbappe arrival created global demand surge. Most followed club + best cards = premium.",avgPSA10:320},
+  {team:"Inter Miami",sport:"Soccer",color:"#F7B5CD",change:"+35%",stars:["Messi","Suarez"],desc:"Messi's MLS move opened American market to soccer cards. Inter Miami cards globally traded.",avgPSA10:410},
+  {team:"New York Yankees",sport:"Baseball",color:"#003087",change:"+8%",stars:["Judge","Soto"],desc:"MLB's most iconic franchise. Judge + Soto pairing creating renewed collector interest.",avgPSA10:290},
+  {team:"Dallas Cowboys",sport:"Football",color:"#003594",change:"+6%",stars:["Parsons","Lamb"],desc:"America's Team commands consistent premium. CeeDee Lamb emerging as key card investment.",avgPSA10:210},
+  {team:"Boston Celtics",sport:"Basketball",color:"#007A33",change:"+14%",stars:["Tatum","Brown"],desc:"2024 NBA champions. Championship premium applied to all Celtics stars.",avgPSA10:260},
+  {team:"Toronto Maple Leafs",sport:"Hockey",color:"#003E7E",change:"+9%",stars:["Matthews","Nylander"],desc:"Original 6 franchise. Matthews is the most collected active hockey player after McDavid.",avgPSA10:280},
+  {team:"New York Mets",sport:"Baseball",color:"#002D72",change:"+31%",stars:["Soto"],desc:"Soto mega-contract sending Mets card market upward. $765M deal making waves.",avgPSA10:240},
 ];
 
 const MOCK_COLLECTION = [
@@ -886,6 +938,7 @@ function RIPSSociety() {
     );
   };
 
+
   const POSITIONS = [
     // Left column
     {left:"1%",  top:"8%",  rot:-14, scale:0.68, blur:0,   z:2},
@@ -908,87 +961,158 @@ function RIPSSociety() {
 
     /* ── HERO ── */
     React.createElement('section', {style:{minHeight:"100vh",position:"relative",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",paddingTop:80,overflow:"hidden"}},
-      /* Deep navy radial glow */
-      React.createElement('div', {style:{position:"absolute",inset:0,background:"radial-gradient(ellipse 80% 60% at 50% 40%, #0a1628 0%, #050810 50%, #000 100%)",zIndex:0}}),
-      /* Grid dots pattern */
-      React.createElement('div', {style:{position:"absolute",inset:0,backgroundImage:"radial-gradient(circle, #1e3a5f22 1px, transparent 1px)",backgroundSize:"32px 32px",zIndex:0}}),
-      /* Red accent light from top */
-      React.createElement('div', {style:{position:"absolute",top:0,left:"50%",transform:"translateX(-50%)",width:600,height:300,background:"radial-gradient(ellipse at top, #C41E1E33 0%, transparent 70%)",zIndex:0}}),
 
-      /* Floating slab cards */
-      ...POSITIONS.map((pos, i) => {
-        const isTcg = i % 3 === 2; // every 3rd card is TCG
-        const tcgCard = TCG_CARDS[Math.floor(i/3) % TCG_CARDS.length];
-        const card = allSlabs[i % allSlabs.length];
-        if (isTcg) return React.createElement(TcgSlabCard, {
-          key:i, card:tcgCard,
-          style:{position:"absolute",...pos,transform:"rotate("+pos.rot+"deg) scale("+pos.scale+")",animation:["floatA 4s","floatB 5s","floatC 6s","floatA 7s"][i%4]+" ease-in-out infinite",zIndex:pos.z,pointerEvents:"none"}
-        });
-        const espnInfo = ESPN_IDS[card.player];
-        const src = espnInfo ? "https://a.espncdn.com/i/headshots/"+(espnInfo.sport)+"/players/full/"+(espnInfo.id)+".png" : null;
-        const teamColor = getTeamColor(card.team||"");
-        return React.createElement('div', {key:i,
-          style:{position:"absolute",...pos,transform:"rotate("+pos.rot+"deg) scale("+pos.scale+")",animation:["floatA 4s","floatB 5s","floatC 6s","floatA 7s","floatB 3.5s"][i%5]+" ease-in-out infinite",
-            filter:"blur("+pos.blur+"px) drop-shadow(0 20px 40px rgba(0,0,0,0.8))",
-            transition:"all 0.4s ease",zIndex:pos.z,pointerEvents:"none"}},
-          /* PSA slab shell */
-          React.createElement('div', {style:{width:160,background:"linear-gradient(160deg,rgba(200,220,240,0.12),rgba(150,180,220,0.06))",border:"1px solid rgba(200,220,255,0.15)",borderRadius:6,overflow:"hidden",backdropFilter:"blur(4px)"}},
-            /* Label */
-            React.createElement('div', {style:{background:"linear-gradient(90deg,#0d0d0d,#1a0a0a)",padding:"7px 10px",borderBottom:"2px solid #C41E1E33"}},
-              React.createElement('div', {style:{display:"flex",justifyContent:"space-between",alignItems:"center"}},
-                React.createElement('div', null,
-                  React.createElement('div', {style:{fontSize:7,fontWeight:900,color:"#fff",fontFamily:"'DM Mono',monospace",letterSpacing:"0.05em"}},"RIPS SOCIETY"),
-                  React.createElement('div', {style:{fontSize:8,fontWeight:700,color:"rgba(255,255,255,0.7)",fontFamily:"'DM Mono',monospace",marginTop:1}},"GEM MT")
-                ),
-                React.createElement('div', {style:{textAlign:"right"}},
-                  React.createElement('div', {style:{fontSize:18,fontWeight:900,color:"#FFD700",fontFamily:"'DM Mono',monospace",lineHeight:1}}, "10"),
-                  React.createElement('div', {style:{fontSize:5,color:"rgba(255,255,255,0.5)",fontFamily:"'DM Mono',monospace"}}, "PSA")
-                )
+      /* Background layers */
+      React.createElement('div', {style:{position:"absolute",inset:0,background:"#000",zIndex:0}}),
+      React.createElement('div', {style:{position:"absolute",inset:0,background:"radial-gradient(ellipse 90% 70% at 50% -10%, #0d1f3c 0%, transparent 65%)",zIndex:0}}),
+      React.createElement('div', {style:{position:"absolute",inset:0,backgroundImage:"radial-gradient(circle, #ffffff06 1px, transparent 1px)",backgroundSize:"28px 28px",zIndex:0}}),
+      React.createElement('div', {style:{position:"absolute",top:0,left:"50%",transform:"translateX(-50%)",width:800,height:280,background:"radial-gradient(ellipse at top, #C41E1E1a 0%, transparent 65%)",zIndex:0}}),
+
+      /* Horizontal scan line */
+      React.createElement('div', {style:{position:"absolute",left:0,right:0,top:"50%",height:1,background:"linear-gradient(90deg, transparent 0%, #C41E1E08 20%, #C41E1E18 50%, #C41E1E08 80%, transparent 100%)",zIndex:0}}),
+
+      /* LEFT floating ticker strips */
+      ...(!isMobile ? [
+        {x:"2%",  y:"22%", rot:-2, delay:"0s",   dur:"8s",  player:"V. Wembanyama", val:"$520",  chg:"+38.4%", set:"2023 Prizm RC",    grade:"PSA 10", sport:"NBA", color:"#4FC3F7"},
+        {x:"0%",  y:"42%", rot:1,  delay:"2.5s", dur:"7s",  player:"S. Ohtani",     val:"$2,700",chg:"+22.1%", set:"2018 Bowman Auto", grade:"PSA 10", sport:"MLB", color:"#22c55e"},
+        {x:"2%",  y:"64%", rot:-3, delay:"1s",   dur:"9s",  player:"C. Bedard",     val:"$520",  chg:"+44.8%", set:"2023 UD YG RC",    grade:"PSA 10", sport:"NHL", color:"#CF0A2C"},
+      ] : []).map((t,i) =>
+        React.createElement('div', {key:"lt"+i, style:{
+          position:"absolute", left:t.x, top:t.y,
+          transform:"rotate("+t.rot+"deg)",
+          animation:"floatB "+t.dur+" "+t.delay+" ease-in-out infinite",
+          zIndex:1, pointerEvents:"none",
+          filter:"drop-shadow(0 4px 20px rgba(0,0,0,0.6))"
+        }},
+          React.createElement('div', {style:{
+            width:200,
+            background:"rgba(6,6,6,0.88)",
+            border:"1px solid rgba(255,255,255,0.05)",
+            borderLeft:"2px solid "+t.color,
+            borderRadius:4,
+            padding:"10px 14px",
+            backdropFilter:"blur(16px)",
+          }},
+            React.createElement('div',{style:{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:6}},
+              React.createElement('div',null,
+                React.createElement('div',{style:{fontSize:8,color:"rgba(255,255,255,0.2)",fontFamily:"'DM Mono',monospace",letterSpacing:"0.1em",marginBottom:3}},t.sport+" · "+t.grade),
+                React.createElement('div',{style:{fontSize:12,fontWeight:700,color:"rgba(255,255,255,0.8)",letterSpacing:"-0.01em"}},t.player)
+              ),
+              React.createElement('div',{style:{textAlign:"right"}},
+                React.createElement('div',{style:{fontSize:11,fontWeight:800,color:"#22c55e",fontFamily:"'DM Mono',monospace"}},t.chg),
+                React.createElement('div',{style:{fontSize:11,fontWeight:700,color:"rgba(255,255,255,0.6)",fontFamily:"'DM Mono',monospace"}},t.val)
               )
             ),
-            /* Card art */
-            React.createElement('div', {style:{height:200,background:"linear-gradient(145deg,"+teamColor+"33,#050a12)",position:"relative",overflow:"hidden"}},
-              src&&React.createElement('img', {src,style:{width:"100%",height:"110%",objectFit:"cover",objectPosition:"top center"},onError:e=>{e.target.style.display="none";}}),
-              React.createElement('div', {style:{position:"absolute",bottom:0,left:0,right:0,height:"50%",background:"linear-gradient(to bottom,transparent,rgba(0,0,0,0.8))"}}),
-              React.createElement('div', {style:{position:"absolute",bottom:6,left:6,right:6}},
-                React.createElement('div', {style:{fontSize:8,fontWeight:900,color:"#fff",lineHeight:1.2,fontFamily:"'DM Mono',monospace"}},(card.player||"").toUpperCase()),
-                React.createElement('div', {style:{fontSize:6,color:"rgba(255,255,255,0.5)",fontFamily:"'DM Mono',monospace",marginTop:1}},(card.team||"").toUpperCase())
-              )
-            ),
-            /* Bottom strip */
-            React.createElement('div', {style:{background:"#080808",padding:"5px 8px",borderTop:"1px solid #111"}},
-              React.createElement('div', {style:{fontSize:6,color:"#444",fontFamily:"'DM Mono',monospace",textAlign:"center"}}, "CERTIFIED · AUTHENTIC · GRADED")
-            )
+            React.createElement('div',{style:{fontSize:8,color:"rgba(255,255,255,0.15)",fontFamily:"'DM Mono',monospace"}},t.set)
           )
-        );
-      }),
+        )
+      ),
 
-      /* Center content */
-      React.createElement('div', {style:{position:"relative",zIndex:10,textAlign:"center",padding:isMobile?"0 20px":"0 40px",maxWidth:680}},
-        React.createElement('div', {style:{display:"inline-flex",alignItems:"center",gap:8,background:"rgba(196,30,30,0.1)",border:"1px solid rgba(196,30,30,0.3)",borderRadius:20,padding:"6px 16px",marginBottom:24}},
-          React.createElement('div', {style:{width:6,height:6,borderRadius:"50%",background:"#C41E1E",boxShadow:"0 0 8px #C41E1E"}}),
-          React.createElement('span', {style:{fontSize:11,color:"rgba(255,255,255,0.7)",fontFamily:"'DM Mono',monospace",letterSpacing:"0.1em"}}, "TRADING CARD INTELLIGENCE PLATFORM")
+      /* RIGHT floating ticker strips */
+      ...(!isMobile ? [
+        {x:"76%", y:"20%", rot:2,  delay:"1s",   dur:"7.5s",player:"L. Messi",      val:"$3,200",chg:"+31.5%", set:"2006 Panini WC",   grade:"PSA 9",  sport:"Soccer", color:"#F48FB1"},
+        {x:"74%", y:"42%", rot:-1, delay:"0s",   dur:"8.5s",player:"J. Daniels",    val:"$380",  chg:"+67.2%", set:"2024 Prizm RC",    grade:"PSA 10", sport:"NFL", color:"#E31837"},
+        {x:"76%", y:"63%", rot:3,  delay:"3s",   dur:"7s",  player:"P. Skenes",     val:"$1,200",chg:"+67.2%", set:"2024 Bowman Auto", grade:"PSA 10", sport:"MLB", color:"#FFD700"},
+      ] : []).map((t,i) =>
+        React.createElement('div', {key:"rt"+i, style:{
+          position:"absolute", left:t.x, top:t.y,
+          transform:"rotate("+t.rot+"deg)",
+          animation:"floatA "+t.dur+" "+t.delay+" ease-in-out infinite",
+          zIndex:1, pointerEvents:"none",
+          filter:"drop-shadow(0 4px 20px rgba(0,0,0,0.6))"
+        }},
+          React.createElement('div', {style:{
+            width:200,
+            background:"rgba(6,6,6,0.88)",
+            border:"1px solid rgba(255,255,255,0.05)",
+            borderRight:"2px solid "+t.color,
+            borderRadius:4,
+            padding:"10px 14px",
+            backdropFilter:"blur(16px)",
+          }},
+            React.createElement('div',{style:{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:6}},
+              React.createElement('div',null,
+                React.createElement('div',{style:{fontSize:8,color:"rgba(255,255,255,0.2)",fontFamily:"'DM Mono',monospace",letterSpacing:"0.1em",marginBottom:3}},t.sport+" · "+t.grade),
+                React.createElement('div',{style:{fontSize:12,fontWeight:700,color:"rgba(255,255,255,0.8)",letterSpacing:"-0.01em"}},t.player)
+              ),
+              React.createElement('div',{style:{textAlign:"right"}},
+                React.createElement('div',{style:{fontSize:11,fontWeight:800,color:"#22c55e",fontFamily:"'DM Mono',monospace"}},t.chg),
+                React.createElement('div',{style:{fontSize:11,fontWeight:700,color:"rgba(255,255,255,0.6)",fontFamily:"'DM Mono',monospace"}},t.val)
+              )
+            ),
+            React.createElement('div',{style:{fontSize:8,color:"rgba(255,255,255,0.15)",fontFamily:"'DM Mono',monospace"}},t.set)
+          )
+        )
+      ),
+
+      /* CENTER CONTENT */
+      React.createElement('div', {style:{position:"relative",zIndex:2,textAlign:"center",padding:isMobile?"0 28px":"0 20px",maxWidth:680}},
+
+        /* Live badge */
+        React.createElement('div', {style:{display:"inline-flex",alignItems:"center",gap:8,background:"rgba(196,30,30,0.07)",border:"1px solid rgba(196,30,30,0.18)",borderRadius:20,padding:"6px 18px",marginBottom:36}},
+          React.createElement('div', {style:{width:5,height:5,borderRadius:"50%",background:"#C41E1E",boxShadow:"0 0 6px #C41E1E"}}),
+          React.createElement('span', {style:{fontSize:10,color:"rgba(255,255,255,0.45)",fontFamily:"'DM Mono',monospace",letterSpacing:"0.12em"}}, "TRADING CARD INTELLIGENCE")
         ),
-        React.createElement('h1', {style:{fontSize:isMobile?42:72,fontWeight:900,letterSpacing:"-0.04em",lineHeight:0.95,margin:"0 0 24px",color:"#fff",fontFamily:"'DM Serif Display','Georgia',serif"}},
-          "RIPS", React.createElement('br', null),
-          React.createElement('span', {style:{color:"#C41E1E"}}, "SOCIETY")
+
+        /* Title — pure serif, elegant weight */
+        React.createElement('h1', {style:{
+          margin:"0 0 24px",
+          lineHeight:0.9,
+          letterSpacing:"-0.02em",
+          fontFamily:"'DM Serif Display','Georgia',serif",
+          fontWeight:400,
+          color:"#fff",
+        }},
+          React.createElement('span',{style:{
+            display:"block",
+            fontSize:isMobile?"clamp(60px,16vw,80px)":"clamp(80px,9vw,110px)",
+            color:"rgba(255,255,255,0.95)",
+          }},"Rips"),
+          React.createElement('span',{style:{
+            display:"block",
+            fontSize:isMobile?"clamp(60px,16vw,80px)":"clamp(80px,9vw,110px)",
+            color:"#C41E1E",
+            fontStyle:"italic",
+          }},"Society")
         ),
-        React.createElement('p', {style:{fontSize:isMobile?15:18,color:"rgba(255,255,255,0.5)",lineHeight:1.6,margin:"0 0 40px",maxWidth:500,marginLeft:"auto",marginRight:"auto"}},
-          React.createElement('span',null,"Scan. Grade. Track. Trade.",React.createElement('br',null),"Built by Collectors, for Collectors.")
+
+        /* Divider line */
+        React.createElement('div',{style:{width:40,height:1,background:"linear-gradient(90deg,transparent,#C41E1E,transparent)",margin:"0 auto 24px"}}),
+
+        /* Tagline */
+        React.createElement('p', {style:{
+          fontSize:isMobile?14:16,
+          color:"rgba(255,255,255,0.3)",
+          lineHeight:1.8,
+          margin:"0 0 40px",
+          fontFamily:"'DM Mono',monospace",
+          letterSpacing:"0.06em",
+        }},
+          "SCAN · GRADE · TRACK · TRADE"
         ),
-        React.createElement('div', {style:{display:"flex",gap:12,justifyContent:"center",flexWrap:"wrap"}},
-          React.createElement('button', {onClick:()=>setAuthModal("signup"),
-            style:{padding:"14px 32px",fontSize:14,fontWeight:700,background:"#C41E1E",color:"#fff",border:"none",borderRadius:4,cursor:"pointer",fontFamily:"'DM Mono',monospace",letterSpacing:"0.08em"}},
-            "GET STARTED FREE"),
-          React.createElement('button', {onClick:()=>setPage("market"),
-            style:{padding:"14px 32px",fontSize:14,fontWeight:700,background:"transparent",color:"rgba(255,255,255,0.6)",border:"1px solid rgba(255,255,255,0.15)",borderRadius:4,cursor:"pointer",fontFamily:"'DM Mono',monospace",letterSpacing:"0.08em"}},
-            "VIEW MARKET →")
+
+        /* CTAs */
+        React.createElement('div', {style:{display:"flex",gap:12,justifyContent:"center",flexWrap:"wrap",marginBottom:56}},
+          React.createElement('button', {
+            onClick:()=>setAuthModal("signup"),
+            style:{padding:isMobile?"12px 28px":"14px 36px",background:"#C41E1E",color:"#fff",border:"none",borderRadius:2,fontSize:11,fontWeight:700,cursor:"pointer",fontFamily:"'DM Mono',monospace",letterSpacing:"0.12em",transition:"all 0.2s"},
+            onMouseEnter:e=>e.currentTarget.style.background="#a01818",
+            onMouseLeave:e=>e.currentTarget.style.background="#C41E1E"
+          }, "GET STARTED FREE"),
+          React.createElement('button', {
+            onClick:()=>setPage("market"),
+            style:{padding:isMobile?"12px 28px":"14px 36px",background:"transparent",color:"rgba(255,255,255,0.35)",border:"1px solid rgba(255,255,255,0.08)",borderRadius:2,fontSize:11,fontWeight:700,cursor:"pointer",fontFamily:"'DM Mono',monospace",letterSpacing:"0.12em",transition:"all 0.2s"},
+            onMouseEnter:e=>{e.currentTarget.style.borderColor="rgba(255,255,255,0.2)";e.currentTarget.style.color="rgba(255,255,255,0.7)";},
+            onMouseLeave:e=>{e.currentTarget.style.borderColor="rgba(255,255,255,0.08)";e.currentTarget.style.color="rgba(255,255,255,0.35)";}
+          }, "MARKET PULSE →")
         ),
-        React.createElement('div', {style:{display:"flex",gap:32,justifyContent:"center",marginTop:40,flexWrap:"wrap"}},
-          [{v:"50K+",l:"Cards Scanned"},{v:"$2.4B",l:"Market Tracked"},{v:"99.2%",l:"Scan Accuracy"}].map((s,i)=>
-            React.createElement('div', {key:i,style:{textAlign:"center"}},
-              React.createElement('div', {style:{fontSize:24,fontWeight:900,color:"#fff",fontFamily:"'DM Mono',monospace"}}, s.v),
-              React.createElement('div', {style:{fontSize:10,color:"#444",fontFamily:"'DM Mono',monospace",letterSpacing:"0.1em",marginTop:2}}, s.l)
+
+        /* Stats */
+        React.createElement('div', {style:{display:"flex",gap:isMobile?20:48,justifyContent:"center",flexWrap:"wrap"}},
+          [{v:"50K+",l:"CARDS SCANNED"},{v:"$2.4B",l:"MARKET TRACKED"},{v:"23",l:"PLAYERS INDEXED"}].map((s,i)=>
+            React.createElement('div', {key:i, style:{textAlign:"center"}},
+              React.createElement('div', {style:{fontSize:isMobile?22:30,fontWeight:900,color:"#fff",fontFamily:"'DM Mono',monospace",letterSpacing:"-0.04em",lineHeight:1}},s.v),
+              React.createElement('div', {style:{fontSize:8,color:"rgba(255,255,255,0.2)",fontFamily:"'DM Mono',monospace",letterSpacing:"0.1em",marginTop:4}},s.l)
             )
           )
         )
@@ -1019,28 +1143,36 @@ function RIPSSociety() {
     ),
 
     /* ── FEATURED CARDS SHOWCASE ── */
-    React.createElement('section', {style:{padding:isMobile?"40px 0":"60px 0",overflow:"hidden",borderTop:"1px solid #0d0d0d",borderBottom:"1px solid #0d0d0d",background:"#030303"}},
-      React.createElement('div', {style:{textAlign:"center",marginBottom:36,padding:"0 20px"}},
+    React.createElement('section', {style:{padding:isMobile?"40px 0":"60px 0",borderTop:"1px solid #0d0d0d",borderBottom:"1px solid #0d0d0d",background:"#030303"}},
+      React.createElement('div', {style:{textAlign:"center",marginBottom:32,padding:"0 20px"}},
         React.createElement('div', {style:{fontSize:10,color:"#C41E1E",fontFamily:"'DM Mono',monospace",letterSpacing:"0.15em",marginBottom:10}}, "TRENDING NOW"),
-        React.createElement('h2', {style:{fontSize:isMobile?28:40,fontWeight:900,letterSpacing:"-0.03em",margin:0,fontFamily:"'DM Serif Display','Georgia',serif"}}, "Hot Cards This Week")
+        React.createElement('h2', {style:{fontSize:isMobile?26:38,fontWeight:900,letterSpacing:"-0.03em",margin:0,fontFamily:"'DM Serif Display','Georgia',serif"}}, "Hot Cards This Week")
       ),
-      React.createElement('div', {style:{display:"flex",gap:20,padding:"20px 40px",overflowX:"auto",scrollbarWidth:"none",justifyContent:isMobile?"flex-start":"center",flexWrap:isMobile?"nowrap":"wrap"}},
-        HERO_CARDS.slice(0, isMobile?4:6).map((card,i)=>
-          React.createElement(PremiumCard, {key:i,
-            player:card.player, team:card.team||"",
-            sport:{nba:"Basketball",nfl:"Football",mlb:"Baseball",nhl:"Hockey",soccer:"Soccer"}[card.sport]||card.sport,
-            year:(card.set||"").split(" ")[0], set:(card.set||"").split(" ").slice(1).join(" "),
-            parallel:card.parallel, number:card.number||null,
-            grade:card.grade, estValue:card.val, momentum:card.change,
-            espnId:card.espnId, espnSport:card.espnSport||card.sport,
-            width:isMobile?155:200, onClick:()=>setAuthModal("login")
-          })
-        )
-      ),
-      React.createElement('div', {style:{textAlign:"center",marginTop:28,padding:"0 20px"}},
-        React.createElement('button', {onClick:()=>setPage("market"),
-          style:{fontSize:11,fontFamily:"'DM Mono',monospace",letterSpacing:"0.1em",color:"#C41E1E",background:"transparent",border:"1px solid #C41E1E33",padding:"10px 24px",cursor:"pointer",borderRadius:2}},
-          "VIEW ALL MARKET DATA →")
+      React.createElement('div', {style:{maxWidth:1200,margin:"0 auto",padding:"0 28px",display:"grid",gridTemplateColumns:isMobile?"repeat(2,1fr)":"repeat(6,1fr)",gap:10}},
+        HERO_CARDS.slice(0,6).map((card,i)=>{
+          const pct = parseFloat(card.change||"+0");
+          const up = pct >= 0;
+          const sparkData = card.data || [100,105,103,108,112,110,116,120];
+          const mn=Math.min(...sparkData),mx=Math.max(...sparkData),range=mx-mn||1;
+          const pts = sparkData.map((v,j)=>[(j/(sparkData.length-1)*80),(28-((v-mn)/range)*22)].join(",")).join(" ");
+          const lastY = 28-((sparkData[sparkData.length-1]-mn)/range)*22;
+          const col = up ? "#22c55e" : "#ef4444";
+          return React.createElement('div',{key:i, style:{background:"#080808",border:"1px solid #111",borderRadius:6,padding:"14px 14px 12px",display:"flex",flexDirection:"column",gap:8,cursor:"pointer",transition:"border-color 0.15s"},
+            onMouseEnter:e=>e.currentTarget.style.borderColor="#222",
+            onMouseLeave:e=>e.currentTarget.style.borderColor="#111"},
+            React.createElement('div',{style:{fontSize:8,color:"#333",fontFamily:"'DM Mono',monospace",letterSpacing:"0.08em",textTransform:"uppercase"}}, card.sport||""),
+            React.createElement('div',{style:{fontSize:13,fontWeight:800,lineHeight:1.2,letterSpacing:"-0.01em"}}, card.player),
+            React.createElement('div',{style:{fontSize:9,color:"#444",fontFamily:"'DM Mono',monospace",marginBottom:2}}, card.set||card.indexCard||""),
+            React.createElement('svg',{viewBox:"0 0 80 28",style:{width:"100%",height:28},preserveAspectRatio:"none"},
+              React.createElement('polyline',{points:pts,fill:"none",stroke:col,strokeWidth:1.5}),
+              React.createElement('circle',{cx:80,cy:lastY,r:2.5,fill:col})
+            ),
+            React.createElement('div',{style:{display:"flex",justifyContent:"space-between",alignItems:"center"}},
+              React.createElement('div',{style:{fontSize:12,fontWeight:800,color:col,fontFamily:"'DM Mono',monospace"}}, (up?"+":"")+pct.toFixed(1)+"%"),
+              React.createElement('div',{style:{fontSize:9,padding:"2px 6px",background:col+"18",color:col,border:"1px solid "+col+"33",borderRadius:3,fontFamily:"'DM Mono',monospace",fontWeight:700}}, card.signal||"BUY")
+            )
+          );
+        })
       )
     ),
 
@@ -1132,66 +1264,108 @@ function RIPSSociety() {
     ),
 
     /* ── TCG SECTION ── */
-    React.createElement('section', {style:{padding:isMobile?"50px 0":"70px 0",overflow:"hidden",borderTop:"1px solid #0d0d0d",background:"#030303"}},
+    React.createElement('section', {style:{padding:isMobile?"50px 0":"70px 0",borderTop:"1px solid #0d0d0d",background:"#030303"}},
       React.createElement('div', {style:{textAlign:"center",marginBottom:36,padding:"0 20px"}},
         React.createElement('div', {style:{fontSize:10,color:"#C41E1E",fontFamily:"'DM Mono',monospace",letterSpacing:"0.15em",marginBottom:10}}, "BEYOND SPORTS"),
-        React.createElement('h2', {style:{fontSize:isMobile?28:40,fontWeight:900,letterSpacing:"-0.03em",margin:"0 0 12px",fontFamily:"'DM Serif Display','Georgia',serif"}}, "TCG & Non-Sport Cards"),
-        React.createElement('p', {style:{fontSize:14,color:"#444",maxWidth:480,margin:"0 auto",lineHeight:1.6}}, "Track Pokémon, Magic: The Gathering, One Piece, Yu-Gi-Oh! and more — same intelligence, same signals.")
+        React.createElement('h2', {style:{fontSize:isMobile?26:38,fontWeight:900,letterSpacing:"-0.03em",margin:"0 0 10px",fontFamily:"'DM Serif Display','Georgia',serif"}}, "TCG & Non-Sport Cards"),
+        React.createElement('p', {style:{fontSize:14,color:"#444",maxWidth:460,margin:"0 auto",lineHeight:1.6}}, "Same platform, same signals — for Pokémon, Magic, One Piece, and beyond.")
       ),
-      /* Scrolling TCG card strip */
-      React.createElement('div', {style:{display:"flex",gap:16,padding:"20px 40px",overflowX:"auto",scrollbarWidth:"none",msOverflowStyle:"none",justifyContent:isMobile?"flex-start":"center",flexWrap:isMobile?"nowrap":"wrap"}},
-        TCG_CARDS.map((card,i)=>
-          React.createElement(TcgSlabCard, {key:i, card,
-            style:{flexShrink:0,cursor:"pointer",transition:"transform 0.2s",transform:"rotate("+([-3,2,-1,4,-2,3,-4,1][i%8])+"deg)"}
-          })
-        )
-      ),
-      React.createElement('div', {style:{textAlign:"center",marginTop:20,padding:"0 20px"}},
-        React.createElement('div', {style:{display:"flex",gap:12,justifyContent:"center",flexWrap:"wrap",marginBottom:20}},
-          ["Pokémon","Magic: The Gathering","Yu-Gi-Oh!","One Piece TCG","Flesh & Blood","Lorcana"].map((t,i)=>
-            React.createElement('div', {key:i,style:{padding:"5px 14px",fontSize:10,fontFamily:"'DM Mono',monospace",color:"#333",border:"1px solid #111",borderRadius:20,letterSpacing:"0.06em"}}, t)
-          )
-        )
+      React.createElement('div', {style:{maxWidth:1200,margin:"0 auto",padding:"0 28px",display:"grid",gridTemplateColumns:isMobile?"repeat(2,1fr)":"repeat(4,1fr)",gap:12}},
+        [
+          {name:"Pokémon TCG",abbr:"PKM",change:"+44.2%",data:[100,115,128,120,142,162,175,188],color:"#FFD700",bg:"linear-gradient(135deg,#1a1200,#2d2000)",icon:"⚡",sub:"Charizard 1st Ed · PSA 10"},
+          {name:"Magic: The Gathering",abbr:"MTG",change:"+18.4%",data:[100,108,115,110,122,130,138,142],color:"#6B21A8",bg:"linear-gradient(135deg,#0d0018,#1a0030)",icon:"🌸",sub:"Black Lotus Alpha · BGS 8"},
+          {name:"One Piece TCG",abbr:"OP",change:"+82.5%",data:[100,120,148,155,178,200,225,241],color:"#EF5350",bg:"linear-gradient(135deg,#1a0000,#2d0000)",icon:"👒",sub:"Luffy Gear 5 · PSA 10"},
+          {name:"Yu-Gi-Oh!",abbr:"YGO",change:"+29.6%",data:[100,110,122,118,135,148,160,168],color:"#F59E0B",bg:"linear-gradient(135deg,#1a1000,#2d1800)",icon:"☠️",sub:"Blue-Eyes 1st Ed · PSA 9"},
+          {name:"Disney Lorcana",abbr:"LOR",change:"+41.2%",data:[100,118,140,148,165,178,188,195],color:"#60A5FA",bg:"linear-gradient(135deg,#001020,#001e38)",icon:"✨",sub:"Elsa Enchanted · PSA 10"},
+          {name:"Flesh & Blood",abbr:"FAB",change:"+22.8%",data:[100,108,118,115,128,138,148,155],color:"#10B981",bg:"linear-gradient(135deg,#001810,#002818)",icon:"⚔️",sub:"Prism Alpha · PSA 10"},
+          {name:"Star Wars: Unlimited",abbr:"SWU",change:"+35.1%",data:[100,112,130,128,148,160,170,178],color:"#818CF8",bg:"linear-gradient(135deg,#08001a,#100030)",icon:"⭐",sub:"Luke Showcase · PSA 10"},
+          {name:"Sorcery",abbr:"SOR",change:"+58.3%",data:[100,115,138,145,165,185,200,212],color:"#F97316",bg:"linear-gradient(135deg,#1a0800,#2d1200)",icon:"🔮",sub:"Alpha Showcase · PSA 10"},
+        ].map((tcg,i)=>{
+          const mn=Math.min(...tcg.data),mx=Math.max(...tcg.data),range=mx-mn||1;
+          const pts=tcg.data.map((v,j)=>[(j/(tcg.data.length-1)*100),(36-((v-mn)/range)*28)].join(",")).join(" ");
+          const lastY=36-((tcg.data[tcg.data.length-1]-mn)/range)*28;
+          return React.createElement('div',{key:i,style:{background:"#080808",border:"1px solid #111",borderRadius:8,padding:16,display:"flex",flexDirection:"column",gap:8,cursor:"pointer",transition:"border-color 0.15s,transform 0.15s"},
+            onMouseEnter:e=>{e.currentTarget.style.borderColor=tcg.color+"44";e.currentTarget.style.transform="translateY(-2px)";},
+            onMouseLeave:e=>{e.currentTarget.style.borderColor="#111";e.currentTarget.style.transform="";} },
+            React.createElement('div',{style:{display:"flex",justifyContent:"space-between",alignItems:"flex-start"}},
+              React.createElement('div',{style:{display:"flex",alignItems:"center",gap:8}},
+                React.createElement('div',{style:{width:36,height:36,borderRadius:6,background:tcg.bg,border:"1px solid "+tcg.color+"33",display:"flex",alignItems:"center",justifyContent:"center",fontSize:18,flexShrink:0}}, tcg.icon),
+                React.createElement('div',null,
+                  React.createElement('div',{style:{fontSize:11,fontWeight:800,lineHeight:1.2}}, tcg.name),
+                  React.createElement('div',{style:{fontSize:8,color:"#444",fontFamily:"'DM Mono',monospace",letterSpacing:"0.06em"}}, tcg.abbr)
+                )
+              ),
+              React.createElement('div',{style:{fontSize:13,fontWeight:800,color:"#22c55e",fontFamily:"'DM Mono',monospace"}}, tcg.change)
+            ),
+            React.createElement('svg',{viewBox:"0 0 100 36",style:{width:"100%",height:36},preserveAspectRatio:"none"},
+              React.createElement('defs',null,
+                React.createElement('linearGradient',{id:"tcgg"+i,x1:0,y1:0,x2:0,y2:1},
+                  React.createElement('stop',{offset:"0%",stopColor:tcg.color,stopOpacity:0.15}),
+                  React.createElement('stop',{offset:"100%",stopColor:tcg.color,stopOpacity:0})
+                )
+              ),
+              React.createElement('polyline',{points:pts,fill:"none",stroke:tcg.color,strokeWidth:1.5}),
+              React.createElement('circle',{cx:100,cy:lastY,r:2.5,fill:tcg.color})
+            ),
+            React.createElement('div',{style:{fontSize:8,color:"#333",fontFamily:"'DM Mono',monospace",lineHeight:1.4}}, tcg.sub)
+          );
+        })
       )
     ),
 
     /* ── CARD BOOK CTA ── */
     React.createElement('section', {style:{padding:isMobile?"60px 20px":"80px 40px",background:"#030303",borderTop:"1px solid #0d0d0d"}},
-      React.createElement('div', {style:{maxWidth:1100,margin:"0 auto",display:"grid",gridTemplateColumns:isMobile?"1fr":"1fr 1fr",gap:40,alignItems:"center"}},
+      React.createElement('div', {style:{maxWidth:1100,margin:"0 auto",display:"grid",gridTemplateColumns:isMobile?"1fr":"1fr 1fr",gap:48,alignItems:"center"}},
         React.createElement('div', null,
           React.createElement('div', {style:{fontSize:10,color:"#C41E1E",fontFamily:"'DM Mono',monospace",letterSpacing:"0.15em",marginBottom:16}}, "YOUR CARD BOOK"),
-          React.createElement('h2', {style:{fontSize:isMobile?32:48,fontWeight:900,letterSpacing:"-0.03em",margin:"0 0 20px",fontFamily:"'DM Serif Display','Georgia',serif"}}, "Your entire collection. Organized. Valued. Always."),
-          React.createElement('p', {style:{fontSize:15,color:"#555",lineHeight:1.8,margin:"0 0 32px"}}, "Every card you scan is automatically saved, valued, and analyzed. Filter by sport, grade, signal, or value. Your collection intelligence, always at hand."),
+          React.createElement('h2', {style:{fontSize:isMobile?32:46,fontWeight:900,letterSpacing:"-0.03em",margin:"0 0 18px",fontFamily:"'DM Serif Display','Georgia',serif",lineHeight:1.05}}, "Your collection, organized. Finally."),
+          React.createElement('p', {style:{fontSize:15,color:"#555",lineHeight:1.8,margin:"0 0 32px"}}, "Scan any card and it's instantly logged — graded, valued, signaled. Build the collection ledger serious collectors have always needed."),
           React.createElement('div', {style:{display:"flex",gap:12,flexWrap:"wrap"}},
-            React.createElement('button', {onClick:()=>setAuthModal("signup"),
-              style:{padding:"14px 28px",fontSize:12,fontWeight:700,background:"#C41E1E",color:"#fff",border:"none",borderRadius:2,cursor:"pointer",fontFamily:"'DM Mono',monospace",letterSpacing:"0.08em"}},
-              "START YOUR BOOK FREE"),
-            React.createElement('button', {onClick:()=>{if(user)setPage("book");else setAuthModal("login");},
-              style:{padding:"14px 28px",fontSize:12,fontWeight:700,background:"transparent",color:"rgba(255,255,255,0.4)",border:"1px solid rgba(255,255,255,0.1)",borderRadius:2,cursor:"pointer",fontFamily:"'DM Mono',monospace",letterSpacing:"0.08em"}},
-              "VIEW DEMO →")
+            React.createElement('button', {onClick:()=>setAuthModal("signup"), style:{padding:"14px 28px",background:"#C41E1E",color:"#fff",border:"none",borderRadius:2,fontSize:12,fontWeight:700,cursor:"pointer",fontFamily:"'DM Mono',monospace",letterSpacing:"0.08em"}}, "START YOUR BOOK FREE"),
+            React.createElement('button', {onClick:()=>setPage("cardbook"), style:{padding:"14px 28px",background:"transparent",color:"rgba(255,255,255,0.4)",border:"1px solid rgba(255,255,255,0.1)",borderRadius:2,fontSize:12,fontWeight:700,cursor:"pointer",fontFamily:"'DM Mono',monospace",letterSpacing:"0.08em"}}, "VIEW DEMO →")
           )
         ),
-        /* Mini card grid preview */
-        React.createElement('div', {style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}},
-          HERO_CARDS.slice(0,4).map((card,i)=>{
-            const info=ESPN_IDS[card.player];
-            const src=info?"https://a.espncdn.com/i/headshots/"+(info.sport)+"/players/full/"+(info.id)+".png":null;
-            const teamColor=getTeamColor(card.team||"");
-            return React.createElement('div', {key:i,style:{background:"#080808",border:"1px solid #111",borderRadius:8,overflow:"hidden",aspectRatio:"3/4",position:"relative",cursor:"pointer"},
-              onClick:()=>setAuthModal("login")},
-              React.createElement('div', {style:{height:4,background:"linear-gradient(90deg,"+teamColor+","+teamColor+"88)"}}),
-              React.createElement('div', {style:{flex:1,position:"relative",height:"calc(100% - 60px)",overflow:"hidden",background:"linear-gradient(145deg,"+teamColor+"22,#050505)"}},
-                src&&React.createElement('img', {src,style:{width:"100%",height:"100%",objectFit:"cover",objectPosition:"top"},onError:e=>e.target.style.display="none"})
+        /* Empty card book visual */
+        React.createElement('div', {style:{position:"relative"}},
+          React.createElement('div', {style:{background:"#070707",border:"1px solid #111",borderRadius:12,padding:20,position:"relative",overflow:"hidden"}},
+            React.createElement('div', {style:{position:"absolute",inset:0,backgroundImage:"radial-gradient(circle,#1e3a5f08 1px,transparent 1px)",backgroundSize:"24px 24px"}}),
+            React.createElement('div', {style:{position:"relative",zIndex:1}},
+              React.createElement('div', {style:{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:16,paddingBottom:12,borderBottom:"1px solid #0d0d0d"}},
+                React.createElement('div', {style:{fontSize:11,fontWeight:700,fontFamily:"'DM Mono',monospace",letterSpacing:"0.06em",color:"#555"}}, "MY CARD BOOK"),
+                React.createElement('div', {style:{fontSize:9,color:"#333",fontFamily:"'DM Mono',monospace"}}, "0 cards · $0 est. value")
               ),
-              React.createElement('div', {style:{padding:"8px 10px"}},
-                React.createElement('div', {style:{fontSize:10,fontWeight:800,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}, card.player),
-                React.createElement('div', {style:{display:"flex",justifyContent:"space-between",alignItems:"center",marginTop:3}},
-                  React.createElement('span', {style:{fontSize:9,color:"#444",fontFamily:"'DM Mono',monospace"}}, card.grade||""),
-                  React.createElement('span', {style:{fontSize:10,fontWeight:700,color:String(card.change||"").startsWith("-")?"#ef4444":"#22c55e",fontFamily:"'DM Mono',monospace"}}, card.change||"")
+              React.createElement('div', {style:{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:8}},
+                Array.from({length:12}).map((_,i)=>
+                  React.createElement('div', {key:i, style:{
+                    aspectRatio:"2.5/3.5",
+                    border:"1px dashed #141414",
+                    borderRadius:4,
+                    display:"flex",flexDirection:"column",
+                    alignItems:"center",justifyContent:"center",
+                    background: i===0 ? "rgba(196,30,30,0.03)" : "transparent",
+                    cursor: i===0 ? "pointer" : "default",
+                    transition:"border-color 0.15s,background 0.15s",
+                    gap:4
+                  },
+                  onMouseEnter: i===0 ? e=>{e.currentTarget.style.borderColor="#C41E1E44";e.currentTarget.style.background="rgba(196,30,30,0.06)";} : null,
+                  onMouseLeave: i===0 ? e=>{e.currentTarget.style.borderColor="#141414";e.currentTarget.style.background="rgba(196,30,30,0.03)";} : null
+                  },
+                    i===0
+                      ? React.createElement(React.Fragment, null,
+                          React.createElement('div',{style:{fontSize:18,color:"#C41E1E",opacity:0.6}},"+"),
+                          React.createElement('div',{style:{fontSize:7,color:"#333",fontFamily:"'DM Mono',monospace",letterSpacing:"0.05em",textAlign:"center",lineHeight:1.3}},"ADD CARD")
+                        )
+                      : React.createElement('div',{style:{width:"60%",height:1,background:"#0d0d0d",borderRadius:1}})
+                  )
+                )
+              ),
+              React.createElement('div', {style:{marginTop:14,paddingTop:12,borderTop:"1px solid #0d0d0d",display:"flex",gap:8}},
+                ["ALL","SPORTS","TCG","GRADED"].map((tab,i)=>
+                  React.createElement('div',{key:i,style:{fontSize:8,padding:"4px 10px",background:i===0?"#0d0d0d":"transparent",border:"1px solid "+(i===0?"#1a1a1a":"transparent"),borderRadius:3,color:i===0?"#555":"#222",fontFamily:"'DM Mono',monospace",cursor:"pointer"}},tab)
                 )
               )
-            );
-          })
+            )
+          )
         )
       )
     ),
@@ -1242,29 +1416,32 @@ function RIPSSociety() {
   );
 };
 
-const PageHero = ({label, title, subtitle, right}) =>
-  React.createElement('div', {style:{paddingTop:56,background:"#000",borderBottom:"1px solid #0d0d0d",position:"relative",overflow:"hidden"}},
-    React.createElement('div', {style:{position:"absolute",inset:0,background:"radial-gradient(ellipse 80% 120% at 50% 0%, #0a1628 0%, #000 65%)"}}),
-    React.createElement('div', {style:{position:"absolute",inset:0,backgroundImage:"radial-gradient(circle, #1e3a5f15 1px, transparent 1px)",backgroundSize:"28px 28px"}}),
-    React.createElement('div', {style:{position:"absolute",top:0,left:"50%",transform:"translateX(-50%)",width:600,height:220,background:"radial-gradient(ellipse at top, #C41E1E18 0%, transparent 70%)"}}),
-    React.createElement('div', {style:{position:"relative",zIndex:1,maxWidth:1200,margin:"0 auto",padding:"48px 28px 36px",display:"flex",justifyContent:"space-between",alignItems:"flex-end",flexWrap:"wrap",gap:16}},
-      React.createElement('div', null,
-        label&&React.createElement('div', {style:{fontSize:10,color:"#C41E1E",fontFamily:"'DM Mono',monospace",letterSpacing:"0.15em",marginBottom:10}}, label),
-        React.createElement('h1', {style:{fontSize:42,fontWeight:900,letterSpacing:"-0.03em",margin:"0 0 10px",fontFamily:"'DM Serif Display','Georgia',serif",lineHeight:1}}, title),
-        subtitle&&React.createElement('p', {style:{fontSize:14,color:"#444",margin:0,lineHeight:1.6}}, subtitle)
+
+
+
+const PageHero = ({label,title,subtitle,right}) =>
+  React.createElement('div',{style:{paddingTop:56,background:"#000",borderBottom:"1px solid #0d0d0d",position:"relative",overflow:"hidden"}},
+    React.createElement('div',{style:{position:"absolute",inset:0,background:"radial-gradient(ellipse 80% 120% at 50% 0%,#0a1628 0%,#000 65%)"}}),
+    React.createElement('div',{style:{position:"absolute",inset:0,backgroundImage:"radial-gradient(circle,#1e3a5f15 1px,transparent 1px)",backgroundSize:"28px 28px"}}),
+    React.createElement('div',{style:{position:"absolute",top:0,left:"50%",transform:"translateX(-50%)",width:600,height:220,background:"radial-gradient(ellipse at top,#C41E1E18 0%,transparent 70%)"}}),
+    React.createElement('div',{style:{position:"relative",zIndex:1,maxWidth:1200,margin:"0 auto",padding:"48px 28px 36px",display:"flex",justifyContent:"space-between",alignItems:"flex-end",flexWrap:"wrap",gap:16}},
+      React.createElement('div',null,
+        label&&React.createElement('div',{style:{fontSize:10,color:"#C41E1E",fontFamily:"'DM Mono',monospace",letterSpacing:"0.15em",marginBottom:10}},label),
+        React.createElement('h1',{style:{fontSize:42,fontWeight:900,letterSpacing:"-0.03em",margin:"0 0 10px",fontFamily:"'DM Serif Display','Georgia',serif",lineHeight:1}},title),
+        subtitle&&React.createElement('p',{style:{fontSize:14,color:"#444",margin:0,lineHeight:1.6}},subtitle)
       ),
-      right&&React.createElement('div', null, right)
+      right&&React.createElement('div',null,right)
     )
   );
 
   const CardBookPage = () => (
     React.createElement(React.Fragment, null
-      , React.createElementReact.createElement(PageHero, {
+      , React.createElement(PageHero, {
         label:"YOUR COLLECTION",
         title:"Card Book",
         subtitle:"Every card you own — scanned, valued, and tracked.",
-        right:React.createElement('div', {style:{display:"flex",gap:8}},
-          React.createElement('button', {onClick:()=>setShowAddCard(true),style:{padding:"10px 20px",background:"#C41E1E",color:"#fff",border:"none",borderRadius:2,fontSize:11,fontWeight:700,cursor:"pointer",fontFamily:"'DM Mono',monospace",letterSpacing:"0.08em"}}, "+ ADD CARD")
+        right:React.createElement('div',{style:{display:"flex",gap:8}},
+          React.createElement('button',{onClick:()=>setShowAddCard(true),style:{padding:"10px 20px",background:"#C41E1E",color:"#fff",border:"none",borderRadius:2,fontSize:11,fontWeight:700,cursor:"pointer",fontFamily:"'DM Mono',monospace",letterSpacing:"0.08em"}},"+ ADD CARD")
         )
       })
 
@@ -1342,7 +1519,7 @@ const PageHero = ({label, title, subtitle, right}) =>
               , React.createElement('div', { style: { fontSize:13, color:"#444", fontFamily:"'DM Mono',monospace" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1087}}, "Track parallel completions across all your cards"      )
             )
             , cards.slice(0,3).map(card => (
-              React.createElement('div', { key: card.id, style: {background:"#080808",border:"1px solid #111",borderRadius:8, padding:24, marginBottom:16 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1090}}
+              React.createElement('div', { key: card.id, style: { ...S.card, padding:24, marginBottom:16 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1090}}
                 , React.createElement('div', { style: { display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:20 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1091}}
                   , React.createElement('div', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1092}}
                     , React.createElement('div', { style: { fontWeight:700, fontSize:16 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1093}}, card.player)
@@ -1515,421 +1692,516 @@ const PageHero = ({label, title, subtitle, right}) =>
 
   //
   const MarketPage = () => {
-    const SportsMarket = () => {
-      const views = [["overview","Overview"],["players","Players"],["series","Series"],["index","Index"],["odds","Break Odds"]];
-      return (
-        React.createElement('div', {style:{maxWidth:1200,margin:"0 auto",padding:"0 28px"}}
-          , React.createElement('div', { style: {display:"flex",gap:0,borderBottom:"1px solid #111",marginBottom:24,overflowX:"auto",padding:"0",background:"#000"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1267}}
-            , views.map(([id,label])=>React.createElement('button', { key: id, style: {...S.subNav(sportsView===id),whiteSpace:"nowrap",fontSize:12}, onClick: ()=>setSportsView(id), __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1268}}, label))
-          )
+    const [view,setView] = useState("overview");
+    const [search,setSearch] = useState("");
+    const [sport,setSport] = useState("All");
+    const [selPlayer,setSelPlayer] = useState(null);
+    const [selSeries,setSelSeries] = useState(null);
+    const [selProduct,setSelProduct] = useState(null);
+    const [selYear,setSelYear] = useState(null);
+    const serif="'DM Serif Display','Georgia',serif";
+    const mono="'DM Mono',monospace";
+    const VIEWS=[["overview","Overview"],["players","Players"],["products","Products"],["years","Year Class"],["teams","Teams"],["tcg","TCG"],["odds","Break Odds"]];
+    const SPORTS=["All","Basketball","Football","Baseball","Hockey","Soccer"];
 
-          , sportsView==="overview" && (
-            React.createElement('div', null,
-              React.createElement('div', {style:{background:"linear-gradient(135deg,#050e1a,#0a1628,#050e1a)",border:"1px solid #1e3a5f",borderRadius:12,padding:"18px 22px",marginBottom:18,display:"flex",gap:20,flexWrap:"wrap",alignItems:"center"}},
-                React.createElement('div', null,
-                  React.createElement('div', {style:{fontSize:9,color:"#4FC3F7",fontFamily:"'DM Mono',monospace",letterSpacing:"0.12em",marginBottom:4}}, "MARKET SENTIMENT"),
-                  React.createElement('div', {style:{fontSize:28,fontWeight:900,color:"#fff",letterSpacing:"-0.04em"}}, "BULL"),
-                  React.createElement('div', {style:{fontSize:10,color:"#22c55e",fontFamily:"'DM Mono',monospace"}}, "▲ Strong upward momentum across all sports")
+    const MiniChart=({data,color,h=40})=>{
+      if(!data||data.length<2)return null;
+      const mn=Math.min(...data),mx=Math.max(...data),range=mx-mn||1,W=100;
+      const pts=data.map((v,i)=>[(i/(data.length-1)*W),(h-((v-mn)/range)*(h-6)-3)].join(",")).join(" ");
+      const lx=100,ly=h-((data[data.length-1]-mn)/range)*(h-6)-3;
+      return React.createElement("svg",{viewBox:"0 0 100 "+h,style:{width:"100%",height:h,display:"block"},preserveAspectRatio:"none"},
+        React.createElement("polyline",{points:pts,fill:"none",stroke:color||"#22c55e",strokeWidth:1.5}),
+        React.createElement("circle",{cx:lx,cy:ly,r:2.5,fill:color||"#22c55e"})
+      );
+    };
+
+    const SigBadge=({signal})=>{
+      const c={BUY:"#22c55e",HOLD:"#f59e0b",WATCH:"#888",SELL:"#ef4444"}[signal]||"#888";
+      return React.createElement('span',{style:{fontSize:9,padding:"3px 8px",background:c+"18",color:c,border:"1px solid "+c+"44",borderRadius:3,fontFamily:mono,fontWeight:800,letterSpacing:"0.06em"}},signal);
+    };
+    const StatBox=({label,value,sub,color})=>React.createElement('div',{style:{background:"#070707",border:"1px solid #0d0d0d",borderLeft:"3px solid "+(color||"#C41E1E"),borderRadius:"0 6px 6px 0",padding:"14px 18px"}},
+      React.createElement('div',{style:{fontSize:8,color:"#333",fontFamily:mono,letterSpacing:"0.1em",marginBottom:4}},label),
+      React.createElement('div',{style:{fontSize:22,fontWeight:900,color:"#fff",fontFamily:mono,lineHeight:1}},value),
+      sub&&React.createElement('div',{style:{fontSize:9,color:color||"#C41E1E",fontFamily:mono,marginTop:3}},sub)
+    );
+    const Row=({children,onClick,style})=>React.createElement('div',{onClick,style:{display:"flex",alignItems:"center",gap:10,padding:"11px 16px",borderBottom:"1px solid #080808",cursor:onClick?"pointer":"default",transition:"background 0.1s",...style},
+      onMouseEnter:onClick?e=>e.currentTarget.style.background="#0a0a0a":null,
+      onMouseLeave:onClick?e=>e.currentTarget.style.background="transparent":null},children);
+    const Panel=({children,style})=>React.createElement('div',{style:{background:"#080808",border:"1px solid #111",borderRadius:8,overflow:"hidden",...style}},children);
+    const Tag=({label,color})=>React.createElement('span',{style:{fontSize:8,padding:"3px 7px",background:(color||"#C41E1E")+"18",color:color||"#C41E1E",border:"1px solid "+(color||"#C41E1E")+"33",borderRadius:3,fontFamily:mono,fontWeight:700,letterSpacing:"0.06em",whiteSpace:"nowrap"}},label);
+
+    // ── PLAYER DETAIL MODAL ──────────────────────────────────────────────
+    const PlayerModal=({p,onClose})=>React.createElement('div',{onClick:e=>{if(e.target===e.currentTarget)onClose();},style:{position:"fixed",inset:0,background:"rgba(0,0,0,0.96)",zIndex:200,overflowY:"auto",padding:"20px"}},
+      React.createElement('div',{onClick:e=>e.stopPropagation(),style:{maxWidth:780,margin:"50px auto",background:"#070707",border:"1px solid #1a1a1a",borderRadius:12,overflow:"hidden"}},
+        React.createElement('div',{style:{padding:"28px 32px",borderBottom:"1px solid #111",display:"flex",justifyContent:"space-between",alignItems:"flex-start",gap:12,flexWrap:"wrap"}},
+          React.createElement('div',null,
+            React.createElement('div',{style:{fontSize:9,color:"#C41E1E",fontFamily:mono,letterSpacing:"0.15em",marginBottom:8}},p.sport.toUpperCase()+" · "+p.pos+" · "+p.team.toUpperCase()),
+            React.createElement('h2',{style:{fontSize:30,fontWeight:900,margin:"0 0 10px",fontFamily:serif}},p.name),
+            React.createElement('div',{style:{display:"flex",gap:6,flexWrap:"wrap",alignItems:"center"}},
+              React.createElement(SigBadge,{signal:p.signal}),
+              p.rookie&&React.createElement(Tag,{label:"ROOKIE",color:"#22c55e"}),
+              p.hot&&React.createElement(Tag,{label:"🔥 HOT",color:"#f59e0b"}),
+              React.createElement(Tag,{label:p.change+" 30D",color:parseFloat(p.change)>=0?"#22c55e":"#ef4444"})
+            )
+          ),
+          React.createElement('div',{style:{display:"flex",gap:10,alignItems:"center"}},
+            espnImg(p.name)&&React.createElement('img',{src:espnImg(p.name),style:{width:60,height:60,borderRadius:30,objectFit:"cover",objectPosition:"top",border:"2px solid #1a1a1a"},onError:e=>e.target.style.display="none"}),
+            React.createElement('button',{onClick:onClose,style:{padding:"8px 14px",background:"transparent",color:"#444",border:"1px solid #1a1a1a",borderRadius:4,cursor:"pointer",fontSize:11,fontFamily:mono}},"✕ CLOSE")
+          )
+        ),
+        React.createElement('div',{style:{padding:"24px 32px"}},
+          React.createElement('div',{style:{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(120px,1fr))",gap:8,marginBottom:20}},
+            React.createElement(StatBox,{label:"CURRENT VALUE",value:"$"+p.data[p.data.length-1].toLocaleString(),color:p.color}),
+            React.createElement(StatBox,{label:"30D CHANGE",value:p.change,color:parseFloat(p.change)>=0?"#22c55e":"#ef4444"}),
+            React.createElement(StatBox,{label:"SIGNAL",value:p.signal,color:{BUY:"#22c55e",HOLD:"#f59e0b",WATCH:"#888",SELL:"#ef4444"}[p.signal]}),
+            React.createElement(StatBox,{label:"SETS",value:(p.sets||[]).length+"",color:"#a78bfa",sub:(p.sets||[]).slice(0,2).join(", ")})
+          ),
+          React.createElement(Panel,{style:{padding:20,marginBottom:16}},
+            React.createElement('div',{style:{fontWeight:700,marginBottom:4,fontSize:13}},p.indexCard+" — 8-Month Index"),
+            React.createElement('div',{style:{fontSize:11,color:"#444",marginBottom:12,fontFamily:mono}},p.signalReason),
+            React.createElement(MiniChart,{data:p.data,color:p.color,h:100}),
+            React.createElement('div',{style:{display:"flex",justifyContent:"space-between",marginTop:4}},
+              ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug"].map((m,i)=>React.createElement('span',{key:i,style:{fontSize:8,color:"#222",fontFamily:mono}},m))
+            )
+          ),
+          p.note&&React.createElement('div',{style:{background:"rgba(196,30,30,0.04)",border:"1px solid rgba(196,30,30,0.12)",borderRadius:6,padding:"14px 18px",marginBottom:16}},
+            React.createElement('div',{style:{fontSize:8,color:"#C41E1E",fontFamily:mono,letterSpacing:"0.1em",marginBottom:4}},"ANALYST NOTE"),
+            React.createElement('div',{style:{fontSize:13,color:"rgba(255,255,255,0.65)",lineHeight:1.7}},p.note)
+          ),
+          p.keyCards&&React.createElement('div',null,
+            React.createElement('div',{style:{fontSize:9,color:"#333",fontFamily:mono,letterSpacing:"0.1em",marginBottom:10}},"KEY CARDS TO WATCH"),
+            React.createElement('div',{style:{display:"flex",flexDirection:"column",gap:6}},
+              p.keyCards.map((kc,i)=>React.createElement('div',{key:i,style:{display:"flex",justifyContent:"space-between",alignItems:"center",background:"#060606",border:"1px solid #0d0d0d",borderRadius:6,padding:"12px 16px"}},
+                React.createElement('div',null,
+                  React.createElement('div',{style:{fontSize:12,fontWeight:700,marginBottom:2}},kc.set),
+                  React.createElement('div',{style:{fontSize:9,color:"#444",fontFamily:mono}},"Pop: "+kc.pop.toLocaleString()+" · "+kc.grade)
                 ),
-                ...[{l:"MKT CAP",v:"$2.4B+",c:"#4FC3F7"},{l:"30-DAY",v:"+14.2%",c:"#22c55e"},{l:"BUY SIGNALS",v:PLAYER_TRENDS.filter(p=>p.signal==="BUY").length+"",c:"#f59e0b"},{l:"PSA 10 ROI",v:"38.6%",c:"#a78bfa"}].map((m,i)=>
-                  React.createElement('div', {key:i,style:{borderLeft:"1px solid #1e3a5f",paddingLeft:18}},
-                    React.createElement('div', {style:{fontSize:8,color:"#444",fontFamily:"'DM Mono',monospace",letterSpacing:"0.1em",marginBottom:3}}, m.l),
-                    React.createElement('div', {style:{fontSize:18,fontWeight:900,color:m.c}}, m.v)
-                  )
-                )
-              ),
-              React.createElement('div', {style:{background:"#080808",border:"1px solid #1a1a1a",borderRadius:12,padding:20,marginBottom:18}},
-                React.createElement('div', {style:{fontWeight:700,fontSize:13,marginBottom:10}}, "All Sports — 8-Month Index"),
-                React.createElement('div', {style:{display:"flex",gap:12,flexWrap:"wrap",marginBottom:10}},
-                  SPORT_INDEX.map(sp=>React.createElement('div', {key:sp.sport,style:{display:"flex",alignItems:"center",gap:5}},
-                    React.createElement('div', {style:{width:10,height:2,background:sp.color,borderRadius:1}}),
-                    React.createElement('span', {style:{fontSize:9,color:"#555",fontFamily:"'DM Mono',monospace"}}, sp.sport)
-                  ))
-                ),
-                React.createElement(MultiLineChart, {datasets:SPORT_INDEX.map(sp=>({id:sp.sport,data:sp.data,color:sp.color})),h:140}),
-                React.createElement('div', {style:{display:"flex",justifyContent:"space-between",marginTop:4}},
-                  ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug"].map((m,i)=>React.createElement('span', {key:i,style:{fontSize:8,color:"#333",fontFamily:"'DM Mono',monospace"}}, m))
-                )
-              ),
-              React.createElement('div', {style:{background:"#080808",border:"1px solid #1a1a1a",borderRadius:12,overflow:"hidden",marginBottom:18}},
-                React.createElement('div', {style:{padding:"11px 16px",borderBottom:"1px solid #111",fontWeight:700,fontSize:12}}, "Top Market Movers — 30 Day"),
-                React.createElement('div', {style:{padding:"0 16px"}},
-                  [...PLAYER_TRENDS].sort((a,b)=>parseFloat(b.change)-parseFloat(a.change)).slice(0,8).map((p,i)=>{
-                    const pct=parseFloat(p.change),bar=Math.min(Math.abs(pct)/70*100,100),img=espnImg(p.name);
-                    return React.createElement('div', {key:i,style:{display:"grid",gridTemplateColumns:"22px 36px 1fr 60px 50px 65px",alignItems:"center",gap:6,padding:"8px 0",borderBottom:i<7?"1px solid #0a0a0a":"none"}},
-                      React.createElement('div', {style:{fontSize:9,color:"#222",fontFamily:"'DM Mono',monospace",textAlign:"center"}}, i+1),
-                      React.createElement('div', {style:{width:30,height:30,borderRadius:"50%",background:"#111",overflow:"hidden",flexShrink:0}},
-                        img&&React.createElement('img', {src:img,style:{width:"100%",height:"100%",objectFit:"cover",objectPosition:"top"},onError:e=>e.target.style.opacity="0"})
-                      ),
-                      React.createElement('div', null,
-                        React.createElement('div', {style:{fontSize:11,fontWeight:700,marginBottom:2}}, p.name),
-                        React.createElement('div', {style:{height:3,background:"#111",borderRadius:2,overflow:"hidden"}},
-                          React.createElement('div', {style:{height:"100%",width:bar+"%",background:pct>=0?"#22c55e":"#ef4444",borderRadius:2}})
-                        )
-                      ),
-                      React.createElement('div', {style:{fontSize:9,color:"#555",fontFamily:"'DM Mono',monospace"}}, p.sport),
-                      React.createElement('div', {style:{fontSize:11,fontWeight:700,color:pct>=0?"#22c55e":"#ef4444",fontFamily:"'DM Mono',monospace"}}, p.change),
-                      React.createElement(SignalBadge, {signal:p.signal||"WATCH"})
-                    );
-                  })
-                )
-              ),
-React.createElement('div', { style: { display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(140px,1fr))", gap:14, marginBottom:36 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1273}}
-                , SPORT_INDEX.map((sp,i) => (
-                  React.createElement('div', { key: i, style: { ...S.statBox, borderTop:`3px solid ${sp.color}` }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1275}}
-                    , React.createElement('div', { style: S.statLabel, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1276}}, sp.sport)
-                    , React.createElement('div', { style: { ...S.statValue, fontSize:26, marginBottom:4 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1277}}, sp.val)
-                    , React.createElement(TrendBadge, { change: sp.change, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1278}})
-                    , React.createElement('div', { style: { marginTop:10 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1279}}, React.createElement(MultiLineChart, { datasets: [{id:sp.sport,data:sp.data,color:sp.color}], h: 44, showLabels: false, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1279}}))
-                  )
-                ))
-              )
-              , React.createElement('div', { style: {background:"#080808",border:"1px solid #111",borderRadius:8, padding:28, marginBottom:24 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1283}}
-                , React.createElement('div', { style: { display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:20, flexWrap:"wrap", gap:12 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1284}}
-                  , React.createElement('div', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1285}}, React.createElement('div', { style: S.sectionLabel, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1285}}, "All Sports Index — 8 Month Overlay"      ), React.createElement('div', { style: { fontSize:11, color:"#2A2A2A", fontFamily:"'DM Mono',monospace" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1285}}, "Base 100 = July 2025"    ))
-                  , React.createElement('div', { style: { display:"flex", gap:16, flexWrap:"wrap" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1286}}, SPORT_INDEX.map(sp=>React.createElement('div', { key: sp.sport, style: { display:"flex", alignItems:"center", gap:6 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1286}}, React.createElement('div', { style: { width:10,height:10,borderRadius:2,background:sp.color }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1286}}), React.createElement('span', { style: { fontSize:10,color:"#333",fontFamily:"'DM Mono',monospace" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1286}}, sp.sport))))
-                )
-                , React.createElement(MultiLineChart, { datasets: SPORT_INDEX.map(sp=>({id:sp.sport,data:sp.data,color:sp.color})), h: 240, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1288}})
-              )
-              , React.createElement('div', { style: { display:"grid", gridTemplateColumns:"1fr 1fr", gap:16 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1290}}
-                , React.createElement('div', { style: {background:"#080808",border:"1px solid #111",borderRadius:8, padding:22 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1291}}
-                  , React.createElement('div', { style: S.sectionLabel, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1292}}, "🔥 Hottest Players"  )
-                  , PLAYER_TRENDS.filter(p=>p.hot).map((p,i)=>(
-                    React.createElement('div', { key: i, style: { display:"flex", alignItems:"center", gap:10, padding:"10px 0", borderBottom: i<PLAYER_TRENDS.filter(x=>x.hot).length-1?"1px solid #111":"none" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1294}}
-                      , React.createElement('div', { style: { width:3,height:36,borderRadius:2,background:p.color }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1295}})
-                      , React.createElement('div', { style: { flex:1 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1296}}
-                        , React.createElement('div', { style: { fontWeight:600,fontSize:13 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1297}}, p.name)
-                        , React.createElement('div', { style: { fontSize:10,color:"#2A2A2A",fontFamily:"'DM Mono',monospace" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1298}}, p.indexCard)
-                      )
-                      , React.createElement(SignalBadge, { signal: p.signal, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1300}})
-                      , React.createElement(TrendBadge, { change: p.change, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1301}})
-                    )
-                  ))
-                )
-                , React.createElement('div', { style: {background:"#080808",border:"1px solid #111",borderRadius:8, padding:22 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1305}}
-                  , React.createElement('div', { style: S.sectionLabel, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1306}}, "Investment Signals" )
-                  , [{signal:"BUY",card:"Wembanyama 1st Prizm RC",r:"RC year, historic ceiling"},{signal:"BUY",card:"Stroud Bowman Auto /99",r:"Sophomore breakout locked"},{signal:"BUY",card:"McDavid Young Guns PSA 10",r:"Undervalued vs peers"},{signal:"HOLD",card:"Mahomes Chrome /99",r:"Dynasty fully priced in"},{signal:"HOLD",card:"Ohtani Bowman Auto",r:"Dodgers move priced in"}].map((s2,i)=>(
-                    React.createElement('div', { key: i, style: { display:"flex", alignItems:"center", gap:10, padding:"9px 0", borderBottom: i<4?"1px solid #111":"none" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1308}}
-                      , React.createElement(SignalBadge, { signal: s2.signal, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1309}})
-                      , React.createElement('div', { style: { flex:1 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1310}}
-                        , React.createElement('div', { style: { fontWeight:600,fontSize:12 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1311}}, s2.card)
-                        , React.createElement('div', { style: { fontSize:10,color:"#2A2A2A",fontFamily:"'DM Mono',monospace" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1312}}, s2.r)
-                      )
-                    )
-                  ))
-                )
-              )
-            )
-          )
-
-          , sportsView==="players" && (
-            React.createElement('div', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1322}}
-              , React.createElement('div', { style: { marginBottom:20 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1323}}
-                , React.createElement('div', { style: S.sectionLabel, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1324}}, "Select Players to Compare"   )
-                , React.createElement('div', { style: { display:"flex", flexWrap:"wrap", gap:8, marginTop:8 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1325}}
-                  , PLAYER_TRENDS.map(p => (
-                    React.createElement('button', { key: p.id, onClick: ()=>togglePlayer(p.id), style: { display:"flex", alignItems:"center", gap:7, padding:"6px 13px", borderRadius:20, border:`1px solid ${selectedPlayers.includes(p.id)?p.color:"#1A1A1A"}`, background: selectedPlayers.includes(p.id)?`${p.color}18`:"#0E0E0E", color: selectedPlayers.includes(p.id)?"#E8E4DE":"#444", cursor:"pointer", fontSize:11, fontFamily:"'DM Mono',monospace" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1327}}
-                      , React.createElement('div', { style: { width:7,height:7,borderRadius:"50%",background:selectedPlayers.includes(p.id)?p.color:"#222" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1328}})
-                      , p.name
-                      , React.createElement('span', { style: { fontSize:9,padding:"1px 5px",background:`${p.color}22`,color:p.color,borderRadius:3 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1330}}, p.sport.slice(0,4))
-                    )
-                  ))
-                )
-              )
-              , React.createElement('div', { style: {background:"#080808",border:"1px solid #111",borderRadius:8, padding:28, marginBottom:20 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1335}}
-                , React.createElement('div', { style: { display:"flex", justifyContent:"space-between", marginBottom:20, flexWrap:"wrap", gap:12 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1336}}
-                  , React.createElement('div', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1337}}, React.createElement('div', { style: S.sectionLabel, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1337}}, "Player Index — Normalized to Base 100"      ))
-                  , React.createElement('div', { style: { display:"flex", gap:14, flexWrap:"wrap" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1338}}, PLAYER_TRENDS.filter(p=>selectedPlayers.includes(p.id)).map(p=>React.createElement('div', { key: p.id, style: { display:"flex", alignItems:"center", gap:6 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1338}}, React.createElement('div', { style: { width:10,height:3,borderRadius:1,background:p.color }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1338}}), React.createElement('span', { style: { fontSize:10,color:"#444",fontFamily:"'DM Mono',monospace" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1338}}, p.name.split(" ")[1]))))
-                )
-                , React.createElement(MultiLineChart, { datasets: PLAYER_TRENDS.filter(p=>selectedPlayers.includes(p.id)).map(p=>({ id:p.id, data:p.data.map(v=>Math.round((v/p.data[0])*100)), color:p.color })), h: 260, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1340}})
-              )
-              , React.createElement('div', { style: { display:"grid", gap:10 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1342}}
-                , PLAYER_TRENDS.filter(p=>selectedPlayers.includes(p.id)).sort((a,b)=>parseFloat(b.change)-parseFloat(a.change)).map((p,i)=>(
-                  React.createElement('div', { key: i, style: {background:"#080808",border:"1px solid #111",borderRadius:8, padding:"16px 20px", display:"flex", alignItems:"center", gap:16, flexWrap:"wrap", borderLeft:`3px solid ${p.color}` }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1344}}
-                    , React.createElement('div', { style: { flex:1,minWidth:140 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1345}}
-                      , React.createElement('div', { style: { fontWeight:700,fontSize:14 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1346}}, p.name)
-                      , React.createElement('div', { style: { fontSize:11,color:"#2A2A2A",fontFamily:"'DM Mono',monospace" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1347}}, p.team, " · "  , p.pos)
-                    )
-                    , React.createElement('div', { style: { fontSize:11,color:"#333",fontFamily:"'DM Mono',monospace",flex:1 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1349}}, p.indexCard)
-                    , React.createElement(SignalBadge, { signal: p.signal, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1350}})
-                    , React.createElement(TrendBadge, { change: p.change, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1351}})
-                    , p.hot&&React.createElement('span', { style: { fontSize:9,color:"#C41E1E",fontFamily:"'DM Mono',monospace" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1352}}, "🔥 HOT" )
-                    , p.rookie&&React.createElement('span', { style: { fontSize:9,padding:"2px 6px",background:"rgba(76,175,80,0.1)",color:"#4CAF50",borderRadius:3,fontFamily:"'DM Mono',monospace" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1353}}, "RC YEAR" )
-                  )
-                ))
-              )
-            )
-          )
-
-          , sportsView==="series" && (
-            React.createElement('div', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1361}}
-              , React.createElement('div', { style: { display:"flex", gap:8, marginBottom:16, flexWrap:"wrap" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1362}}
-                , ["All","Football","Basketball","Baseball","Hockey","Soccer"].map(f=>React.createElement('button', { key: f, style: S.filterBtn(sportFilter===f), onClick: ()=>setSportFilter(f), __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1363}}, f))
-              )
-              , React.createElement('div', { style: { marginBottom:20 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1365}}
-                , React.createElement('div', { style: S.sectionLabel, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1366}}, "Select Series to Compare"   )
-                , React.createElement('div', { style: { display:"flex", flexWrap:"wrap", gap:8, marginTop:8 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1367}}
-                  , SERIES_TRENDS.filter(s2=>sportFilter==="All"||s2.category===sportFilter).map(s2=>(
-                    React.createElement('button', { key: s2.id, onClick: ()=>toggleSeries(s2.id), style: { display:"flex", alignItems:"center", gap:7, padding:"6px 13px", borderRadius:20, border:`1px solid ${selectedSeries.includes(s2.id)?s2.color:"#1A1A1A"}`, background: selectedSeries.includes(s2.id)?`${s2.color}18`:"#0E0E0E", color: selectedSeries.includes(s2.id)?"#E8E4DE":"#444", cursor:"pointer", fontSize:11, fontFamily:"'DM Mono',monospace" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1369}}
-                      , React.createElement('div', { style: { width:7,height:7,borderRadius:"50%",background:selectedSeries.includes(s2.id)?s2.color:"#222" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1370}})
-                      , s2.name.split(" ").slice(1).join(" "), " '" , s2.year.slice(2)
-                    )
-                  ))
-                )
-              )
-              , selectedSeries.length>0 && (
-                React.createElement('div', { style: {background:"#080808",border:"1px solid #111",borderRadius:8, padding:28, marginBottom:20 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1377}}
-                  , React.createElement('div', { style: { display:"flex", justifyContent:"space-between", marginBottom:20, flexWrap:"wrap", gap:12 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1378}}
-                    , React.createElement('div', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1379}}, React.createElement('div', { style: S.sectionLabel, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1379}}, "Series Price Index — 8 Months"     ), React.createElement('div', { style: { fontSize:11,color:"#2A2A2A",fontFamily:"'DM Mono',monospace" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1379}}, "Avg base card sale price"    ))
-                    , React.createElement('div', { style: { display:"flex", gap:12, flexWrap:"wrap" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1380}}, SERIES_TRENDS.filter(s2=>selectedSeries.includes(s2.id)).map(s2=>React.createElement('div', { key: s2.id, style: { display:"flex", alignItems:"center", gap:6 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1380}}, React.createElement('div', { style: { width:10,height:3,borderRadius:1,background:s2.color }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1380}}), React.createElement('span', { style: { fontSize:10,color:"#444",fontFamily:"'DM Mono',monospace" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1380}}, s2.name.split(" ").slice(0,2).join(" ")))))
-                  )
-                  , React.createElement(MultiLineChart, { datasets: SERIES_TRENDS.filter(s2=>selectedSeries.includes(s2.id)).map(s2=>({id:s2.id,data:s2.data,color:s2.color})), h: 240, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1382}})
-                )
-              )
-              , React.createElement('div', { style: { display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(280px,1fr))", gap:14 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1385}}
-                , SERIES_TRENDS.filter(s2=>sportFilter==="All"||s2.category===sportFilter).map((s2,i)=>(
-                  React.createElement('div', { key: i, style: {background:"#080808",border:"1px solid #111",borderRadius:8, padding:20, cursor:"pointer", borderLeft:`3px solid ${selectedSeries.includes(s2.id)?s2.color:"transparent"}` }, onClick: ()=>toggleSeries(s2.id), __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1387}}
-                    , React.createElement('div', { style: { display:"flex", justifyContent:"space-between", alignItems:"flex-start", marginBottom:8 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1388}}
-                      , React.createElement('div', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1389}}, React.createElement('div', { style: { fontWeight:700,fontSize:13 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1389}}, s2.name), React.createElement('div', { style: { fontSize:10,color:"#2A2A2A",fontFamily:"'DM Mono',monospace" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1389}}, s2.year, " · "  , s2.category))
-                      , React.createElement(TrendBadge, { change: s2.change, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1390}})
-                    )
-                    , React.createElement('p', { style: { fontSize:11,color:"#333",fontFamily:"'DM Mono',monospace",lineHeight:1.5,marginBottom:12 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1392}}, s2.desc)
-                    , React.createElement(MultiLineChart, { datasets: [{id:s2.id,data:s2.data,color:s2.color}], h: 50, showLabels: false, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1393}})
-                    , React.createElement('div', { style: { display:"flex", justifyContent:"space-between", marginTop:8, paddingTop:8, borderTop:"1px solid #111" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1394}}
-                      , React.createElement('span', { style: { fontSize:10,color:"#2A2A2A",fontFamily:"'DM Mono',monospace" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1395}}, "Avg Index" )
-                      , React.createElement('span', { style: { fontSize:16,fontWeight:700,color:s2.color }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1396}}, "$", s2.indexVal)
-                    )
-                  )
-                ))
-              )
-            )
-          )
-
-          , sportsView==="index" && (
-            React.createElement('div', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1405}}
-              , React.createElement('div', { style: {background:"#080808",border:"1px solid #111",borderRadius:8, padding:28, marginBottom:28 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1406}}
-                , React.createElement('div', { style: { display:"flex", justifyContent:"space-between", marginBottom:20, flexWrap:"wrap", gap:12 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1407}}
-                  , React.createElement('div', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1408}}, React.createElement('div', { style: S.sectionLabel, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1408}}, "Sport-by-Sport Index — All Overlaid"    ), React.createElement('div', { style: { fontSize:11,color:"#2A2A2A",fontFamily:"'DM Mono',monospace" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1408}}, "Base 100 = July 2025. Composite of all major releases."         ))
-                  , React.createElement('div', { style: { display:"flex", gap:14, flexWrap:"wrap" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1409}}, SPORT_INDEX.map(sp=>React.createElement('div', { key: sp.sport, style: { display:"flex", alignItems:"center", gap:6 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1409}}, React.createElement('div', { style: { width:10,height:3,borderRadius:1,background:sp.color }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1409}}), React.createElement('span', { style: { fontSize:10,color:"#333",fontFamily:"'DM Mono',monospace" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1409}}, sp.sport))))
-                )
-                , React.createElement(MultiLineChart, { datasets: SPORT_INDEX.map(sp=>({id:sp.sport,data:sp.data,color:sp.color})), h: 300, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1411}})
-              )
-              , [...SPORT_INDEX].sort((a,b)=>parseFloat(b.change)-parseFloat(a.change)).map((sp,i)=>(
-                React.createElement('div', { key: i, style: {background:"#080808",border:"1px solid #111",borderRadius:8, padding:"18px 22px", marginBottom:10, display:"grid", gridTemplateColumns:"1fr auto auto 180px", alignItems:"center", gap:20, borderLeft:`4px solid ${sp.color}` }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1414}}
-                  , React.createElement('div', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1415}}, React.createElement('div', { style: { fontWeight:700,fontSize:16 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1415}}, sp.sport), React.createElement('div', { style: { fontSize:12,color:"#333",fontFamily:"'DM Mono',monospace",marginTop:2 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1415}}, sp.desc))
-                  , React.createElement('div', { style: { textAlign:"center" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1416}}, React.createElement('div', { style: S.statLabel, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1416}}, "Index"), React.createElement('div', { style: { fontSize:24,fontWeight:700 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1416}}, sp.val))
-                  , React.createElement(TrendBadge, { change: sp.change, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1417}})
-                  , React.createElement(MultiLineChart, { datasets: [{id:sp.sport,data:sp.data,color:sp.color}], h: 56, showLabels: false, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1418}})
+                React.createElement('div',{style:{textAlign:"right",display:"flex",flexDirection:"column",alignItems:"flex-end",gap:4}},
+                  React.createElement('div',{style:{fontSize:16,fontWeight:900,fontFamily:mono}},"$"+kc.val.toLocaleString()),
+                  React.createElement(SigBadge,{signal:i===0?"BUY":"HOLD"})
                 )
               ))
             )
           )
+        )
+      )
+    );
 
-          , sportsView==="odds" && (
-            React.createElement('div', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1425}}
-              , React.createElement('div', { style: { marginBottom:24 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1426}}
-                , React.createElement('div', { style: S.sectionLabel, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1427}}, "Break Odds and ROI Calculator"    )
-                , React.createElement('div', { style: { fontSize:13, color:"#444", fontFamily:"'DM Mono',monospace" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1428}}, "Hit rates and estimated ROI across major hobby products. Are boxes worth it?"            )
-              )
-              , React.createElement('div', { style: { display:"grid", gap:12 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1430}}
-                , BREAK_ODDS.map((b,i) => {
-                  const roiColor = b.roi > 0 ? "#4CAF50" : b.roi > -20 ? "#FFA726" : "#EF5350";
-                  return (
-                    React.createElement('div', { key: i, style: {background:"#080808",border:"1px solid #111",borderRadius:8, padding:"18px 22px" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1434}}
-                      , React.createElement('div', { style: { display:"grid", gridTemplateColumns:"2fr 1fr 1fr 1fr 1fr 1fr", gap:16, alignItems:"center" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1435}}
-                        , React.createElement('div', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1436}}, React.createElement('div', { style: { fontWeight:700,fontSize:14 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1436}}, b.set), React.createElement('div', { style: { fontSize:10,color:"#2A2A2A",fontFamily:"'DM Mono',monospace",marginTop:2 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1436}}, b.type))
-                        , React.createElement('div', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1437}}, React.createElement('div', { style: S.statLabel, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1437}}, "Hits"), React.createElement('div', { style: { fontSize:12,fontFamily:"'DM Mono',monospace",color:"#888" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1437}}, b.hits))
-                        , React.createElement('div', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1438}}, React.createElement('div', { style: S.statLabel, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1438}}, "RC Odds" ), React.createElement('div', { style: { fontSize:12,fontFamily:"'DM Mono',monospace",color:"#888" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1438}}, b.rookieOdds))
-                        , React.createElement('div', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1439}}, React.createElement('div', { style: S.statLabel, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1439}}, "Box Cost" ), React.createElement('div', { style: { fontSize:16,fontWeight:700 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1439}}, "$", b.avgBoxCost))
-                        , React.createElement('div', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1440}}, React.createElement('div', { style: S.statLabel, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1440}}, "Avg Hit $"  ), React.createElement('div', { style: { fontSize:16,fontWeight:700,color:"#4CAF50" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1440}}, "$", b.avgHitValue))
-                        , React.createElement('div', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1441}}, React.createElement('div', { style: S.statLabel, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1441}}, "Est. ROI" ), React.createElement('div', { style: { fontSize:20,fontWeight:700,color:roiColor }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1441}}, b.roi, "%"))
-                      )
-                    )
-                  );
-                })
-              )
-              , React.createElement('div', { style: {background:"#080808",border:"1px solid #111",borderRadius:8, padding:20, marginTop:20 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1447}}
-                , React.createElement('div', { style: { fontSize:11, color:"#2A2A2A", fontFamily:"'DM Mono',monospace", lineHeight:1.6 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1448}}, "⚠ ROI estimates are based on average hit values from recent eBay sales data. Actual results vary significantly. Breaking is about the experience, community, and the possibility of hitting. The best ROI is always buying singles off the secondary market."
-
-                )
-              )
+    // ── SERIES DETAIL MODAL ──────────────────────────────────────────────
+    const SeriesModal=({s,onClose})=>React.createElement('div',{onClick:e=>{if(e.target===e.currentTarget)onClose();},style:{position:"fixed",inset:0,background:"rgba(0,0,0,0.96)",zIndex:200,overflowY:"auto",padding:"20px"}},
+      React.createElement('div',{onClick:e=>e.stopPropagation(),style:{maxWidth:680,margin:"50px auto",background:"#070707",border:"1px solid #1a1a1a",borderRadius:12,overflow:"hidden"}},
+        React.createElement('div',{style:{borderTop:"4px solid "+s.color,padding:"28px 32px",borderBottom:"1px solid #111",display:"flex",justifyContent:"space-between",alignItems:"flex-start",flexWrap:"wrap",gap:10}},
+          React.createElement('div',null,
+            React.createElement('div',{style:{fontSize:9,color:s.color,fontFamily:mono,letterSpacing:"0.15em",marginBottom:6}},s.manufacturer+" · "+s.year+" · "+s.category.toUpperCase()),
+            React.createElement('h2',{style:{fontSize:26,fontWeight:900,margin:"0 0 8px",fontFamily:serif}},s.name),
+            React.createElement(Tag,{label:s.change+" 30D",color:parseFloat(s.change)>=0?"#22c55e":"#ef4444"})
+          ),
+          React.createElement('button',{onClick:onClose,style:{padding:"8px 14px",background:"transparent",color:"#444",border:"1px solid #1a1a1a",borderRadius:4,cursor:"pointer",fontSize:11,fontFamily:mono}},"✕ CLOSE")
+        ),
+        React.createElement('div',{style:{padding:"24px 32px"}},
+          React.createElement('div',{style:{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:8,marginBottom:16}},
+            React.createElement(StatBox,{label:"HOBBY BOX",value:"$"+s.hobby,color:s.color}),
+            React.createElement(StatBox,{label:"BLASTER",value:s.blaster?"$"+s.blaster:"N/A",color:"#a78bfa"}),
+            React.createElement(StatBox,{label:"30D TREND",value:s.change,color:parseFloat(s.change)>=0?"#22c55e":"#ef4444"})
+          ),
+          React.createElement(Panel,{style:{padding:20,marginBottom:16}},
+            React.createElement(MiniChart,{data:s.data,color:s.color,h:80}),
+            React.createElement('div',{style:{display:"flex",justifyContent:"space-between",marginTop:4}},
+              ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug"].map((m,i)=>React.createElement('span',{key:i,style:{fontSize:8,color:"#222",fontFamily:mono}},m))
             )
+          ),
+          React.createElement('p',{style:{fontSize:13,color:"#555",lineHeight:1.7,margin:"0 0 16px"}},s.desc),
+          React.createElement('div',{style:{marginBottom:16}},
+            React.createElement('div',{style:{fontSize:9,color:"#333",fontFamily:mono,letterSpacing:"0.1em",marginBottom:8}},"PARALLELS"),
+            React.createElement('div',{style:{display:"flex",flexWrap:"wrap",gap:6}},
+              (s.parallels||[]).map((par,i)=>React.createElement('span',{key:i,style:{fontSize:9,padding:"4px 10px",background:"#0d0d0d",border:"1px solid #1a1a1a",borderRadius:3,color:"#555",fontFamily:mono}},par))
+            )
+          ),
+          s.topCard&&React.createElement('div',{style:{background:"rgba(196,30,30,0.04)",border:"1px solid rgba(196,30,30,0.12)",borderRadius:6,padding:"14px 18px"}},
+            React.createElement('div',{style:{fontSize:8,color:"#C41E1E",fontFamily:mono,letterSpacing:"0.1em",marginBottom:4}},"TOP RECENT SALE"),
+            React.createElement('div',{style:{fontSize:12,fontWeight:700}},s.topCard)
           )
+        )
+      )
+    );
+
+    // ── OVERVIEW ─────────────────────────────────────────────────────────
+    const OverviewView=()=>React.createElement('div',null,
+      React.createElement('div',{style:{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(140px,1fr))",gap:10,marginBottom:24}},
+        React.createElement(StatBox,{label:"MARKET SENTIMENT",value:"BULL",color:"#22c55e",sub:"▲ Strong upward momentum"}),
+        React.createElement(StatBox,{label:"30-DAY AVG",value:"+14.2%",color:"#22c55e",sub:"All sports combined"}),
+        React.createElement(StatBox,{label:"BUY SIGNALS",value:PLAYER_TRENDS.filter(p=>p.signal==="BUY").length+"",color:"#f59e0b",sub:"Active right now"}),
+        React.createElement(StatBox,{label:"PSA 10 ROI",value:"38.6%",color:"#a78bfa",sub:"12-month return"}),
+        React.createElement(StatBox,{label:"MARKET CAP",value:"$2.4B+",color:"#4FC3F7",sub:"Total tracked"})
+      ),
+      React.createElement('div',{style:{display:"grid",gridTemplateColumns:isMobile?"1fr":"3fr 2fr",gap:16,marginBottom:16}},
+        React.createElement(Panel,{style:{padding:20}},
+          React.createElement('div',{style:{fontWeight:700,fontSize:13,marginBottom:4,fontFamily:serif}},"All Sports — 8-Month Performance"),
+          React.createElement('div',{style:{display:"flex",gap:12,flexWrap:"wrap",marginBottom:12}},
+            SPORT_INDEX.map(sp=>React.createElement('div',{key:sp.sport,style:{display:"flex",alignItems:"center",gap:5}},
+              React.createElement('div',{style:{width:10,height:2,background:sp.color,borderRadius:1}}),
+              React.createElement('span',{style:{fontSize:9,color:"#444",fontFamily:mono}},sp.sport)
+            ))
+          ),
+          React.createElement(MultiLineChart,{datasets:SPORT_INDEX.map(s=>({id:s.sport,data:s.data,color:s.color})),h:150}),
+          React.createElement('div',{style:{display:"flex",justifyContent:"space-between",marginTop:6}},
+            ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug"].map((m,i)=>React.createElement('span',{key:i,style:{fontSize:8,color:"#222",fontFamily:mono}},m))
+          )
+        ),
+        React.createElement(Panel,{style:{padding:20}},
+          React.createElement('div',{style:{fontWeight:700,fontSize:13,marginBottom:16,fontFamily:serif}},"Top Movers"),
+          React.createElement('div',{style:{display:"flex",flexDirection:"column"}},
+            [...PLAYER_TRENDS].sort((a,b)=>parseFloat(b.change)-parseFloat(a.change)).slice(0,7).map((p,i)=>{
+              const pct=parseFloat(p.change);const bar=Math.min(Math.abs(pct)/80*100,100);
+              const img=espnImg(p.name);
+              return React.createElement(Row,{key:i,onClick:()=>setSelPlayer(p)},
+                React.createElement('div',{style:{width:16,textAlign:"right",fontSize:9,color:"#222",fontFamily:mono,flexShrink:0}},i+1),
+                React.createElement('div',{style:{width:28,height:28,borderRadius:14,background:"#111",overflow:"hidden",flexShrink:0}},
+                  img&&React.createElement('img',{src:img,style:{width:"100%",height:"100%",objectFit:"cover",objectPosition:"top"},onError:e=>e.target.style.opacity="0"})
+                ),
+                React.createElement('div',{style:{flex:1,minWidth:0}},
+                  React.createElement('div',{style:{fontSize:11,fontWeight:700,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}},p.name),
+                  React.createElement('div',{style:{height:3,background:"#0d0d0d",borderRadius:2,marginTop:4,overflow:"hidden",width:"100%"}},
+                    React.createElement('div',{style:{height:"100%",width:bar+"%",background:pct>=0?"#22c55e":"#ef4444",borderRadius:2}})
+                  )
+                ),
+                React.createElement('div',{style:{fontSize:11,fontWeight:700,color:pct>=0?"#22c55e":"#ef4444",fontFamily:mono,flexShrink:0}},p.change),
+                React.createElement(SigBadge,{signal:p.signal})
+              );
+            })
+          )
+        )
+      ),
+      React.createElement('div',{style:{display:"grid",gridTemplateColumns:isMobile?"1fr":"repeat(5,1fr)",gap:10,marginBottom:16}},
+        SPORT_INDEX.map(sp=>React.createElement(Panel,{key:sp.sport,style:{padding:14,cursor:"pointer"},onClick:()=>{setSport(sp.sport);setView("players");}},
+          React.createElement('div',{style:{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:8}},
+            React.createElement('div',{style:{fontSize:11,fontWeight:700}},sp.sport),
+            React.createElement('div',{style:{fontSize:13,fontWeight:900,color:parseFloat(sp.change)>=0?"#22c55e":"#ef4444",fontFamily:mono}},sp.change)
+          ),
+          React.createElement(MiniChart,{data:sp.data,color:sp.color,h:32}),
+          React.createElement('div',{style:{display:"flex",justifyContent:"space-between",marginTop:6}},
+            React.createElement('div',{style:{fontSize:8,color:"#333",fontFamily:mono}},sp.avgPSA10+" avg"),
+            React.createElement('div',{style:{fontSize:8,color:sp.color,fontFamily:mono}},sp.topMover)
+          )
+        ))
+      ),
+      React.createElement('div',{style:{display:"grid",gridTemplateColumns:isMobile?"1fr":"1fr 1fr",gap:16}},
+        React.createElement(Panel,{style:{padding:20}},
+          React.createElement('div',{style:{fontWeight:700,fontSize:13,marginBottom:16,fontFamily:serif}},"Hot Products This Month"),
+          React.createElement('div',{style:{display:"flex",flexDirection:"column"}},
+            SERIES_TRENDS.slice(0,5).map((s,i)=>React.createElement(Row,{key:i,onClick:()=>setSelSeries(s)},
+              React.createElement('div',{style:{width:4,height:32,background:s.color,borderRadius:2,flexShrink:0}}),
+              React.createElement('div',{style:{flex:1,minWidth:0}},
+                React.createElement('div',{style:{fontSize:11,fontWeight:700,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}},s.name),
+                React.createElement('div',{style:{fontSize:9,color:"#444",fontFamily:mono}},s.manufacturer+" · "+s.year)
+              ),
+              React.createElement('div',{style:{fontSize:11,fontWeight:700,color:parseFloat(s.change)>=0?"#22c55e":"#ef4444",fontFamily:mono,flexShrink:0}},s.change),
+              React.createElement(MiniChart,{data:s.data,color:s.color,h:24})&&React.createElement('div',{style:{width:50,flexShrink:0}},React.createElement(MiniChart,{data:s.data,color:s.color,h:24}))
+            ))
+          )
+        ),
+        React.createElement(Panel,{style:{padding:20}},
+          React.createElement('div',{style:{fontWeight:700,fontSize:13,marginBottom:16,fontFamily:serif}},"Active BUY Signals"),
+          React.createElement('div',{style:{display:"flex",flexDirection:"column"}},
+            PLAYER_TRENDS.filter(p=>p.signal==="BUY").map((p,i)=>{
+              const img=espnImg(p.name);
+              return React.createElement(Row,{key:i,onClick:()=>setSelPlayer(p)},
+                React.createElement('div',{style:{width:32,height:32,borderRadius:16,background:"#111",overflow:"hidden",flexShrink:0}},
+                  img&&React.createElement('img',{src:img,style:{width:"100%",height:"100%",objectFit:"cover",objectPosition:"top"},onError:e=>e.target.style.opacity="0"})
+                ),
+                React.createElement('div',{style:{flex:1,minWidth:0}},
+                  React.createElement('div',{style:{fontSize:11,fontWeight:700}},p.name),
+                  React.createElement('div',{style:{fontSize:9,color:"#444",fontFamily:mono}},p.team+" · "+p.sport)
+                ),
+                React.createElement('div',{style:{fontSize:11,fontWeight:700,color:"#22c55e",fontFamily:mono,flexShrink:0}},p.change),
+                React.createElement('div',{style:{width:50,flexShrink:0}},React.createElement(MiniChart,{data:p.data,color:"#22c55e",h:24}))
+              );
+            })
+          )
+        )
+      )
+    );
+
+    // ── PLAYERS VIEW ────────────────────────────────────────────────────────
+    const PlayersView=()=>{
+      const filtered=PLAYER_TRENDS.filter(p=>{
+        const ms=sport==="All"||p.sport===sport;
+        const mq=!search||p.name.toLowerCase().includes(search.toLowerCase())||p.team.toLowerCase().includes(search.toLowerCase());
+        return ms&&mq;
+      });
+      return React.createElement('div',null,
+        React.createElement('div',{style:{display:"flex",gap:8,marginBottom:16,flexWrap:"wrap",alignItems:"center"}},
+          React.createElement('div',{style:{position:"relative",flex:1,minWidth:180}},
+            React.createElement('input',{
+                defaultValue:search,
+                onInput:e=>setSearch(e.target.value),
+                key:"player-search",
+                placeholder:"Search player or team...",
+                style:{width:"100%",background:"#0a0a0a",border:"1px solid #1a1a1a",borderRadius:4,padding:"10px 12px 10px 34px",color:"#fff",fontSize:12,fontFamily:mono,boxSizing:"border-box",outline:"none"}
+              }),
+            React.createElement('span',{style:{position:"absolute",left:11,top:"50%",transform:"translateY(-50%)",fontSize:13,color:"#333"}},"🔍")
+          ),
+          React.createElement('div',{style:{display:"flex",gap:4,flexWrap:"wrap"}},
+            SPORTS.map(s=>React.createElement('button',{key:s,onClick:()=>setSport(s),style:{padding:"8px 13px",fontSize:10,fontFamily:mono,background:sport===s?"#C41E1E":"#0a0a0a",color:sport===s?"#fff":"#444",border:"1px solid "+(sport===s?"#C41E1E":"#1a1a1a"),borderRadius:3,cursor:"pointer",letterSpacing:"0.05em"}},s))
+          )
+        ),
+        React.createElement(Panel,null,
+          React.createElement('div',{style:{display:"grid",gridTemplateColumns:"36px 32px 1fr 90px 64px 54px 70px 56px",gap:0,padding:"9px 14px",borderBottom:"1px solid #0a0a0a",fontSize:8,color:"#1e1e1e",fontFamily:mono,letterSpacing:"0.1em"}},
+            "#","","PLAYER / TEAM","SPORT","SIGNAL","30D","VALUE","CHART"
+          ),
+          filtered.length===0
+            ?React.createElement('div',{style:{padding:"40px",textAlign:"center",color:"#333",fontSize:12}},"No players match your search.")
+            :filtered.map((p,i)=>{
+              const img=espnImg(p.name);const pct=parseFloat(p.change);
+              return React.createElement('div',{key:p.id,onClick:()=>setSelPlayer(p),
+                style:{display:"grid",gridTemplateColumns:"36px 32px 1fr 90px 64px 54px 70px 56px",gap:0,padding:"11px 14px",borderBottom:"1px solid #090909",cursor:"pointer",transition:"background 0.1s"},
+                onMouseEnter:e=>e.currentTarget.style.background="#0a0a0a",
+                onMouseLeave:e=>e.currentTarget.style.background="transparent"},
+                React.createElement('div',{style:{fontSize:10,color:"#1e1e1e",fontFamily:mono,display:"flex",alignItems:"center"}},i+1),
+                React.createElement('div',{style:{display:"flex",alignItems:"center"}},
+                  React.createElement('div',{style:{width:26,height:26,borderRadius:13,background:"#111",overflow:"hidden"}},
+                    img&&React.createElement('img',{src:img,style:{width:"100%",height:"100%",objectFit:"cover",objectPosition:"top"},onError:e=>e.target.style.opacity="0"})
+                  )
+                ),
+                React.createElement('div',{style:{display:"flex",flexDirection:"column",justifyContent:"center",minWidth:0}},
+                  React.createElement('div',{style:{fontSize:12,fontWeight:700,display:"flex",alignItems:"center",gap:5,overflow:"hidden"}},
+                    React.createElement('span',{style:{overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}},p.name),
+                    p.hot&&React.createElement('span',{style:{fontSize:9,flexShrink:0}},"🔥"),
+                    p.rookie&&React.createElement('span',{style:{fontSize:7,padding:"1px 4px",background:"rgba(34,197,94,0.15)",color:"#22c55e",borderRadius:2,fontFamily:mono,flexShrink:0}},"RC")
+                  ),
+                  React.createElement('div',{style:{fontSize:9,color:"#333",fontFamily:mono,whiteSpace:"nowrap"}},p.team+" · "+p.pos)
+                ),
+                React.createElement('div',{style:{fontSize:10,color:"#444",fontFamily:mono,display:"flex",alignItems:"center"}},p.sport),
+                React.createElement('div',{style:{display:"flex",alignItems:"center"}},React.createElement(SigBadge,{signal:p.signal})),
+                React.createElement('div',{style:{fontSize:11,fontWeight:700,color:pct>=0?"#22c55e":"#ef4444",fontFamily:mono,display:"flex",alignItems:"center"}},p.change),
+                React.createElement('div',{style:{fontSize:11,fontWeight:800,fontFamily:mono,display:"flex",alignItems:"center"}},"$"+p.data[p.data.length-1].toLocaleString()),
+                React.createElement('div',{style:{display:"flex",alignItems:"center",paddingRight:4}},
+                  React.createElement(MiniChart,{data:p.data,color:pct>=0?"#22c55e":"#ef4444",h:26})
+                )
+              );
+            })
         )
       );
     };
 
-    const NonSportsMarket = () => {
-      const nsViews = [["overview","Overview"],["compare","Compare Games"],["featured","Top Cards"]];
-      return (
-        React.createElement('div', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1461}}
-          , React.createElement('div', { style: { display:"flex", gap:0, borderBottom:"1px solid #111", marginBottom:32 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1462}}
-            , nsViews.map(([id,label])=>React.createElement('button', { key: id, style: S.subNav(nsView===id), onClick: ()=>setNsView(id), __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1463}}, label))
-          )
-
-          , nsView==="overview" && (
-            React.createElement('div', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1467}}
-              , React.createElement('div', { style: { display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(160px,1fr))", gap:12, marginBottom:32 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1468}}
-                , NON_SPORTS_CATEGORIES.map((g,i)=>(
-                  React.createElement('div', { key: i, style: { ...S.statBox, borderTop:`3px solid ${g.color}` }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1470}}
-                    , React.createElement('div', { style: S.statLabel, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1471}}, g.name.split(" ")[0])
-                    , React.createElement('div', { style: { ...S.statValue,fontSize:24,marginBottom:4 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1472}}, g.val)
-                    , React.createElement(TrendBadge, { change: g.change, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1473}})
-                    , g.hot&&React.createElement('div', { style: { fontSize:9,color:"#C41E1E",fontFamily:"'DM Mono',monospace",marginTop:4 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1474}}, "🔥 TRENDING" )
-                    , React.createElement('div', { style: { marginTop:8 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1475}}, React.createElement(MultiLineChart, { datasets: [{id:g.id,data:g.data,color:g.color}], h: 40, showLabels: false, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1475}}))
-                  )
-                ))
+    // ── PRODUCTS VIEW ───────────────────────────────────────────────────────
+    const ProductsView=()=>React.createElement('div',null,
+      React.createElement('div',{style:{display:"grid",gridTemplateColumns:isMobile?"1fr":"repeat(auto-fill,minmax(260px,1fr))",gap:12}},
+        PRODUCT_DATA.map((prod,i)=>React.createElement(Panel,{key:i,style:{cursor:"pointer",transition:"transform 0.15s"},
+          onClick:()=>setSelProduct(prod),
+          onMouseEnter:e=>e.currentTarget.style.transform="translateY(-2px)",
+          onMouseLeave:e=>e.currentTarget.style.transform=""},
+          React.createElement('div',{style:{borderTop:"3px solid #C41E1E",padding:"18px 20px"}},
+            React.createElement('div',{style:{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:12}},
+              React.createElement('div',null,
+                React.createElement('div',{style:{fontSize:15,fontWeight:800,marginBottom:3,fontFamily:serif}},prod.name),
+                React.createElement('div',{style:{fontSize:9,color:"#444",fontFamily:mono}},prod.manufacturer+" · "+prod.sport)
+              ),
+              React.createElement('div',{style:{textAlign:"right"}},
+                React.createElement('div',{style:{fontSize:16,fontWeight:900,color:parseFloat(prod.trend)>=0?"#22c55e":"#ef4444",fontFamily:mono}},prod.trend),
+                React.createElement(Tag,{label:prod.tier})
               )
-              , React.createElement('div', { style: {background:"#080808",border:"1px solid #111",borderRadius:8, padding:28, marginBottom:24 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1479}}
-                , React.createElement('div', { style: { display:"flex", justifyContent:"space-between", marginBottom:20, flexWrap:"wrap", gap:12 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1480}}
-                  , React.createElement('div', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1481}}, React.createElement('div', { style: S.sectionLabel, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1481}}, "All TCG Markets — 8 Month Overlay"      ))
-                  , React.createElement('div', { style: { display:"flex", gap:12, flexWrap:"wrap" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1482}}, NON_SPORTS_CATEGORIES.map(g=>React.createElement('div', { key: g.id, style: { display:"flex", alignItems:"center", gap:5 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1482}}, React.createElement('div', { style: { width:9,height:9,borderRadius:2,background:g.color }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1482}}), React.createElement('span', { style: { fontSize:10,color:"#333",fontFamily:"'DM Mono',monospace" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1482}}, g.name.split(" ")[0]))))
-                )
-                , React.createElement(MultiLineChart, { datasets: NON_SPORTS_CATEGORIES.map(g=>({id:g.id,data:g.data,color:g.color})), h: 260, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1484}})
-              )
-              , React.createElement('div', { style: { display:"grid", gridTemplateColumns:"1fr 1fr", gap:16 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1486}}
-                , React.createElement('div', { style: {background:"#080808",border:"1px solid #111",borderRadius:8, padding:22 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1487}}
-                  , React.createElement('div', { style: S.sectionLabel, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1488}}, "🚀 Fastest Growing"  )
-                  , [...NON_SPORTS_CATEGORIES].sort((a,b)=>parseFloat(b.change)-parseFloat(a.change)).slice(0,4).map((g,i)=>(
-                    React.createElement('div', { key: i, style: { display:"flex", alignItems:"center", gap:10, padding:"10px 0", borderBottom: i<3?"1px solid #111":"none" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1490}}
-                      , React.createElement('div', { style: { width:3,height:36,borderRadius:2,background:g.color }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1491}})
-                      , React.createElement('div', { style: { flex:1 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1492}}, React.createElement('div', { style: { fontWeight:600,fontSize:13 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1492}}, g.name), React.createElement('div', { style: { fontSize:10,color:"#2A2A2A",fontFamily:"'DM Mono',monospace" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1492}}, g.desc.slice(0,55), "..."))
-                      , React.createElement(TrendBadge, { change: g.change, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1493}})
-                    )
-                  ))
-                )
-                , React.createElement('div', { style: {background:"#080808",border:"1px solid #111",borderRadius:8, padding:22 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1497}}
-                  , React.createElement('div', { style: S.sectionLabel, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1498}}, "Investment Signals" )
-                  , [{signal:"BUY",item:"One Piece Alt Art SR",r:"Print scarcity + anime boom"},{signal:"BUY",item:"Lorcana 1st Ed Sealed",r:"Disney IP, limited early print"},{signal:"BUY",item:"Star Wars Unlimited 1st Ed",r:"Undervalued vs IP potential"},{signal:"HOLD",item:"Pokémon Charizard ex",r:"Peaked cycle, monitor"},{signal:"WATCH",item:"MTG Reserved List",r:"Buylist pressure building"}].map((s2,i)=>(
-                    React.createElement('div', { key: i, style: { display:"flex", alignItems:"center", gap:10, padding:"9px 0", borderBottom: i<4?"1px solid #111":"none" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1500}}
-                      , React.createElement(SignalBadge, { signal: s2.signal, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1501}})
-                      , React.createElement('div', { style: { flex:1 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1502}}, React.createElement('div', { style: { fontWeight:600,fontSize:12 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1502}}, s2.item), React.createElement('div', { style: { fontSize:10,color:"#2A2A2A",fontFamily:"'DM Mono',monospace" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1502}}, s2.r))
-                    )
-                  ))
-                )
-              )
-            )
-          )
-
-          , nsView==="compare" && (
-            React.createElement('div', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1511}}
-              , React.createElement('div', { style: { marginBottom:20 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1512}}
-                , React.createElement('div', { style: S.sectionLabel, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1513}}, "Select Games to Compare"   )
-                , React.createElement('div', { style: { display:"flex", flexWrap:"wrap", gap:8, marginTop:8 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1514}}
-                  , NON_SPORTS_CATEGORIES.map(g=>(
-                    React.createElement('button', { key: g.id, onClick: ()=>toggleGame(g.id), style: { display:"flex", alignItems:"center", gap:7, padding:"6px 13px", borderRadius:20, border:`1px solid ${selectedGames.includes(g.id)?g.color:"#1A1A1A"}`, background: selectedGames.includes(g.id)?`${g.color}18`:"#0E0E0E", color: selectedGames.includes(g.id)?"#E8E4DE":"#444", cursor:"pointer", fontSize:11, fontFamily:"'DM Mono',monospace" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1516}}
-                      , React.createElement('div', { style: { width:7,height:7,borderRadius:"50%",background:selectedGames.includes(g.id)?g.color:"#222" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1517}})
-                      , g.name
-                    )
-                  ))
-                )
-              )
-              , selectedGames.length>0 && (
-                React.createElement('div', { style: {background:"#080808",border:"1px solid #111",borderRadius:8, padding:28, marginBottom:20 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1524}}
-                  , React.createElement('div', { style: { display:"flex", justifyContent:"space-between", marginBottom:20, flexWrap:"wrap", gap:12 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1525}}
-                    , React.createElement('div', { style: S.sectionLabel, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1526}}, "Game Index Comparison — Base 100"     )
-                    , React.createElement('div', { style: { display:"flex", gap:14, flexWrap:"wrap" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1527}}, NON_SPORTS_CATEGORIES.filter(g=>selectedGames.includes(g.id)).map(g=>React.createElement('div', { key: g.id, style: { display:"flex", alignItems:"center", gap:6 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1527}}, React.createElement('div', { style: { width:10,height:3,borderRadius:1,background:g.color }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1527}}), React.createElement('span', { style: { fontSize:10,color:"#444",fontFamily:"'DM Mono',monospace" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1527}}, g.name.split(" ")[0]))))
-                  )
-                  , React.createElement(MultiLineChart, { datasets: NON_SPORTS_CATEGORIES.filter(g=>selectedGames.includes(g.id)).map(g=>({id:g.id,data:g.data,color:g.color})), h: 280, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1529}})
-                )
-              )
-              , React.createElement('div', { style: { display:"grid", gap:10 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1532}}
-                , NON_SPORTS_CATEGORIES.filter(g=>selectedGames.includes(g.id)).sort((a,b)=>parseFloat(b.change)-parseFloat(a.change)).map((g,i)=>(
-                  React.createElement('div', { key: i, style: {background:"#080808",border:"1px solid #111",borderRadius:8, padding:"16px 20px", display:"flex", alignItems:"center", gap:16, flexWrap:"wrap", borderLeft:`3px solid ${g.color}` }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1534}}
-                    , React.createElement('div', { style: { fontWeight:700,minWidth:160 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1535}}, g.name, g.hot&&React.createElement('span', { style: { fontSize:9,color:"#C41E1E",marginLeft:8 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1535}}, "🔥"))
-                    , React.createElement('div', { style: { flex:1,fontSize:11,color:"#333",fontFamily:"'DM Mono',monospace" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1536}}, g.desc)
-                    , React.createElement(TrendBadge, { change: g.change, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1537}})
-                    , React.createElement('div', { style: { fontSize:22,fontWeight:700,minWidth:44,textAlign:"right" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1538}}, g.val)
-                  )
-                ))
-              )
-            )
-          )
-
-          , nsView==="featured" && (
-            React.createElement('div', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1546}}
-              , React.createElement('div', { style: { display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(250px,1fr))", gap:16, marginBottom:32 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1547}}
-                , [
-                  {name:"Charizard VMAX Rainbow Rare",set:"Sword & Shield",game:"Pokémon",estVal:480,change:"+62%",data:[200,240,290,280,340,390,440,480],color:"#FFD700"},
-                  {name:"Monkey D. Luffy OP01 Alt Art",set:"Romance Dawn",game:"One Piece",estVal:320,change:"+94%",data:[120,155,185,180,220,270,300,320],color:"#EF5350"},
-                  {name:"Black Lotus Alpha",set:"Alpha Edition",game:"Magic: The Gathering",estVal:28000,change:"+18%",data:[22000,23000,24000,23500,25000,26500,27200,28000],color:"#9C27B0"},
-                  {name:"Blue-Eyes White Dragon 1st Ed",set:"LOB",game:"Yu-Gi-Oh!",estVal:2400,change:"+31%",data:[1600,1750,1900,1850,2000,2150,2280,2400],color:"#FF9800"},
-                  {name:"Stitch Enchanted",set:"The First Chapter",game:"Disney Lorcana",estVal:890,change:"+145%",data:[280,360,440,420,560,680,780,890],color:"#2196F3"},
-                  {name:"Mew ex Special Illustration",set:"151",game:"Pokémon",estVal:680,change:"+88%",data:[280,320,400,380,460,540,620,680],color:"#FFD700"},
-                ].map((card,i)=>(
-                  React.createElement('div', { key: i, style: {background:"#080808",border:"1px solid #111",borderRadius:8, padding:22, borderTop:`3px solid ${card.color}` }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1556}}
-                    , React.createElement('div', { style: { fontSize:9,color:card.color,fontFamily:"'DM Mono',monospace",letterSpacing:"0.12em",textTransform:"uppercase",marginBottom:8 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1557}}, card.game)
-                    , React.createElement('div', { style: { fontWeight:700,fontSize:14,marginBottom:3,lineHeight:1.3 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1558}}, card.name)
-                    , React.createElement('div', { style: { fontSize:11,color:"#2A2A2A",fontFamily:"'DM Mono',monospace",marginBottom:14 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1559}}, card.set)
-                    , React.createElement(MultiLineChart, { datasets: [{id:card.name,data:card.data,color:card.color}], h: 70, showLabels: false, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1560}})
-                    , React.createElement('div', { style: { display:"flex", justifyContent:"space-between", alignItems:"center", marginTop:12 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1561}}
-                      , React.createElement('div', { style: { fontSize:24,fontWeight:700 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1562}}, "$", card.estVal.toLocaleString())
-                      , React.createElement(TrendBadge, { change: card.change, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1563}})
-                    )
-                  )
-                ))
-              )
-              , React.createElement('div', { style: {background:"#080808",border:"1px solid #111",borderRadius:8, padding:22 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1568}}
-                , React.createElement('div', { style: S.sectionLabel, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1569}}, "All Games — Index Leaderboard"    )
-                , [...NON_SPORTS_CATEGORIES].sort((a,b)=>parseFloat(b.change)-parseFloat(a.change)).map((g,i)=>(
-                  React.createElement('div', { key: i, style: { display:"flex", alignItems:"center", gap:16, padding:"12px 0", borderBottom: i<NON_SPORTS_CATEGORIES.length-1?"1px solid #111":"none" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1571}}
-                    , React.createElement('div', { style: { fontSize:13,color:"#222",fontFamily:"'DM Mono',monospace",minWidth:24,textAlign:"center" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1572}}, "#", i+1)
-                    , React.createElement('div', { style: { width:10,height:10,borderRadius:3,background:g.color,flexShrink:0 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1573}})
-                    , React.createElement('div', { style: { flex:1,fontWeight:600 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1574}}, g.name)
-                    , React.createElement('div', { style: { width:120 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1575}}, React.createElement(MultiLineChart, { datasets: [{id:g.id,data:g.data,color:g.color}], h: 32, showLabels: false, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1575}}))
-                    , React.createElement(TrendBadge, { change: g.change, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1576}})
-                    , g.hot&&React.createElement('span', { style: { fontSize:10,color:"#C41E1E",fontFamily:"'DM Mono',monospace" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1577}}, "🔥")
-                  )
-                ))
-              )
-            )
-          )
-        )
-      );
-    };
-
-    return (
-      React.createElement(React.Fragment, null
-        , React.createElement(PageHero, {
-          label:"MARKET INTELLIGENCE",
-          title:"Market Pulse",
-          subtitle:"Live player trends, series data, and investment signals across all sports.",
-          right:React.createElement('div', {style:{display:"flex",gap:8,alignItems:"center"}},
-            React.createElement('div', {style:{background:"rgba(34,197,94,0.08)",border:"1px solid rgba(34,197,94,0.2)",borderRadius:4,padding:"8px 14px",display:"flex",alignItems:"center",gap:6}},
-              React.createElement('div', {style:{width:6,height:6,borderRadius:"50%",background:"#22c55e",boxShadow:"0 0 6px #22c55e"}}),
-              React.createElement('span', {style:{fontSize:10,color:"#22c55e",fontFamily:"'DM Mono',monospace",fontWeight:700}}, "LIVE DATA")
             ),
-            React.createElement('div', {style:{background:"rgba(196,30,30,0.08)",border:"1px solid rgba(196,30,30,0.2)",borderRadius:4,padding:"8px 14px"}},
-              React.createElement('span', {style:{fontSize:10,color:"#C41E1E",fontFamily:"'DM Mono',monospace",fontWeight:700}}, "BULL ▲")
+            React.createElement('p',{style:{fontSize:11,color:"#444",lineHeight:1.6,margin:"0 0 14px"}},prod.desc),
+            React.createElement('div',{style:{display:"flex",justifyContent:"space-between",alignItems:"center",borderTop:"1px solid #111",paddingTop:12}},
+              React.createElement('div',{style:{fontSize:12,fontWeight:700,fontFamily:mono}},prod.hobbyPrice?"$"+prod.hobbyPrice+" hobby":"No retail"),
+              React.createElement('div',{style:{fontSize:9,color:"#555",fontFamily:mono}},prod.years)
             )
           )
-        }), React.createElement('div', {style:{maxWidth:1200,margin:"0 auto",padding:isMobile?"16px":"36px 28px"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1609}}
-          , marketTab==="sports" ? React.createElement(SportsMarket, {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1610}}) : React.createElement(NonSportsMarket, {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1610}})
+        ))
+      )
+    );
+
+    // ── PRODUCT DETAIL MODAL ─────────────────────────────────────────────────
+    const ProductModal=({prod,onClose})=>React.createElement('div',{onClick:e=>{if(e.target===e.currentTarget)onClose();},style:{position:"fixed",inset:0,background:"rgba(0,0,0,0.96)",zIndex:200,overflowY:"auto",padding:"20px"}},
+      React.createElement('div',{onClick:e=>e.stopPropagation(),style:{maxWidth:600,margin:"50px auto",background:"#070707",border:"1px solid #1a1a1a",borderRadius:12,overflow:"hidden"}},
+        React.createElement('div',{style:{padding:"28px 32px",borderBottom:"1px solid #111",display:"flex",justifyContent:"space-between",alignItems:"flex-start"}},
+          React.createElement('div',null,
+            React.createElement('h2',{style:{fontSize:24,fontWeight:900,margin:"0 0 6px",fontFamily:serif}},prod.name),
+            React.createElement('div',{style:{fontSize:10,color:"#444",fontFamily:mono}},prod.manufacturer+" · "+prod.years)
+          ),
+          React.createElement('button',{onClick:onClose,style:{padding:"8px 14px",background:"transparent",color:"#444",border:"1px solid #1a1a1a",borderRadius:4,cursor:"pointer",fontSize:11,fontFamily:mono}},"✕ CLOSE")
+        ),
+        React.createElement('div',{style:{padding:"24px 32px"}},
+          React.createElement('div',{style:{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8,marginBottom:16}},
+            React.createElement(StatBox,{label:"TIER",value:prod.tier,color:"#C41E1E"}),
+            React.createElement(StatBox,{label:"HOBBY BOX",value:prod.hobbyPrice?"$"+prod.hobbyPrice:"N/A",color:"#f59e0b"}),
+            React.createElement(StatBox,{label:"TREND",value:prod.trend,color:parseFloat(prod.trend)>=0?"#22c55e":"#ef4444"})
+          ),
+          React.createElement('p',{style:{fontSize:13,color:"#555",lineHeight:1.7,margin:"0 0 16px"}},prod.desc),
+          React.createElement('div',{style:{background:"rgba(196,30,30,0.04)",border:"1px solid rgba(196,30,30,0.12)",borderRadius:6,padding:"14px 18px"}},
+            React.createElement('div',{style:{fontSize:8,color:"#C41E1E",fontFamily:mono,letterSpacing:"0.1em",marginBottom:4}},"HOT PARALLEL"),
+            React.createElement('div',{style:{fontSize:14,fontWeight:700}},prod.hotParallel)
+          )
         )
+      )
+    );
+
+    // ── YEAR CLASS VIEW ─────────────────────────────────────────────────────
+    const YearsView=()=>React.createElement('div',null,
+      React.createElement('div',{style:{display:"grid",gridTemplateColumns:isMobile?"1fr 1fr":"repeat(4,1fr)",gap:8,marginBottom:20}},
+        Object.entries(YEAR_DATA).reverse().map(([yr,yd])=>
+          React.createElement(Panel,{key:yr,style:{padding:16,cursor:"pointer",borderTop:"3px solid "+(selYear===yr?"#C41E1E":"transparent"),transition:"border-color 0.15s"},onClick:()=>setSelYear(selYear===yr?null:yr)},
+            React.createElement('div',{style:{display:"flex",justifyContent:"space-between",marginBottom:6}},
+              React.createElement('div',{style:{fontSize:18,fontWeight:900,fontFamily:mono}},yr),
+              React.createElement('div',{style:{fontSize:13,fontWeight:700,color:"#22c55e",fontFamily:mono}},yd.change)
+            ),
+            React.createElement('div',{style:{fontSize:10,fontWeight:700,marginBottom:4,fontFamily:serif}},yd.label),
+            React.createElement('div',{style:{fontSize:9,color:"#444",lineHeight:1.5}},yd.desc)
+          )
+        )
+      ),
+      selYear&&YEAR_DATA[selYear]&&React.createElement(Panel,{style:{padding:24}},
+        React.createElement('div',{style:{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:20,flexWrap:"wrap",gap:10}},
+          React.createElement('div',null,
+            React.createElement('div',{style:{fontSize:9,color:"#C41E1E",fontFamily:mono,letterSpacing:"0.15em",marginBottom:6}},"CLASS OF "+selYear),
+            React.createElement('h3',{style:{fontSize:24,fontWeight:900,margin:0,fontFamily:serif}},YEAR_DATA[selYear].label)
+          ),
+          React.createElement('div',{style:{fontSize:28,fontWeight:900,color:"#22c55e",fontFamily:mono}},YEAR_DATA[selYear].change)
+        ),
+        React.createElement('div',{style:{display:"flex",flexDirection:"column",gap:8}},
+          YEAR_DATA[selYear].cards.map((c,i)=>
+            React.createElement('div',{key:i,style:{display:"flex",justifyContent:"space-between",alignItems:"center",background:"#060606",border:"1px solid #0d0d0d",borderRadius:6,padding:"14px 18px"}},
+              React.createElement('div',{style:{fontSize:13,fontWeight:700}},c.name),
+              React.createElement('div',{style:{fontSize:18,fontWeight:900,fontFamily:mono}},"$"+c.val.toLocaleString())
+            )
+          )
+        )
+      )
+    );
+
+    // ── TEAMS VIEW ──────────────────────────────────────────────────────────
+    const TeamsView=()=>React.createElement('div',{style:{display:"grid",gridTemplateColumns:isMobile?"1fr":"repeat(auto-fill,minmax(280px,1fr))",gap:12}},
+      TEAM_MARKET_DATA.map((tm,i)=>React.createElement(Panel,{key:i,style:{padding:0}},
+        React.createElement('div',{style:{borderTop:"3px solid "+tm.color,padding:"18px 20px"}},
+          React.createElement('div',{style:{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:10}},
+            React.createElement('div',null,
+              React.createElement('div',{style:{fontSize:9,color:"#444",fontFamily:mono,letterSpacing:"0.08em",marginBottom:4}},tm.sport.toUpperCase()),
+              React.createElement('div',{style:{fontSize:15,fontWeight:800,fontFamily:serif,marginBottom:8}},tm.team),
+              React.createElement('div',{style:{display:"flex",gap:4,flexWrap:"wrap"}},
+                tm.stars.map(s=>React.createElement(Tag,{key:s,label:s,color:tm.color}))
+              )
+            ),
+            React.createElement('div',{style:{textAlign:"right"}},
+              React.createElement('div',{style:{fontSize:22,fontWeight:900,color:parseFloat(tm.change)>=0?"#22c55e":"#ef4444",fontFamily:mono}},tm.change),
+              React.createElement('div',{style:{fontSize:9,color:"#444",fontFamily:mono,marginTop:3}},"$"+tm.avgPSA10+" avg PSA 10")
+            )
+          ),
+          React.createElement('p',{style:{fontSize:11,color:"#444",lineHeight:1.6,margin:0}},tm.desc)
+        )
+      ))
+    );
+
+    // ── TCG VIEW ────────────────────────────────────────────────────────────
+    const TCGView=()=>React.createElement('div',null,
+      React.createElement('div',{style:{display:"grid",gridTemplateColumns:isMobile?"1fr 1fr":"repeat(4,1fr)",gap:10,marginBottom:20}},
+        NON_SPORTS_CATEGORIES.map((cat,i)=>React.createElement(Panel,{key:i,style:{padding:16}},
+          React.createElement('div',{style:{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:8}},
+            React.createElement('div',{style:{fontWeight:700,fontSize:12,fontFamily:serif}},cat.name),
+            cat.hot&&React.createElement('span',{style:{fontSize:10}},"🔥")
+          ),
+          React.createElement(MiniChart,{data:cat.data,color:cat.color,h:36}),
+          React.createElement('div',{style:{display:"flex",justifyContent:"space-between",marginTop:8,alignItems:"center"}},
+            React.createElement('div',{style:{fontSize:16,fontWeight:900,color:parseFloat(cat.change)>=0?"#22c55e":"#ef4444",fontFamily:mono}},cat.change),
+            React.createElement(SigBadge,{signal:cat.signal||"WATCH"})
+          ),
+          React.createElement('div',{style:{fontSize:9,color:"#333",marginTop:6,lineHeight:1.5}},cat.desc)
+        ))
+      ),
+      React.createElement(Panel,{style:{padding:20}},
+        React.createElement('div',{style:{fontWeight:700,fontSize:13,marginBottom:16,fontFamily:serif}},"TCG vs Sports Cards — 8-Month Performance"),
+        React.createElement(MultiLineChart,{datasets:[...SPORT_INDEX.map(s=>({id:s.sport,data:s.data,color:s.color})),...NON_SPORTS_CATEGORIES.slice(0,3).map(c=>({id:c.id,data:c.data,color:c.color}))],h:160}),
+        React.createElement('div',{style:{display:"flex",gap:16,flexWrap:"wrap",marginTop:10}},
+          [...SPORT_INDEX,...NON_SPORTS_CATEGORIES.slice(0,3)].map((c,i)=>
+            React.createElement('div',{key:i,style:{display:"flex",alignItems:"center",gap:5}},
+              React.createElement('div',{style:{width:10,height:2,background:c.color||"#888",borderRadius:1}}),
+              React.createElement('span',{style:{fontSize:9,color:"#444",fontFamily:mono}},c.sport||c.name)
+            )
+          )
+        )
+      )
+    );
+
+    // ── BREAK ODDS VIEW ────────────────────────────────────────────────────
+    const OddsView=()=>React.createElement(Panel,null,
+      React.createElement('div',{style:{display:"grid",gridTemplateColumns:"2fr 100px 80px 80px 70px 80px",gap:0,padding:"10px 16px",borderBottom:"1px solid #0a0a0a",fontSize:8,color:"#1e1e1e",fontFamily:mono,letterSpacing:"0.1em"}},
+        "SET","HITS","BOX $","HIT $","ROI","SIGNAL"
+      ),
+      BREAK_ODDS.map((b,i)=>{
+        const rc=b.roi>0?"#22c55e":b.roi>-20?"#f59e0b":"#ef4444";
+        return React.createElement('div',{key:i,style:{display:"grid",gridTemplateColumns:"2fr 100px 80px 80px 70px 80px",gap:0,padding:"13px 16px",borderBottom:"1px solid #090909"}},
+          React.createElement('div',null,
+            React.createElement('div',{style:{fontSize:12,fontWeight:700,marginBottom:2}},b.set),
+            React.createElement('div',{style:{fontSize:9,color:"#444",fontFamily:mono}},b.type+" · "+b.hits)
+          ),
+          React.createElement('div',{style:{fontSize:9,color:"#555",fontFamily:mono,display:"flex",alignItems:"center"}},b.rookieOdds),
+          React.createElement('div',{style:{fontSize:11,fontWeight:700,fontFamily:mono,display:"flex",alignItems:"center"}},"$"+b.avgBoxCost),
+          React.createElement('div',{style:{fontSize:11,fontFamily:mono,display:"flex",alignItems:"center"}},"$"+b.avgHitValue),
+          React.createElement('div',{style:{fontSize:14,fontWeight:900,color:rc,fontFamily:mono,display:"flex",alignItems:"center"}},b.roi+"%"),
+          React.createElement('div',{style:{display:"flex",alignItems:"center"}},React.createElement(SigBadge,{signal:b.roi>0?"BUY":b.roi>-20?"HOLD":"SELL"}))
+        );
+      })
+    );
+
+    // ── MAIN RENDER ─────────────────────────────────────────────────────────
+    return React.createElement(React.Fragment,null,
+      selPlayer&&React.createElement(PlayerModal,{p:selPlayer,onClose:()=>setSelPlayer(null)}),
+      selProduct&&React.createElement(ProductModal,{prod:selProduct,onClose:()=>setSelProduct(null)}),
+      selSeries&&React.createElement(SeriesModal,{s:selSeries,onClose:()=>setSelSeries(null)}),
+      React.createElement(PageHero,{
+        label:"MARKET INTELLIGENCE",
+        title:"Market Pulse",
+        subtitle:"Deep-dive into players, products, year classes, teams, and TCG — all in one place.",
+        right:React.createElement('div',{style:{display:"flex",gap:8,alignItems:"center"}},
+          React.createElement('div',{style:{display:"flex",alignItems:"center",gap:6,background:"rgba(34,197,94,0.08)",border:"1px solid rgba(34,197,94,0.2)",borderRadius:4,padding:"8px 14px"}},
+            React.createElement('div',{style:{width:6,height:6,borderRadius:"50%",background:"#22c55e",boxShadow:"0 0 6px #22c55e"}}),
+            React.createElement('span',{style:{fontSize:10,color:"#22c55e",fontFamily:mono,fontWeight:700}},"LIVE DATA")
+          ),
+          React.createElement('div',{style:{background:"rgba(196,30,30,0.08)",border:"1px solid rgba(196,30,30,0.2)",borderRadius:4,padding:"8px 14px"}},
+            React.createElement('span',{style:{fontSize:10,color:"#C41E1E",fontFamily:mono,fontWeight:700}},"BULL MARKET ▲")
+          )
+        )
+      }),
+      React.createElement('div',{style:{background:"#000",borderBottom:"1px solid #0d0d0d"}},
+        React.createElement('div',{style:{maxWidth:1200,margin:"0 auto",display:"flex",gap:0,overflowX:"auto",padding:"0 28px"}},
+          VIEWS.map(([id,label])=>React.createElement('button',{key:id,onClick:()=>setView(id),
+            style:{padding:"13px 18px",fontSize:11,fontFamily:mono,fontWeight:700,background:"transparent",border:"none",
+              color:view===id?"#fff":"#333",borderBottom:view===id?"2px solid #C41E1E":"2px solid transparent",
+              cursor:"pointer",whiteSpace:"nowrap",letterSpacing:"0.05em",transition:"all 0.15s"}},label))
+        )
+      ),
+      React.createElement('div',{style:{maxWidth:1200,margin:"0 auto",padding:isMobile?"16px":"24px 28px"}},
+        view==="overview"&&React.createElement(OverviewView,null),
+        view==="players"&&React.createElement(PlayersView,null),
+        view==="products"&&React.createElement(ProductsView,null),
+        view==="years"&&React.createElement(YearsView,null),
+        view==="teams"&&React.createElement(TeamsView,null),
+        view==="tcg"&&React.createElement(TCGView,null),
+        view==="odds"&&React.createElement(OddsView,null)
       )
     );
   };
 
-  //
+
   const BreakersPage = () => (
     React.createElement(React.Fragment, null
       , React.createElement(PageHero, {
         label:"THE SQUAD",
         title:"Our Breakers",
         subtitle:"Meet the personalities behind every rip. Live breaks, PYP cases, and exclusive group pulls.",
-        right:React.createElement('div', {style:{display:"flex",gap:8}},
-          React.createElement('button', {style:{padding:"10px 20px",background:"#C41E1E",color:"#fff",border:"none",borderRadius:2,fontSize:11,fontWeight:700,cursor:"pointer",fontFamily:"'DM Mono',monospace",letterSpacing:"0.08em"}}, "JOIN A BREAK"),
-          React.createElement('button', {style:{padding:"10px 20px",background:"transparent",color:"rgba(255,255,255,0.4)",border:"1px solid rgba(255,255,255,0.1)",borderRadius:2,fontSize:11,fontWeight:700,cursor:"pointer",fontFamily:"'DM Mono',monospace",letterSpacing:"0.08em"}}, "SCHEDULE →")
+        right:React.createElement('div',{style:{display:"flex",gap:8}},
+          React.createElement('button',{style:{padding:"10px 20px",background:"#C41E1E",color:"#fff",border:"none",borderRadius:2,fontSize:11,fontWeight:700,cursor:"pointer",fontFamily:"'DM Mono',monospace",letterSpacing:"0.08em"}},"JOIN A BREAK"),
+          React.createElement('button',{style:{padding:"10px 20px",background:"transparent",color:"rgba(255,255,255,0.4)",border:"1px solid rgba(255,255,255,0.1)",borderRadius:2,fontSize:11,fontWeight:700,cursor:"pointer",fontFamily:"'DM Mono',monospace",letterSpacing:"0.08em"}},"SCHEDULE →")
         )
       })
-      , React.createElement('div', {style:{maxWidth:1200,margin:"0 auto",padding:isMobile?"16px":"36px 28px"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1624}}
+      , React.createElement('div', { style: S.body, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1624}}
         , React.createElement('div', { style: { display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(280px,1fr))", gap:20, marginBottom:48 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1625}}
           , [
             { initials:"RV", name:"Rico V.", sport:"Football / Basketball", bio:"High-energy host with 3+ years of premium breaks. Known for epic NFL PYP case rips and the biggest hits on the channel.", channels:["Fanatics","Instagram"], live:true, color:"#C41E1E" },
             { initials:"JT", name:"Jess T.", sport:"Basketball / Baseball", bio:"The technical breaker. Knows the hobby inside and out. Specializes in Prizm basketball and Bowman Chrome prospect hunting.", channels:["Whatnot","TikTok"], live:false, color:"#4FC3F7" },
             { initials:"MR", name:"Marcus R.", sport:"Baseball / Hockey", bio:"Storytelling meets the rip. Every break with Marcus is a narrative. Multi-platform presence for entry-level and veteran collectors.", channels:["TikTok","YouTube"], live:false, color:"#66BB6A" },
           ].map((b,i)=>(
-            React.createElement('div', { key: i, style: {background:"#080808",border:"1px solid #111",borderRadius:8, padding:28, textAlign:"center" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1631}}
+            React.createElement('div', { key: i, style: { ...S.card, padding:28, textAlign:"center" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1631}}
               , React.createElement('div', { style: { width:68,height:68,borderRadius:"50%",background:`linear-gradient(135deg,${b.color},${b.color}88)`,margin:"0 auto 16px",display:"flex",alignItems:"center",justifyContent:"center",fontSize:24,fontWeight:700 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1632}}, b.initials)
               , b.live&&React.createElement('div', { style: { display:"inline-flex",alignItems:"center",gap:6,padding:"3px 10px",borderRadius:100,background:"rgba(196,30,30,0.12)",color:"#C41E1E",fontSize:10,fontFamily:"'DM Mono',monospace",marginBottom:8 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1633}}, React.createElement('span', { style: S.dot, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1633}}), " LIVE NOW"  )
               , React.createElement('div', { style: { fontSize:20,fontWeight:700,marginBottom:3 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1634}}, b.name)
