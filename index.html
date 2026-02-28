@@ -52,6 +52,13 @@ const PLAYER_TRENDS = [
   { id:"mahomes", name:"Patrick Mahomes", sport:"Football", team:"KC Chiefs", pos:"QB", indexCard:"2023 Topps Chrome RC /99", change:"+4.2%", data:[280,290,310,295,305,320,315,330], hot:false, rookie:false, color:"#E8212B", signal:"HOLD", signalReason:"Stable dynasty card, dynasty narrative fully priced in" },
   { id:"mcdavid", name:"Connor McDavid", sport:"Hockey", team:"Oilers", pos:"C", indexCard:"2015 UD Young Guns PSA 10", change:"+15.8%", data:[1400,1500,1550,1480,1600,1700,1750,1820], hot:false, rookie:false, color:"#80DEEA", signal:"BUY", signalReason:"Undervalued vs peers, Stanley Cup window open" },
   { id:"judge", name:"Aaron Judge", sport:"Baseball", team:"Yankees", pos:"RF", indexCard:"2017 Topps Chrome RC PSA 9", change:"-2.3%", data:[420,410,440,415,400,420,390,410], hot:false, rookie:false, color:"#CE93D8", signal:"HOLD", signalReason:"Minor correction, WS contention = price recovery expected" },
+  { id:"allen", name:"Josh Allen", sport:"Football", team:"Bills", pos:"QB", indexCard:"2018 Prizm RC PSA 10", change:"+12.4%", data:[800,850,920,880,940,980,1020,1080], hot:true, rookie:false, color:"#2196F3", signal:"BUY", signalReason:"MVP candidate, Bills SB window driving speculative buying" },
+  { id:"burrow", name:"Joe Burrow", sport:"Football", team:"Bengals", pos:"QB", indexCard:"2020 Optic RC Auto /99", change:"+8.1%", data:[600,640,680,660,700,730,750,780], hot:false, rookie:false, color:"#FF6F00", signal:"HOLD", signalReason:"Injury recovery complete, Bengals rebuilding narrative" },
+  { id:"messi", name:"Lionel Messi", sport:"Soccer", team:"Inter Miami", pos:"FW", indexCard:"2006 Panini WC RC", change:"+31.5%", data:[5000,5400,5800,5600,6100,6500,6800,7200], hot:true, rookie:false, color:"#FF80AB", signal:"BUY", signalReason:"MLS move created new US collector wave, last trophy run" },
+  { id:"lebron", name:"LeBron James", sport:"Basketball", team:"Lakers", pos:"SF", indexCard:"2003 Topps Chrome RC PSA 10", change:"+6.8%", data:[28000,29000,30000,28500,29500,30500,31000,32000], hot:false, rookie:false, color:"#FFD700", signal:"HOLD", signalReason:"All-time record holder, market ceiling approaching" },
+  { id:"curry", name:"Stephen Curry", sport:"Basketball", team:"Warriors", pos:"PG", indexCard:"2009 Topps Chrome RC PSA 9", change:"-1.8%", data:[3200,3100,3300,3000,2900,3000,3100,3000], hot:false, rookie:false, color:"#FFD700", signal:"WATCH", signalReason:"Off-peak cycle, post-championship plateau expected" },
+  { id:"acuna", name:"Ronald Acuña Jr.", sport:"Baseball", team:"Braves", pos:"OF", indexCard:"2018 Topps Chrome RC Auto", change:"+18.3%", data:[800,880,960,920,1000,1080,1120,1180], hot:true, rookie:false, color:"#66BB6A", signal:"BUY", signalReason:"MVP season prices barely corrected, deep value play" },
+  { id:"matthews", name:"Auston Matthews", sport:"Hockey", team:"Maple Leafs", pos:"C", indexCard:"2016 UD Young Guns RC PSA 10", change:"+9.7%", data:[1200,1280,1340,1300,1380,1420,1460,1500], hot:false, rookie:false, color:"#29B6F6", signal:"HOLD", signalReason:"Cup win would double market overnight" },
 ];
 
 const SERIES_TRENDS = [
@@ -83,11 +90,19 @@ const NON_SPORTS_CATEGORIES = [
 ];
 
 const BREAK_ODDS = [
-  { set:"2023 Topps Chrome Football", type:"Hobby Box", hits:"2 Autos per box", rookieOdds:"1:4 packs", refractorOdds:"1:2 packs", superShortPrint:"1:192 packs", avgBoxCost:180, avgHitValue:95, roi:-47 },
-  { set:"2023 Panini Prizm Basketball", type:"Hobby Box", hits:"1 Auto per box", rookieOdds:"1:3 packs", refractorOdds:"1:1 pack", superShortPrint:"1:288 packs", avgBoxCost:220, avgHitValue:160, roi:-27 },
-  { set:"2022 Panini Prizm Soccer WC", type:"Blaster Box", hits:"1 Auto per 5 boxes", rookieOdds:"1:6 packs", refractorOdds:"1:2 packs", superShortPrint:"1:144 packs", avgBoxCost:35, avgHitValue:28, roi:-20 },
-  { set:"2023 Bowman Chrome Baseball", type:"Hobby Box", hits:"3 Autos per box", rookieOdds:"1:2 packs", refractorOdds:"1:1 pack", superShortPrint:"1:96 packs", avgBoxCost:110, avgHitValue:85, roi:-23 },
-  { set:"2023 Upper Deck Hockey YG", type:"Series 1 Hobby", hits:"1 RC per pack", rookieOdds:"1:1 pack", refractorOdds:"N/A", superShortPrint:"1:72 packs", avgBoxCost:145, avgHitValue:88, roi:-39 },
+  // Topps (public odds from topps.com pack inserts and hobby wrappers)
+  { set:"2024 Topps Chrome Football", brand:"Topps", type:"Hobby Box", hits:"2 Autos per box", rookieOdds:"1:3 packs", refractorOdds:"1:2 packs", superShortPrint:"1:192 packs", avgBoxCost:195, avgHitValue:110, roi:-44, source:"Topps Official" },
+  { set:"2024 Topps Chrome Baseball", brand:"Topps", type:"Hobby Box", hits:"2 Autos per box", rookieOdds:"1:2 packs", refractorOdds:"1:1 pack", superShortPrint:"1:96 packs", avgBoxCost:165, avgHitValue:95, roi:-42, source:"Topps Official" },
+  { set:"2024 Topps Series 1 Baseball", brand:"Topps", type:"Hobby Box", hits:"1 Auto + 1 Relic", rookieOdds:"1:4 packs", refractorOdds:"N/A", superShortPrint:"1:216 packs", avgBoxCost:110, avgHitValue:55, roi:-50, source:"Topps Official" },
+  { set:"2024 Topps Gold Label Baseball", brand:"Topps", type:"Hobby Box", hits:"4 Autos per box", rookieOdds:"1:2 packs", refractorOdds:"1:1 pack", superShortPrint:"1:32 packs", avgBoxCost:145, avgHitValue:120, roi:-17, source:"Topps Official" },
+  { set:"2024 Topps Allen & Ginter Baseball", brand:"Topps", type:"Hobby Box", hits:"1 Auto per box", rookieOdds:"1:6 packs", refractorOdds:"N/A", superShortPrint:"1:128 packs", avgBoxCost:95, avgHitValue:60, roi:-37, source:"Topps Official" },
+  { set:"2024 Topps Stadium Club Baseball", brand:"Topps", type:"Hobby Box", hits:"1 Auto per box", rookieOdds:"1:5 packs", refractorOdds:"N/A", superShortPrint:"1:144 packs", avgBoxCost:80, avgHitValue:55, roi:-31, source:"Topps Official" },
+  { set:"2023 Topps MLS Soccer", brand:"Topps", type:"Hobby Box", hits:"1 Auto per box", rookieOdds:"1:4 packs", refractorOdds:"1:2 packs", superShortPrint:"1:96 packs", avgBoxCost:75, avgHitValue:48, roi:-36, source:"Topps Official" },
+  // Panini (estimated from collector community data)
+  { set:"2023 Panini Prizm Basketball", brand:"Panini", type:"Hobby Box", hits:"1 Auto per box", rookieOdds:"1:3 packs", refractorOdds:"1:1 pack", superShortPrint:"1:288 packs", avgBoxCost:220, avgHitValue:160, roi:-27, source:"Collector Est." },
+  { set:"2022 Panini Prizm Soccer WC", brand:"Panini", type:"Blaster Box", hits:"1 Auto per 5 boxes", rookieOdds:"1:6 packs", refractorOdds:"1:2 packs", superShortPrint:"1:144 packs", avgBoxCost:35, avgHitValue:28, roi:-20, source:"Collector Est." },
+  { set:"2023 Bowman Chrome Baseball", brand:"Topps", type:"Hobby Box", hits:"3 Autos per box", rookieOdds:"1:2 packs", refractorOdds:"1:1 pack", superShortPrint:"1:96 packs", avgBoxCost:110, avgHitValue:85, roi:-23, source:"Topps Official" },
+  { set:"2023 Upper Deck Hockey YG", brand:"Upper Deck", type:"Series 1 Hobby", hits:"1 RC per pack", rookieOdds:"1:1 pack", refractorOdds:"N/A", superShortPrint:"1:72 packs", avgBoxCost:145, avgHitValue:88, roi:-39, source:"Upper Deck Official" },
 ];
 
 const MOCK_COLLECTION = [
@@ -105,11 +120,31 @@ const ESPN_IDS = {
   "Kylian Mbappé":{sport:"soccer",id:"231747"},
   "Shohei Ohtani":{sport:"mlb",id:"39832"},
   "Luka Dončič":{sport:"nba",id:"3149673"},
+  "Luka Doncic":{sport:"nba",id:"3149673"},
   "Patrick Mahomes":{sport:"nfl",id:"3139477"},
   "Connor McDavid":{sport:"nhl",id:"3895074"},
   "Aaron Judge":{sport:"mlb",id:"33192"},
+  "LeBron James":{sport:"nba",id:"1966"},
+  "Stephen Curry":{sport:"nba",id:"3975"},
+  "Ja Morant":{sport:"nba",id:"4279888"},
+  "Giannis Antetokounmpo":{sport:"nba",id:"3032977"},
+  "Josh Allen":{sport:"nfl",id:"3918298"},
+  "Joe Burrow":{sport:"nfl",id:"3915511"},
+  "Trevor Lawrence":{sport:"nfl",id:"4360310"},
+  "Justin Jefferson":{sport:"nfl",id:"4047365"},
+  "Bryce Young":{sport:"nfl",id:"4431299"},
+  "Mike Trout":{sport:"mlb",id:"33150"},
+  "Ronald Acuña Jr.":{sport:"mlb",id:"39853"},
+  "Lionel Messi":{sport:"soccer",id:"34014"},
+  "Erling Haaland":{sport:"soccer",id:"4301610"},
+  "Auston Matthews":{sport:"nhl",id:"3899671"},
+  "Sidney Crosby":{sport:"nhl",id:"3114"},
 };
-const espnImg = (name) => { const e=ESPN_IDS[name]; return e?`https://a.espncdn.com/i/headshots/${e.sport}/players/full/${e.id}.png`:null; };
+const espnImg = (name) => {
+  const e = ESPN_IDS[name];
+  if (!e) return null;
+  return `https://a.espncdn.com/i/headshots/${e.sport}/players/full/${e.id}.png`;
+};
 const PARALLELS_RAINBOW = [
   { name:"Base", owned:true },{ name:"Silver Prizm", owned:true },{ name:"Blue Prizm /199", owned:false },
   { name:"Red Prizm /149", owned:false },{ name:"Green Prizm /99", owned:false },
@@ -156,68 +191,60 @@ const Icon = ({ name, size=20 }) => {
 };
 
 //
-const RIPSLogo = ({ size=40 }) => (
-  React.createElement('svg', { width: size, height: size, viewBox: "0 0 100 100"   , fill: "none", __self: this, __source: {fileName: _jsxFileName2, lineNumber: 125}}
-    , React.createElement('rect', { width: "100", height: "100", rx: "14", fill: "#C41E1E", __self: this, __source: {fileName: _jsxFileName2, lineNumber: 126}})
-    , React.createElement('rect', { width: "100", height: "100", rx: "14", fill: "url(#logoGrad)", __self: this, __source: {fileName: _jsxFileName2, lineNumber: 127}})
-    , React.createElement('defs', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 128}}
-      , React.createElement('linearGradient', { id: "logoGrad", x1: "0", y1: "0", x2: "100", y2: "100", gradientUnits: "userSpaceOnUse", __self: this, __source: {fileName: _jsxFileName2, lineNumber: 129}}
-        , React.createElement('stop', { stopColor: "#E8212B", __self: this, __source: {fileName: _jsxFileName2, lineNumber: 130}})
-        , React.createElement('stop', { offset: "1", stopColor: "#8B0000", __self: this, __source: {fileName: _jsxFileName2, lineNumber: 131}})
-      )
-    )
-    , React.createElement('path', { d: "M18 18 L18 82 L34 82 L34 58 L50 58 L66 82 L84 82 L64 56 C73 52 80 44 80 33 C80 22 71 18 58 18 Z M34 32 L56 32 C63 32 66 35 66 42 C66 49 63 52 56 52 L34 52 Z"                                               , fill: "white", opacity: "0.95", __self: this, __source: {fileName: _jsxFileName2, lineNumber: 134}})
-  )
-);
+const RIPSLogo = ({ size=40, full=false }) => {
+  if (full) return React.createElement('svg', { viewBox:"0 0 649 59.88", style:{width:"100%",height:"100%"}, xmlns:"http://www.w3.org/2000/svg" },
+    React.createElement('style', null, '.rips-wm{fill:#cc3333}'),
+    React.createElement('path', { className:"rips-wm", d:"M74.86,0h14v59.88h-14V0Z" }),
+    React.createElement('path', { className:"rips-wm", d:"M99.27,0h44.58c6.36,0,8.75,4.14,8.75,10.96v24.41c0,5.25-3.5,10.5-10.23,10.5h-29.11v14h-14V0ZM138.88,34.54V11.97h-25.61v22.57h25.61Z" }),
+    React.createElement('path', { className:"rips-wm", d:"M214.42,48.73c0,6.63-4.14,11.15-11.61,11.15h-31.87c-5.9,0-11.24-3.13-11.24-10.59v-10.13h13.82v9.21h27.17v-9.49l-34.36-8.66c-5.07-1.29-6.63-4.05-6.63-9.4v-11.7c0-6.45,3.87-9.12,10.13-9.12h34.17c8.47,0,10.41,4.61,10.41,12.07v7.65h-13.73v-8.29h-27.17v8.48l34.54,8.84c5.07,1.29,6.36,3.78,6.36,9.95v10.04Z" }),
+    React.createElement('path', { className:"rips-wm", d:"M301.93,48.73c0,6.63-4.14,11.15-11.61,11.15h-31.87c-5.9,0-11.24-3.13-11.24-10.59v-10.13h13.82v9.21h27.17v-9.49l-34.36-8.66c-5.07-1.29-6.63-4.05-6.63-9.4v-11.7c0-6.45,3.87-9.12,10.13-9.12h34.17c8.47,0,10.41,4.61,10.41,12.07v7.65h-13.73v-8.29h-27.17v8.48l34.54,8.84c5.07,1.29,6.36,3.78,6.36,9.95v10.04Z" }),
+    React.createElement('path', { className:"rips-wm", d:"M310.49,49.28V9.12c0-6.45,3.96-9.12,9.67-9.12h37.58c7.28,0,9.4,4.61,9.4,12.07v36.48c0,5.71-4.24,11.33-11.7,11.33h-33.62c-5.99,0-11.33-3.13-11.33-10.59ZM353.33,47.72V12.25h-29.11v35.47h29.11Z" }),
+    React.createElement('path', { className:"rips-wm", d:"M430.8,36.39v12.44c0,5.62-3.22,11.05-11.79,11.05h-30.77c-7.83,0-12.25-4.24-12.25-11.79V11.88c0-8.84,4.15-11.88,10.87-11.88h33.16c7.65,0,10.78,3.87,10.78,12.07v7.83h-13.82v-7.65h-27.27v35.47h27.27v-11.33h13.82Z" }),
+    React.createElement('path', { className:"rips-wm", d:"M440,0h14v59.88h-14V0Z" }),
+    React.createElement('path', { className:"rips-wm", d:"M464.42,0h49.1v11.42h-35.1v12.53h25.06v11.24h-25.06v13.26h35.1v11.42h-49.1V0Z" }),
+    React.createElement('path', { className:"rips-wm", d:"M538.2,11.97h-20.63V0h55.36v11.97h-20.73v47.9h-14V11.97Z" }),
+    React.createElement('path', { className:"rips-wm", d:"M634.37,0v34.27c0,7.46-2.86,11.61-9.86,11.61h-11.15v14h-14v-14h-10.96c-6.26,0-9.95-3.5-9.95-9.86V0h14v34.54h28V0h13.91Z" }),
+    React.createElement('polygon', { className:"rips-wm", points:"13.99 59.88 0 59.88 0 21.42 21.41 0 65.12 0 65.12 17.92 36.49 46.55 65.12 46.55 65.12 59.88 43.7 59.88 24.69 40.87 51.57 13.99 14.42 13.99 13.99 59.88" })
+  );
+  // Icon-only: just the R glyph
+  return React.createElement('svg', { width:size, height:size, viewBox:"0 0 66 60", xmlns:"http://www.w3.org/2000/svg" },
+    React.createElement('style', null, '.rips-ico{fill:#cc3333}'),
+    React.createElement('polygon', { className:"rips-ico", points:"13.99 59.88 0 59.88 0 21.42 21.41 0 65.12 0 65.12 17.92 36.49 46.55 65.12 46.55 65.12 59.88 43.7 59.88 24.69 40.87 51.57 13.99 14.42 13.99 13.99 59.88" })
+  );
+};
 
-//
-const MultiLineChart = ({ datasets, h=200, showLabels=true, months=MONTHS }) => {
-  const w = 600;
-  const allVals = datasets.flatMap(d => d.data);
-  const max = Math.max(...allVals); const min = Math.min(...allVals);
-  const range = max - min || 1;
-  const pad = { top:16, right:16, bottom: showLabels ? 26 : 6, left:6 };
-  const cH = h - pad.top - pad.bottom; const cW = w - pad.left - pad.right;
 
-  return (
-    React.createElement('svg', { width: "100%", viewBox: `0 0 ${w} ${h}`, style: { overflow:"visible" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 148}}
-      , React.createElement('defs', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 149}}
-        , datasets.map(d => (
-          React.createElement('linearGradient', { key: d.id, id: `cg_${d.id}`, x1: "0", y1: "0", x2: "0", y2: "1", __self: this, __source: {fileName: _jsxFileName2, lineNumber: 151}}
-            , React.createElement('stop', { offset: "0%", stopColor: d.color, stopOpacity: "0.18", __self: this, __source: {fileName: _jsxFileName2, lineNumber: 152}})
-            , React.createElement('stop', { offset: "100%", stopColor: d.color, stopOpacity: "0", __self: this, __source: {fileName: _jsxFileName2, lineNumber: 153}})
-          )
-        ))
+const SportCardFace = ({ player, sport, team, year, set, parallel, number, grade, imgSrc, color, size }) => {
+  size = size || 1;
+  const sportColors = {Football:"#E8212B",Basketball:"#F97316",Baseball:"#22c55e",Hockey:"#38bdf8",Soccer:"#a855f7",Other:"#888"};
+  const ac = color || sportColors[sport] || "#C41E1E";
+  const w = Math.round(200*size), h = Math.round(280*size);
+  const [imgErr, setImgErr] = React.useState(false);
+  const emoji = sport==="Football"?"🏈":sport==="Basketball"?"🏀":sport==="Baseball"?"⚾":sport==="Hockey"?"🏒":sport==="Soccer"?"⚽":"🃏";
+  return React.createElement('div', { style:{width:w,height:h,borderRadius:Math.round(10*size),background:"#0a0a0a",border:"1px solid "+ac+"33",overflow:"hidden",position:"relative",flexShrink:0,boxShadow:"0 8px 24px rgba(0,0,0,0.7)"} },
+    React.createElement('div', { style:{height:Math.round(28*size),background:"linear-gradient(90deg,"+ac+","+ac+"99)",display:"flex",alignItems:"center",justifyContent:"space-between",padding:"0 "+Math.round(8*size)+"px"} },
+      React.createElement('span', { style:{fontSize:Math.round(7*size),fontWeight:800,letterSpacing:"0.06em",color:"#fff",fontFamily:"'DM Mono',monospace"} }, (sport||"SPORTS").toUpperCase()),
+      number && React.createElement('span', { style:{fontSize:Math.round(8*size),fontWeight:900,color:"#fff",background:"rgba(0,0,0,0.45)",borderRadius:3,padding:"1px "+Math.round(5*size)+"px"} }, number)
+    ),
+    React.createElement('div', { style:{height:Math.round(160*size),background:"linear-gradient(135deg,"+ac+"18,#111)",position:"relative",overflow:"hidden"} },
+      React.createElement('div', { style:{position:"absolute",inset:0,background:"linear-gradient(to bottom,transparent 48%,rgba(0,0,0,0.88) 100%)",zIndex:2} }),
+      (imgSrc && !imgErr)
+        ? React.createElement('img', { src:imgSrc, alt:player||"", style:{width:"100%",height:"100%",objectFit:"cover",objectPosition:"top center",transform:"scale(1.08)"}, onError:function(){setImgErr(true);} })
+        : React.createElement('div', { style:{width:"100%",height:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:6} },
+            React.createElement('div', { style:{fontSize:Math.round(38*size),lineHeight:1} }, emoji),
+            React.createElement('div', { style:{fontSize:Math.round(8*size),color:"#555",fontFamily:"'DM Mono',monospace"} }, "NO IMAGE")
+          ),
+      grade && React.createElement('div', { style:{position:"absolute",top:Math.round(6*size),left:Math.round(6*size),zIndex:3,background:grade.includes("10")?"#FFD700":grade.includes("9.5")?"#e0e0e0":"#cd7f32",borderRadius:3,padding:Math.round(2*size)+"px "+Math.round(6*size)+"px",fontSize:Math.round(8*size),fontWeight:800,color:"#000"} }, grade),
+      React.createElement('div', { style:{position:"absolute",bottom:Math.round(6*size),left:Math.round(8*size),right:Math.round(8*size),zIndex:3} },
+        React.createElement('div', { style:{fontSize:Math.round(14*size),fontWeight:900,letterSpacing:"-0.02em",lineHeight:1.1,textShadow:"0 1px 4px rgba(0,0,0,0.8)"} }, player||""),
+        React.createElement('div', { style:{fontSize:Math.round(8*size),color:"rgba(255,255,255,0.55)",fontFamily:"'DM Mono',monospace",marginTop:1} }, team||"")
       )
-      , [0,0.25,0.5,0.75,1].map(t => {
-        const y = pad.top + cH*(1-t);
-        return React.createElement('line', { key: t, x1: pad.left, y1: y, x2: w-pad.right, y2: y, stroke: "#1C1C1C", strokeWidth: "1", __self: this, __source: {fileName: _jsxFileName2, lineNumber: 159}});
-      })
-      , showLabels && months.map((m,i) => {
-        const x = pad.left+(i/(months.length-1))*cW;
-        return React.createElement('text', { key: m, x: x, y: h-4, textAnchor: "middle", fontSize: "9", fill: "#3A3A3A", fontFamily: "'DM Mono', monospace"  , __self: this, __source: {fileName: _jsxFileName2, lineNumber: 163}}, m);
-      })
-      , datasets.map(d => {
-        if (!d.data || d.data.length < 2) return null;
-        const pts = d.data.map((v,i) => {
-          const x = pad.left+(i/(d.data.length-1))*cW;
-          const y = pad.top+cH-((v-min)/range)*cH;
-          return `${x},${y}`;
-        }).join(" ");
-        const firstX = pad.left; const lastX = pad.left+cW; const baseY = pad.top+cH;
-        return (
-          React.createElement('g', { key: d.id, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 174}}
-            , React.createElement('polygon', { points: `${firstX},${baseY} ${pts} ${lastX},${baseY}`, fill: `url(#cg_${d.id})`, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 175}})
-            , React.createElement('polyline', { points: pts, fill: "none", stroke: d.color, strokeWidth: "2", strokeLinejoin: "round", __self: this, __source: {fileName: _jsxFileName2, lineNumber: 176}})
-            , d.data.map((v,i) => {
-              const x = pad.left+(i/(d.data.length-1))*cW;
-              const y = pad.top+cH-((v-min)/range)*cH;
-              return React.createElement('circle', { key: i, cx: x, cy: y, r: "3", fill: d.color, stroke: "#0C0C0C", strokeWidth: "1.5", __self: this, __source: {fileName: _jsxFileName2, lineNumber: 180}});
-            })
-          )
-        );
-      })
-    )
+    ),
+    React.createElement('div', { style:{padding:Math.round(8*size)+"px",background:"#060606",borderTop:"1px solid "+ac+"22"} },
+      React.createElement('div', { style:{fontSize:Math.round(8*size),color:"#888",fontFamily:"'DM Mono',monospace",marginBottom:Math.round(3*size),letterSpacing:"0.04em"} }, (year||"")+" · "+(set||"")),
+      parallel && React.createElement('div', { style:{display:"inline-block",fontSize:Math.round(7*size),color:ac,border:"1px solid "+ac+"44",borderRadius:2,padding:"1px "+Math.round(4*size)+"px",fontFamily:"'DM Mono',monospace",fontWeight:700} }, parallel)
+    ),
+    React.createElement('div', { style:{position:"absolute",inset:0,background:"linear-gradient(135deg,rgba(255,255,255,0.025) 0%,transparent 50%,rgba(255,255,255,0.015) 100%)",pointerEvents:"none",zIndex:5} })
   );
 };
 
@@ -432,18 +459,55 @@ const GradeAnalyzer = () => {
       )
 
       , !image && (
-        React.createElement('div', {
-          onDragOver: (e) => { e.preventDefault(); setDragOver(true); },
-          onDragLeave: () => setDragOver(false),
-          onDrop: handleDrop,
-          onClick: () => fileRef.current&&fileRef.current.click(),
-          style: { border:`2px dashed ${dragOver ? "#C41E1E" : "#222"}`, borderRadius:16, padding:"60px 40px", textAlign:"center", cursor:"pointer", background: dragOver ? "rgba(196,30,30,0.05)":"#0C0C0C", transition:"all 0.2s" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 400}}
-
-          , React.createElement('div', { style: { color:"#333", marginBottom:16 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 407}}, React.createElement(Icon, { name: "camera", size: 48, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 407}}))
-          , React.createElement('div', { style: { fontSize:16, fontWeight:600, marginBottom:8 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 408}}, "Drop your card image here"    )
-          , React.createElement('div', { style: { fontSize:13, color:"#444", fontFamily:"'DM Mono',monospace", marginBottom:20 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 409}}, "JPG, PNG, WEBP supported · Front of card recommended"        )
-          , React.createElement('button', { style: { padding:"10px 28px", background:"#C41E1E", color:"#fff", border:"none", borderRadius:6, fontSize:13, cursor:"pointer", fontFamily:"'DM Mono',monospace", letterSpacing:"0.08em" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 410}}, "SELECT IMAGE" )
-          , React.createElement('input', { ref: fileRef, type: "file", accept: "image/*", style: { display:"none" }, onChange: handleFile, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 411}})
+        React.createElement('div', { style:{display:"grid",gridTemplateColumns:isMobile?"1fr":"1fr 1fr",gap:20} },
+          React.createElement('div', {
+            onDragOver:(e)=>{e.preventDefault();setDragOver(true);},
+            onDragLeave:()=>setDragOver(false),
+            onDrop:handleDrop,
+            onClick:()=>fileRef.current&&fileRef.current.click(),
+            style:{border:`2px dashed ${dragOver?"#C41E1E":"#222"}`,borderRadius:16,padding:"48px 32px",textAlign:"center",cursor:"pointer",background:dragOver?"rgba(196,30,30,0.05)":"#0a0a0a",transition:"all 0.2s"}
+          },
+            React.createElement('div', { style:{color:"#333",marginBottom:16} }, React.createElement(Icon, { name:"camera", size:44 })),
+            React.createElement('div', { style:{fontSize:16,fontWeight:700,marginBottom:8} }, "Drop your card here"),
+            React.createElement('div', { style:{fontSize:13,color:"#555",fontFamily:"'DM Mono',monospace",marginBottom:20} }, "JPG, PNG, WEBP · Front of card"),
+            React.createElement('button', { style:{padding:"10px 28px",background:"#C41E1E",color:"#fff",border:"none",borderRadius:6,fontSize:13,cursor:"pointer",fontWeight:700} }, "SELECT IMAGE"),
+            React.createElement('input', { ref:fileRef, type:"file", accept:"image/*", style:{display:"none"}, onChange:handleFile })
+          ),
+          React.createElement('div', { style:{background:"#0a0a0a",border:"1px solid #1e1e1e",borderRadius:16,padding:20} },
+            React.createElement('div', { style:{fontSize:10,color:"#C41E1E",fontFamily:"'DM Mono',monospace",letterSpacing:"0.15em",marginBottom:14} }, "GRADING CRITERIA PREVIEW"),
+            [{
+              title:"Centering",icon:"◎",desc:"L/R and T/B ratio. PSA 10 requires ≤55/45. Measured from card border to printed area.",
+              scale:[["10","55/45 or better"],["9","65/35 or better"],["8","70/30 or better"],["7","75/25 or better"]]
+            },{
+              title:"Corners",icon:"◻",desc:"All 4 corners inspected under magnification. Fraying, wear, and touches all deduct.",
+              scale:[["10","Four sharp corners, no wear"],["9","One fuzzy corner allowed"],["8","Slight wear on two corners"],["7","Moderate corner wear"]]
+            },{
+              title:"Edges",icon:"—",desc:"All 4 edges checked for chipping, roughness, and dings.",
+              scale:[["10","Clean, sharp edges"],["9","Minor roughness on one edge"],["8","Slight edge wear"],["7","Moderate chipping"]]
+            },{
+              title:"Surface",icon:"□",desc:"Scratches, print defects, stains, and print lines evaluated front and back.",
+              scale:[["10","No scratches, clean print"],["9","Slight surface wear"],["8","Minor scratches"],["7","Noticeable scratches"]]
+            },{
+              title:"Autograph",icon:"✍",desc:"If signed: ink flow, boldness, smearing, and location are graded separately.",
+              scale:[["10","Bold, no smear"],["9","Slight fade"],["8","Moderate fade"],["N/A","Not applicable"]]
+            }].map((item,i)=>
+              React.createElement('div', { key:i, style:{marginBottom:i<4?14:0,paddingBottom:i<4?14:0,borderBottom:i<4?"1px solid #1a1a1a":"none"} },
+                React.createElement('div', { style:{display:"flex",alignItems:"center",gap:8,marginBottom:4} },
+                  React.createElement('span', { style:{fontSize:14,lineHeight:1} }, item.icon),
+                  React.createElement('span', { style:{fontWeight:700,fontSize:13} }, item.title),
+                ),
+                React.createElement('div', { style:{fontSize:11,color:"#666",lineHeight:1.5,fontFamily:"'DM Mono',monospace",marginBottom:6} }, item.desc),
+                React.createElement('div', { style:{display:"flex",gap:4,flexWrap:"wrap"} },
+                  item.scale.map(([grade,desc])=>
+                    React.createElement('div', { key:grade, style:{background:"#111",borderRadius:4,padding:"3px 8px",display:"flex",gap:6,alignItems:"center"} },
+                      React.createElement('span', { style:{fontSize:9,fontWeight:800,color:"#FFD700",fontFamily:"'DM Mono',monospace"} }, grade),
+                      React.createElement('span', { style:{fontSize:9,color:"#555",fontFamily:"'DM Mono',monospace"} }, desc)
+                    )
+                  )
+                )
+              )
+            )
+          )
         )
       )
 
@@ -563,6 +627,7 @@ function RIPSSociety() {
   const [authError, setAuthError] = useState("");
   const [cards, setCards] = useState(MOCK_COLLECTION);
   const [selectedCard, setSelectedCard] = useState(null);
+  const [confirmDelete, setConfirmDelete] = useState(false);
   const [showAddCard, setShowAddCard] = useState(false);
   const [newCard, setNewCard] = useState({ player:"", team:"", sport:"Football", year:"", set:"", parallel:"", number:"", condition:"Raw", notes:"", purchasePrice:"" });
   const [heroAnimated, setHeroAnimated] = useState(false);
@@ -715,8 +780,22 @@ function RIPSSociety() {
   const Nav = () => (
     React.createElement('nav', { style: S.nav, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 681}}
       , React.createElement('div', { style: { display:"flex", alignItems:"center", gap:8, cursor:"pointer", flex: isMobile ? 1 : "none" }, onClick: () => { setPage("home"); setMobileMenuOpen(false); }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 682}}
-        , React.createElement(RIPSLogo, { size: 24, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 683}})
-        , React.createElement('span', { style: { fontSize:14, fontWeight:800, letterSpacing:"-0.03em" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 684}}, "RIPs Society" )
+        , React.createElement('div', { style:{height:22,display:"flex",alignItems:"center"} },
+          React.createElement('svg', { viewBox:"0 0 649 59.88", height:"16", xmlns:"http://www.w3.org/2000/svg", style:{display:"block"} },
+            React.createElement('style', null, ".rips-wm{fill:#cc3333}"),
+            React.createElement('path', { className:"rips-wm", d:"M74.86,0h14v59.88h-14V0Z" }),
+            React.createElement('path', { className:"rips-wm", d:"M99.27,0h44.58c6.36,0,8.75,4.14,8.75,10.96v24.41c0,5.25-3.5,10.5-10.23,10.5h-29.11v14h-14V0ZM138.88,34.54V11.97h-25.61v22.57h25.61Z" }),
+            React.createElement('path', { className:"rips-wm", d:"M214.42,48.73c0,6.63-4.14,11.15-11.61,11.15h-31.87c-5.9,0-11.24-3.13-11.24-10.59v-10.13h13.82v9.21h27.17v-9.49l-34.36-8.66c-5.07-1.29-6.63-4.05-6.63-9.4v-11.7c0-6.45,3.87-9.12,10.13-9.12h34.17c8.47,0,10.41,4.61,10.41,12.07v7.65h-13.73v-8.29h-27.17v8.48l34.54,8.84c5.07,1.29,6.36,3.78,6.36,9.95v10.04Z" }),
+            React.createElement('path', { className:"rips-wm", d:"M301.93,48.73c0,6.63-4.14,11.15-11.61,11.15h-31.87c-5.9,0-11.24-3.13-11.24-10.59v-10.13h13.82v9.21h27.17v-9.49l-34.36-8.66c-5.07-1.29-6.63-4.05-6.63-9.4v-11.7c0-6.45,3.87-9.12,10.13-9.12h34.17c8.47,0,10.41,4.61,10.41,12.07v7.65h-13.73v-8.29h-27.17v8.48l34.54,8.84c5.07,1.29,6.36,3.78,6.36,9.95v10.04Z" }),
+            React.createElement('path', { className:"rips-wm", d:"M310.49,49.28V9.12c0-6.45,3.96-9.12,9.67-9.12h37.58c7.28,0,9.4,4.61,9.4,12.07v36.48c0,5.71-4.24,11.33-11.7,11.33h-33.62c-5.99,0-11.33-3.13-11.33-10.59ZM353.33,47.72V12.25h-29.11v35.47h29.11Z" }),
+            React.createElement('path', { className:"rips-wm", d:"M430.8,36.39v12.44c0,5.62-3.22,11.05-11.79,11.05h-30.77c-7.83,0-12.25-4.24-12.25-11.79V11.88c0-8.84,4.15-11.88,10.87-11.88h33.16c7.65,0,10.78,3.87,10.78,12.07v7.83h-13.82v-7.65h-27.27v35.47h27.27v-11.33h13.82Z" }),
+            React.createElement('path', { className:"rips-wm", d:"M440,0h14v59.88h-14V0Z" }),
+            React.createElement('path', { className:"rips-wm", d:"M464.42,0h49.1v11.42h-35.1v12.53h25.06v11.24h-25.06v13.26h35.1v11.42h-49.1V0Z" }),
+            React.createElement('path', { className:"rips-wm", d:"M538.2,11.97h-20.63V0h55.36v11.97h-20.73v47.9h-14V11.97Z" }),
+            React.createElement('path', { className:"rips-wm", d:"M634.37,0v34.27c0,7.46-2.86,11.61-9.86,11.61h-11.15v14h-14v-14h-10.96c-6.26,0-9.95-3.5-9.95-9.86V0h14v34.54h28V0h13.91Z" }),
+            React.createElement('polygon', { className:"rips-wm", points:"13.99 59.88 0 59.88 0 21.42 21.41 0 65.12 0 65.12 17.92 36.49 46.55 65.12 46.55 65.12 59.88 43.7 59.88 24.69 40.87 51.57 13.99 14.42 13.99 13.99 59.88" })
+          )
+        )
       )
 
       , !isMobile && (
@@ -1233,7 +1312,7 @@ function RIPSSociety() {
               )
               /* P&L */
               , React.createElement('div', { style: {display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8,marginBottom:16}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1200}}
-                , [{label:"AI SIGNAL",val:selectedCard.signal,color:sColor},{label:"PAID",val:"$"+paid},{label:"P&L",val:(currentVal-paid>=0?"+":"")+"$"+Math.abs(currentVal-paid),color:currentVal-paid>=0?"#22c55e":"#ef4444"}].map((item,i)=>(
+                , [{label:"CARD EXPERT",val:selectedCard.signal,color:sColor},{label:"PAID",val:"$"+paid},{label:"P&L",val:(currentVal-paid>=0?"+":"")+"$"+Math.abs(currentVal-paid),color:currentVal-paid>=0?"#22c55e":"#ef4444"}].map((item,i)=>(
                   React.createElement('div', { key: i, style: {background:"#0a0a0a",borderRadius:8,padding:"10px 12px",border:"1px solid #1e1e1e",textAlign:"center"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1202}}
                     , React.createElement('div', { style: {fontSize:9,color:"#555",fontFamily:"'DM Mono',monospace",letterSpacing:"0.1em",marginBottom:4}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1203}}, item.label)
                     , React.createElement('div', { style: {fontSize:14,fontWeight:800,color:item.color||"#fff"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1204}}, item.val)
@@ -1260,6 +1339,114 @@ function RIPSSociety() {
 
 
   //
+
+  const [aiScanImg, setAiScanImg] = useState(null);
+  const [aiScanning, setAiScanning] = useState(false);
+  const AddCardContent = ({ onClose, onAdd, isMobile, S }) => {
+    const [form, setForm] = useState({ player:"", team:"", sport:"Football", year:"2024", set:"", parallel:"", number:"", condition:"Raw", purchasePrice:"", imageUrl:"" });
+    const [cardImg, setCardImg] = useState(null);
+    const [scanning, setScanning] = useState(false);
+    const [scanned, setScanned] = useState(false);
+    const imgRef = useRef();
+    const set = (k,v) => setForm(f=>({...f,[k]:v}));
+
+    const scanCard = async (file) => {
+      setScanning(true);
+      const reader = new FileReader();
+      reader.onload = async (e) => {
+        setCardImg(e.target.result);
+        const base64 = e.target.result.split(",")[1];
+        const mediaType = file.type||"image/jpeg";
+        try {
+          const resp = await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:600,messages:[{role:"user",content:[{type:"image",source:{type:"base64",media_type:mediaType,data:base64}},{type:"text",text:"This is a trading card. Identify it and respond ONLY as JSON (no markdown): {player:string,team:string,sport:string,year:string,set:string,parallel:string or null,number:string or null,condition:string (Raw/PSA 9/PSA 10 etc)}. Be specific. If not a card, use empty strings."}]}]})});
+          const data = await resp.json();
+          const text = (data.content&&data.content[0]?data.content[0].text:"")||"{}";
+          try {
+            const parsed = JSON.parse(text.replace(/```json|```/g,"").trim());
+            setForm(f=>({...f,...parsed,purchasePrice:f.purchasePrice}));
+            setScanned(true);
+          } catch(e2) {}
+        } catch(e3) {}
+        setScanning(false);
+      };
+      reader.readAsDataURL(file);
+    };
+
+    const handleImg = (e) => { const f = e.target.files[0]; if(f) scanCard(f); };
+
+    const submit = () => {
+      if(!form.player) return;
+      const sportColors={Football:"#E8212B",Basketball:"#F97316",Baseball:"#22c55e",Hockey:"#38bdf8",Soccer:"#a855f7",Other:"#888"};
+      const signals = ["BUY","HOLD","HOLD","WATCH","BUY MORE"];
+      const reasons = ["Strong market momentum detected.","Stable position, hold for catalysts.","Monitor for breakout.","Watchlist - volatility expected.","Undervalued vs market comps."];
+      const idx = Math.floor(Math.random()*5);
+      const val = parseInt(form.purchasePrice)||Math.floor(Math.random()*300)+50;
+      onAdd({
+        id: Date.now(), ...form,
+        purchasePrice: parseInt(form.purchasePrice)||0,
+        estValue: Math.round(val*1.1),
+        signal: signals[idx], signalReason: reasons[idx],
+        momentum: "+"+(Math.random()*20).toFixed(1)+"%",
+        imageUrl: cardImg||null, espnName: null,
+      });
+    };
+
+    const inp = (label,field,ph,type="text") => React.createElement('div', null,
+      React.createElement('div', { style:{fontSize:9,color:"#555",fontFamily:"'DM Mono',monospace",letterSpacing:"0.12em",textTransform:"uppercase",marginBottom:5} }, label),
+      React.createElement('input', { style:S.input, type, value:form[field], onChange:e=>set(field,e.target.value), placeholder:ph })
+    );
+
+    return React.createElement('div', { style:{padding:20,display:"flex",flexDirection:"column",gap:14} },
+      React.createElement('div', { style:{border:"2px dashed "+(cardImg?"#22c55e":"#333"),borderRadius:12,padding:cardImg?12:24,textAlign:"center",cursor:"pointer",background:"#0a0a0a",position:"relative"}, onClick:()=>imgRef.current&&imgRef.current.click() },
+        scanning && React.createElement('div', { style:{position:"absolute",inset:0,background:"rgba(0,0,0,0.8)",borderRadius:10,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:8,zIndex:5} },
+          React.createElement('div', { style:{width:28,height:28,border:"3px solid #333",borderTopColor:"#C41E1E",borderRadius:"50%",animation:"spin 0.8s linear infinite"} }),
+          React.createElement('div', { style:{fontSize:12,color:"#888",fontFamily:"'DM Mono',monospace"} }, "AI identifying card...")
+        ),
+        cardImg
+          ? React.createElement('div', { style:{display:"flex",gap:14,alignItems:"center"} },
+              React.createElement('img', { src:cardImg, style:{height:80,borderRadius:6,objectFit:"contain"} }),
+              React.createElement('div', { style:{textAlign:"left",flex:1} },
+                scanned && React.createElement('div', { style:{display:"inline-flex",alignItems:"center",gap:4,background:"rgba(34,197,94,0.1)",border:"1px solid rgba(34,197,94,0.3)",borderRadius:4,padding:"3px 8px",marginBottom:6} },
+                  React.createElement('span', { style:{fontSize:9,color:"#22c55e",fontFamily:"'DM Mono',monospace",fontWeight:700} }, "✓ AI IDENTIFIED")
+                ),
+                React.createElement('div', { style:{fontSize:11,color:"#888",fontFamily:"'DM Mono',monospace"} }, "Tap to change photo")
+              )
+            )
+          : React.createElement(React.Fragment, null,
+              React.createElement(Icon, { name:"camera", size:28 }),
+              React.createElement('div', { style:{fontWeight:700,fontSize:14,marginTop:8,marginBottom:4} }, "Upload Card Photo"),
+              React.createElement('div', { style:{fontSize:12,color:"#555",fontFamily:"'DM Mono',monospace"} }, "AI will auto-identify player, set, and grade")
+            ),
+        React.createElement('input', { ref:imgRef, type:"file", accept:"image/*", style:{display:"none"}, onChange:handleImg })
+      ),
+      React.createElement('div', { style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10} },
+        inp("Player Name","player","e.g. Victor Wembanyama"),
+        inp("Team","team","e.g. San Antonio Spurs"),
+        inp("Year","year","2024"),
+        inp("Card Set","set","e.g. Panini Prizm"),
+        inp("Parallel","parallel","e.g. Gold Prizm"),
+        inp("Serial #","number","/99 or 1/1"),
+        inp("Purchase Price","purchasePrice","$","number"),
+        React.createElement('div', null,
+          React.createElement('div', { style:{fontSize:9,color:"#555",fontFamily:"'DM Mono',monospace",letterSpacing:"0.12em",textTransform:"uppercase",marginBottom:5} }, "Condition"),
+          React.createElement('select', { style:S.select, value:form.condition, onChange:e=>set("condition",e.target.value) },
+            CONDITIONS.map(c=>React.createElement('option', { key:c }, c))
+          )
+        ),
+        React.createElement('div', null,
+          React.createElement('div', { style:{fontSize:9,color:"#555",fontFamily:"'DM Mono',monospace",letterSpacing:"0.12em",textTransform:"uppercase",marginBottom:5} }, "Sport"),
+          React.createElement('select', { style:S.select, value:form.sport, onChange:e=>set("sport",e.target.value) },
+            SPORTS_LIST.map(s=>React.createElement('option', { key:s }, s))
+          )
+        )
+      ),
+      React.createElement('div', { style:{display:"flex",gap:10,paddingTop:8,borderTop:"1px solid #1a1a1a"} },
+        React.createElement('button', { style:{...S.btnSecondary,flex:1,padding:"11px"}, onClick:onClose }, "Cancel"),
+        React.createElement('button', { style:{...S.btnPrimary,flex:1,padding:"11px",opacity:form.player?1:0.4}, onClick:submit, disabled:!form.player }, "Add to Vault")
+      )
+    );
+  };
+
   const AddCardModal = () => showAddCard && (
     React.createElement('div', { style: {...S.modal,alignItems:isMobile?"flex-end":"center",padding:isMobile?0:24}, onClick: e=>e.target===e.currentTarget&&setShowAddCard(false), __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1229}}
       , React.createElement('div', { style: {...S.card,maxWidth:isMobile?"100%":520,borderRadius:isMobile?"16px 16px 0 0":"10px",width:"100%"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1230}}
@@ -1267,28 +1454,7 @@ function RIPSSociety() {
           , React.createElement('div', { style: { fontSize:18, fontWeight:700 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1232}}, "Add Card to Vault"   )
           , React.createElement('button', { onClick: ()=>setShowAddCard(false), style: { background:"transparent", border:"1px solid #1C1C1C", borderRadius:7, padding:"6px 9px", color:"#444", cursor:"pointer" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1233}}, React.createElement(Icon, { name: "x", size: 14, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1233}}))
         )
-        , React.createElement('div', { style: { padding:26, display:"flex", flexDirection:"column", gap:14 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1235}}
-          , React.createElement('div', { style: { display:"grid", gridTemplateColumns:"1fr 1fr", gap:12 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1236}}
-            , [["Player Name","player","text","e.g. Victor Wembanyama"],["Team","team","text","e.g. San Antonio Spurs"],["Year","year","text","2023"],["Card Set","set","text","e.g. Panini Prizm"],["Parallel","parallel","text","e.g. Gold Prizm"],["Serial #","number","text","/99 or 1/1"],["Purchase Price","purchasePrice","number","$"]].map(([label,field,type,ph]) => (
-              React.createElement('div', { key: field, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1238}}
-                , React.createElement('div', { style: { fontSize:9, color:"#2A2A2A", fontFamily:"'DM Mono',monospace", letterSpacing:"0.12em", textTransform:"uppercase", marginBottom:5 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1239}}, label)
-                , React.createElement('input', { style: S.input, type: type, value: newCard[field], onChange: e=>setNewCard({...newCard,[field]:e.target.value}), placeholder: ph, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1240}})
-              )
-            ))
-            , React.createElement('div', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1243}}
-              , React.createElement('div', { style: { fontSize:9, color:"#2A2A2A", fontFamily:"'DM Mono',monospace", letterSpacing:"0.12em", textTransform:"uppercase", marginBottom:5 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1244}}, "Sport")
-              , React.createElement('select', { style: S.select, value: newCard.sport, onChange: e=>setNewCard({...newCard,sport:e.target.value}), __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1245}}, SPORTS_LIST.map(s=>React.createElement('option', { key: s, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1245}}, s)))
-            )
-            , React.createElement('div', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1247}}
-              , React.createElement('div', { style: { fontSize:9, color:"#2A2A2A", fontFamily:"'DM Mono',monospace", letterSpacing:"0.12em", textTransform:"uppercase", marginBottom:5 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1248}}, "Condition")
-              , React.createElement('select', { style: S.select, value: newCard.condition, onChange: e=>setNewCard({...newCard,condition:e.target.value}), __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1249}}, CONDITIONS.map(c=>React.createElement('option', { key: c, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1249}}, c)))
-            )
-          )
-          , React.createElement('div', { style: { display:"flex", gap:10, paddingTop:8, borderTop:"1px solid #141414" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1252}}
-            , React.createElement('button', { style: { ...S.btnSecondary, flex:1, padding:"10px" }, onClick: ()=>setShowAddCard(false), __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1253}}, "Cancel")
-            , React.createElement('button', { style: { ...S.btnPrimary, flex:1, padding:"10px" }, onClick: addCard, disabled: !newCard.player, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1254}}, "Add to Vault"  )
-          )
-        )
+        , React.createElement(AddCardContent, { onClose:()=>setShowAddCard(false), onAdd:(card)=>{setCards([...cards,card]);setShowAddCard(false);}, isMobile, S })
       )
     )
   );
@@ -1694,8 +1860,16 @@ function RIPSSociety() {
       , React.createElement('div', { style: {...S.footerInner,gridTemplateColumns:isMobile?"1fr":"2fr 1fr 1fr",gap:isMobile?32:48}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1659}}
         , React.createElement('div', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1660}}
           , React.createElement('div', { style: { display:"flex",alignItems:"center",gap:10,marginBottom:14 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1661}}
-            , React.createElement(RIPSLogo, { size: 32, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1662}})
-            , React.createElement('span', { style: { fontSize:18,fontWeight:700,letterSpacing:"-0.02em" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1663}}, "RIPs Society" )
+            , React.createElement('div', { style:{height:18,display:"flex",alignItems:"center"} },
+            React.createElement('svg', { viewBox:"0 0 649 59.88", height:"18", xmlns:"http://www.w3.org/2000/svg" },
+              React.createElement('style', null, ".rips-wm{fill:#cc3333}"),
+              React.createElement('path', { className:"rips-wm", d:"M74.86,0h14v59.88h-14V0Z" }),
+              React.createElement('path', { className:"rips-wm", d:"M99.27,0h44.58c6.36,0,8.75,4.14,8.75,10.96v24.41c0,5.25-3.5,10.5-10.23,10.5h-29.11v14h-14V0ZM138.88,34.54V11.97h-25.61v22.57h25.61Z" }),
+              React.createElement('path', { className:"rips-wm", d:"M214.42,48.73c0,6.63-4.14,11.15-11.61,11.15h-31.87c-5.9,0-11.24-3.13-11.24-10.59v-10.13h13.82v9.21h27.17v-9.49l-34.36-8.66c-5.07-1.29-6.63-4.05-6.63-9.4v-11.7c0-6.45,3.87-9.12,10.13-9.12h34.17c8.47,0,10.41,4.61,10.41,12.07v7.65h-13.73v-8.29h-27.17v8.48l34.54,8.84c5.07,1.29,6.36,3.78,6.36,9.95v10.04Z" }),
+              React.createElement('path', { className:"rips-wm", d:"M434.37,0v34.27c0,7.46-2.86,11.61-9.86,11.61h-11.15v14h-14v-14h-10.96c-6.26,0-9.95-3.5-9.95-9.86V0h14v34.54h28V0h13.91Z" }),
+              React.createElement('polygon', { className:"rips-wm", points:"13.99 59.88 0 59.88 0 21.42 21.41 0 65.12 0 65.12 17.92 36.49 46.55 65.12 46.55 65.12 59.88 43.7 59.88 24.69 40.87 51.57 13.99 14.42 13.99 13.99 59.88" })
+            )
+          )
           )
           , React.createElement('p', { style: { fontSize:12,color:"#222",fontFamily:"'DM Mono',monospace",lineHeight:1.8,maxWidth:280 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1665}}, "Premium card breaks, community culture, and the tools to build a real collection. The society that rips."                )
           , React.createElement('div', { style: { marginTop:16,fontSize:11,color:"#1A1A1A",fontFamily:"'DM Mono',monospace" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1666}}, "© 2025 RIPs Society"   )
