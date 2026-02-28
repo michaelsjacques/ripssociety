@@ -10,7 +10,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
@@ -52,13 +52,6 @@ const PLAYER_TRENDS = [
   { id:"mahomes", name:"Patrick Mahomes", sport:"Football", team:"KC Chiefs", pos:"QB", indexCard:"2023 Topps Chrome RC /99", change:"+4.2%", data:[280,290,310,295,305,320,315,330], hot:false, rookie:false, color:"#E8212B", signal:"HOLD", signalReason:"Stable dynasty card, dynasty narrative fully priced in" },
   { id:"mcdavid", name:"Connor McDavid", sport:"Hockey", team:"Oilers", pos:"C", indexCard:"2015 UD Young Guns PSA 10", change:"+15.8%", data:[1400,1500,1550,1480,1600,1700,1750,1820], hot:false, rookie:false, color:"#80DEEA", signal:"BUY", signalReason:"Undervalued vs peers, Stanley Cup window open" },
   { id:"judge", name:"Aaron Judge", sport:"Baseball", team:"Yankees", pos:"RF", indexCard:"2017 Topps Chrome RC PSA 9", change:"-2.3%", data:[420,410,440,415,400,420,390,410], hot:false, rookie:false, color:"#CE93D8", signal:"HOLD", signalReason:"Minor correction, WS contention = price recovery expected" },
-  { id:"allen", name:"Josh Allen", sport:"Football", team:"Bills", pos:"QB", indexCard:"2018 Prizm RC PSA 10", change:"+12.4%", data:[800,850,920,880,940,980,1020,1080], hot:true, rookie:false, color:"#2196F3", signal:"BUY", signalReason:"MVP candidate, Bills SB window driving speculative buying" },
-  { id:"burrow", name:"Joe Burrow", sport:"Football", team:"Bengals", pos:"QB", indexCard:"2020 Optic RC Auto /99", change:"+8.1%", data:[600,640,680,660,700,730,750,780], hot:false, rookie:false, color:"#FF6F00", signal:"HOLD", signalReason:"Injury recovery complete, Bengals rebuilding narrative" },
-  { id:"messi", name:"Lionel Messi", sport:"Soccer", team:"Inter Miami", pos:"FW", indexCard:"2006 Panini WC RC", change:"+31.5%", data:[5000,5400,5800,5600,6100,6500,6800,7200], hot:true, rookie:false, color:"#FF80AB", signal:"BUY", signalReason:"MLS move created new US collector wave, last trophy run" },
-  { id:"lebron", name:"LeBron James", sport:"Basketball", team:"Lakers", pos:"SF", indexCard:"2003 Topps Chrome RC PSA 10", change:"+6.8%", data:[28000,29000,30000,28500,29500,30500,31000,32000], hot:false, rookie:false, color:"#FFD700", signal:"HOLD", signalReason:"All-time record holder, market ceiling approaching" },
-  { id:"curry", name:"Stephen Curry", sport:"Basketball", team:"Warriors", pos:"PG", indexCard:"2009 Topps Chrome RC PSA 9", change:"-1.8%", data:[3200,3100,3300,3000,2900,3000,3100,3000], hot:false, rookie:false, color:"#FFD700", signal:"WATCH", signalReason:"Off-peak cycle, post-championship plateau expected" },
-  { id:"acuna", name:"Ronald Acuña Jr.", sport:"Baseball", team:"Braves", pos:"OF", indexCard:"2018 Topps Chrome RC Auto", change:"+18.3%", data:[800,880,960,920,1000,1080,1120,1180], hot:true, rookie:false, color:"#66BB6A", signal:"BUY", signalReason:"MVP season prices barely corrected, deep value play" },
-  { id:"matthews", name:"Auston Matthews", sport:"Hockey", team:"Maple Leafs", pos:"C", indexCard:"2016 UD Young Guns RC PSA 10", change:"+9.7%", data:[1200,1280,1340,1300,1380,1420,1460,1500], hot:false, rookie:false, color:"#29B6F6", signal:"HOLD", signalReason:"Cup win would double market overnight" },
 ];
 
 const SERIES_TRENDS = [
@@ -90,19 +83,11 @@ const NON_SPORTS_CATEGORIES = [
 ];
 
 const BREAK_ODDS = [
-  // Topps (public odds from topps.com pack inserts and hobby wrappers)
-  { set:"2024 Topps Chrome Football", brand:"Topps", type:"Hobby Box", hits:"2 Autos per box", rookieOdds:"1:3 packs", refractorOdds:"1:2 packs", superShortPrint:"1:192 packs", avgBoxCost:195, avgHitValue:110, roi:-44, source:"Topps Official" },
-  { set:"2024 Topps Chrome Baseball", brand:"Topps", type:"Hobby Box", hits:"2 Autos per box", rookieOdds:"1:2 packs", refractorOdds:"1:1 pack", superShortPrint:"1:96 packs", avgBoxCost:165, avgHitValue:95, roi:-42, source:"Topps Official" },
-  { set:"2024 Topps Series 1 Baseball", brand:"Topps", type:"Hobby Box", hits:"1 Auto + 1 Relic", rookieOdds:"1:4 packs", refractorOdds:"N/A", superShortPrint:"1:216 packs", avgBoxCost:110, avgHitValue:55, roi:-50, source:"Topps Official" },
-  { set:"2024 Topps Gold Label Baseball", brand:"Topps", type:"Hobby Box", hits:"4 Autos per box", rookieOdds:"1:2 packs", refractorOdds:"1:1 pack", superShortPrint:"1:32 packs", avgBoxCost:145, avgHitValue:120, roi:-17, source:"Topps Official" },
-  { set:"2024 Topps Allen & Ginter Baseball", brand:"Topps", type:"Hobby Box", hits:"1 Auto per box", rookieOdds:"1:6 packs", refractorOdds:"N/A", superShortPrint:"1:128 packs", avgBoxCost:95, avgHitValue:60, roi:-37, source:"Topps Official" },
-  { set:"2024 Topps Stadium Club Baseball", brand:"Topps", type:"Hobby Box", hits:"1 Auto per box", rookieOdds:"1:5 packs", refractorOdds:"N/A", superShortPrint:"1:144 packs", avgBoxCost:80, avgHitValue:55, roi:-31, source:"Topps Official" },
-  { set:"2023 Topps MLS Soccer", brand:"Topps", type:"Hobby Box", hits:"1 Auto per box", rookieOdds:"1:4 packs", refractorOdds:"1:2 packs", superShortPrint:"1:96 packs", avgBoxCost:75, avgHitValue:48, roi:-36, source:"Topps Official" },
-  // Panini (estimated from collector community data)
-  { set:"2023 Panini Prizm Basketball", brand:"Panini", type:"Hobby Box", hits:"1 Auto per box", rookieOdds:"1:3 packs", refractorOdds:"1:1 pack", superShortPrint:"1:288 packs", avgBoxCost:220, avgHitValue:160, roi:-27, source:"Collector Est." },
-  { set:"2022 Panini Prizm Soccer WC", brand:"Panini", type:"Blaster Box", hits:"1 Auto per 5 boxes", rookieOdds:"1:6 packs", refractorOdds:"1:2 packs", superShortPrint:"1:144 packs", avgBoxCost:35, avgHitValue:28, roi:-20, source:"Collector Est." },
-  { set:"2023 Bowman Chrome Baseball", brand:"Topps", type:"Hobby Box", hits:"3 Autos per box", rookieOdds:"1:2 packs", refractorOdds:"1:1 pack", superShortPrint:"1:96 packs", avgBoxCost:110, avgHitValue:85, roi:-23, source:"Topps Official" },
-  { set:"2023 Upper Deck Hockey YG", brand:"Upper Deck", type:"Series 1 Hobby", hits:"1 RC per pack", rookieOdds:"1:1 pack", refractorOdds:"N/A", superShortPrint:"1:72 packs", avgBoxCost:145, avgHitValue:88, roi:-39, source:"Upper Deck Official" },
+  { set:"2023 Topps Chrome Football", type:"Hobby Box", hits:"2 Autos per box", rookieOdds:"1:4 packs", refractorOdds:"1:2 packs", superShortPrint:"1:192 packs", avgBoxCost:180, avgHitValue:95, roi:-47 },
+  { set:"2023 Panini Prizm Basketball", type:"Hobby Box", hits:"1 Auto per box", rookieOdds:"1:3 packs", refractorOdds:"1:1 pack", superShortPrint:"1:288 packs", avgBoxCost:220, avgHitValue:160, roi:-27 },
+  { set:"2022 Panini Prizm Soccer WC", type:"Blaster Box", hits:"1 Auto per 5 boxes", rookieOdds:"1:6 packs", refractorOdds:"1:2 packs", superShortPrint:"1:144 packs", avgBoxCost:35, avgHitValue:28, roi:-20 },
+  { set:"2023 Bowman Chrome Baseball", type:"Hobby Box", hits:"3 Autos per box", rookieOdds:"1:2 packs", refractorOdds:"1:1 pack", superShortPrint:"1:96 packs", avgBoxCost:110, avgHitValue:85, roi:-23 },
+  { set:"2023 Upper Deck Hockey YG", type:"Series 1 Hobby", hits:"1 RC per pack", rookieOdds:"1:1 pack", refractorOdds:"N/A", superShortPrint:"1:72 packs", avgBoxCost:145, avgHitValue:88, roi:-39 },
 ];
 
 const MOCK_COLLECTION = [
@@ -120,75 +105,30 @@ const ESPN_IDS = {
   "Kylian Mbappé":{sport:"soccer",id:"231747"},
   "Shohei Ohtani":{sport:"mlb",id:"39832"},
   "Luka Dončič":{sport:"nba",id:"3149673"},
-  "Luka Doncic":{sport:"nba",id:"3149673"},
   "Patrick Mahomes":{sport:"nfl",id:"3139477"},
-  "Connor McDavid":{sport:"nhl",id:"3895074"},
-  "Aaron Judge":{sport:"mlb",id:"33192"},
-  "LeBron James":{sport:"nba",id:"1966"},
-  "Stephen Curry":{sport:"nba",id:"3975"},
-  "Ja Morant":{sport:"nba",id:"4279888"},
-  "Giannis Antetokounmpo":{sport:"nba",id:"3032977"},
-  "Josh Allen":{sport:"nfl",id:"3918298"},
-  "Joe Burrow":{sport:"nfl",id:"3915511"},
-  "Trevor Lawrence":{sport:"nfl",id:"4360310"},
-  "Justin Jefferson":{sport:"nfl",id:"4047365"},
-  "Bryce Young":{sport:"nfl",id:"4431299"},
-  "Mike Trout":{sport:"mlb",id:"33150"},
-  "Ronald Acuña Jr.":{sport:"mlb",id:"39853"},
-  "Lionel Messi":{sport:"soccer",id:"34014"},
-  "Erling Haaland":{sport:"soccer",id:"4301610"},
-  "Auston Matthews":{sport:"nhl",id:"3899671"},
-  "Sidney Crosby":{sport:"nhl",id:"3114"},
+  "Connor McDavid":{sport:"nhl",id:"3895074"},"Auston Matthews":{sport:"nhl",id:"3899671"},
+  "Connor Bedard":{sport:"nhl",id:"4697392"},"Sidney Crosby":{sport:"nhl",id:"3114"},
+  "Aaron Judge":{sport:"mlb",id:"33192"},"Mike Trout":{sport:"mlb",id:"33150"},
+  "Paul Skenes":{sport:"mlb",id:"5163059"},"Ronald Acuña Jr.":{sport:"mlb",id:"39853"},
+  "LeBron James":{sport:"nba",id:"1966"},"Stephen Curry":{sport:"nba",id:"3975"},
+  "Giannis Antetokounmpo":{sport:"nba",id:"3032977"},"Nikola Jokic":{sport:"nba",id:"3112335"},
+  "Luka Dončič":{sport:"nba",id:"3149673"},"Luka Doncic":{sport:"nba",id:"3149673"},
+  "Josh Allen":{sport:"nfl",id:"3918298"},"Joe Burrow":{sport:"nfl",id:"3915511"},
+  "Caleb Williams":{sport:"nfl",id:"4431612"},"Jayden Daniels":{sport:"nfl",id:"4432643"},
+  "Lamar Jackson":{sport:"nfl",id:"3916387"},"Erling Haaland":{sport:"soccer",id:"4301610"},
+  "Lionel Messi":{sport:"soccer",id:"34014"},"Kylian Mbappé":{sport:"soccer",id:"231747"},
 };
-const espnImg = (name) => {
-  const e = ESPN_IDS[name];
-  if (!e) return null;
-  return `https://a.espncdn.com/i/headshots/${e.sport}/players/full/${e.id}.png`;
-};
+const espnImg = (name) => { const e=ESPN_IDS[name]; return e?`https://a.espncdn.com/i/headshots/${e.sport}/players/full/${e.id}.png`:null; };
 const PARALLELS_RAINBOW = [
   { name:"Base", owned:true },{ name:"Silver Prizm", owned:true },{ name:"Blue Prizm /199", owned:false },
   { name:"Red Prizm /149", owned:false },{ name:"Green Prizm /99", owned:false },
   { name:"Orange Prizm /49", owned:true },{ name:"Gold Prizm /10", owned:false },{ name:"Black Prizm /1", owned:false },
 ];
 
-
-const TEAM_COLORS = {
-  // NBA
-  "Spurs":"#C4CED4","Lakers":"#FDB927","Warriors":"#FFC72C","Celtics":"#007A33",
-  "Heat":"#98002E","Bulls":"#CE1141","Knicks":"#006BB6","Nets":"#000000",
-  "Bucks":"#00471B","Suns":"#E56020","Mavericks":"#00538C","Nuggets":"#0E2240",
-  "76ers":"#006BB6","Cavaliers":"#860038","Timberwolves":"#236192",
-  "San Antonio Spurs":"#C4CED4","Los Angeles Lakers":"#FDB927","Golden State Warriors":"#FFC72C",
-  // NFL
-  "KC Chiefs":"#E31837","Chiefs":"#E31837","Bills":"#00338D","Bengals":"#FB4F14",
-  "Cowboys":"#003594","Eagles":"#004C54","49ers":"#AA0000","Packers":"#203731",
-  "Rams":"#003594","Texans":"#03202F","Broncos":"#FB4F14","Ravens":"#241773",
-  "Steelers":"#FFB612","Patriots":"#002244","Bears":"#0B162A","Giants":"#0B2265",
-  "Kansas City Chiefs":"#E31837","Houston Texans":"#03202F","Buffalo Bills":"#00338D",
-  // MLB
-  "Dodgers":"#005A9C","Yankees":"#003087","Red Sox":"#BD3039","Braves":"#CE1141",
-  "Mets":"#002D72","Cubs":"#0E3386","Cardinals":"#C41E3A","Astros":"#002D62",
-  "Angels":"#BA0021","Indians":"#0C2340","Phillies":"#E81828","LA Dodgers":"#005A9C",
-  // NHL
-  "Oilers":"#FF4C00","Maple Leafs":"#00205B","Canadiens":"#AF1E2D","Bruins":"#FFB81C",
-  "Penguins":"#FCB514","Blackhawks":"#CF0A2C","Rangers":"#0038A8","Capitals":"#041E42",
-  "Lightning":"#002868","Blues":"#002F87","Flames":"#C8102E","Avalanche":"#6F263D",
-  "Edmonton Oilers":"#FF4C00","Toronto Maple Leafs":"#00205B",
-  // Soccer
-  "Real Madrid":"#FEBE10","Barcelona":"#A50044","Man City":"#6CABDD",
-  "Liverpool":"#C8102E","Chelsea":"#034694","Arsenal":"#EF0107","PSG":"#004170",
-  "Inter Miami":"#F7B5CD","Juventus":"#000000","Bayern Munich":"#DC052D",
-};
-const getTeamColor = (team) => {
-  if (!team) return "#C41E1E";
-  const t = team.trim();
-  if (TEAM_COLORS[t]) return TEAM_COLORS[t];
-  // partial match
-  for (const [k,v] of Object.entries(TEAM_COLORS)) {
-    if (t.includes(k) || k.includes(t)) return v;
-  }
-  return "#C41E1E";
-};
+const TEAM_COLORS={"Spurs":"#C4CED4","San Antonio Spurs":"#C4CED4","Lakers":"#FDB927","Warriors":"#FFC72C","Celtics":"#007A33","Heat":"#98002E","Bulls":"#CE1141","Knicks":"#006BB6","Nuggets":"#0E2240","Mavericks":"#00538C","Dallas Mavericks":"#00538C","Bucks":"#00471B","Chiefs":"#E31837","KC Chiefs":"#E31837","Kansas City Chiefs":"#E31837","Bills":"#00338D","Buffalo Bills":"#00338D","Bengals":"#FB4F14","Cowboys":"#003594","Eagles":"#004C54","49ers":"#AA0000","Texans":"#03202F","Houston Texans":"#03202F","Ravens":"#241773","Bears":"#0B162A","Commanders":"#5A1414","Dodgers":"#005A9C","LA Dodgers":"#005A9C","Yankees":"#003087","Braves":"#CE1141","Pirates":"#FFD700","Pittsburgh Pirates":"#FFD700","Oilers":"#FF4C00","Edmonton Oilers":"#FF4C00","Maple Leafs":"#00205B","Blackhawks":"#CF0A2C","Penguins":"#FCB514","Bruins":"#FFB81C","Real Madrid":"#FEBE10","Barcelona":"#A50044","Inter Miami":"#F7B5CD","Liverpool":"#C8102E","Man City":"#6CABDD","Chelsea":"#034694","Arsenal":"#EF0107","PSG":"#004170","Bayern Munich":"#DC052D"};
+const getTeamColor=(team)=>{if(!team)return"#C41E1E";const t=team.trim();if(TEAM_COLORS[t])return TEAM_COLORS[t];for(const[k,v]of Object.entries(TEAM_COLORS)){if(t.includes(k)||k.includes(t))return v;}return"#C41E1E";};
+const MultiLineChart=({datasets,h,showLabels})=>{h=h||120;if(!datasets||!datasets.length)return React.createElement("div",{style:{height:h,background:"#0a0a0a",borderRadius:6}});const all=datasets.flatMap(d=>d.data||[]);if(!all.length)return React.createElement("div",{style:{height:h,background:"#0a0a0a",borderRadius:6}});const mn=Math.min(...all),mx=Math.max(...all),range=mx-mn||1,W=300;const pts=data=>data.map((v,i)=>(i/(data.length-1)*W)+","+(h-((v-mn)/range)*(h-8)-4)).join(" ");return React.createElement("svg",{viewBox:"0 0 "+W+" "+h,style:{width:"100%",height:h,display:"block"},preserveAspectRatio:"none"},React.createElement("rect",{width:W,height:h,fill:"#080808",rx:4}),datasets.map((ds,di)=>{const data=ds.data||[];if(data.length<2)return null;const lastY=h-((data[data.length-1]-mn)/range)*(h-8)-4;return React.createElement("g",{key:ds.id||di},React.createElement("polyline",{points:pts(data),fill:"none",stroke:ds.color||"#22c55e",strokeWidth:1.5,strokeLinecap:"round",strokeLinejoin:"round"}),React.createElement("circle",{cx:W,cy:lastY,r:2.5,fill:ds.color||"#22c55e"}));}),showLabels!==false&&React.createElement("g",null,[0,1,2,3,4,5,6,7].map(i=>React.createElement("line",{key:i,x1:(i/7)*W,y1:0,x2:(i/7)*W,y2:h,stroke:"#1a1a1a",strokeWidth:0.5}))));};
+const PremiumCard=({player,team,sport,year,set,parallel,number,grade,estValue,momentum,signal,imgSrc,espnId,espnSport,onClick,width})=>{width=width||200;const h=Math.round(width*1.4),p=width/200,sc=Math.round;const teamColor=getTeamColor(team);const gradNum=grade?parseFloat(grade.replace(/[^0-9.]/g,"")):0;const gradeColor=gradNum>=10?"#FFD700":gradNum>=9.5?"#e8e8e8":gradNum>=9?"#cd7f32":"#aaa";const[imgErr,setImgErr]=React.useState(false);const src=imgSrc||(espnId&&espnSport?"https://a.espncdn.com/i/headshots/"+espnSport+"/players/full/"+espnId+".png":null);const emoji=({Football:"🏈",Basketball:"🏀",Baseball:"⚾",Hockey:"🏒",Soccer:"⚽"})[sport]||"🃏";const up=momentum&&!String(momentum).startsWith("-");const rainbow="linear-gradient(90deg,#FF0000,#FF7700,#FFFF00,#00CC00,#0000FF,#8B00FF)";return React.createElement("div",{onClick,style:{cursor:onClick?"pointer":"default",width,flexShrink:0,filter:"drop-shadow(0 8px 24px rgba(0,0,0,0.7))",transition:"transform 0.2s"},onMouseEnter:onClick?e=>{e.currentTarget.style.transform="translateY(-5px)";}:null,onMouseLeave:onClick?e=>{e.currentTarget.style.transform="";}:null},React.createElement("div",{style:{width,height:h,borderRadius:sc(12*p),border:"3px solid "+teamColor,background:"#0a0a0a",overflow:"hidden",position:"relative",display:"flex",flexDirection:"column"}},React.createElement("div",{style:{height:sc(22*p),flexShrink:0,background:"linear-gradient(90deg,"+teamColor+"ee,"+teamColor+"88)",display:"flex",alignItems:"center",justifyContent:"space-between",padding:"0 "+sc(8*p)+"px"}},React.createElement("span",{style:{fontSize:sc(7*p),fontWeight:900,letterSpacing:"0.08em",color:"#fff",fontFamily:"'DM Mono',monospace"}},(sport||"CARD").toUpperCase()),number?React.createElement("span",{style:{fontSize:sc(9*p),fontWeight:900,color:"#fff",background:"rgba(0,0,0,0.5)",borderRadius:3,padding:"1px "+sc(5*p)+"px",fontFamily:"'DM Mono',monospace"}},number):null),React.createElement("div",{style:{flex:1,position:"relative",overflow:"hidden",background:"linear-gradient(145deg,"+teamColor+"22,#050505)"}},React.createElement("div",{style:{position:"absolute",inset:0,background:"linear-gradient(to bottom,transparent 40%,rgba(0,0,0,0.85) 100%)",zIndex:2}}),src&&!imgErr?React.createElement("img",{src,alt:player||"",style:{width:"100%",height:"100%",objectFit:"cover",objectPosition:"top center",transform:"scale(1.06)"},onError:()=>setImgErr(true)}):React.createElement("div",{style:{width:"100%",height:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:4}},React.createElement("div",{style:{fontSize:sc(36*p),lineHeight:1}},emoji),React.createElement("div",{style:{fontSize:sc(8*p),color:"#444",fontFamily:"'DM Mono',monospace"}},"NO IMAGE")),grade?React.createElement("div",{style:{position:"absolute",top:sc(5*p),left:sc(6*p),zIndex:3,background:gradeColor,borderRadius:3,padding:sc(2*p)+"px "+sc(6*p)+"px",fontSize:sc(8*p),fontWeight:900,color:"#000",fontFamily:"'DM Mono',monospace"}},grade):null,signal?React.createElement("div",{style:{position:"absolute",top:sc(5*p),right:sc(6*p),zIndex:3}},React.createElement(SignalBadge,{signal})):null,React.createElement("div",{style:{position:"absolute",bottom:0,left:0,right:0,zIndex:3,padding:"0 "+sc(8*p)+"px "+sc(6*p)+"px"}},React.createElement("div",{style:{fontSize:sc(13*p),fontWeight:900,letterSpacing:"-0.02em",lineHeight:1.1,textShadow:"0 2px 6px rgba(0,0,0,0.9)"}},player||""),React.createElement("div",{style:{fontSize:sc(8*p),color:"rgba(255,255,255,0.55)",fontFamily:"'DM Mono',monospace",marginTop:1}},team||""))),React.createElement("div",{style:{flexShrink:0}},React.createElement("div",{style:{height:sc(4*p),background:rainbow}}),React.createElement("div",{style:{background:"#060606",padding:sc(7*p)+"px "+sc(8*p)+"px"}},React.createElement("div",{style:{fontSize:sc(7*p),color:"#888",fontFamily:"'DM Mono',monospace",marginBottom:sc(3*p),overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}},(year||"")+" · "+(set||"")),parallel?React.createElement("div",{style:{fontSize:sc(7*p),color:teamColor,fontFamily:"'DM Mono',monospace",marginBottom:sc(3*p),fontWeight:700,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}},parallel):null,React.createElement("div",{style:{display:"flex",justifyContent:"space-between",alignItems:"center"}},estValue?React.createElement("span",{style:{fontSize:sc(13*p),fontWeight:900,color:"#fff"}},"$"+estValue):null,momentum?React.createElement("span",{style:{fontSize:sc(9*p),fontWeight:700,color:up?"#22c55e":"#ef4444",fontFamily:"'DM Mono',monospace"}},momentum):null))),React.createElement("div",{style:{position:"absolute",inset:0,background:"linear-gradient(135deg,rgba(255,255,255,0.04) 0%,transparent 45%,rgba(255,255,255,0.02) 100%)",pointerEvents:"none",zIndex:10,borderRadius:sc(10*p)}})));};
 
 const SPORTS_LIST = ["Football","Basketball","Baseball","Hockey","Soccer","Other"];
 const CONDITIONS = ["Raw","PSA 7","PSA 8","PSA 9","PSA 10","BGS 9","BGS 9.5","BGS 10"];
@@ -249,165 +189,6 @@ const RIPSLogo = ({ size=40, full=false }) => {
   return React.createElement('svg', { width:size, height:size, viewBox:"0 0 66 60", xmlns:"http://www.w3.org/2000/svg" },
     React.createElement('style', null, '.rips-ico{fill:#cc3333}'),
     React.createElement('polygon', { className:"rips-ico", points:"13.99 59.88 0 59.88 0 21.42 21.41 0 65.12 0 65.12 17.92 36.49 46.55 65.12 46.55 65.12 59.88 43.7 59.88 24.69 40.87 51.57 13.99 14.42 13.99 13.99 59.88" })
-  );
-};
-
-
-const SportCardFace = ({ player, sport, team, year, set, parallel, number, grade, imgSrc, color, size }) => {
-  size = size || 1;
-  const sportColors = {Football:"#E8212B",Basketball:"#F97316",Baseball:"#22c55e",Hockey:"#38bdf8",Soccer:"#a855f7",Other:"#888"};
-  const ac = color || sportColors[sport] || "#C41E1E";
-  const w = Math.round(200*size), h = Math.round(280*size);
-  const [imgErr, setImgErr] = React.useState(false);
-  const emoji = sport==="Football"?"🏈":sport==="Basketball"?"🏀":sport==="Baseball"?"⚾":sport==="Hockey"?"🏒":sport==="Soccer"?"⚽":"🃏";
-  return React.createElement('div', { style:{width:w,height:h,borderRadius:Math.round(10*size),background:"#0a0a0a",border:"1px solid "+ac+"33",overflow:"hidden",position:"relative",flexShrink:0,boxShadow:"0 8px 24px rgba(0,0,0,0.7)"} },
-    React.createElement('div', { style:{height:Math.round(28*size),background:"linear-gradient(90deg,"+ac+","+ac+"99)",display:"flex",alignItems:"center",justifyContent:"space-between",padding:"0 "+Math.round(8*size)+"px"} },
-      React.createElement('span', { style:{fontSize:Math.round(7*size),fontWeight:800,letterSpacing:"0.06em",color:"#fff",fontFamily:"'DM Mono',monospace"} }, (sport||"SPORTS").toUpperCase()),
-      number && React.createElement('span', { style:{fontSize:Math.round(8*size),fontWeight:900,color:"#fff",background:"rgba(0,0,0,0.45)",borderRadius:3,padding:"1px "+Math.round(5*size)+"px"} }, number)
-    ),
-    React.createElement('div', { style:{height:Math.round(160*size),background:"linear-gradient(135deg,"+ac+"18,#111)",position:"relative",overflow:"hidden"} },
-            (imgSrc && !imgErr)
-        ? React.createElement('img', { src:imgSrc, alt:player||"", style:{width:"100%",height:"100%",objectFit:"cover",objectPosition:"top center",transform:"scale(1.08)"}, onError:function(){setImgErr(true);} })
-        : React.createElement('div', { style:{width:"100%",height:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:6} },
-            React.createElement('div', { style:{fontSize:Math.round(38*size),lineHeight:1} }, emoji),
-            React.createElement('div', { style:{fontSize:Math.round(8*size),color:"#555",fontFamily:"'DM Mono',monospace"} }, "NO IMAGE")
-          ),
-      grade && React.createElement('div', { style:{position:"absolute",top:Math.round(6*size),left:Math.round(6*size),zIndex:3,background:grade.includes("10")?"#FFD700":grade.includes("9.5")?"#e0e0e0":"#cd7f32",borderRadius:3,padding:Math.round(2*size)+"px "+Math.round(6*size)+"px",fontSize:Math.round(8*size),fontWeight:800,color:"#000"} }, grade),
-      React.createElement('div', { style:{position:"absolute",bottom:Math.round(6*size),left:Math.round(8*size),right:Math.round(8*size),zIndex:3} },
-        React.createElement('div', { style:{fontSize:Math.round(14*size),fontWeight:900,letterSpacing:"-0.02em",lineHeight:1.1,textShadow:"0 1px 4px rgba(0,0,0,0.8)"} }, player||""),
-        React.createElement('div', { style:{fontSize:Math.round(8*size),color:"rgba(255,255,255,0.55)",fontFamily:"'DM Mono',monospace",marginTop:1} }, team||"")
-      )
-    ),
-    React.createElement('div', { style:{padding:Math.round(8*size)+"px",background:"#060606",borderTop:"1px solid "+ac+"22"} },
-      React.createElement('div', { style:{fontSize:Math.round(8*size),color:"#888",fontFamily:"'DM Mono',monospace",marginBottom:Math.round(3*size),letterSpacing:"0.04em"} }, (year||"")+" · "+(set||"")),
-      parallel && React.createElement('div', { style:{display:"inline-block",fontSize:Math.round(7*size),color:ac,border:"1px solid "+ac+"44",borderRadius:2,padding:"1px "+Math.round(4*size)+"px",fontFamily:"'DM Mono',monospace",fontWeight:700} }, parallel)
-    ),
-    React.createElement('div', { style:{position:"absolute",inset:0,background:"linear-gradient(135deg,rgba(255,255,255,0.025) 0%,transparent 50%,rgba(255,255,255,0.015) 100%)",pointerEvents:"none",zIndex:5} })
-  );
-};
-
-
-const PremiumCard = ({ player, team, sport, year, set, parallel, number, grade, estValue, momentum, signal, imgSrc, espnId, espnSport, onClick, width }) => {
-  width = width || 200;
-  const aspect = 1.4;
-  const h = Math.round(width * aspect);
-  const teamColor = getTeamColor(team);
-  const gradNum = grade ? parseFloat(grade.replace(/[^0-9.]/g,"")) : 0;
-  const gradeColor = gradNum >= 10 ? "#FFD700" : gradNum >= 9.5 ? "#e8e8e8" : gradNum >= 9 ? "#cd7f32" : "#aaa";
-  const [imgErr, setImgErr] = React.useState(false);
-  const src = imgSrc || (espnId && espnSport ? `https://a.espncdn.com/i/headshots/${espnSport}/players/full/${espnId}.png` : null);
-  const sportEmoji = {Football:"🏈",Basketball:"🏀",Baseball:"⚾",Hockey:"🏒",Soccer:"⚽"}[sport] || "🃏";
-  const up = momentum && !String(momentum).startsWith("-");
-
-  // Rainbow gradient for bottom strip
-  const rainbow = "linear-gradient(90deg,#FF0000,#FF7700,#FFFF00,#00CC00,#0000FF,#8B00FF)";
-
-  return React.createElement('div', {
-    onClick, style:{cursor:onClick?"pointer":"default", width, flexShrink:0,
-      filter:"drop-shadow(0 8px 24px rgba(0,0,0,0.7))",
-      transition:"transform 0.2s,filter 0.2s",
-    },
-    onMouseEnter: onClick ? e=>{e.currentTarget.style.transform="translateY(-4px)";e.currentTarget.style.filter="drop-shadow(0 16px 32px rgba(0,0,0,0.8))";} : null,
-    onMouseLeave: onClick ? e=>{e.currentTarget.style.transform="";e.currentTarget.style.filter="drop-shadow(0 8px 24px rgba(0,0,0,0.7))";} : null,
-  },
-    // Card body
-    React.createElement('div', { style:{
-      width, height:h, borderRadius:Math.round(12*(width/200)),
-      border:`3px solid ${teamColor}`,
-      background:"#0a0a0a", overflow:"hidden", position:"relative",
-      boxShadow:`inset 0 0 0 1px rgba(255,255,255,0.04), 0 0 0 1px ${teamColor}44`,
-      display:"flex", flexDirection:"column",
-    }},
-      // Top bar: sport + serial number
-      React.createElement('div', { style:{
-        height:Math.round(22*(width/200)), flexShrink:0,
-        background:`linear-gradient(90deg, ${teamColor}ee, ${teamColor}88)`,
-        display:"flex", alignItems:"center", justifyContent:"space-between",
-        padding:`0 ${Math.round(8*(width/200))}px`,
-      }},
-        React.createElement('span', { style:{fontSize:Math.round(7*(width/200)),fontWeight:900,letterSpacing:"0.08em",color:"#fff",fontFamily:"'DM Mono',monospace",textShadow:"0 1px 2px rgba(0,0,0,0.5)"} }, (sport||"SPORTS").toUpperCase()),
-        number && React.createElement('span', { style:{fontSize:Math.round(9*(width/200)),fontWeight:900,color:"#fff",background:"rgba(0,0,0,0.5)",borderRadius:3,padding:`1px ${Math.round(5*(width/200))}px`,fontFamily:"'DM Mono',monospace"} }, number)
-      ),
-
-      // Photo area — center of card
-      React.createElement('div', { style:{flex:1,position:"relative",overflow:"hidden",background:`linear-gradient(145deg, ${teamColor}22, #050505)`} },
-        React.createElement('div', { style:{position:"absolute",inset:0,background:"linear-gradient(to bottom,transparent 40%,rgba(0,0,0,0.85) 100%)",zIndex:2} }),
-        src && !imgErr
-          ? React.createElement('img', { src, alt:player||"", style:{width:"100%",height:"100%",objectFit:"cover",objectPosition:"top center",transform:"scale(1.06)"}, onError:()=>setImgErr(true) })
-          : React.createElement('div', { style:{width:"100%",height:"100%",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:4} },
-              React.createElement('div', { style:{fontSize:Math.round(36*(width/200)),lineHeight:1} }, sportEmoji),
-              React.createElement('div', { style:{fontSize:Math.round(8*(width/200)),color:"#444",fontFamily:"'DM Mono',monospace"} }, "NO IMAGE")
-            ),
-        // Grade badge
-        grade && React.createElement('div', { style:{position:"absolute",top:Math.round(5*(width/200)),left:Math.round(6*(width/200)),zIndex:3,background:gradeColor,borderRadius:3,padding:`${Math.round(2*(width/200))}px ${Math.round(6*(width/200))}px`,fontSize:Math.round(8*(width/200)),fontWeight:900,color:"#000",fontFamily:"'DM Mono',monospace"} }, grade),
-        // Signal badge
-        signal && React.createElement('div', { style:{position:"absolute",top:Math.round(5*(width/200)),right:Math.round(6*(width/200)),zIndex:3} },
-          React.createElement(SignalBadge, { signal })
-        ),
-        // Player name overlay at bottom of photo
-        React.createElement('div', { style:{position:"absolute",bottom:0,left:0,right:0,zIndex:3,padding:`0 ${Math.round(8*(width/200))}px ${Math.round(6*(width/200))}px`} },
-          React.createElement('div', { style:{fontSize:Math.round(13*(width/200)),fontWeight:900,letterSpacing:"-0.02em",lineHeight:1.1,textShadow:"0 2px 6px rgba(0,0,0,0.9)"} }, player||""),
-          React.createElement('div', { style:{fontSize:Math.round(8*(width/200)),color:"rgba(255,255,255,0.55)",fontFamily:"'DM Mono',monospace",marginTop:1} }, team||"")
-        )
-      ),
-
-      // Rainbow gradient strip + stats
-      React.createElement('div', { style:{flexShrink:0} },
-        React.createElement('div', { style:{height:Math.round(4*(width/200)),background:rainbow} }),
-        React.createElement('div', { style:{background:"#060606",padding:`${Math.round(7*(width/200))}px ${Math.round(8*(width/200))}px`} },
-          React.createElement('div', { style:{fontSize:Math.round(7.5*(width/200)),color:"#888",fontFamily:"'DM Mono',monospace",marginBottom:Math.round(3*(width/200)),overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"} },
-            (year||"")+" · "+(set||"")
-          ),
-          parallel && React.createElement('div', { style:{fontSize:Math.round(7*(width/200)),color:teamColor,fontFamily:"'DM Mono',monospace",marginBottom:Math.round(3*(width/200)),fontWeight:700,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"} }, parallel),
-          React.createElement('div', { style:{display:"flex",justifyContent:"space-between",alignItems:"center"} },
-            estValue && React.createElement('span', { style:{fontSize:Math.round(13*(width/200)),fontWeight:900,color:"#fff"} }, "$"+estValue),
-            momentum && React.createElement('span', { style:{fontSize:Math.round(9*(width/200)),fontWeight:700,color:up?"#22c55e":"#ef4444",fontFamily:"'DM Mono',monospace"} }, momentum)
-          )
-        )
-      ),
-
-      // Holographic shimmer
-      React.createElement('div', { style:{position:"absolute",inset:0,background:"linear-gradient(135deg,rgba(255,255,255,0.04) 0%,transparent 45%,rgba(255,255,255,0.02) 100%)",pointerEvents:"none",zIndex:10,borderRadius:Math.round(10*(width/200))} })
-    )
-  );
-};
-
-const MultiLineChart = ({ datasets, h, showLabels }) => {
-  h = h || 120;
-  if (!datasets || !datasets.length) return React.createElement('div', { style:{height:h,background:"#0a0a0a",borderRadius:6} });
-  const allVals = datasets.flatMap(d => d.data || []);
-  const mn = Math.min(...allVals), mx = Math.max(...allVals);
-  const range = mx - mn || 1;
-  const W = 300, H = h;
-  const pts = (data) => {
-    if (!data || data.length < 2) return "";
-    return data.map((v,i) => {
-      const x = (i/(data.length-1))*W;
-      const y = H - ((v-mn)/range)*(H-8) - 4;
-      return `${x},${y}`;
-    }).join(" ");
-  };
-  return React.createElement('svg', { viewBox:`0 0 ${W} ${H}`, style:{width:"100%",height:h,display:"block"}, preserveAspectRatio:"none" },
-    React.createElement('rect', { width:W, height:H, fill:"#080808", rx:4 }),
-    datasets.map((ds,di) => {
-      const data = ds.data || [];
-      if (data.length < 2) return null;
-      const points = pts(data);
-      const lastX = ((data.length-1)/(data.length-1))*W;
-      const lastY = H - ((data[data.length-1]-mn)/range)*(H-8) - 4;
-      return React.createElement('g', { key:ds.id||di },
-        React.createElement('polyline', { points, fill:"none", stroke:ds.color||"#22c55e", strokeWidth:1.5, strokeLinecap:"round", strokeLinejoin:"round", opacity:0.9 }),
-        React.createElement('circle', { cx:lastX, cy:lastY, r:2.5, fill:ds.color||"#22c55e" })
-      );
-    }),
-    showLabels !== false && React.createElement('g', null,
-      [0,1,2,3,4,5,6,7].map(i => {
-        const ds0 = datasets[0];
-        if (!ds0 || !ds0.data || i >= ds0.data.length) return null;
-        const x = (i/(ds0.data.length-1))*W;
-        return React.createElement('line', { key:i, x1:x, y1:0, x2:x, y2:H, stroke:"#1a1a1a", strokeWidth:0.5 });
-      })
-    )
   );
 };
 
@@ -622,55 +403,18 @@ const GradeAnalyzer = () => {
       )
 
       , !image && (
-        React.createElement('div', { style:{display:"grid",gridTemplateColumns:isMobile?"1fr":"1fr 1fr",gap:20} },
-          React.createElement('div', {
-            onDragOver:(e)=>{e.preventDefault();setDragOver(true);},
-            onDragLeave:()=>setDragOver(false),
-            onDrop:handleDrop,
-            onClick:()=>fileRef.current&&fileRef.current.click(),
-            style:{border:`2px dashed ${dragOver?"#C41E1E":"#222"}`,borderRadius:16,padding:"48px 32px",textAlign:"center",cursor:"pointer",background:dragOver?"rgba(196,30,30,0.05)":"#0a0a0a",transition:"all 0.2s"}
-          },
-            React.createElement('div', { style:{color:"#333",marginBottom:16} }, React.createElement(Icon, { name:"camera", size:44 })),
-            React.createElement('div', { style:{fontSize:16,fontWeight:700,marginBottom:8} }, "Drop your card here"),
-            React.createElement('div', { style:{fontSize:13,color:"#555",fontFamily:"'DM Mono',monospace",marginBottom:20} }, "JPG, PNG, WEBP · Front of card"),
-            React.createElement('button', { style:{padding:"10px 28px",background:"#C41E1E",color:"#fff",border:"none",borderRadius:6,fontSize:13,cursor:"pointer",fontWeight:700} }, "SELECT IMAGE"),
-            React.createElement('input', { ref:fileRef, type:"file", accept:"image/*", style:{display:"none"}, onChange:handleFile })
-          ),
-          React.createElement('div', { style:{background:"#0a0a0a",border:"1px solid #1e1e1e",borderRadius:16,padding:20} },
-            React.createElement('div', { style:{fontSize:10,color:"#C41E1E",fontFamily:"'DM Mono',monospace",letterSpacing:"0.15em",marginBottom:14} }, "GRADING CRITERIA PREVIEW"),
-            [{
-              title:"Centering",icon:"◎",desc:"L/R and T/B ratio. PSA 10 requires ≤55/45. Measured from card border to printed area.",
-              scale:[["10","55/45 or better"],["9","65/35 or better"],["8","70/30 or better"],["7","75/25 or better"]]
-            },{
-              title:"Corners",icon:"◻",desc:"All 4 corners inspected under magnification. Fraying, wear, and touches all deduct.",
-              scale:[["10","Four sharp corners, no wear"],["9","One fuzzy corner allowed"],["8","Slight wear on two corners"],["7","Moderate corner wear"]]
-            },{
-              title:"Edges",icon:"—",desc:"All 4 edges checked for chipping, roughness, and dings.",
-              scale:[["10","Clean, sharp edges"],["9","Minor roughness on one edge"],["8","Slight edge wear"],["7","Moderate chipping"]]
-            },{
-              title:"Surface",icon:"□",desc:"Scratches, print defects, stains, and print lines evaluated front and back.",
-              scale:[["10","No scratches, clean print"],["9","Slight surface wear"],["8","Minor scratches"],["7","Noticeable scratches"]]
-            },{
-              title:"Autograph",icon:"✍",desc:"If signed: ink flow, boldness, smearing, and location are graded separately.",
-              scale:[["10","Bold, no smear"],["9","Slight fade"],["8","Moderate fade"],["N/A","Not applicable"]]
-            }].map((item,i)=>
-              React.createElement('div', { key:i, style:{marginBottom:i<4?14:0,paddingBottom:i<4?14:0,borderBottom:i<4?"1px solid #1a1a1a":"none"} },
-                React.createElement('div', { style:{display:"flex",alignItems:"center",gap:8,marginBottom:4} },
-                  React.createElement('span', { style:{fontSize:14,lineHeight:1} }, item.icon),
-                  React.createElement('span', { style:{fontWeight:700,fontSize:13} }, item.title),
-                ),
-                React.createElement('div', { style:{fontSize:11,color:"#666",lineHeight:1.5,fontFamily:"'DM Mono',monospace",marginBottom:6} }, item.desc),
-                React.createElement('div', { style:{display:"flex",gap:4,flexWrap:"wrap"} },
-                  item.scale.map(([grade,desc])=>
-                    React.createElement('div', { key:grade, style:{background:"#111",borderRadius:4,padding:"3px 8px",display:"flex",gap:6,alignItems:"center"} },
-                      React.createElement('span', { style:{fontSize:9,fontWeight:800,color:"#FFD700",fontFamily:"'DM Mono',monospace"} }, grade),
-                      React.createElement('span', { style:{fontSize:9,color:"#555",fontFamily:"'DM Mono',monospace"} }, desc)
-                    )
-                  )
-                )
-              )
-            )
-          )
+        React.createElement('div', {
+          onDragOver: (e) => { e.preventDefault(); setDragOver(true); },
+          onDragLeave: () => setDragOver(false),
+          onDrop: handleDrop,
+          onClick: () => fileRef.current&&fileRef.current.click(),
+          style: { border:`2px dashed ${dragOver ? "#C41E1E" : "#222"}`, borderRadius:16, padding:"60px 40px", textAlign:"center", cursor:"pointer", background: dragOver ? "rgba(196,30,30,0.05)":"#0C0C0C", transition:"all 0.2s" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 400}}
+
+          , React.createElement('div', { style: { color:"#333", marginBottom:16 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 407}}, React.createElement(Icon, { name: "camera", size: 48, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 407}}))
+          , React.createElement('div', { style: { fontSize:16, fontWeight:600, marginBottom:8 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 408}}, "Drop your card image here"    )
+          , React.createElement('div', { style: { fontSize:13, color:"#444", fontFamily:"'DM Mono',monospace", marginBottom:20 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 409}}, "JPG, PNG, WEBP supported · Front of card recommended"        )
+          , React.createElement('button', { style: { padding:"10px 28px", background:"#C41E1E", color:"#fff", border:"none", borderRadius:6, fontSize:13, cursor:"pointer", fontFamily:"'DM Mono',monospace", letterSpacing:"0.08em" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 410}}, "SELECT IMAGE" )
+          , React.createElement('input', { ref: fileRef, type: "file", accept: "image/*", style: { display:"none" }, onChange: handleFile, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 411}})
         )
       )
 
@@ -790,7 +534,6 @@ function RIPSSociety() {
   const [authError, setAuthError] = useState("");
   const [cards, setCards] = useState(MOCK_COLLECTION);
   const [selectedCard, setSelectedCard] = useState(null);
-  const [confirmDelete, setConfirmDelete] = useState(false);
   const [showAddCard, setShowAddCard] = useState(false);
   const [newCard, setNewCard] = useState({ player:"", team:"", sport:"Football", year:"", set:"", parallel:"", number:"", condition:"Raw", notes:"", purchasePrice:"" });
   const [heroAnimated, setHeroAnimated] = useState(false);
@@ -1033,7 +776,7 @@ function RIPSSociety() {
   //
   const MobileBottomNav = () => !isMobile ? null : (
     React.createElement('div', { style: { position:"fixed", bottom:0, left:0, right:0, zIndex:48, background:"#000", borderTop:"1px solid #1a1a1a", display:"flex", paddingBottom:"env(safe-area-inset-bottom)" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 758}}
-      , [["home","home","Home"],["market","trending","Market"],["book","book","Card Book"],["breaks","live","Breaks"]].map(([id,icon,label]) => (
+      , [["home","home","Home"],["market","trending","Market"],["book","book","Vault"],["breaks","live","Breaks"]].map(([id,icon,label]) => (
         React.createElement('button', { key: id, onClick: () => navigateTo(id), style: { flex:1, display:"flex", flexDirection:"column", alignItems:"center", gap:3, padding:"10px 0 8px", background:"transparent", border:"none", color:page===id?"#C41E1E":"#555", cursor:"pointer" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 760}}
           , React.createElement(Icon, { name: icon, size: 20, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 761}})
           , React.createElement('span', { style: { fontSize:9, fontWeight:600, fontFamily:"'DM Mono',monospace", letterSpacing:"0.06em" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 762}}, label.toUpperCase())
@@ -1064,207 +807,341 @@ function RIPSSociety() {
   };
 
   const HERO_CARDS = [
-    {player:"Victor Wembanyama",espnId:"4432174",sport:"nba",grade:"PSA 10",val:"$520",change:"+38.4%",set:"2023 Prizm RC",rot:-8,tx:-170,ty:-60,z:6},
-    {player:"C.J. Stroud",espnId:"4361529",sport:"nfl",grade:"BGS 9.5",val:"$480",change:"+44.2%",set:"2023 Bowman /99",rot:5,tx:30,ty:-90,z:5},
-    {player:"Shohei Ohtani",espnId:"39832",sport:"mlb",grade:"PSA 9",val:"$2,700",change:"+22.1%",set:"2018 Bowman Auto",rot:-3,tx:200,ty:-40,z:4},
-    {player:"Connor McDavid",espnId:"3895074",sport:"nhl",grade:"PSA 10",val:"$1,820",change:"+15.8%",set:"2015 UD Young Guns",rot:7,tx:-120,ty:60,z:3},
-    {player:"Luka Doncic",espnId:"3149673",sport:"nba",grade:"BGS 9.5",val:"$4,100",change:"+11.6%",set:"2018 Prizm Gold /10",rot:-5,tx:100,ty:80,z:2},
-    {player:"Patrick Mahomes",espnId:"3139477",sport:"nfl",grade:"PSA 9",val:"$330",change:"+4.2%",set:"2017 Prizm RC",rot:3,tx:250,ty:50,z:1},
+    {player:"Victor Wembanyama",espnId:"4432174",sport:"nba",espnSport:"nba",team:"San Antonio Spurs",grade:"PSA 10",val:520,change:"+38.4%",set:"2023 Panini Prizm RC",parallel:"Silver Prizm",rot:-8,tx:-30,ty:-20,z:3},
+    {player:"Jayden Daniels",espnId:"4432643",sport:"nfl",espnSport:"nfl",team:"Commanders",grade:"PSA 10",val:380,change:"+67.2%",set:"2024 Panini Prizm RC",parallel:"Auto /99",number:"/99",rot:5,tx:30,ty:-10,z:4},
+    {player:"Shohei Ohtani",espnId:"39832",sport:"mlb",espnSport:"mlb",team:"LA Dodgers",grade:"PSA 9",val:2700,change:"+22.1%",set:"2018 Bowman Chrome Auto",parallel:"Orange Refractor /25",rot:-3,tx:10,ty:0,z:5},
+    {player:"Connor McDavid",espnId:"3895074",sport:"nhl",espnSport:"nhl",team:"Edmonton Oilers",grade:"PSA 10",val:1820,change:"+15.8%",set:"2015 Upper Deck YG",parallel:"Young Guns RC",rot:7,tx:-20,ty:-15,z:2},
+    {player:"Lionel Messi",espnId:"34014",sport:"soccer",espnSport:"soccer",team:"Inter Miami",grade:"PSA 9",val:3200,change:"+31.5%",set:"2006 Panini WC RC",parallel:"Base RC",rot:-5,tx:20,ty:10,z:1},
+    {player:"Patrick Mahomes",espnId:"3139477",sport:"nfl",espnSport:"nfl",team:"KC Chiefs",grade:"PSA 9",val:330,change:"+4.2%",set:"2017 Panini Prizm RC",parallel:"Silver Prizm",rot:3,tx:40,ty:5,z:2},
   ];
 
-  const HomePage = () => (
-    React.createElement(React.Fragment, null
-      /* HERO */
-      , isMobile ? (
-        React.createElement('div', { style: {paddingTop:56,background:"#000",minHeight:"100svh",display:"flex",flexDirection:"column"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 802}}
-          , React.createElement('div', { style: {flex:1,padding:"36px 20px 24px",opacity:heroAnimated?1:0,transform:heroAnimated?"none":"translateY(16px)",transition:"all 0.7s ease"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 803}}
-            , React.createElement('h1', { style: {fontSize:"clamp(3rem,14vw,4.5rem)",fontWeight:900,lineHeight:0.92,letterSpacing:"-0.04em",marginBottom:20}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 804}}, "Rip."
-              , React.createElement('br', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 805}}), "Collect.", React.createElement('br', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 805}}), React.createElement('span', { style: {color:"#C41E1E"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 805}}, "Invest.")
-            )
-            , React.createElement('p', { style: {fontSize:14,color:"#666",lineHeight:1.65,marginBottom:28,maxWidth:320}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 807}}, "The stock market for trading cards. Real-time data, AI grading, and a digital vault."
+  const HomePage = ({isMobile, setPage, setAuthModal, user}) => {
+  const [hoveredCard, setHoveredCard] = React.useState(null);
+  const [activeFeature, setActiveFeature] = React.useState(0);
+  const features = [
+    {icon:"⚡",title:"Instant AI Scan",desc:"Point your camera at any graded slab. AI reads the label in milliseconds — player, year, grade, cert number. No typing.",stat:"< 0.8s",statLabel:"avg scan time"},
+    {icon:"📈",title:"Live Market Data",desc:"Real-time eBay comps, PSA pop reports, and 30-day trend lines appear instantly. Know exactly what your card is worth right now.",stat:"$2.4B+",statLabel:"market tracked"},
+    {icon:"🎯",title:"Smart Signals",desc:"BUY, HOLD, WATCH signals powered by market velocity, pop report data, and momentum indicators. Never overpay again.",stat:"38.6%",statLabel:"avg PSA 10 ROI"},
+    {icon:"🏆",title:"Card Expert AI",desc:"Ask anything about any card. Grading tips, market outlook, counterfeit detection, investment thesis — instant answers.",stat:"50K+",statLabel:"cards analyzed"},
+  ];
+  const slabs = HERO_CARDS.slice(0,5);
 
-            )
-            , React.createElement('div', { style: {display:"flex",flexDirection:"column",gap:10}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 810}}
-              , React.createElement('button', { style: {...S.btnPrimary,fontSize:15,padding:"15px",borderRadius:8,fontWeight:800}, onClick: ()=>setAuthModal("signup"), __self: this, __source: {fileName: _jsxFileName2, lineNumber: 811}}, "START FOR FREE"  )
-              , React.createElement('button', { style: {...S.btnSecondary,fontSize:14,padding:"14px",borderRadius:8}, onClick: ()=>setPage("breaks"), __self: this, __source: {fileName: _jsxFileName2, lineNumber: 812}}, "Watch Breaks" )
-            )
-            , React.createElement('div', { style: {display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:0,marginTop:36,borderTop:"1px solid #1a1a1a",paddingTop:24}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 814}}
-              , [{val:"$2.4B+",label:"Tracked"},{val:"180k+",label:"Cards"},{val:"50k+",label:"AI Grades"}].map((s,i)=>(
-                React.createElement('div', { key: i, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 816}}, React.createElement('div', { style: {fontSize:"1.5rem",fontWeight:900,letterSpacing:"-0.03em"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 816}}, s.val), React.createElement('div', { style: {fontSize:10,color:"#555",marginTop:2,fontFamily:"'DM Mono',monospace"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 816}}, s.label))
-              ))
-            )
-          )
-          /* Mobile card scroll */
-          , React.createElement('div', { style: {height:220,position:"relative",overflow:"hidden",flexShrink:0}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 821}}
-                                    , React.createElement('img', { src:"hero-cards.jpg", alt:"Sports cards", style:{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover",objectPosition:"center top"} })
-            , React.createElement('div', { style:{position:"absolute",inset:0,background:"linear-gradient(to bottom,rgba(0,0,0,0.1),rgba(0,0,0,0.55))"} })
-            , HERO_CARDS.slice(0,4).map((c,i)=>(
-              React.createElement('div', { key: i, style: {position:"absolute",top:"50%",left:"50%",transform:`translate(-50%,-50%) translate(${[-120,-30,80,170][i]}px,${[-20,30,-30,10][i]}px) rotate(${[-6,3,-4,5][i]}deg)`,zIndex:4-i,filter:"drop-shadow(0 8px 16px rgba(0,0,0,0.5))"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 823}}
-                , React.createElement('div', { style: {width:90,background:"#0a0a0a",borderRadius:6,overflow:"hidden",border:"1px solid rgba(255,255,255,0.08)"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 824}}
-                  , React.createElement('div', { style: {height:72,background:"#111",position:"relative",overflow:"hidden"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 825}}
-                    , React.createElement('img', { src: `https://a.espncdn.com/i/headshots/${c.sport}/players/full/${c.espnId}.png`, alt: c.player, style: {width:"100%",height:"100%",objectFit:"cover",objectPosition:"top"}, onError: e=>e.target.style.opacity="0", __self: this, __source: {fileName: _jsxFileName2, lineNumber: 826}})
-                    , React.createElement('div', { style: {position:"absolute",top:4,left:4,background:c.grade.includes("10")?"#FFD700":"#e0e0e0",borderRadius:2,padding:"1px 5px",fontSize:7,fontWeight:800,color:"#000"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 827}}, c.grade)
-                  )
-                  , React.createElement('div', { style: {padding:"5px 7px"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 829}}
-                    , React.createElement('div', { style: {fontWeight:800,fontSize:9,marginBottom:1,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 830}}, c.player.split(" ").pop())
-                    , React.createElement('div', { style: {display:"flex",justifyContent:"space-between"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 831}}, React.createElement('span', { style: {fontSize:10,fontWeight:800}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 831}}, c.val), React.createElement('span', { style: {fontSize:8,color:"#22c55e",fontWeight:700}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 831}}, c.change))
-                  )
+  return React.createElement('div', {style:{background:"#000",minHeight:"100vh",overflowX:"hidden"}},
+
+    /* ── HERO ── */
+    React.createElement('section', {style:{minHeight:"100vh",position:"relative",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",paddingTop:80,overflow:"hidden"}},
+      /* Deep navy radial glow */
+      React.createElement('div', {style:{position:"absolute",inset:0,background:"radial-gradient(ellipse 80% 60% at 50% 40%, #0a1628 0%, #050810 50%, #000 100%)",zIndex:0}}),
+      /* Grid dots pattern */
+      React.createElement('div', {style:{position:"absolute",inset:0,backgroundImage:"radial-gradient(circle, #1e3a5f22 1px, transparent 1px)",backgroundSize:"32px 32px",zIndex:0}}),
+      /* Red accent light from top */
+      React.createElement('div', {style:{position:"absolute",top:0,left:"50%",transform:"translateX(-50%)",width:600,height:300,background:"radial-gradient(ellipse at top, #C41E1E33 0%, transparent 70%)",zIndex:0}}),
+
+      /* Floating slab cards */
+      ...slabs.map((card, i) => {
+        const positions = [
+          {left:"4%",top:"18%",rot:-12,scale:0.72,z:1,blur:1},
+          {left:"8%",top:"52%",rot:8,scale:0.62,z:1,blur:2},
+          {right:"4%",top:"15%",rot:14,scale:0.78,z:1,blur:0},
+          {right:"7%",top:"50%",rot:-9,scale:0.65,z:1,blur:1.5},
+          {left:"50%",top:"78%",rot:3,scale:0.55,z:1,blur:3,transform:"translateX(-50%)"},
+        ];
+        const pos = positions[i] || {};
+        const espnInfo = ESPN_IDS[card.player];
+        const src = espnInfo ? "https://a.espncdn.com/i/headshots/"+(espnInfo.sport)+"/players/full/"+(espnInfo.id)+".png" : null;
+        const teamColor = getTeamColor(card.team||"");
+        return React.createElement('div', {key:i,
+          style:{position:"absolute",...pos,transform:(pos.transform||"")+" rotate("+pos.rot+"deg) scale("+pos.scale+")",
+            filter:"blur("+pos.blur+"px) drop-shadow(0 20px 40px rgba(0,0,0,0.8))",
+            transition:"all 0.4s ease",zIndex:pos.z,pointerEvents:"none"}},
+          /* PSA slab shell */
+          React.createElement('div', {style:{width:160,background:"linear-gradient(160deg,rgba(200,220,240,0.12),rgba(150,180,220,0.06))",border:"1px solid rgba(200,220,255,0.15)",borderRadius:6,overflow:"hidden",backdropFilter:"blur(4px)"}},
+            /* Label */
+            React.createElement('div', {style:{background:"linear-gradient(90deg,#C41E1E,#a01818)",padding:"7px 10px",borderBottom:"3px solid #000"}},
+              React.createElement('div', {style:{display:"flex",justifyContent:"space-between",alignItems:"center"}},
+                React.createElement('div', null,
+                  React.createElement('div', {style:{fontSize:7,fontWeight:900,color:"#fff",fontFamily:"'DM Mono',monospace",letterSpacing:"0.05em"}},"RIPS SOCIETY"),
+                  React.createElement('div', {style:{fontSize:8,fontWeight:700,color:"rgba(255,255,255,0.7)",fontFamily:"'DM Mono',monospace",marginTop:1}},"GEM MT")
+                ),
+                React.createElement('div', {style:{textAlign:"right"}},
+                  React.createElement('div', {style:{fontSize:18,fontWeight:900,color:"#FFD700",fontFamily:"'DM Mono',monospace",lineHeight:1}}, "10"),
+                  React.createElement('div', {style:{fontSize:5,color:"rgba(255,255,255,0.5)",fontFamily:"'DM Mono',monospace"}}, "PSA")
                 )
               )
-            ))
-          )
-        )
-      ) : (
-        React.createElement('div', { style: {display:"grid",gridTemplateColumns:"50% 50%",minHeight:"100vh",paddingTop:56}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 839}}
-          , React.createElement('div', { style: {background:"#000",display:"flex",flexDirection:"column",justifyContent:"center",padding:"80px 56px 80px 48px",opacity:heroAnimated?1:0,transform:heroAnimated?"none":"translateY(20px)",transition:"all 0.8s ease"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 840}}
-            , React.createElement('h1', { style: {fontSize:"clamp(3.6rem,5.5vw,6.5rem)",fontWeight:900,lineHeight:0.92,letterSpacing:"-0.04em",marginBottom:32}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 841}}, "Rip."
-              , React.createElement('br', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 842}}), "Collect.", React.createElement('br', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 842}}), React.createElement('span', { style: {color:"#C41E1E"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 842}}, "Invest.")
+            ),
+            /* Card art */
+            React.createElement('div', {style:{height:200,background:"linear-gradient(145deg,"+teamColor+"33,#050a12)",position:"relative",overflow:"hidden"}},
+              src&&React.createElement('img', {src,style:{width:"100%",height:"110%",objectFit:"cover",objectPosition:"top center"},onError:e=>{e.target.style.display="none";}}),
+              React.createElement('div', {style:{position:"absolute",bottom:0,left:0,right:0,height:"50%",background:"linear-gradient(to bottom,transparent,rgba(0,0,0,0.8))"}}),
+              React.createElement('div', {style:{position:"absolute",bottom:6,left:6,right:6}},
+                React.createElement('div', {style:{fontSize:8,fontWeight:900,color:"#fff",lineHeight:1.2,fontFamily:"'DM Mono',monospace"}},(card.player||"").toUpperCase()),
+                React.createElement('div', {style:{fontSize:6,color:"rgba(255,255,255,0.5)",fontFamily:"'DM Mono',monospace",marginTop:1}},(card.team||"").toUpperCase())
+              )
+            ),
+            /* Bottom strip */
+            React.createElement('div', {style:{background:"#080808",padding:"5px 8px",borderTop:"1px solid #111"}},
+              React.createElement('div', {style:{fontSize:6,color:"#444",fontFamily:"'DM Mono',monospace",textAlign:"center"}}, "CERTIFIED · AUTHENTIC · GRADED")
             )
-            , React.createElement('p', { style: {fontSize:16,color:"#666",lineHeight:1.7,marginBottom:40,maxWidth:400}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 844}}, "The stock market for trading cards. Real-time market data, AI grading, and a digital vault for collectors who treat cards like assets."
+          )
+        );
+      }),
 
-            )
-            , React.createElement('div', { style: {display:"flex",gap:12}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 847}}
-              , React.createElement('button', { style: {...S.btnPrimary,fontSize:14,padding:"14px 32px"}, onClick: ()=>setAuthModal("signup"), __self: this, __source: {fileName: _jsxFileName2, lineNumber: 848}}, "START FOR FREE"  )
-              , React.createElement('button', { style: {...S.btnSecondary,fontSize:13,padding:"13px 24px"}, onClick: ()=>setPage("breaks"), __self: this, __source: {fileName: _jsxFileName2, lineNumber: 849}}, "Watch Breaks" )
-            )
-            , React.createElement('div', { style: {display:"grid",gridTemplateColumns:"1fr 1fr 1fr",marginTop:56,borderTop:"1px solid #1a1a1a",paddingTop:28}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 851}}
-              , [{val:"$2.4B+",label:"Market cap tracked"},{val:"180k+",label:"Cards indexed"},{val:"50k+",label:"AI grades / month"}].map((s,i)=>(
-                React.createElement('div', { key: i, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 853}}, React.createElement('div', { style: {fontSize:"1.9rem",fontWeight:900,letterSpacing:"-0.03em"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 853}}, s.val), React.createElement('div', { style: {fontSize:11,color:"#555",marginTop:4,fontFamily:"'DM Mono',monospace"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 853}}, s.label))
-              ))
-            )
-          )
-          , React.createElement('div', { style: {position:"relative",overflow:"hidden"} }
-            , React.createElement('img', { src:"hero-cards.jpg", alt:"Sports cards collection", style:{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover",objectPosition:"center"} })
-            , React.createElement('div', { style:{position:"absolute",inset:0,background:"linear-gradient(90deg,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.1) 60%,transparent 100%)"} })
-            , React.createElement('div', { style: {position:"relative",width:"100%",height:"100%",minHeight:500}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 858}}
-              , HERO_CARDS.map((c,i)=>(
-                React.createElement('div', { key: i, style: {position:"absolute",top:"50%",left:"50%",transform:`translate(-50%,-50%) translate(${c.tx}px,${c.ty}px) rotate(${c.rot}deg)`,zIndex:c.z,filter:"drop-shadow(0 16px 32px rgba(0,0,0,0.5))"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 860}}
-                  , React.createElement('div', { style: {width:130,background:"#0a0a0a",borderRadius:8,overflow:"hidden",border:"1px solid rgba(255,255,255,0.07)"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 861}}
-                    , React.createElement('div', { style: {height:110,background:"#111",position:"relative",overflow:"hidden"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 862}}
-                      , React.createElement('div', { style: {position:"absolute",inset:0,background:"linear-gradient(to bottom,transparent 45%,#0a0a0a 100%)",zIndex:2}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 863}})
-                      , React.createElement('img', { src: `https://a.espncdn.com/i/headshots/${c.sport}/players/full/${c.espnId}.png`, alt: c.player, style: {width:"100%",height:"100%",objectFit:"cover",objectPosition:"top"}, onError: e=>e.target.style.opacity="0", __self: this, __source: {fileName: _jsxFileName2, lineNumber: 864}})
-                      , React.createElement('div', { style: {position:"absolute",top:6,left:6,zIndex:3,background:c.grade.includes("10")?"#FFD700":"#e0e0e0",borderRadius:2,padding:"2px 6px",fontSize:8,fontWeight:800,color:"#000"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 865}}, c.grade)
-                    )
-                    , React.createElement('div', { style: {padding:"8px 10px"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 867}}
-                      , React.createElement('div', { style: {fontWeight:800,fontSize:11,marginBottom:1,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 868}}, c.player.split(" ").pop())
-                      , React.createElement('div', { style: {fontSize:9,color:"#555",fontFamily:"'DM Mono',monospace",marginBottom:6,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 869}}, c.set)
-                      , React.createElement('div', { style: {display:"flex",justifyContent:"space-between"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 870}}, React.createElement('span', { style: {fontSize:13,fontWeight:800}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 870}}, c.val), React.createElement('span', { style: {fontSize:9,color:"#22c55e",fontWeight:700}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 870}}, c.change))
-                    )
-                  )
-                )
-              ))
+      /* Center content */
+      React.createElement('div', {style:{position:"relative",zIndex:10,textAlign:"center",padding:isMobile?"0 20px":"0 40px",maxWidth:680}},
+        React.createElement('div', {style:{display:"inline-flex",alignItems:"center",gap:8,background:"rgba(196,30,30,0.1)",border:"1px solid rgba(196,30,30,0.3)",borderRadius:20,padding:"6px 16px",marginBottom:24}},
+          React.createElement('div', {style:{width:6,height:6,borderRadius:"50%",background:"#C41E1E",boxShadow:"0 0 8px #C41E1E"}}),
+          React.createElement('span', {style:{fontSize:11,color:"rgba(255,255,255,0.7)",fontFamily:"'DM Mono',monospace",letterSpacing:"0.1em"}}, "SPORTS CARD INTELLIGENCE PLATFORM")
+        ),
+        React.createElement('h1', {style:{fontSize:isMobile?42:72,fontWeight:900,letterSpacing:"-0.04em",lineHeight:0.95,margin:"0 0 24px",color:"#fff",fontFamily:"'DM Serif Display','Georgia',serif"}},
+          "RIPS", React.createElement('br', null),
+          React.createElement('span', {style:{color:"#C41E1E"}}, "SOCIETY")
+        ),
+        React.createElement('p', {style:{fontSize:isMobile?15:18,color:"rgba(255,255,255,0.5)",lineHeight:1.6,margin:"0 0 40px",maxWidth:500,marginLeft:"auto",marginRight:"auto"}},
+          "Scan. Grade. Track. Trade. The AI-powered platform built for serious card collectors."
+        ),
+        React.createElement('div', {style:{display:"flex",gap:12,justifyContent:"center",flexWrap:"wrap"}},
+          React.createElement('button', {onClick:()=>setAuthModal("signup"),
+            style:{padding:"14px 32px",fontSize:14,fontWeight:700,background:"#C41E1E",color:"#fff",border:"none",borderRadius:4,cursor:"pointer",fontFamily:"'DM Mono',monospace",letterSpacing:"0.08em"}},
+            "GET STARTED FREE"),
+          React.createElement('button', {onClick:()=>setPage("market"),
+            style:{padding:"14px 32px",fontSize:14,fontWeight:700,background:"transparent",color:"rgba(255,255,255,0.6)",border:"1px solid rgba(255,255,255,0.15)",borderRadius:4,cursor:"pointer",fontFamily:"'DM Mono',monospace",letterSpacing:"0.08em"}},
+            "VIEW MARKET →")
+        ),
+        React.createElement('div', {style:{display:"flex",gap:32,justifyContent:"center",marginTop:40,flexWrap:"wrap"}},
+          [{v:"50K+",l:"Cards Scanned"},{v:"$2.4B",l:"Market Tracked"},{v:"99.2%",l:"Scan Accuracy"}].map((s,i)=>
+            React.createElement('div', {key:i,style:{textAlign:"center"}},
+              React.createElement('div', {style:{fontSize:24,fontWeight:900,color:"#fff",fontFamily:"'DM Mono',monospace"}}, s.v),
+              React.createElement('div', {style:{fontSize:10,color:"#444",fontFamily:"'DM Mono',monospace",letterSpacing:"0.1em",marginTop:2}}, s.l)
             )
           )
         )
       )
+    ),
 
-      /* TICKER */
-      , React.createElement('div', { style: {background:"#000",borderTop:"1px solid #1a1a1a",borderBottom:"1px solid #1a1a1a",padding:"10px 0",overflow:"hidden"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 881}}
-        , React.createElement('div', { style: {display:"flex",animation:"marquee 36s linear infinite",width:"max-content"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 882}}
-          , [...PLAYER_TRENDS,...NON_SPORTS_CATEGORIES.slice(0,4),...PLAYER_TRENDS,...NON_SPORTS_CATEGORIES.slice(0,4)].map((p,i)=>{
-            const up=parseFloat(p.change)>=0;
-            return React.createElement('span', { key: i, style: {display:"inline-flex",alignItems:"center",gap:6,padding:"0 20px",fontSize:12,fontFamily:"'DM Mono',monospace",whiteSpace:"nowrap",borderRight:"1px solid #1a1a1a"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 885}}, React.createElement('span', { style: {color:"#777"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 885}}, p.name), React.createElement('span', { style: {color:up?"#22c55e":"#ef4444",fontWeight:700}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 885}}, p.change));
+    /* ── HOW IT WORKS ── */
+    React.createElement('section', {style:{padding:isMobile?"60px 20px":"80px 40px",maxWidth:1100,margin:"0 auto"}},
+      React.createElement('div', {style:{textAlign:"center",marginBottom:60}},
+        React.createElement('div', {style:{fontSize:10,color:"#C41E1E",fontFamily:"'DM Mono',monospace",letterSpacing:"0.15em",marginBottom:12}}, "HOW IT WORKS"),
+        React.createElement('h2', {style:{fontSize:isMobile?32:48,fontWeight:900,letterSpacing:"-0.03em",margin:0,fontFamily:"'DM Serif Display','Georgia',serif"}}, "Three steps to collect smarter")
+      ),
+      React.createElement('div', {style:{display:"grid",gridTemplateColumns:isMobile?"1fr":"1fr 1fr 1fr",gap:2}},
+        [
+          {num:"01",icon:"📷",title:"Scan Your Slabs",desc:"Point camera at any PSA, BGS, SGC, or CGC graded card. AI reads every detail from the label instantly — even batch scans of 20+ cards."},
+          {num:"02",icon:"💹",title:"Get Market Intel",desc:"Live eBay comps, 30-day price trends, PSA pop reports, and investment signals load automatically for every card you scan."},
+          {num:"03",icon:"📚",title:"Build Your Book",desc:"Every scan auto-saves to your Card Book with full details, estimated value, and personalized buy/sell/hold recommendations."},
+        ].map((step, i) =>
+          React.createElement('div', {key:i, style:{background:i===1?"#0d0d0d":"transparent",border:"1px solid "+(i===1?"#C41E1E33":"#111"),padding:isMobile?"28px 20px":"40px 32px",position:"relative"}},
+            React.createElement('div', {style:{fontSize:72,fontWeight:900,color:"#0d0d0d",fontFamily:"'DM Mono',monospace",lineHeight:1,marginBottom:-20,userSelect:"none"}}, step.num),
+            React.createElement('div', {style:{fontSize:32,marginBottom:16}}, step.icon),
+            React.createElement('h3', {style:{fontSize:20,fontWeight:800,margin:"0 0 12px",letterSpacing:"-0.02em"}}, step.title),
+            React.createElement('p', {style:{fontSize:13,color:"#555",lineHeight:1.7,margin:0}}, step.desc),
+            i<2&&!isMobile&&React.createElement('div', {style:{position:"absolute",right:-1,top:"50%",transform:"translateY(-50%)",width:2,height:40,background:"linear-gradient(to bottom,transparent,#C41E1E,transparent)"}})
+          )
+        )
+      )
+    ),
+
+    /* ── FEATURED CARDS SHOWCASE ── */
+    React.createElement('section', {style:{padding:isMobile?"40px 0":"60px 0",overflow:"hidden",borderTop:"1px solid #0d0d0d",borderBottom:"1px solid #0d0d0d",background:"#030303"}},
+      React.createElement('div', {style:{textAlign:"center",marginBottom:36,padding:"0 20px"}},
+        React.createElement('div', {style:{fontSize:10,color:"#C41E1E",fontFamily:"'DM Mono',monospace",letterSpacing:"0.15em",marginBottom:10}}, "TRENDING NOW"),
+        React.createElement('h2', {style:{fontSize:isMobile?28:40,fontWeight:900,letterSpacing:"-0.03em",margin:0,fontFamily:"'DM Serif Display','Georgia',serif"}}, "Hot Cards This Week")
+      ),
+      React.createElement('div', {style:{display:"flex",gap:20,padding:"20px 40px",overflowX:"auto",scrollbarWidth:"none",justifyContent:isMobile?"flex-start":"center",flexWrap:isMobile?"nowrap":"wrap"}},
+        HERO_CARDS.slice(0, isMobile?4:6).map((card,i)=>
+          React.createElement(PremiumCard, {key:i,
+            player:card.player, team:card.team||"",
+            sport:{nba:"Basketball",nfl:"Football",mlb:"Baseball",nhl:"Hockey",soccer:"Soccer"}[card.sport]||card.sport,
+            year:(card.set||"").split(" ")[0], set:(card.set||"").split(" ").slice(1).join(" "),
+            parallel:card.parallel, number:card.number||null,
+            grade:card.grade, estValue:card.val, momentum:card.change,
+            espnId:card.espnId, espnSport:card.espnSport||card.sport,
+            width:isMobile?155:200, onClick:()=>setAuthModal("login")
+          })
+        )
+      ),
+      React.createElement('div', {style:{textAlign:"center",marginTop:28,padding:"0 20px"}},
+        React.createElement('button', {onClick:()=>setPage("market"),
+          style:{fontSize:11,fontFamily:"'DM Mono',monospace",letterSpacing:"0.1em",color:"#C41E1E",background:"transparent",border:"1px solid #C41E1E33",padding:"10px 24px",cursor:"pointer",borderRadius:2}},
+          "VIEW ALL MARKET DATA →")
+      )
+    ),
+
+    /* ── FEATURES GRID ── */
+    React.createElement('section', {style:{padding:isMobile?"60px 20px":"80px 40px",maxWidth:1100,margin:"0 auto"}},
+      React.createElement('div', {style:{textAlign:"center",marginBottom:60}},
+        React.createElement('div', {style:{fontSize:10,color:"#C41E1E",fontFamily:"'DM Mono',monospace",letterSpacing:"0.15em",marginBottom:12}}, "PLATFORM FEATURES"),
+        React.createElement('h2', {style:{fontSize:isMobile?32:48,fontWeight:900,letterSpacing:"-0.03em",margin:0,fontFamily:"'DM Serif Display','Georgia',serif"}}, "Built for serious collectors")
+      ),
+      /* Tab selector */
+      React.createElement('div', {style:{display:"flex",gap:0,marginBottom:40,borderBottom:"1px solid #111",overflowX:"auto"}},
+        features.map((f,i)=>
+          React.createElement('button', {key:i, onClick:()=>setActiveFeature(i),
+            style:{padding:"12px 24px",fontSize:11,fontFamily:"'DM Mono',monospace",letterSpacing:"0.08em",fontWeight:700,
+              background:"transparent",border:"none",color:activeFeature===i?"#fff":"#333",
+              borderBottom:activeFeature===i?"2px solid #C41E1E":"2px solid transparent",
+              cursor:"pointer",whiteSpace:"nowrap",marginBottom:-1,transition:"all 0.2s"}},
+            f.icon+" "+f.title.toUpperCase())
+        )
+      ),
+      /* Feature panel */
+      React.createElement('div', {style:{display:"grid",gridTemplateColumns:isMobile?"1fr":"1fr 1fr",gap:40,alignItems:"center"}},
+        React.createElement('div', null,
+          React.createElement('div', {style:{fontSize:48,marginBottom:20}}, features[activeFeature].icon),
+          React.createElement('h3', {style:{fontSize:32,fontWeight:900,letterSpacing:"-0.03em",margin:"0 0 16px",fontFamily:"'DM Serif Display','Georgia',serif"}}, features[activeFeature].title),
+          React.createElement('p', {style:{fontSize:15,color:"#555",lineHeight:1.8,margin:"0 0 32px"}}, features[activeFeature].desc),
+          React.createElement('div', {style:{display:"inline-block",background:"#080808",border:"1px solid #1a1a1a",borderLeft:"3px solid #C41E1E",padding:"16px 24px",borderRadius:"0 4px 4px 0"}},
+            React.createElement('div', {style:{fontSize:36,fontWeight:900,fontFamily:"'DM Mono',monospace",color:"#fff"}}, features[activeFeature].stat),
+            React.createElement('div', {style:{fontSize:10,color:"#444",fontFamily:"'DM Mono',monospace",letterSpacing:"0.1em",marginTop:2}}, features[activeFeature].statLabel.toUpperCase())
+          )
+        ),
+        /* Feature visual mockup */
+        React.createElement('div', {style:{background:"#080808",border:"1px solid #111",borderRadius:12,padding:24,aspectRatio:"4/3",display:"flex",flexDirection:"column",gap:12,justifyContent:"center"}},
+          activeFeature===0&&React.createElement('div', {style:{display:"flex",flexDirection:"column",gap:8}},
+            React.createElement('div', {style:{background:"#0a1628",border:"1px solid #1e3a5f",borderRadius:8,padding:16,display:"flex",alignItems:"center",gap:12}},
+              React.createElement('div', {style:{width:40,height:40,borderRadius:4,background:"#C41E1E22",border:"1px solid #C41E1E44",display:"flex",alignItems:"center",justifyContent:"center",fontSize:20}}, "📷"),
+              React.createElement('div', null,
+                React.createElement('div', {style:{fontSize:12,fontWeight:700,marginBottom:3}}, "Scanning label..."),
+                React.createElement('div', {style:{height:4,background:"#111",borderRadius:2,overflow:"hidden",width:200}},
+                  React.createElement('div', {style:{height:"100%",width:"72%",background:"linear-gradient(90deg,#C41E1E,#ff4500)",borderRadius:2,animation:"none"}})
+                )
+              )
+            ),
+            React.createElement('div', {style:{background:"#060606",border:"1px solid #1a1a1a",borderRadius:8,padding:14}},
+              React.createElement('div', {style:{fontSize:10,color:"#555",fontFamily:"'DM Mono',monospace",marginBottom:8}}, "DETECTED"),
+              ...[["PLAYER","Victor Wembanyama"],["SET","2023 Panini Prizm"],["GRADE","PSA 10 GEM MT"],["CERT","12345678"]].map(([l,v],j)=>
+                React.createElement('div', {key:j,style:{display:"flex",justifyContent:"space-between",padding:"4px 0",borderBottom:"1px solid #0d0d0d",fontSize:11}},
+                  React.createElement('span', {style:{color:"#333",fontFamily:"'DM Mono',monospace"}}, l),
+                  React.createElement('span', {style:{color:"#fff",fontWeight:700}}, v)
+                )
+              )
+            )
+          ),
+          activeFeature===1&&React.createElement('div', {style:{display:"flex",flexDirection:"column",gap:10}},
+            React.createElement('div', {style:{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:4}},
+              React.createElement('span', {style:{fontSize:12,fontWeight:700}}, "Wembanyama Prizm RC"),
+              React.createElement('span', {style:{fontSize:20,fontWeight:900,color:"#22c55e",fontFamily:"'DM Mono',monospace"}}, "$520")
+            ),
+            React.createElement(MultiLineChart, {datasets:[{id:"a",data:[210,240,280,260,310,350,420,480,520],color:"#22c55e"}],h:80}),
+            React.createElement('div', {style:{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8,marginTop:4}},
+              [{l:"30D",v:"+38%",c:"#22c55e"},{l:"PSA POP",v:"1,204",c:"#4FC3F7"},{l:"SIGNAL",v:"BUY",c:"#f59e0b"}].map((s,j)=>
+                React.createElement('div', {key:j,style:{background:"#111",borderRadius:4,padding:"8px 10px",textAlign:"center"}},
+                  React.createElement('div', {style:{fontSize:8,color:"#333",fontFamily:"'DM Mono',monospace",marginBottom:3}}, s.l),
+                  React.createElement('div', {style:{fontSize:13,fontWeight:800,color:s.c,fontFamily:"'DM Mono',monospace"}}, s.v)
+                )
+              )
+            )
+          ),
+          activeFeature===2&&React.createElement('div', {style:{display:"flex",flexDirection:"column",gap:8}},
+            ...[{n:"Wembanyama Prizm RC",s:"BUY",c:"#22c55e",r:"+38.4%"},{n:"Jayden Daniels Auto",s:"BUY",c:"#22c55e",r:"+67.2%"},{n:"Mahomes Chrome RC",s:"HOLD",c:"#f59e0b",r:"+4.2%"},{n:"LeBron Vintage",s:"WATCH",c:"#888",r:"-2.1%"}].map((item,j)=>
+              React.createElement('div', {key:j,style:{display:"flex",justifyContent:"space-between",alignItems:"center",background:"#0a0a0a",border:"1px solid #111",borderRadius:6,padding:"10px 14px"}},
+                React.createElement('span', {style:{fontSize:11,fontWeight:600}}, item.n),
+                React.createElement('div', {style:{display:"flex",gap:8,alignItems:"center"}},
+                  React.createElement('span', {style:{fontSize:10,color:item.c,fontFamily:"'DM Mono',monospace",fontWeight:700}}, item.r),
+                  React.createElement(SignalBadge, {signal:item.s})
+                )
+              )
+            )
+          ),
+          activeFeature===3&&React.createElement('div', {style:{display:"flex",flexDirection:"column",gap:10}},
+            React.createElement('div', {style:{background:"#0a1628",border:"1px solid #1e3a5f",borderRadius:8,padding:14}},
+              React.createElement('div', {style:{fontSize:10,color:"#4FC3F7",fontFamily:"'DM Mono',monospace",marginBottom:8}}, "CARD EXPERT AI"),
+              React.createElement('div', {style:{fontSize:12,color:"#888",marginBottom:12}}, '"Is this a good time to buy Wembanyama rookies?"'),
+              React.createElement('div', {style:{fontSize:12,lineHeight:1.7,color:"rgba(255,255,255,0.7)"}}, "Strong BUY signal. Population still low at 1,204 PSA 10s. Comparable to Year 2 Luka Dončič trajectory. Recommended entry under $600.")
+            )
+          )
+        )
+      )
+    ),
+
+    /* ── CARD BOOK CTA ── */
+    React.createElement('section', {style:{padding:isMobile?"60px 20px":"80px 40px",background:"#030303",borderTop:"1px solid #0d0d0d"}},
+      React.createElement('div', {style:{maxWidth:1100,margin:"0 auto",display:"grid",gridTemplateColumns:isMobile?"1fr":"1fr 1fr",gap:40,alignItems:"center"}},
+        React.createElement('div', null,
+          React.createElement('div', {style:{fontSize:10,color:"#C41E1E",fontFamily:"'DM Mono',monospace",letterSpacing:"0.15em",marginBottom:16}}, "YOUR CARD BOOK"),
+          React.createElement('h2', {style:{fontSize:isMobile?32:48,fontWeight:900,letterSpacing:"-0.03em",margin:"0 0 20px",fontFamily:"'DM Serif Display','Georgia',serif"}}, "Your entire collection. Organized. Valued. Always."),
+          React.createElement('p', {style:{fontSize:15,color:"#555",lineHeight:1.8,margin:"0 0 32px"}}, "Every card you scan is automatically saved, valued, and analyzed. Filter by sport, grade, signal, or value. Your collection intelligence, always at hand."),
+          React.createElement('div', {style:{display:"flex",gap:12,flexWrap:"wrap"}},
+            React.createElement('button', {onClick:()=>setAuthModal("signup"),
+              style:{padding:"14px 28px",fontSize:12,fontWeight:700,background:"#C41E1E",color:"#fff",border:"none",borderRadius:2,cursor:"pointer",fontFamily:"'DM Mono',monospace",letterSpacing:"0.08em"}},
+              "START YOUR BOOK FREE"),
+            React.createElement('button', {onClick:()=>{if(user)setPage("book");else setAuthModal("login");},
+              style:{padding:"14px 28px",fontSize:12,fontWeight:700,background:"transparent",color:"rgba(255,255,255,0.4)",border:"1px solid rgba(255,255,255,0.1)",borderRadius:2,cursor:"pointer",fontFamily:"'DM Mono',monospace",letterSpacing:"0.08em"}},
+              "VIEW DEMO →")
+          )
+        ),
+        /* Mini card grid preview */
+        React.createElement('div', {style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}},
+          HERO_CARDS.slice(0,4).map((card,i)=>{
+            const info=ESPN_IDS[card.player];
+            const src=info?"https://a.espncdn.com/i/headshots/"+(info.sport)+"/players/full/"+(info.id)+".png":null;
+            const teamColor=getTeamColor(card.team||"");
+            return React.createElement('div', {key:i,style:{background:"#080808",border:"1px solid #111",borderRadius:8,overflow:"hidden",aspectRatio:"3/4",position:"relative",cursor:"pointer"},
+              onClick:()=>setAuthModal("login")},
+              React.createElement('div', {style:{height:4,background:"linear-gradient(90deg,"+teamColor+","+teamColor+"88)"}}),
+              React.createElement('div', {style:{flex:1,position:"relative",height:"calc(100% - 60px)",overflow:"hidden",background:"linear-gradient(145deg,"+teamColor+"22,#050505)"}},
+                src&&React.createElement('img', {src,style:{width:"100%",height:"100%",objectFit:"cover",objectPosition:"top"},onError:e=>e.target.style.display="none"})
+              ),
+              React.createElement('div', {style:{padding:"8px 10px"}},
+                React.createElement('div', {style:{fontSize:10,fontWeight:800,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}, card.player),
+                React.createElement('div', {style:{display:"flex",justifyContent:"space-between",alignItems:"center",marginTop:3}},
+                  React.createElement('span', {style:{fontSize:9,color:"#444",fontFamily:"'DM Mono',monospace"}}, card.grade||""),
+                  React.createElement('span', {style:{fontSize:10,fontWeight:700,color:String(card.change||"").startsWith("-")?"#ef4444":"#22c55e",fontFamily:"'DM Mono',monospace"}}, card.change||"")
+                )
+              )
+            );
           })
         )
       )
+    ),
 
-      /* FEATURED CARDS */
-      , React.createElement('section', { style: {background:"#000",padding:isMobile?"48px 0 56px":"72px 0 80px"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 891}}
-        , React.createElement('div', { style: {maxWidth:1400,margin:"0 auto",padding:isMobile?"0 16px":"0 48px"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 892}}
-          , React.createElement('div', { style: {display:"flex",justifyContent:"space-between",alignItems:"baseline",marginBottom:isMobile?24:40}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 893}}
-            , React.createElement('h2', { style: {fontSize:isMobile?"1.4rem":"clamp(1.8rem,3vw,2.8rem)",fontWeight:900,letterSpacing:"-0.03em"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 894}}, "Featured Cards" )
-            , React.createElement('button', { style: {...S.btnSecondary,fontSize:11,padding:"6px 14px"}, onClick: ()=>setAuthModal("login"), __self: this, __source: {fileName: _jsxFileName2, lineNumber: 895}}, "View All" )
-          )
-          , React.createElement('div', { style: {display:"grid",gridTemplateColumns:isMobile?"repeat(2,1fr)":"repeat(5,1fr)",gap:isMobile?12:24}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 897}}
-            , [
-              {player:"Victor Wembanyama",espnId:"4432174",sport:"nba",grade:"PSA 10",gradeNum:10,set:"2023 Panini Prizm",parallel:"Silver RC",val:520,change:"+38.4%",pop:"POP 42",color:"#4FC3F7"},
-              {player:"C.J. Stroud",espnId:"4361529",sport:"nfl",grade:"BGS 9.5",gradeNum:9.5,set:"2023 Bowman Chrome",parallel:"Auto /99",val:480,change:"+44.2%",pop:"POP 12",color:"#E8212B"},
-              {player:"Shohei Ohtani",espnId:"39832",sport:"mlb",grade:"PSA 9",gradeNum:9,set:"2018 Bowman",parallel:"Auto RC",val:2700,change:"+22.1%",pop:"POP 31",color:"#FFA726"},
-              {player:"Connor McDavid",espnId:"3895074",sport:"nhl",grade:"PSA 10",gradeNum:10,set:"2015 Upper Deck",parallel:"Young Guns",val:1820,change:"+15.8%",pop:"POP 19",color:"#80DEEA"},
-              {player:"Patrick Mahomes",espnId:"3139477",sport:"nfl",grade:"PSA 9",gradeNum:9,set:"2017 Prizm",parallel:"Silver RC",val:330,change:"+4.2%",pop:"POP 88",color:"#C41E1E"},
-            ].slice(0, isMobile?4:5).map((card,i)=>(
-              React.createElement('div', { key: i, style: {cursor:"pointer"}, onClick: ()=>setAuthModal("login"), __self: this, __source: {fileName: _jsxFileName2, lineNumber: 905}}
-                , React.createElement('div', { style: {height:isMobile?180:290,background:"#0a0a0a",position:"relative",overflow:"hidden",borderRadius:6,marginBottom:isMobile?10:14}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 906}}
-                  , React.createElement('div', { style: {position:"absolute",inset:0,background:card.color+"18"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 907}})
-                  , React.createElement('div', { style: {position:"absolute",inset:0,background:"linear-gradient(to bottom,transparent 35%,rgba(0,0,0,0.9) 100%)",zIndex:2}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 908}})
-                  , React.createElement('img', { src: `https://a.espncdn.com/i/headshots/${card.sport}/players/full/${card.espnId}.png`, alt: card.player, style: {width:"100%",height:"100%",objectFit:"cover",objectPosition:"top center",transform:"scale(1.08)"}, onError: e=>{e.target.style.display="none";}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 909}})
-                  , React.createElement('div', { style: {position:"absolute",top:8,left:8,zIndex:3,background:card.gradeNum>=10?"#FFD700":"#e0e0e0",borderRadius:3,padding:"2px 6px",fontSize:9,fontWeight:800,color:"#000"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 910}}, card.grade)
-                  , React.createElement('div', { style: {position:"absolute",bottom:8,left:8,right:8,zIndex:3}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 911}}
-                    , React.createElement('div', { style: {fontSize:isMobile?11:15,fontWeight:800}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 912}}, card.player.split(" ").pop())
-                    , !isMobile && React.createElement('div', { style: {fontSize:11,color:"#888",fontFamily:"'DM Mono',monospace"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 913}}, card.grade, " | "  , card.pop)
-                  )
+    /* ── MARKET INTEL TEASER ── */
+    React.createElement('section', {style:{padding:isMobile?"60px 20px":"80px 40px",maxWidth:1100,margin:"0 auto"}},
+      React.createElement('div', {style:{background:"linear-gradient(135deg,#050e1a,#0a1628,#050e1a)",border:"1px solid #1e3a5f",borderRadius:16,padding:isMobile?"32px 24px":"48px",overflow:"hidden",position:"relative"}},
+        React.createElement('div', {style:{position:"absolute",top:0,right:0,width:300,height:300,background:"radial-gradient(circle,rgba(196,30,30,0.08) 0%,transparent 70%)"}}),
+        React.createElement('div', {style:{display:"grid",gridTemplateColumns:isMobile?"1fr":"1fr 1fr",gap:40,alignItems:"center",position:"relative",zIndex:1}}),
+        React.createElement('div', null,
+          React.createElement('div', {style:{fontSize:10,color:"#4FC3F7",fontFamily:"'DM Mono',monospace",letterSpacing:"0.15em",marginBottom:12}}, "MARKET INTELLIGENCE"),
+          React.createElement('h2', {style:{fontSize:isMobile?28:40,fontWeight:900,letterSpacing:"-0.03em",margin:"0 0 16px",fontFamily:"'DM Serif Display','Georgia',serif"}}, "Real-time card market. All sports."),
+          React.createElement('p', {style:{fontSize:14,color:"rgba(255,255,255,0.4)",lineHeight:1.8,margin:"0 0 28px"}}, "Track 30+ top players across NBA, NFL, MLB, NHL, and Soccer. Live BUY/HOLD/WATCH signals, price charts, and investment analysis."),
+          React.createElement('div', {style:{display:"flex",gap:16,flexWrap:"wrap",marginBottom:28}},
+            PLAYER_TRENDS.filter(p=>p.signal==="BUY").slice(0,3).map((p,i)=>{
+              const img=espnImg(p.name);
+              return React.createElement('div', {key:i,style:{display:"flex",alignItems:"center",gap:8,background:"rgba(34,197,94,0.05)",border:"1px solid rgba(34,197,94,0.15)",borderRadius:6,padding:"8px 12px"}},
+                React.createElement('div', {style:{width:28,height:28,borderRadius:"50%",background:"#111",overflow:"hidden",flexShrink:0}},
+                  img&&React.createElement('img', {src:img,style:{width:"100%",height:"100%",objectFit:"cover",objectPosition:"top"},onError:e=>e.target.style.opacity="0"})
+                ),
+                React.createElement('div', null,
+                  React.createElement('div', {style:{fontSize:10,fontWeight:700}}, p.name.split(" ").pop()),
+                  React.createElement('div', {style:{fontSize:9,color:"#22c55e",fontFamily:"'DM Mono',monospace"}}, p.change)
                 )
-                , React.createElement('button', { style: {width:"100%",background:"#C41E1E",border:"none",borderRadius:4,color:"#fff",fontSize:isMobile?11:13,fontWeight:700,padding:isMobile?"9px":"11px",cursor:"pointer"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 916}}, "$", card.val.toLocaleString(), " / BID"  )
-                , React.createElement('div', { style: {textAlign:"center",marginTop:5,fontSize:10,color:parseFloat(card.change)>=0?"#22c55e":"#ef4444",fontFamily:"'DM Mono',monospace",fontWeight:700}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 917}}, card.change)
-              )
-            ))
-          )
+              );
+            })
+          ),
+          React.createElement('button', {onClick:()=>setPage("market"),
+            style:{padding:"12px 28px",fontSize:12,fontWeight:700,background:"#4FC3F7",color:"#000",border:"none",borderRadius:2,cursor:"pointer",fontFamily:"'DM Mono',monospace",letterSpacing:"0.08em"}},
+            "OPEN MARKET →")
         )
       )
+    ),
 
-      /* HOT PLAYERS */
-      , React.createElement('section', { style: {background:"#000",borderTop:"1px solid #1a1a1a",padding:isMobile?"40px 0":"72px 0"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 925}}
-        , React.createElement('div', { style: {maxWidth:1400,margin:"0 auto",padding:isMobile?"0 16px":"0 48px"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 926}}
-          , React.createElement('div', { style: {display:"flex",justifyContent:"space-between",alignItems:"baseline",marginBottom:16}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 927}}
-            , React.createElement('h2', { style: {fontSize:isMobile?"1.3rem":"1.8rem",fontWeight:900,letterSpacing:"-0.03em"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 928}}, "Hot players" )
-            , React.createElement('button', { style: {color:"#C41E1E",background:"none",border:"none",fontSize:12,fontWeight:700,cursor:"pointer",padding:0}, onClick: ()=>navigateTo("market"), __self: this, __source: {fileName: _jsxFileName2, lineNumber: 929}}, "VIEW ALL" )
-          )
-          , React.createElement('div', { style: {borderTop:"1px solid #1a1a1a"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 931}}
-            , PLAYER_TRENDS.slice(0,isMobile?5:6).map((p,i,arr)=>React.createElement(PlayerRow, { key: p.id, p: p, isLast: i===arr.length-1, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 932}}))
-          )
-        )
-      )
-
-      /* TOP RISING / FALLING */
-      , !isMobile && (
-        React.createElement('section', { style: {background:"#000",borderTop:"1px solid #1a1a1a",padding:"72px 0"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 939}}
-          , React.createElement('div', { style: {maxWidth:1400,margin:"0 auto",padding:"0 48px"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 940}}
-            , React.createElement('h2', { style: {fontSize:"clamp(1.6rem,2.5vw,2.4rem)",fontWeight:900,letterSpacing:"-0.03em",marginBottom:40}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 941}}, "Top rising / falling"   )
-            , React.createElement('div', { style: {display:"grid",gridTemplateColumns:"1fr 1fr"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 942}}
-              , React.createElement('div', { style: {borderRight:"1px solid #1a1a1a",paddingRight:48}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 943}}
-                , React.createElement('div', { style: {fontSize:10,color:"#444",fontFamily:"'DM Mono',monospace",letterSpacing:"0.12em",padding:"8px 0",borderBottom:"1px solid #1a1a1a",marginBottom:4}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 944}}, "TOP RISING — 30 DAY CHANGE"     )
-                , PLAYER_TRENDS.filter(p=>p.hot).map((p,i,arr)=>React.createElement(PlayerRow, { key: p.id, p: p, isLast: i===arr.length-1, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 945}}))
-              )
-              , React.createElement('div', { style: {paddingLeft:48}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 947}}
-                , React.createElement('div', { style: {fontSize:10,color:"#444",fontFamily:"'DM Mono',monospace",letterSpacing:"0.12em",padding:"8px 0",borderBottom:"1px solid #1a1a1a",marginBottom:4}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 948}}, "TOP FALLING — 30 DAY CHANGE"     )
-                , PLAYER_TRENDS.filter(p=>!p.hot).map((p,i,arr)=>{
-                  const pf={...p,change:"-"+(Math.abs(parseFloat(p.change))-1.5).toFixed(1)+"%",data:[...p.data].reverse()};
-                  return React.createElement(PlayerRow, { key: p.id, p: pf, isLast: i===arr.length-1, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 951}});
-                })
-              )
-            )
-          )
-        )
-      )
-
-      /* SCHEDULE */
-      , React.createElement('section', { style: {background:"#000",borderTop:"1px solid #1a1a1a",padding:isMobile?"40px 0 100px":"72px 0"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 960}}
-        , React.createElement('div', { style: {maxWidth:1400,margin:"0 auto",padding:isMobile?"0 16px":"0 48px"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 961}}
-          , React.createElement('div', { style: {display:"flex",justifyContent:"space-between",alignItems:"baseline",marginBottom:isMobile?20:40}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 962}}
-            , React.createElement('h2', { style: {fontSize:isMobile?"1.3rem":"clamp(1.6rem,2.5vw,2.4rem)",fontWeight:900,letterSpacing:"-0.03em"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 963}}, "This Week's Breaks"  )
-            , React.createElement('button', { style: {...S.btnSecondary,fontSize:11,padding:"6px 12px"}, onClick: ()=>setPage("breaks"), __self: this, __source: {fileName: _jsxFileName2, lineNumber: 964}}, "See All" )
-          )
-          , [
-            {time:"Tonight · 8PM ET",title:"50-Case Topps Chrome Football PYP",breaker:"Rico V.",platform:"Fanatics",sport:"Football",live:true},
-            {time:"Tue · 7PM ET",title:"Panini Prizm Basketball RePack Frenzy",breaker:"Jess T.",platform:"Whatnot",sport:"Basketball",live:false},
-            {time:"Wed · 9PM ET",title:"Bowman Chrome Baseball Team Break",breaker:"Marcus R.",platform:"TikTok Live",sport:"Baseball",live:false},
-            {time:"Fri · 8PM ET",title:"Upper Deck NHL Mega Break",breaker:"Rico V.",platform:"Instagram",sport:"Hockey",live:false},
-          ].map((e,i,arr)=>(
-            React.createElement('div', { key: i, style: {display:"flex",alignItems:"center",gap:isMobile?12:24,padding:isMobile?"14px 0":"16px 0",borderBottom:i<arr.length-1?"1px solid #1a1a1a":"none",cursor:"pointer"}, onClick: ()=>setPage("breaks"), __self: this, __source: {fileName: _jsxFileName2, lineNumber: 972}}
-              , e.live && React.createElement('span', { style: {width:8,height:8,borderRadius:"50%",background:"#C41E1E",display:"inline-block",animation:"pulse 1.5s infinite",flexShrink:0}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 973}})
-              , React.createElement('div', { style: {flex:1,minWidth:0}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 974}}
-                , React.createElement('div', { style: {fontWeight:700,fontSize:isMobile?13:15,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 975}}, e.title)
-                , React.createElement('div', { style: {fontSize:11,color:"#555",fontFamily:"'DM Mono',monospace",marginTop:2}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 976}}, e.time, " · "  , e.breaker)
-              )
-              , React.createElement('span', { style: {fontSize:10,padding:"3px 8px",background:"rgba(196,30,30,0.12)",color:"#C41E1E",borderRadius:3,fontFamily:"'DM Mono',monospace",fontWeight:600,flexShrink:0}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 978}}, e.sport)
-            )
-          ))
-        )
+    /* ── CTA FOOTER ── */
+    React.createElement('section', {style:{padding:isMobile?"60px 20px":"80px 40px",textAlign:"center",borderTop:"1px solid #0d0d0d"}},
+      React.createElement('div', {style:{maxWidth:600,margin:"0 auto"}},
+        React.createElement('h2', {style:{fontSize:isMobile?36:56,fontWeight:900,letterSpacing:"-0.04em",margin:"0 0 16px",fontFamily:"'DM Serif Display','Georgia',serif"}},
+          "Ready to level up", React.createElement('br', null),
+          React.createElement('span', {style:{color:"#C41E1E"}}, "your collection?")
+        ),
+        React.createElement('p', {style:{fontSize:15,color:"#444",lineHeight:1.7,margin:"0 0 36px"}}, "Join thousands of collectors using AI to scan, value, and trade with confidence."),
+        React.createElement('button', {onClick:()=>setAuthModal("signup"),
+          style:{padding:"16px 40px",fontSize:14,fontWeight:700,background:"#C41E1E",color:"#fff",border:"none",borderRadius:2,cursor:"pointer",fontFamily:"'DM Mono',monospace",letterSpacing:"0.1em"}},
+          "GET STARTED FREE")
       )
     )
   );
+};
 
-  //
+
   const CardBookPage = () => (
     React.createElement(React.Fragment, null
       , React.createElement('div', { style: {paddingTop:56,borderBottom:"1px solid #1a1a1a"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 989}}
@@ -1329,28 +1206,16 @@ function RIPSSociety() {
             )
 
             , React.createElement('div', { style: { display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(240px,1fr))", gap:16 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1050}}
-              , filteredCards.map(card => (
-                React.createElement('div', { key: card.id, style: { ...S.card, cursor:"pointer", overflow:"hidden" }, onClick: () => setSelectedCard(card), __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1052}}
-                  , React.createElement('div', { style: {height:160,background:"#0a0a0a",position:"relative",overflow:"hidden",borderBottom:"1px solid #1a1a1a"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1053}}
-                    , React.createElement('div', { style: {position:"absolute",inset:0,background:"linear-gradient(to bottom,transparent 40%,#0a0a0a 100%)",zIndex:2}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1054}})
-                    , espnImg(card.player) ? React.createElement('img', { src: espnImg(card.player), alt: card.player, style: {width:"100%",height:"100%",objectFit:"cover",objectPosition:"top center",transform:"scale(1.05)"}, onError: e=>e.target.style.display="none", __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1055}}) : React.createElement('div', { style: {width:"100%",height:"100%",display:"flex",alignItems:"center",justifyContent:"center"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1055}}, React.createElement(Icon, { name: "users", size: 36, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1055}}))
-                    , React.createElement('div', { style: {position:"absolute",top:8,left:8,zIndex:3}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1056}}, React.createElement(SignalBadge, { signal: card.signal, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1056}}))
-                    , (card.condition.includes("PSA")||card.condition.includes("BGS")) && React.createElement('div', { style: {position:"absolute",bottom:8,right:8,zIndex:3,background:card.condition.includes("10")?"#FFD700":"#e0e0e0",borderRadius:3,padding:"2px 6px",fontSize:9,fontWeight:800,color:"#000"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1057}}, card.condition)
-                  )
-                  , React.createElement('div', { style: { padding:"14px 16px" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1059}}
-                    , React.createElement('div', { style: { fontWeight:700, fontSize:15, marginBottom:2 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1060}}, card.player)
-                    , React.createElement('div', { style: { fontSize:11, color:"#333", fontFamily:"'DM Mono',monospace", marginBottom:8 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1061}}, card.team, " · "  , card.year, " " , card.set)
-                    , card.parallel && React.createElement('div', { style: { fontSize:11, color:"#444", fontFamily:"'DM Mono',monospace", marginBottom:8 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1062}}, card.parallel)
-                    , React.createElement('div', { style: { display:"flex", justifyContent:"space-between", alignItems:"center" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1063}}
-                      , React.createElement('div', { style: { fontSize:22, fontWeight:700, color:"#C41E1E" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1064}}, "$", card.estValue)
-                      , React.createElement('div', { style: { display:"flex", flexDirection:"column", alignItems:"flex-end", gap:3 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1065}}
-                        , React.createElement('span', { style: { fontSize:10, padding:"2px 7px", borderRadius:3, background:"rgba(196,30,30,0.08)", color:"#C41E1E", fontFamily:"'DM Mono',monospace" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1066}}, card.condition)
-                        , React.createElement(TrendBadge, { change: card.momentum, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1067}})
-                      )
-                    )
-                  )
-                )
-              ))
+              , filteredCards.map(card=>{
+                const info=ESPN_IDS[card.player];
+                return React.createElement(PremiumCard, {key:card.id,
+                  player:card.player, team:card.team, sport:card.sport,
+                  year:card.year, set:card.set, parallel:card.parallel, number:card.number,
+                  grade:card.condition, estValue:card.estValue, momentum:card.momentum, signal:card.signal,
+                  espnId:info?info.id:null, espnSport:info?info.sport:null,
+                  width:isMobile?150:185, onClick:()=>setSelectedCard(card)
+                });
+              })
             )
           )
         )
@@ -1479,7 +1344,7 @@ function RIPSSociety() {
               )
               /* P&L */
               , React.createElement('div', { style: {display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:8,marginBottom:16}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1200}}
-                , [{label:"CARD EXPERT",val:selectedCard.signal,color:sColor},{label:"PAID",val:"$"+paid},{label:"P&L",val:(currentVal-paid>=0?"+":"")+"$"+Math.abs(currentVal-paid),color:currentVal-paid>=0?"#22c55e":"#ef4444"}].map((item,i)=>(
+                , [{label:"AI SIGNAL",val:selectedCard.signal,color:sColor},{label:"PAID",val:"$"+paid},{label:"P&L",val:(currentVal-paid>=0?"+":"")+"$"+Math.abs(currentVal-paid),color:currentVal-paid>=0?"#22c55e":"#ef4444"}].map((item,i)=>(
                   React.createElement('div', { key: i, style: {background:"#0a0a0a",borderRadius:8,padding:"10px 12px",border:"1px solid #1e1e1e",textAlign:"center"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1202}}
                     , React.createElement('div', { style: {fontSize:9,color:"#555",fontFamily:"'DM Mono',monospace",letterSpacing:"0.1em",marginBottom:4}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1203}}, item.label)
                     , React.createElement('div', { style: {fontSize:14,fontWeight:800,color:item.color||"#fff"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1204}}, item.val)
@@ -1506,122 +1371,35 @@ function RIPSSociety() {
 
 
   //
-
-  const [aiScanImg, setAiScanImg] = useState(null);
-  const [aiScanning, setAiScanning] = useState(false);
-  const AddCardContent = ({ onClose, onAdd, isMobile, S }) => {
-    const [form, setForm] = useState({ player:"", team:"", sport:"Football", year:"2024", set:"", parallel:"", number:"", condition:"Raw", purchasePrice:"", imageUrl:"" });
-    const [cardImg, setCardImg] = useState(null);
-    const [scanning, setScanning] = useState(false);
-    const [scanned, setScanned] = useState(false);
-    const imgRef = useRef();
-    const set = (k,v) => setForm(f=>({...f,[k]:v}));
-
-    const scanCard = async (file) => {
-      setScanning(true);
-      const reader = new FileReader();
-      reader.onload = async (e) => {
-        setCardImg(e.target.result);
-        const base64 = e.target.result.split(",")[1];
-        const mediaType = file.type||"image/jpeg";
-        try {
-          const resp = await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({model:"claude-sonnet-4-20250514",max_tokens:600,messages:[{role:"user",content:[{type:"image",source:{type:"base64",media_type:mediaType,data:base64}},{type:"text",text:"This is a trading card. Identify it and respond ONLY as JSON (no markdown): {player:string,team:string,sport:string,year:string,set:string,parallel:string or null,number:string or null,condition:string (Raw/PSA 9/PSA 10 etc)}. Be specific. If not a card, use empty strings."}]}]})});
-          const data = await resp.json();
-          const text = (data.content&&data.content[0]?data.content[0].text:"")||"{}";
-          try {
-            const parsed = JSON.parse(text.replace(/```json|```/g,"").trim());
-            setForm(f=>({...f,...parsed,purchasePrice:f.purchasePrice}));
-            setScanned(true);
-          } catch(e2) {}
-        } catch(e3) {}
-        setScanning(false);
-      };
-      reader.readAsDataURL(file);
-    };
-
-    const handleImg = (e) => { const f = e.target.files[0]; if(f) scanCard(f); };
-
-    const submit = () => {
-      if(!form.player) return;
-      const sportColors={Football:"#E8212B",Basketball:"#F97316",Baseball:"#22c55e",Hockey:"#38bdf8",Soccer:"#a855f7",Other:"#888"};
-      const signals = ["BUY","HOLD","HOLD","WATCH","BUY MORE"];
-      const reasons = ["Strong market momentum detected.","Stable position, hold for catalysts.","Monitor for breakout.","Watchlist - volatility expected.","Undervalued vs market comps."];
-      const idx = Math.floor(Math.random()*5);
-      const val = parseInt(form.purchasePrice)||Math.floor(Math.random()*300)+50;
-      onAdd({
-        id: Date.now(), ...form,
-        purchasePrice: parseInt(form.purchasePrice)||0,
-        estValue: Math.round(val*1.1),
-        signal: signals[idx], signalReason: reasons[idx],
-        momentum: "+"+(Math.random()*20).toFixed(1)+"%",
-        imageUrl: cardImg||null, espnName: null,
-      });
-    };
-
-    const inp = (label,field,ph,type="text") => React.createElement('div', null,
-      React.createElement('div', { style:{fontSize:9,color:"#555",fontFamily:"'DM Mono',monospace",letterSpacing:"0.12em",textTransform:"uppercase",marginBottom:5} }, label),
-      React.createElement('input', { style:S.input, type, value:form[field], onChange:e=>set(field,e.target.value), placeholder:ph })
-    );
-
-    return React.createElement('div', { style:{padding:20,display:"flex",flexDirection:"column",gap:14} },
-      React.createElement('div', { style:{border:"2px dashed "+(cardImg?"#22c55e":"#333"),borderRadius:12,padding:cardImg?12:24,textAlign:"center",cursor:"pointer",background:"#0a0a0a",position:"relative"}, onClick:()=>imgRef.current&&imgRef.current.click() },
-        scanning && React.createElement('div', { style:{position:"absolute",inset:0,background:"rgba(0,0,0,0.8)",borderRadius:10,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:8,zIndex:5} },
-          React.createElement('div', { style:{width:28,height:28,border:"3px solid #333",borderTopColor:"#C41E1E",borderRadius:"50%",animation:"spin 0.8s linear infinite"} }),
-          React.createElement('div', { style:{fontSize:12,color:"#888",fontFamily:"'DM Mono',monospace"} }, "AI identifying card...")
-        ),
-        cardImg
-          ? React.createElement('div', { style:{display:"flex",gap:14,alignItems:"center"} },
-              React.createElement('img', { src:cardImg, style:{height:80,borderRadius:6,objectFit:"contain"} }),
-              React.createElement('div', { style:{textAlign:"left",flex:1} },
-                scanned && React.createElement('div', { style:{display:"inline-flex",alignItems:"center",gap:4,background:"rgba(34,197,94,0.1)",border:"1px solid rgba(34,197,94,0.3)",borderRadius:4,padding:"3px 8px",marginBottom:6} },
-                  React.createElement('span', { style:{fontSize:9,color:"#22c55e",fontFamily:"'DM Mono',monospace",fontWeight:700} }, "✓ AI IDENTIFIED")
-                ),
-                React.createElement('div', { style:{fontSize:11,color:"#888",fontFamily:"'DM Mono',monospace"} }, "Tap to change photo")
-              )
-            )
-          : React.createElement(React.Fragment, null,
-              React.createElement(Icon, { name:"camera", size:28 }),
-              React.createElement('div', { style:{fontWeight:700,fontSize:14,marginTop:8,marginBottom:4} }, "Upload Card Photo"),
-              React.createElement('div', { style:{fontSize:12,color:"#555",fontFamily:"'DM Mono',monospace"} }, "AI will auto-identify player, set, and grade")
-            ),
-        React.createElement('input', { ref:imgRef, type:"file", accept:"image/*", style:{display:"none"}, onChange:handleImg })
-      ),
-      React.createElement('div', { style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10} },
-        inp("Player Name","player","e.g. Victor Wembanyama"),
-        inp("Team","team","e.g. San Antonio Spurs"),
-        inp("Year","year","2024"),
-        inp("Card Set","set","e.g. Panini Prizm"),
-        inp("Parallel","parallel","e.g. Gold Prizm"),
-        inp("Serial #","number","/99 or 1/1"),
-        inp("Purchase Price","purchasePrice","$","number"),
-        React.createElement('div', null,
-          React.createElement('div', { style:{fontSize:9,color:"#555",fontFamily:"'DM Mono',monospace",letterSpacing:"0.12em",textTransform:"uppercase",marginBottom:5} }, "Condition"),
-          React.createElement('select', { style:S.select, value:form.condition, onChange:e=>set("condition",e.target.value) },
-            CONDITIONS.map(c=>React.createElement('option', { key:c }, c))
-          )
-        ),
-        React.createElement('div', null,
-          React.createElement('div', { style:{fontSize:9,color:"#555",fontFamily:"'DM Mono',monospace",letterSpacing:"0.12em",textTransform:"uppercase",marginBottom:5} }, "Sport"),
-          React.createElement('select', { style:S.select, value:form.sport, onChange:e=>set("sport",e.target.value) },
-            SPORTS_LIST.map(s=>React.createElement('option', { key:s }, s))
-          )
-        )
-      ),
-      React.createElement('div', { style:{display:"flex",gap:10,paddingTop:8,borderTop:"1px solid #1a1a1a"} },
-        React.createElement('button', { style:{...S.btnSecondary,flex:1,padding:"11px"}, onClick:onClose }, "Cancel"),
-        React.createElement('button', { style:{...S.btnPrimary,flex:1,padding:"11px",opacity:form.player?1:0.4}, onClick:submit, disabled:!form.player }, "Add to Book")
-      )
-    );
-  };
-
   const AddCardModal = () => showAddCard && (
     React.createElement('div', { style: {...S.modal,alignItems:isMobile?"flex-end":"center",padding:isMobile?0:24}, onClick: e=>e.target===e.currentTarget&&setShowAddCard(false), __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1229}}
       , React.createElement('div', { style: {...S.card,maxWidth:isMobile?"100%":520,borderRadius:isMobile?"16px 16px 0 0":"10px",width:"100%"}, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1230}}
         , React.createElement('div', { style: { display:"flex", justifyContent:"space-between", padding:"22px 26px", borderBottom:"1px solid #141414" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1231}}
-          , React.createElement('div', { style: { fontSize:18, fontWeight:700 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1232}}, "Add Card to Book"   )
+          , React.createElement('div', { style: { fontSize:18, fontWeight:700 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1232}}, "Add to Book"   )
           , React.createElement('button', { onClick: ()=>setShowAddCard(false), style: { background:"transparent", border:"1px solid #1C1C1C", borderRadius:7, padding:"6px 9px", color:"#444", cursor:"pointer" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1233}}, React.createElement(Icon, { name: "x", size: 14, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1233}}))
         )
-        , React.createElement(AddCardContent, { onClose:()=>setShowAddCard(false), onAdd:(card)=>{setCards([...cards,card]);setShowAddCard(false);}, isMobile, S })
+        , React.createElement('div', { style: { padding:26, display:"flex", flexDirection:"column", gap:14 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1235}}
+          , React.createElement('div', { style: { display:"grid", gridTemplateColumns:"1fr 1fr", gap:12 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1236}}
+            , [["Player Name","player","text","e.g. Victor Wembanyama"],["Team","team","text","e.g. San Antonio Spurs"],["Year","year","text","2023"],["Card Set","set","text","e.g. Panini Prizm"],["Parallel","parallel","text","e.g. Gold Prizm"],["Serial #","number","text","/99 or 1/1"],["Purchase Price","purchasePrice","number","$"]].map(([label,field,type,ph]) => (
+              React.createElement('div', { key: field, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1238}}
+                , React.createElement('div', { style: { fontSize:9, color:"#2A2A2A", fontFamily:"'DM Mono',monospace", letterSpacing:"0.12em", textTransform:"uppercase", marginBottom:5 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1239}}, label)
+                , React.createElement('input', { style: S.input, type: type, value: newCard[field], onChange: e=>setNewCard({...newCard,[field]:e.target.value}), placeholder: ph, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1240}})
+              )
+            ))
+            , React.createElement('div', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1243}}
+              , React.createElement('div', { style: { fontSize:9, color:"#2A2A2A", fontFamily:"'DM Mono',monospace", letterSpacing:"0.12em", textTransform:"uppercase", marginBottom:5 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1244}}, "Sport")
+              , React.createElement('select', { style: S.select, value: newCard.sport, onChange: e=>setNewCard({...newCard,sport:e.target.value}), __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1245}}, SPORTS_LIST.map(s=>React.createElement('option', { key: s, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1245}}, s)))
+            )
+            , React.createElement('div', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1247}}
+              , React.createElement('div', { style: { fontSize:9, color:"#2A2A2A", fontFamily:"'DM Mono',monospace", letterSpacing:"0.12em", textTransform:"uppercase", marginBottom:5 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1248}}, "Condition")
+              , React.createElement('select', { style: S.select, value: newCard.condition, onChange: e=>setNewCard({...newCard,condition:e.target.value}), __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1249}}, CONDITIONS.map(c=>React.createElement('option', { key: c, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1249}}, c)))
+            )
+          )
+          , React.createElement('div', { style: { display:"flex", gap:10, paddingTop:8, borderTop:"1px solid #141414" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1252}}
+            , React.createElement('button', { style: { ...S.btnSecondary, flex:1, padding:"10px" }, onClick: ()=>setShowAddCard(false), __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1253}}, "Cancel")
+            , React.createElement('button', { style: { ...S.btnPrimary, flex:1, padding:"10px" }, onClick: addCard, disabled: !newCard.player, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1254}}, "Add to Book"  )
+          )
+        )
       )
     )
   );
@@ -1637,8 +1415,57 @@ function RIPSSociety() {
           )
 
           , sportsView==="overview" && (
-            React.createElement('div', {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1272}}
-              , React.createElement('div', { style: { display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(140px,1fr))", gap:14, marginBottom:36 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1273}}
+            React.createElement('div', null,
+              React.createElement('div', {style:{background:"linear-gradient(135deg,#050e1a,#0a1628,#050e1a)",border:"1px solid #1e3a5f",borderRadius:12,padding:"18px 22px",marginBottom:18,display:"flex",gap:20,flexWrap:"wrap",alignItems:"center"}},
+                React.createElement('div', null,
+                  React.createElement('div', {style:{fontSize:9,color:"#4FC3F7",fontFamily:"'DM Mono',monospace",letterSpacing:"0.12em",marginBottom:4}}, "MARKET SENTIMENT"),
+                  React.createElement('div', {style:{fontSize:28,fontWeight:900,color:"#fff",letterSpacing:"-0.04em"}}, "BULL"),
+                  React.createElement('div', {style:{fontSize:10,color:"#22c55e",fontFamily:"'DM Mono',monospace"}}, "▲ Strong upward momentum across all sports")
+                ),
+                ...[{l:"MKT CAP",v:"$2.4B+",c:"#4FC3F7"},{l:"30-DAY",v:"+14.2%",c:"#22c55e"},{l:"BUY SIGNALS",v:PLAYER_TRENDS.filter(p=>p.signal==="BUY").length+"",c:"#f59e0b"},{l:"PSA 10 ROI",v:"38.6%",c:"#a78bfa"}].map((m,i)=>
+                  React.createElement('div', {key:i,style:{borderLeft:"1px solid #1e3a5f",paddingLeft:18}},
+                    React.createElement('div', {style:{fontSize:8,color:"#444",fontFamily:"'DM Mono',monospace",letterSpacing:"0.1em",marginBottom:3}}, m.l),
+                    React.createElement('div', {style:{fontSize:18,fontWeight:900,color:m.c}}, m.v)
+                  )
+                )
+              ),
+              React.createElement('div', {style:{background:"#080808",border:"1px solid #1a1a1a",borderRadius:12,padding:20,marginBottom:18}},
+                React.createElement('div', {style:{fontWeight:700,fontSize:13,marginBottom:10}}, "All Sports — 8-Month Index"),
+                React.createElement('div', {style:{display:"flex",gap:12,flexWrap:"wrap",marginBottom:10}},
+                  SPORT_INDEX.map(sp=>React.createElement('div', {key:sp.sport,style:{display:"flex",alignItems:"center",gap:5}},
+                    React.createElement('div', {style:{width:10,height:2,background:sp.color,borderRadius:1}}),
+                    React.createElement('span', {style:{fontSize:9,color:"#555",fontFamily:"'DM Mono',monospace"}}, sp.sport)
+                  ))
+                ),
+                React.createElement(MultiLineChart, {datasets:SPORT_INDEX.map(sp=>({id:sp.sport,data:sp.data,color:sp.color})),h:140}),
+                React.createElement('div', {style:{display:"flex",justifyContent:"space-between",marginTop:4}},
+                  ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug"].map((m,i)=>React.createElement('span', {key:i,style:{fontSize:8,color:"#333",fontFamily:"'DM Mono',monospace"}}, m))
+                )
+              ),
+              React.createElement('div', {style:{background:"#080808",border:"1px solid #1a1a1a",borderRadius:12,overflow:"hidden",marginBottom:18}},
+                React.createElement('div', {style:{padding:"11px 16px",borderBottom:"1px solid #111",fontWeight:700,fontSize:12}}, "Top Market Movers — 30 Day"),
+                React.createElement('div', {style:{padding:"0 16px"}},
+                  [...PLAYER_TRENDS].sort((a,b)=>parseFloat(b.change)-parseFloat(a.change)).slice(0,8).map((p,i)=>{
+                    const pct=parseFloat(p.change),bar=Math.min(Math.abs(pct)/70*100,100),img=espnImg(p.name);
+                    return React.createElement('div', {key:i,style:{display:"grid",gridTemplateColumns:"22px 36px 1fr 60px 50px 65px",alignItems:"center",gap:6,padding:"8px 0",borderBottom:i<7?"1px solid #0a0a0a":"none"}},
+                      React.createElement('div', {style:{fontSize:9,color:"#222",fontFamily:"'DM Mono',monospace",textAlign:"center"}}, i+1),
+                      React.createElement('div', {style:{width:30,height:30,borderRadius:"50%",background:"#111",overflow:"hidden",flexShrink:0}},
+                        img&&React.createElement('img', {src:img,style:{width:"100%",height:"100%",objectFit:"cover",objectPosition:"top"},onError:e=>e.target.style.opacity="0"})
+                      ),
+                      React.createElement('div', null,
+                        React.createElement('div', {style:{fontSize:11,fontWeight:700,marginBottom:2}}, p.name),
+                        React.createElement('div', {style:{height:3,background:"#111",borderRadius:2,overflow:"hidden"}},
+                          React.createElement('div', {style:{height:"100%",width:bar+"%",background:pct>=0?"#22c55e":"#ef4444",borderRadius:2}})
+                        )
+                      ),
+                      React.createElement('div', {style:{fontSize:9,color:"#555",fontFamily:"'DM Mono',monospace"}}, p.sport),
+                      React.createElement('div', {style:{fontSize:11,fontWeight:700,color:pct>=0?"#22c55e":"#ef4444",fontFamily:"'DM Mono',monospace"}}, p.change),
+                      React.createElement(SignalBadge, {signal:p.signal||"WATCH"})
+                    );
+                  })
+                )
+              ),
+React.createElement('div', { style: { display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(140px,1fr))", gap:14, marginBottom:36 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1273}}
                 , SPORT_INDEX.map((sp,i) => (
                   React.createElement('div', { key: i, style: { ...S.statBox, borderTop:`3px solid ${sp.color}` }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1275}}
                     , React.createElement('div', { style: S.statLabel, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 1276}}, sp.sport)
@@ -2078,7 +1905,7 @@ function RIPSSociety() {
 
       , React.createElement(Nav, {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1703}})
       , React.createElement(MobileBottomNav, {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1704}})
-      , page==="home"&&React.createElement(HomePage, {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1705}})
+      , page==="home"&&React.createElement(HomePage, {isMobile, setPage, setAuthModal, user})
       , page==="book"&&user&&React.createElement(CardBookPage, {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1706}})
       , page==="market"&&React.createElement(MarketPage, {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1707}})
       , page==="breaks"&&React.createElement(BreakersPage, {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1708}})
@@ -2102,6 +1929,4 @@ function RIPSSociety() {
 ReactDOM.render(React.createElement(RIPSSociety),document.getElementById("root"));
 </script>
 </body>
-</htmlReact.createElement('img', { src:"hero-cards.jpg", alt:"Sports cards collection", style:{position:"absolute",inset:0,width:"100%",height:"100%",objectFit:"cover",objectPosition:"center"} }),
-          React.createElement('div', { style:{position:"absolute",inset:0,background:"linear-gradient(90deg,rgba(0,0,0,0.45) 0%,transparent 50%)"} }),
-          >
+</html>
