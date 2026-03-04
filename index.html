@@ -255,7 +255,7 @@ const PLAYER_TRENDS = [
    note:"Ballon d'Or contender. Brazilian flair making him the most exciting player in the world.",
    signalReason:"Awards recognition translating directly to card premium across all products.",
    years:["2018","2019","2020"],sets:["Panini","Topps Chrome","Prizm"],
-   keyCards:[{set:"2018 Prizm RC",grade:"PSA 10",val:520,pop:820},{set:"2022 Prizm Silver",grade:"PSA 10",val:280,pop:1400}]},,
+   keyCards:[{set:"2018 Prizm RC",grade:"PSA 10",val:520,pop:820},{set:"2022 Prizm Silver",grade:"PSA 10",val:280,pop:1400}]},
   // ── MORE BASKETBALL ───────────────────────────────────────────────────
   {id:"jokic",name:"Nikola Jokic",sport:"Basketball",team:"Nuggets",pos:"C",hot:true,signal:"HOLD",color:"#0E2240",change:"+7.2%",
    data:[580,600,620,610,640,665,680,690],
@@ -605,25 +605,149 @@ const MOCK_COLLECTION = [
 
 
 const ESPN_IDS = {
-  "Victor Wembanyama":{sport:"nba",id:"4432174"},
-  "C.J. Stroud":{sport:"nfl",id:"4361529"},
-  "Kylian Mbappé":{sport:"soccer",id:"231747"},
-  "Shohei Ohtani":{sport:"mlb",id:"39832"},
-  "Luka Dončič":{sport:"nba",id:"3149673"},
+  // ── BASKETBALL ──────────────────────────────────────────────────────────
+  "Victor Wembanyama":{sport:"nba",id:"5104157"},
+  "Jayson Tatum":{sport:"nba",id:"4277956"},
+  "Shai Gilgeous-Alexander":{sport:"nba",id:"3934672"},
+  "Luka Doncic":{sport:"nba",id:"3945274"},"Luka Dončič":{sport:"nba",id:"3945274"},"Luka Dončić":{sport:"nba",id:"3945274"},
+  "LeBron James":{sport:"nba",id:"1966"},
+  "Giannis Antetokounmpo":{sport:"nba",id:"3032977"},
+  "Stephen Curry":{sport:"nba",id:"3975"},
+  "Joel Embiid":{sport:"nba",id:"3059318"},
+  "Nikola Jokic":{sport:"nba",id:"3112335"},
+  "LaMelo Ball":{sport:"nba",id:"4432777"},
+  "Anthony Edwards":{sport:"nba",id:"4432816"},
+  "Cade Cunningham":{sport:"nba",id:"4432579"},
+  "Scottie Barnes":{sport:"nba",id:"4432580"},
+  "Paolo Banchero":{sport:"nba",id:"4683727"},
+  "Chet Holmgren":{sport:"nba",id:"4683734"},
+  "Zion Williamson":{sport:"nba",id:"4395628"},
+  "Ja Morant":{sport:"nba",id:"4279888"},
+  "Trae Young":{sport:"nba",id:"4277905"},
+  "Donovan Mitchell":{sport:"nba",id:"3064514"},
+  // ── FOOTBALL ────────────────────────────────────────────────────────────
   "Patrick Mahomes":{sport:"nfl",id:"3139477"},
-  "Connor McDavid":{sport:"nhl",id:"3895074"},"Auston Matthews":{sport:"nhl",id:"3899671"},
-  "Connor Bedard":{sport:"nhl",id:"4697392"},"Sidney Crosby":{sport:"nhl",id:"3114"},
-  "Aaron Judge":{sport:"mlb",id:"33192"},"Mike Trout":{sport:"mlb",id:"33150"},
-  "Paul Skenes":{sport:"mlb",id:"5163059"},"Ronald Acuña Jr.":{sport:"mlb",id:"39853"},
-  "LeBron James":{sport:"nba",id:"1966"},"Stephen Curry":{sport:"nba",id:"3975"},
-  "Giannis Antetokounmpo":{sport:"nba",id:"3032977"},"Nikola Jokic":{sport:"nba",id:"3112335"},
-  "Luka Dončič":{sport:"nba",id:"3149673"},"Luka Doncic":{sport:"nba",id:"3149673"},
-  "Josh Allen":{sport:"nfl",id:"3918298"},"Joe Burrow":{sport:"nfl",id:"3915511"},
-  "Caleb Williams":{sport:"nfl",id:"4431612"},"Jayden Daniels":{sport:"nfl",id:"4432643"},
-  "Lamar Jackson":{sport:"nfl",id:"3916387"},"Erling Haaland":{sport:"soccer",id:"4301610"},
-  "Lionel Messi":{sport:"soccer",id:"34014"},"Kylian Mbappé":{sport:"soccer",id:"231747"},
+  "Jayden Daniels":{sport:"nfl",id:"4432643"},
+  "CeeDee Lamb":{sport:"nfl",id:"4241478"},
+  "C.J. Stroud":{sport:"nfl",id:"4361529"},
+  "Micah Parsons":{sport:"nfl",id:"4240539"},
+  "Joe Burrow":{sport:"nfl",id:"3915511"},
+  "Josh Allen":{sport:"nfl",id:"3918298"},
+  "Lamar Jackson":{sport:"nfl",id:"3916387"},
+  "Caleb Williams":{sport:"nfl",id:"4431612"},
+  "Justin Herbert":{sport:"nfl",id:"3915516"},
+  "Justin Jefferson":{sport:"nfl",id:"4262921"},
+  "Tyreek Hill":{sport:"nfl",id:"3054220"},
+  // ── BASEBALL ────────────────────────────────────────────────────────────
+  "Shohei Ohtani":{sport:"mlb",id:"39832"},
+  "Paul Skenes":{sport:"mlb",id:"5163059"},
+  "Juan Soto":{sport:"mlb",id:"596019"},
+  "Aaron Judge":{sport:"mlb",id:"33192"},
+  "Julio Rodriguez":{sport:"mlb",id:"682998"},
+  "Mike Trout":{sport:"mlb",id:"33150"},
+  "Ronald Acuña Jr.":{sport:"mlb",id:"594805"},
+  "Fernando Tatis Jr.":{sport:"mlb",id:"663338"},
+  "Bobby Witt Jr.":{sport:"mlb",id:"677951"},
+  "Elly De La Cruz":{sport:"mlb",id:"682829"},
+  // ── HOCKEY ──────────────────────────────────────────────────────────────
+  "Connor McDavid":{sport:"nhl",id:"3895074"},
+  "Connor Bedard":{sport:"nhl",id:"4697392"},
+  "Sidney Crosby":{sport:"nhl",id:"3114"},
+  "Auston Matthews":{sport:"nhl",id:"3899671"},
+  "Nathan MacKinnon":{sport:"nhl",id:"2976833"},
+  "Cale Makar":{sport:"nhl",id:"4024910"},
+  "David Pastrnak":{sport:"nhl",id:"2976846"},
+  "Adam Fox":{sport:"nhl",id:"3942336"},
+  // ── SOCCER ──────────────────────────────────────────────────────────────
+  "Lionel Messi":{sport:"soccer",id:"34014"},
+  "Kylian Mbappé":{sport:"soccer",id:"231747"},"Kylian Mbappe":{sport:"soccer",id:"231747"},
+  "Vinicius Jr.":{sport:"soccer",id:"258023"},
+  "Erling Haaland":{sport:"soccer",id:"4301610"},
+  "Jude Bellingham":{sport:"soccer",id:"4406127"},
+  "Pedri":{sport:"soccer",id:"4406126"},
+  "Rodri":{sport:"soccer",id:"3860714"},
 };
 const espnImg = (name) => { const e=ESPN_IDS[name]; return e?`https://a.espncdn.com/i/headshots/${e.sport}/players/full/${e.id}.png`:null; };
+
+// ── Brand badge helper ────────────────────────────────────────────────────
+const getBrand = (setName) => {
+  if (!setName) return null;
+  const s = setName.toLowerCase();
+  if (s.includes('panini')||s.includes('prizm')||s.includes('optic')||s.includes('select')||s.includes('national treasures')||s.includes('hoops')||s.includes('mosaic')||s.includes('chronicles')) return {label:'PANINI',color:'#1a5fa8',bg:'#0d2d4f'};
+  if (s.includes('topps')||s.includes('bowman')) return {label:'TOPPS',color:'#e8192c',bg:'#4a0009'};
+  if (s.includes('upper deck')||s.includes('young guns')||s.includes('sp auth')||s.includes('the cup')) return {label:'UD',color:'#00529F',bg:'#001a3a'};
+  if (s.includes('donruss')||s.includes('score')) return {label:'DONRUSS',color:'#cc3300',bg:'#3a0e00'};
+  if (s.includes('fleer')) return {label:'FLEER',color:'#c0a020',bg:'#3a2e00'};
+  return null;
+};
+// ── Intelligence Hub Data ─────────────────────────────────────────────────
+const INSIDER_INDEXES = [
+  {id:'hype',    name:'Modern Hype Index',       val:184, change:'+22.4%', data:[100,112,128,145,155,168,178,184], color:'#C41E1E', desc:'Tracks PSA 10 velocity for rookies < 3 years old. High = bubble risk.', drivers:['Wembanyama + Bedard rookie demand','PSA 10 pop still thin','Social media hype cycle peaking']},
+  {id:'vintage', name:'Vintage Stability Index', val:127, change:'+8.1%',  data:[100,103,107,111,115,118,123,127], color:'#FFD700', desc:'Pre-1990 raw card pricing. Consistent, inflation-resistant store of value.', drivers:['Boomer collector wealth transfer','Raw condition scarcity','HOF class annually refreshes interest']},
+  {id:'breaker', name:'Breaker Integrity Score', val:71,  change:'-3.2%',  data:[88,84,81,79,76,74,72,71],         color:'#f59e0b', desc:'Composite of hit rates, case consistency, and community trust scores.', drivers:['Several high-profile break scandals in Q4','Product allocation issues','Community trust declining on new platforms']},
+  {id:'prospect',name:'Prospect Momentum Index', val:213, change:'+41.3%', data:[100,118,138,155,170,185,200,213], color:'#38bdf8', desc:'Minor league, college, and pre-draft prospect card velocity. Leading indicator.', drivers:['2025 MLB draft class depth','Paul Skenes effect on baseball cards','NFL combine season driving football prospects']},
+  {id:'grade',   name:'Grading Inflation Index', val:156, change:'+14.7%', data:[100,108,116,122,130,140,149,156], color:'#a78bfa', desc:'PSA 10 pop growth vs. sale price erosion. Rising = grade saturation risk.', drivers:['PSA turnaround times improving','Prizm PSA 10 pop up 40% YoY','Price compression on common parallels']},
+];
+const LIFECYCLE_EVENTS = [
+  {phase:'Draft Hype',   idx:0, priceMult:1.0,  color:'#888',    desc:'Pre-debut speculation. Max hype, max risk. Buy early or miss the window.'},
+  {phase:'Rookie Debut', idx:1, priceMult:2.2,  color:'#38bdf8', desc:'Opening night. First game premium. Temporary spike — watch for pullback.'},
+  {phase:'Hot Streak',   idx:2, priceMult:3.8,  color:'#22c55e', desc:'5+ game run. Media narrative peaks. Often the best short-term exit.'},
+  {phase:'Regression',   idx:3, priceMult:2.1,  color:'#ef4444', desc:'Slump. Cards flood eBay. Correction. Patient buyers find value here.'},
+  {phase:'Breakout',     idx:4, priceMult:5.2,  color:'#22c55e', desc:'All-Star / awards season. True ceiling forms. Strong hold.'},
+  {phase:'Peak',         idx:5, priceMult:7.4,  color:'#FFD700', desc:'Championship window. Maximum liquidity. Consider trimming position.'},
+  {phase:'Veteran',      idx:6, priceMult:4.1,  color:'#f59e0b', desc:'Stable but declining. Vintage premium emerging on select cards.'},
+  {phase:'HOF Track',    idx:7, priceMult:9.8,  color:'#C41E1E', desc:'Hall of Fame locks in. Price floor established. True long-term hold.'},
+];
+const STAT_CORRELATIONS = {
+  Football: [{stat:'4+ TD game',spike:'+14.2%',window:'48h'},{stat:'Playoff win',spike:'+22.1%',window:'72h'},{stat:'Super Bowl MVP',spike:'+89.4%',window:'1 week'},{stat:'Injury (major)',spike:'-31.2%',window:'24h'}],
+  Basketball: [{stat:'40+ pt game',spike:'+8.7%',window:'24h'},{stat:'Triple double',spike:'+5.2%',window:'48h'},{stat:'MVP award',spike:'+44.1%',window:'1 week'},{stat:'Trade to big market',spike:'+28.3%',window:'48h'}],
+  Baseball: [{stat:'No-hitter',spike:'+19.8%',window:'48h'},{stat:'Cy Young award',spike:'+38.2%',window:'1 week'},{stat:'30+ HR season pace',spike:'+11.4%',window:'1 month'},{stat:'Injury (IL 60-day)',spike:'-22.7%',window:'24h'}],
+  Hockey: [{stat:'Hat trick',spike:'+6.3%',window:'48h'},{stat:'Hart Trophy',spike:'+41.2%',window:'1 week'},{stat:'Stanley Cup win',spike:'+33.8%',window:'72h'},{stat:'Injury (major)',spike:'-18.4%',window:'24h'}],
+  Soccer: [{stat:'UCL goal',spike:'+12.1%',window:'48h'},{stat:'Ballon d\'Or',spike:'+67.3%',window:'1 week'},{stat:'World Cup win',spike:'+44.8%',window:'1 week'},{stat:'Transfer rumor',spike:'+18.2%',window:'24h'}],
+};
+const PLAYER_LIFECYCLE_PHASE = {
+  'Victor Wembanyama':2, 'Connor Bedard':2, 'Patrick Mahomes':5, 'Luka Doncic':5,
+  'Jayson Tatum':4, 'Shai Gilgeous-Alexander':4, 'CeeDee Lamb':4, 'Anthony Edwards':3,
+  'Shohei Ohtani':5, 'Paul Skenes':1, 'Caitlin Clark':2, 'Jude Bellingham':4,
+  'Vinicius Jr.':4, 'Connor McDavid':5, 'Nathan MacKinnon':5, 'Joel Embiid':4,
+};
+const AUCTION_HOUSES = [
+  {name:'eBay',          buyerFee:0,    sellerFee:0.1275, minDays:7,  reach:'Global',     best:'High-volume, < $500'},
+  {name:'PWCC',          buyerFee:0.15, sellerFee:0.08,   minDays:14, reach:'Collectors', best:'Graded PSA 8+, > $200'},
+  {name:'Goldin',        buyerFee:0.20, sellerFee:0.10,   minDays:30, reach:'High-end',   best:'1/1s, autos > $1,000'},
+  {name:'Heritage',      buyerFee:0.20, sellerFee:0.08,   minDays:45, reach:'Vintage',    best:'Pre-1980, HOF cards'},
+  {name:'Direct / Trade',buyerFee:0,    sellerFee:0.03,   minDays:1,  reach:'Network',    best:'When you have a buyer'},
+];
+const GRADING_TIERS = [
+  {name:'Bulk Economy', cost:22,  turnaround:'3-6 months'},
+  {name:'Regular',      cost:50,  turnaround:'45 days'},
+  {name:'Express',      cost:150, turnaround:'10 days'},
+  {name:'Super Express',cost:300, turnaround:'3 days'},
+];
+const LEADERBOARD = [
+  {rank:1, handle:'@DallasWax',    val:284500, sport:'Football',   grade:'ELITE',    verified:true,  isYou:false},
+  {rank:2, handle:'@HoopsVault',   val:197200, sport:'Basketball', grade:'EXPERT',   verified:true,  isYou:false},
+  {rank:3, handle:'@RicoV',        val:3195,   sport:'Mixed',      grade:'ANALYST',  verified:true,  isYou:true},
+  {rank:4, handle:'@BaseballBro',  val:2840,   sport:'Baseball',   grade:'ANALYST',  verified:false, isYou:false},
+  {rank:5, handle:'@IceQueenCards',val:2210,   sport:'Hockey',     grade:'COLLECTOR',verified:true,  isYou:false},
+  {rank:6, handle:'@SoccerSlabs',  val:1980,   sport:'Soccer',     grade:'COLLECTOR',verified:false, isYou:false},
+  {rank:7, handle:'@VintagePSA',   val:1650,   sport:'Football',   grade:'COLLECTOR',verified:true,  isYou:false},
+  {rank:8, handle:'@NoviceRips',   val:890,    sport:'Mixed',      grade:'ROOKIE',   verified:false, isYou:false},
+  {rank:9, handle:'@BoxBreakKing', val:740,    sport:'Basketball', grade:'ROOKIE',   verified:false, isYou:false},
+  {rank:10,handle:'@NewCollector', val:320,    sport:'Football',   grade:'ROOKIE',   verified:false, isYou:false},
+];
+const SCOUT_PRESETS = [
+  {label:'Analyze my collection',query:'Analyze my full collection for buy/hold/sell recommendations'},
+  {label:'Best buy under $200',  query:'What is the best card to buy right now under $200?'},
+  {label:'Rookie to watch',      query:'Which rookie card has the best upside this season?'},
+  {label:'What to sell now',     query:'Which cards in my collection should I sell before the market softens?'},
+];
+const SCOUT_RESPONSES = {
+  'mahomes': {comps:[{date:'Feb 28',price:295,grade:'PSA 10'},{date:'Feb 22',price:278,grade:'PSA 9'},{date:'Feb 15',price:312,grade:'PSA 10'}],liquidity:'HIGH',liquidityReason:'Top 10 most-traded NFL cards. Sells within 3 days.',popTrend:'+12% YoY',popData:[180,195,210,225,238,248,258,268],trajectory:'PEAK',macroTrend:'NFL cards up +7.4% 30-day',verdict:'HOLD',verdictReason:'Fair value. No catalyst to drive significant upside near-term. Re-evaluate at season start.'},
+  'wemby': {comps:[{date:'Mar 1',price:540,grade:'PSA 10'},{date:'Feb 25',price:498,grade:'PSA 10'},{date:'Feb 20',price:511,grade:'PSA 9.5'}],liquidity:'HIGH',liquidityReason:'Historic demand. Low supply. Sells same-day on PWCC.',popTrend:'+38% YoY',popData:[80,110,145,180,220,280,350,420],trajectory:'HOT STREAK',macroTrend:'NBA cards up +21.3% 30-day',verdict:'STRONG BUY',verdictReason:'Still in price discovery. Pop thin. Buy Zone: < $600.'},
+  'default': {comps:[{date:'Mar 1',price:null,grade:'PSA 10'},{date:'Feb 22',price:null,grade:'PSA 9'},{date:'Feb 15',price:null,grade:'PSA 10'}],liquidity:'MED',liquidityReason:'Moderate trading volume. Typically sells within 7-14 days.',popTrend:'+18% YoY',popData:[100,108,116,122,130,140,149,156],trajectory:'HOLD',macroTrend:'Mixed signals across sport indexes.',verdict:'WAIT ZONE',verdictReason:'Insufficient data for high-confidence signal. Monitor for 30 days.'},
+};
+
 const PARALLELS_RAINBOW = [
   { name:"Base", owned:true },{ name:"Silver Prizm", owned:true },{ name:"Blue Prizm /199", owned:false },
   { name:"Red Prizm /149", owned:false },{ name:"Green Prizm /99", owned:false },
@@ -1068,7 +1192,7 @@ function RIPSSociety() {
   const totalGain = totalValue - totalCost;
 
   const navigateTo = (p) => {
-    if (["book","collection","market"].includes(p) && !user) { setAuthModal("login"); return; }
+    if (["book","collection","market","intelligence"].includes(p) && !user) { setAuthModal("login"); return; }
     setPage(p);
     try { window.history.pushState({ page: p }, "", "#" + p); } catch(e) {}
     window.scrollTo(0, 0);
@@ -1236,7 +1360,7 @@ function RIPSSociety() {
             , React.createElement('input', { style: { background:"transparent", border:"none", outline:"none", color:"#fff", fontSize:13, flex:1, fontFamily:"inherit" }, placeholder: "Search player, set, cert #"    , readOnly: true, onClick: () => setAuthModal("login"), __self: this, __source: {fileName: _jsxFileName2, lineNumber: 691}})
           )
           , React.createElement('div', { style: { display:"flex", alignItems:"center", gap:4 }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 693}}
-            , [["market","MARKET"],["collection","COLLECTION"],["breaks","BREAKS"]].map(([id,label]) => (
+            , [["market","MARKET"],["collection","COLLECTION"],["intelligence","INTEL"],["breaks","BREAKS"]].map(([id,label]) => (
               React.createElement('button', { key: id, onClick: () => navigateTo(id), style: { background:"transparent", border:"none", color:page===id?"#fff":"#666", fontSize:11, fontWeight:600, letterSpacing:"0.06em", cursor:"pointer", padding:"6px 10px", fontFamily:"inherit" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 695}}, label)
             ))
             , React.createElement('div', { style: { width:1, height:18, background:"#222", margin:"0 6px" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 697}})
@@ -1302,7 +1426,7 @@ function RIPSSociety() {
           React.createElement(Icon,{name:'search',size:16}),
           React.createElement('input',{style:{background:'transparent',border:'none',outline:'none',color:'#fff',fontSize:15,flex:1,fontFamily:'inherit'},placeholder:'Search player, set...',readOnly:true,onClick:()=>{setAuthModal('login');setMobileMenuOpen(false);}})
         ),
-        [['home','Home','home'],['market','Market Pulse','trending'],['collection','Collection','collection'],['breaks','Breakers','live']].map(([id,label,icon])=>
+        [['home','Home','home'],['market','Market Pulse','trending'],['collection','Collection','collection'],['intelligence','Intelligence','analytics'],['breaks','Breakers','live']].map(([id,label,icon])=>
           React.createElement('button',{key:id,onClick:()=>{navigateTo(id);setMobileMenuOpen(false);},style:{width:'100%',display:'flex',alignItems:'center',gap:16,padding:'18px 16px',marginBottom:6,background:page===id?'#111':'transparent',border:page===id?'1px solid #1e1e1e':'1px solid transparent',borderRadius:10,cursor:'pointer',textAlign:'left',color:page===id?'#fff':'rgba(255,255,255,0.65)'}},
             React.createElement(Icon,{name:icon,size:22}),
             React.createElement('span',{style:{fontSize:18,fontWeight:600}},label)
@@ -1326,7 +1450,7 @@ function RIPSSociety() {
   //
   const MobileBottomNav = () => !isMobile ? null : (
     React.createElement('div', { style: { position:"fixed", bottom:0, left:0, right:0, zIndex:48, background:"#000", borderTop:"1px solid #1a1a1a", display:"flex", paddingBottom:"env(safe-area-inset-bottom)" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 758}}
-      , [["home","home","Home"],["market","trending","Market"],["collection","book","Collection"],["breaks","live","Breaks"]].map(([id,icon,label]) => (
+      , [["home","home","Home"],["market","trending","Market"],["collection","book","Collect"],["intelligence","analytics","Intel"],["breaks","live","Breaks"]].map(([id,icon,label]) => (
         React.createElement('button', { key: id, onClick: () => navigateTo(id), style: { flex:1, display:"flex", flexDirection:"column", alignItems:"center", gap:3, padding:"10px 0 8px", background:"transparent", border:"none", color:page===id?"#C41E1E":"#555", cursor:"pointer" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 760}}
           , React.createElement(Icon, { name: icon, size: 20, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 761}})
           , React.createElement('span', { style: { fontSize:9, fontWeight:600, fontFamily:"'DM Mono',monospace", letterSpacing:"0.06em" }, __self: this, __source: {fileName: _jsxFileName2, lineNumber: 762}}, label.toUpperCase())
@@ -1634,7 +1758,7 @@ function RIPSSociety() {
           fontWeight:400,
           margin:"0 0 40px",
           textTransform:"uppercase",
-        }},"Scan · Grade · Track · Trade"),
+        }},"Market · Collection · Intelligence · Breaks"),
 
         /* CTAs */
         React.createElement('div',{style:{display:"flex",gap:10,justifyContent:"center",flexWrap:"wrap",marginBottom:52}},
@@ -1682,6 +1806,102 @@ function RIPSSociety() {
             React.createElement('h3', {style:{fontSize:20,fontWeight:800,margin:"0 0 12px",letterSpacing:"-0.02em"}}, step.title),
             React.createElement('p', {style:{fontSize:13,color:"#999",lineHeight:1.7,margin:0}}, step.desc),
             i<2&&!isMobile&&React.createElement('div', {style:{position:"absolute",right:-1,top:"50%",transform:"translateY(-50%)",width:2,height:40,background:"linear-gradient(to bottom,transparent,#C41E1E,transparent)"}})
+          )
+        )
+      )
+    ),
+
+    /* ── THE PLATFORM — 4 TABS ── */
+    React.createElement('section', {style:{padding:isMobile?"60px 20px":"100px 40px",background:"#000",borderTop:"1px solid #0d0d0d"}},
+      React.createElement('div', {style:{maxWidth:1100,margin:"0 auto"}},
+        React.createElement('div', {style:{textAlign:"center",marginBottom:isMobile?40:64}},
+          React.createElement('div', {style:{fontSize:10,color:"#C41E1E",fontFamily:"'DM Mono',monospace",letterSpacing:"0.15em",marginBottom:12}}, "THE PLATFORM"),
+          React.createElement('h2', {style:{fontSize:isMobile?36:64,fontWeight:900,letterSpacing:"-0.02em",margin:"0 0 16px",fontFamily:"'Bebas Neue','Arial Narrow',sans-serif",lineHeight:0.95}}, "Four tools.", React.createElement('br',null), React.createElement('span',{style:{color:"#C41E1E"}},"One edge.")),
+          React.createElement('p', {style:{fontSize:13,color:"#555",fontFamily:"'DM Mono',monospace",letterSpacing:"0.1em",maxWidth:480,margin:"0 auto"}},"Everything a serious collector needs — built into one platform.")
+        ),
+        // 4 tab cards
+        React.createElement('div', {style:{display:"grid",gridTemplateColumns:isMobile?"1fr":isMobile?"1fr 1fr":"repeat(2,1fr)",gap:2,marginBottom:2}},
+          [
+            {
+              id:"market", label:"MARKET", color:"#22c55e", icon:"📈",
+              headline:"Market Intelligence Dashboard",
+              sub:"50 players · 5 sports · 8 TCG categories · Live signals",
+              features:["BUY / HOLD / SELL signals on 50+ players","30-day price trend charts for every sport","Universal Card Lookup — search any player, any set","Sport Strength Index · Top Movers · TCG Index"],
+              stat:"$2.4B+", statLabel:"market tracked",
+              cta:"View Market →",
+            },
+            {
+              id:"collection", label:"COLLECTION", color:"#FFD700", icon:"🏠",
+              headline:"Your Collection, Elevated",
+              sub:"Card Room · Card Scanner · Collector IQ · Collection Story",
+              features:["Trophy Collection — put your top 5 on display","AI Card Scanner — point and scan any slab","Collector IQ score with tier progression","Write a legacy letter for your collection"],
+              stat:"5 Tools", statLabel:"inside collection",
+              cta:"Enter Collection →",
+            },
+            {
+              id:"intelligence", label:"INTELLIGENCE", color:"#a78bfa", icon:"🧠",
+              headline:"The Intelligence Suite",
+              sub:"Portfolio Intel · Card Lifecycle · AI Scout · Exit Planner",
+              features:["Portfolio risk score + exposure breakdown","Card lifecycle phase tracker with price curves","AI Card Scout: buy zone or wait zone?","Exit Planner: auction house comparison + tax est."],
+              stat:"7 Tools", statLabel:"in the suite",
+              cta:"Open Intelligence →",
+            },
+            {
+              id:"breaks", label:"BREAKS", color:"#38bdf8", icon:"⚡",
+              headline:"Live Card Breaks",
+              sub:"Fanatics · Whatnot · TikTok · Instagram · YouTube",
+              features:["Live breaking events across all platforms","Case and box break formats explained","Break ROI calculator — know before you buy","Breaker integrity scores + community reviews"],
+              stat:"5 Platforms", statLabel:"streaming live",
+              cta:"Watch Breaks →",
+            },
+          ].map((tab, i) =>
+            React.createElement('div', {
+              key: tab.id,
+              onClick: () => navigateTo(tab.id),
+              style: {
+                background:"#060606",
+                border:"1px solid #111",
+                borderTop:"3px solid "+tab.color,
+                padding:isMobile?"24px 20px":"36px 32px",
+                cursor:"pointer",
+                transition:"background 0.2s, border-color 0.2s",
+                position:"relative",
+                overflow:"hidden",
+              },
+              onMouseEnter: e => { e.currentTarget.style.background="#0a0a0a"; e.currentTarget.style.borderColor=tab.color+"55"; },
+              onMouseLeave: e => { e.currentTarget.style.background="#060606"; e.currentTarget.style.borderColor="#111"; e.currentTarget.style.borderTopColor=tab.color; },
+            },
+              // Ghost label
+              React.createElement('div', {style:{position:"absolute",right:-10,top:-10,fontSize:isMobile?80:100,fontWeight:900,fontFamily:"'Bebas Neue','Arial Narrow',sans-serif",color:"rgba(255,255,255,0.015)",letterSpacing:"-0.04em",lineHeight:1,userSelect:"none",pointerEvents:"none"}}, tab.label),
+              // Header
+              React.createElement('div', {style:{display:"flex",alignItems:"flex-start",justifyContent:"space-between",marginBottom:16}},
+                React.createElement('div', null,
+                  React.createElement('div', {style:{display:"flex",alignItems:"center",gap:10,marginBottom:6}},
+                    React.createElement('span', {style:{fontSize:22}}, tab.icon),
+                    React.createElement('div', {style:{fontSize:10,letterSpacing:"0.18em",fontFamily:"'DM Mono',monospace",color:tab.color,fontWeight:700}}, tab.label)
+                  ),
+                  React.createElement('div', {style:{fontFamily:"'Bebas Neue','Arial Narrow',sans-serif",fontSize:isMobile?26:32,letterSpacing:"0.02em",color:"#fff",lineHeight:1,marginBottom:6}}, tab.headline),
+                  React.createElement('div', {style:{fontSize:10,color:"#444",fontFamily:"'DM Mono',monospace",letterSpacing:"0.06em"}}, tab.sub)
+                ),
+                React.createElement('div', {style:{textAlign:"right",flexShrink:0,marginLeft:16}},
+                  React.createElement('div', {style:{fontSize:28,fontWeight:900,color:tab.color,fontFamily:"'Bebas Neue','Arial Narrow',sans-serif",lineHeight:1}}, tab.stat),
+                  React.createElement('div', {style:{fontSize:8,color:"#333",fontFamily:"'DM Mono',monospace",letterSpacing:"0.1em",textTransform:"uppercase",marginTop:2}}, tab.statLabel)
+                )
+              ),
+              // Feature list
+              React.createElement('div', {style:{display:"flex",flexDirection:"column",gap:6,marginBottom:20}},
+                tab.features.map((f, fi) =>
+                  React.createElement('div', {key:fi, style:{display:"flex",alignItems:"flex-start",gap:10,fontSize:12,color:"#666",lineHeight:1.4}},
+                    React.createElement('span', {style:{color:tab.color,flexShrink:0,marginTop:1,fontSize:10}}, "▸"),
+                    f
+                  )
+                )
+              ),
+              // CTA
+              React.createElement('div', {style:{display:"inline-flex",alignItems:"center",gap:6,fontSize:11,color:tab.color,fontFamily:"'DM Mono',monospace",letterSpacing:"0.1em",fontWeight:700}},
+                tab.cta
+              )
+            )
           )
         )
       )
@@ -2136,10 +2356,10 @@ const PageHero = ({label,title,subtitle,right}) =>
     if (collectionView === 'tracker') return React.createElement(CustomTrackerSubPage,  {onBack:()=>setCollectionView('hub')});
     // Hub
     const feats = [
-      {id:'book',    icon:'📖', label:'Card Book',       sub:'Your collection, organized.',    desc:'A real card book layout — empty sleeves ready to fill. Add by hovering, tap to inspect. Every card graded, valued, signaled.',  color:'#4FC3F7', cta:'Open Book'},
+      {id:'book',    icon:'🏠', label:'Card Room',       sub:'Your collection, on display.',    desc:'Your Card Room — a display case for your top 5 trophies, plus your full binder below. Show off what matters most.',  color:'#FFD700', cta:'Enter Room'},
       {id:'scanner', icon:'⚡', label:'Card Scanner',    sub:'Scan. Upload. Know instantly.',  desc:'Point your camera or upload an image. Graded or raw — we pull the market data, comps, and signal in under a second.',            color:'#22c55e', cta:'Start Scanning'},
       {id:'iq',      icon:'🧠', label:'Collector IQ',   sub:'Your intelligence score.',       desc:'A full profile of your collection expertise. XP from every scan, trade, and call. See your tier and how you rank.',              color:'#C41E1E', cta:'View My IQ'},
-      {id:'story',   icon:'🎞️', label:'Collection Story',sub:'Your whole collecting life.',   desc:'Every card you\'ve ever owned — even ones you\'ve sold or traded. See what your old collection would be worth today.',          color:'#a78bfa', cta:'See My Story'},
+      {id:'story',   icon:'✉️', label:'Collection Story',sub:'Leave something behind.',   desc:'Write a letter to your kids or someone you love. Tell the story of every card. Turn your collection into a legacy.',          color:'#a78bfa', cta:'Write My Story'},
       {id:'tracker', icon:'🎯', label:'Custom Tracker',  sub:'Build your perfect checklist.',  desc:'Rainbow trackers, player sets across products, insert series checklists. Build any tracker you want and mark off cards as you land them.',   color:'#f59e0b', cta:'Build Tracker'},
     ];
     return React.createElement(React.Fragment, null,
@@ -2173,9 +2393,12 @@ const PageHero = ({label,title,subtitle,right}) =>
     );
   };
 
-  // ── CARD BOOK SUB-PAGE ────────────────────────────────────────────────────
+  // ── CARD ROOM SUB-PAGE ────────────────────────────────────────────────────
   const CardBookSubPage = ({onBack}) => {
-    const [hoveredSlot, setHoveredSlot] = React.useState(null);
+    const [hoveredSlot,   setHoveredSlot]   = React.useState(null);
+    const [trophySlots,   setTrophySlots]   = React.useState(Array(5).fill(null));
+    const [pickingTrophy, setPickingTrophy] = React.useState(null); // 0-4 or null
+    const [hoveredTrophy, setHoveredTrophy] = React.useState(null);
 
     const totalValue = cards.reduce((s,c)=>s+c.estValue,0);
     const totalCost  = cards.reduce((s,c)=>s+(c.purchasePrice||0),0);
@@ -2185,22 +2408,75 @@ const PageHero = ({label,title,subtitle,right}) =>
     const slots      = Math.max(24, Math.ceil(cards.length/6)*6 + 6);
     const empties    = slots - cards.length;
 
-    const sigColor = s => ({BUY:'#22c55e',HOLD:'#f59e0b',WATCH:'#38bdf8',SELL:'#ef4444'}[s]||'#555');
+    const sigColor  = s => ({BUY:'#22c55e',HOLD:'#f59e0b',WATCH:'#38bdf8',SELL:'#ef4444'}[s]||'#555');
+    const sportIcon = s => s==='Football'?'🏈':s==='Basketball'?'🏀':s==='Baseball'?'⚾':s==='Hockey'?'🏒':'⚽';
+
+    const TROPHY_LABELS = ['CENTERPIECE','CROWN JEWEL','SHOWPIECE','FEATURED','FEATURED'];
+
+    // ── Trophy picker modal ───────────────────────────────────────────────
+    const TrophyPicker = () => React.createElement('div',{
+      style:{position:'fixed',inset:0,background:'rgba(0,0,0,0.94)',zIndex:300,display:'flex',alignItems:'center',justifyContent:'center',padding:20},
+      onClick:()=>setPickingTrophy(null)
+    },
+      React.createElement('div',{
+        style:{background:'#080808',border:'1px solid #2a2000',borderTop:'2px solid #FFD700',borderRadius:10,padding:isMobile?20:28,width:'100%',maxWidth:480,maxHeight:'72vh',display:'flex',flexDirection:'column'},
+        onClick:e=>e.stopPropagation()
+      },
+        // Header
+        React.createElement('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'flex-start',marginBottom:18,flexShrink:0}},
+          React.createElement('div',null,
+            React.createElement('div',{style:{fontSize:8,color:'#FFD700',fontFamily:MONO,letterSpacing:'0.16em',marginBottom:6}},'TROPHY COLLECTION · SLOT '+(pickingTrophy+1)),
+            React.createElement('div',{style:{fontSize:22,fontWeight:400,fontFamily:BB,letterSpacing:'0.04em',color:'#fff'}},'Choose a Card to Display')
+          ),
+          React.createElement('button',{onClick:()=>setPickingTrophy(null),style:{background:'none',border:'1px solid #222',borderRadius:4,color:'#666',fontSize:18,cursor:'pointer',padding:'2px 10px',lineHeight:1}},'×')
+        ),
+        // Card list
+        cards.length===0
+          ? React.createElement('div',{style:{textAlign:'center',padding:'48px 20px',color:'#444',fontSize:12,fontFamily:MONO,lineHeight:1.7}},'Add cards to your collection first,\nthen put your best ones on display.')
+          : React.createElement('div',{style:{overflowY:'auto',display:'flex',flexDirection:'column',gap:8}},
+              cards.map(card=>{
+                const sc = sigColor(card.signal);
+                const isTrophied = trophySlots.some(t=>t&&t.id===card.id);
+                return React.createElement('div',{key:card.id,
+                  style:{display:'flex',alignItems:'center',gap:12,padding:'10px 14px',background:'#0d0d0d',border:'1px solid '+(isTrophied?'#FFD70033':'#1a1a1a'),borderRadius:6,cursor:isTrophied?'default':'pointer',transition:'all 0.15s',opacity:isTrophied?0.45:1},
+                  onClick:()=>{
+                    if(isTrophied) return;
+                    const ns=[...trophySlots]; ns[pickingTrophy]=card; setTrophySlots(ns); setPickingTrophy(null);
+                  },
+                  onMouseEnter:e=>{if(!isTrophied){e.currentTarget.style.borderColor='#FFD70055';e.currentTarget.style.background='#111';}},
+                  onMouseLeave:e=>{e.currentTarget.style.borderColor=isTrophied?'#FFD70033':'#1a1a1a';e.currentTarget.style.background='#0d0d0d';},
+                },
+                  React.createElement('div',{style:{fontSize:22,width:32,textAlign:'center',flexShrink:0}},sportIcon(card.sport)),
+                  React.createElement('div',{style:{flex:1,minWidth:0}},
+                    React.createElement('div',{style:{fontSize:12,fontWeight:700,color:'rgba(255,255,255,0.85)',marginBottom:2,whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}},card.player),
+                    React.createElement('div',{style:{fontSize:9,color:'#666',fontFamily:MONO}},card.set+(card.parallel?' · '+card.parallel:'')+(card.grade?' · '+card.grade:''))
+                  ),
+                  React.createElement('div',{style:{textAlign:'right',flexShrink:0}},
+                    React.createElement('div',{style:{fontSize:13,fontWeight:900,fontFamily:MONO,color:'#fff'}},'$'+card.estValue.toLocaleString()),
+                    React.createElement('div',{style:{fontSize:7,color:sc,fontFamily:MONO,fontWeight:700,marginTop:2}},isTrophied?'ON DISPLAY':card.signal)
+                  )
+                );
+              })
+            )
+      )
+    );
 
     return React.createElement('div',{style:{paddingTop:72,minHeight:'100vh',background:'#000'}},
+      pickingTrophy!==null && React.createElement(TrophyPicker),
+
       React.createElement('div',{style:{maxWidth:1200,margin:'0 auto',padding:isMobile?'24px 16px 80px':'32px 32px 80px'}},
 
         // Back + title
         React.createElement('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'flex-start',marginBottom:20,flexWrap:'wrap',gap:12}},
           React.createElement('div',null,
             React.createElement('button',{onClick:onBack,style:{fontSize:11,color:'#999',fontFamily:MONO,letterSpacing:'0.08em',background:'none',border:'none',cursor:'pointer',marginBottom:8,padding:0}},'← COLLECTION'),
-            React.createElement('div',{style:{fontSize:isMobile?28:40,fontWeight:400,fontFamily:BB,letterSpacing:'0.02em',color:'#fff',lineHeight:1}},'Card Book')
+            React.createElement('div',{style:{fontSize:isMobile?28:40,fontWeight:400,fontFamily:BB,letterSpacing:'0.02em',color:'#fff',lineHeight:1}},'Card Room')
           ),
           React.createElement('button',{onClick:()=>setShowAddCard(true),style:{padding:'10px 20px',background:'#C41E1E',color:'#fff',border:'none',borderRadius:2,fontSize:11,fontWeight:700,cursor:'pointer',fontFamily:MONO,letterSpacing:'0.08em',alignSelf:'flex-end'}},'+ ADD CARD')
         ),
 
-        // ── Collection stats bar ─────────────────────────────────────────
-        React.createElement('div',{style:{display:'grid',gridTemplateColumns:isMobile?'1fr 1fr':'repeat(5,1fr)',gap:8,marginBottom:20}},
+        // ── Stats bar ─────────────────────────────────────────────────────
+        React.createElement('div',{style:{display:'grid',gridTemplateColumns:isMobile?'1fr 1fr':'repeat(5,1fr)',gap:8,marginBottom:32}},
           [
             ['TOTAL CARDS', cards.length+'', '#fff'],
             ['EST. VALUE',  '$'+totalValue.toLocaleString(), '#fff'],
@@ -2213,7 +2489,109 @@ const PageHero = ({label,title,subtitle,right}) =>
           ))
         ),
 
-        // ── Binder ──────────────────────────────────────────────────────
+        // ── TROPHY COLLECTION ─────────────────────────────────────────────
+        React.createElement('div',{style:{marginBottom:36}},
+          // Section header
+          React.createElement('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'flex-end',marginBottom:16}},
+            React.createElement('div',null,
+              React.createElement('div',{style:{fontSize:8,color:'#FFD700',fontFamily:MONO,letterSpacing:'0.18em',marginBottom:5}},'✦ DISPLAY CASE'),
+              React.createElement('div',{style:{fontSize:isMobile?24:32,fontWeight:400,fontFamily:BB,letterSpacing:'0.04em',color:'#fff',lineHeight:1}},'Trophy Collection')
+            ),
+            React.createElement('div',{style:{fontSize:9,color:'#444',fontFamily:MONO,letterSpacing:'0.06em',paddingBottom:4}},trophySlots.filter(Boolean).length+' / 5 ON DISPLAY')
+          ),
+          // Display case panel
+          React.createElement('div',{style:{
+            background:'linear-gradient(160deg,#0c0900 0%,#060500 60%,#0a0800 100%)',
+            border:'1px solid #1e1600',
+            borderTop:'2px solid #FFD70033',
+            borderRadius:10,
+            padding:isMobile?'18px 12px 14px':'28px 24px 20px',
+            position:'relative',
+            overflow:'hidden',
+          }},
+            // Subtle glow backdrop
+            React.createElement('div',{style:{position:'absolute',top:-40,left:'50%',transform:'translateX(-50%)',width:'60%',height:80,background:'radial-gradient(ellipse,rgba(255,215,0,0.04) 0%,transparent 70%)',pointerEvents:'none'}}),
+            React.createElement('div',{style:{
+              display:'grid',
+              gridTemplateColumns:isMobile?'repeat(3,1fr)':'repeat(5,1fr)',
+              gap:isMobile?10:16,
+              position:'relative',
+            }},
+              trophySlots.map((card,i)=>{
+                const sc = card ? sigColor(card.signal) : '#FFD700';
+                const isH = hoveredTrophy===i;
+                // On mobile hide slots 4 & 5 (indices 3,4) in a second row handled by grid
+                return React.createElement('div',{key:i,
+                  style:{display:'flex',flexDirection:'column',alignItems:'center',gap:6,cursor:'pointer'},
+                  onClick:()=>card?setSelectedCard(card):setPickingTrophy(i),
+                  onMouseEnter:()=>setHoveredTrophy(i),
+                  onMouseLeave:()=>setHoveredTrophy(null),
+                },
+                  // Rank chip
+                  React.createElement('div',{style:{fontSize:7,color:'#FFD70088',fontFamily:MONO,letterSpacing:'0.1em',textAlign:'center'}},TROPHY_LABELS[i]),
+                  // Card slot
+                  React.createElement('div',{style:{
+                    width:'100%',aspectRatio:'2.5/3.5',
+                    background:card?'linear-gradient(145deg,#100d00,#1a1600)':'#060402',
+                    border:'1px solid '+(card?'#FFD70044':(isH?'#FFD70033':'#1a1200')),
+                    borderTop:'2px solid '+(card?'#FFD700':(isH?'#FFD70055':'#251c00')),
+                    borderRadius:6,display:'flex',flexDirection:'column',overflow:'hidden',
+                    transition:'all 0.2s',
+                    boxShadow:card?'0 6px 32px rgba(255,215,0,0.10),inset 0 1px 0 rgba(255,215,0,0.05)':isH?'0 2px 12px rgba(255,215,0,0.04)':'none',
+                    transform:isH?'translateY(-4px)':'translateY(0)',
+                  }},
+                    card
+                      ? React.createElement(React.Fragment,null,
+                          React.createElement('div',{style:{flex:1,background:'linear-gradient(145deg,#1a1600,#0d0b00)',borderBottom:'1px solid #2a2000',position:'relative',overflow:'hidden'}},
+                            // ESPN headshot or fallback
+                            espnImg(card.player)
+                              ? React.createElement('img',{src:espnImg(card.player),alt:card.player,style:{width:'100%',height:'100%',objectFit:'cover',objectPosition:'top center'},onError:e=>{e.target.style.display='none';e.target.nextSibling.style.display='flex';}})
+                              : null,
+                            React.createElement('div',{style:{display:espnImg(card.player)?'none':'flex',position:'absolute',inset:0,alignItems:'center',justifyContent:'center',fontSize:isMobile?22:30,background:'linear-gradient(145deg,#1a1600,#2a2200)'}},sportIcon(card.sport)),
+                            // Gold gradient overlay at bottom
+                            React.createElement('div',{style:{position:'absolute',bottom:0,left:0,right:0,height:'40%',background:'linear-gradient(to top,rgba(0,0,0,0.85),transparent)',pointerEvents:'none'}}),
+                            // Trophy badge
+                            React.createElement('div',{style:{position:'absolute',top:4,left:5,fontSize:11,lineHeight:1}},'🏆'),
+                            // Signal dot
+                            React.createElement('div',{style:{position:'absolute',top:5,right:5,width:6,height:6,borderRadius:3,background:sc,boxShadow:'0 0 6px '+sc}}),
+                            // Brand badge
+                            getBrand(card.set) && React.createElement('div',{style:{position:'absolute',bottom:4,left:4,fontSize:5,fontWeight:800,fontFamily:MONO,letterSpacing:'0.08em',background:getBrand(card.set).bg,color:getBrand(card.set).color,borderRadius:2,padding:'1px 4px',border:'1px solid '+getBrand(card.set).color+'44'}},getBrand(card.set).label),
+                            // Remove on hover
+                            isH && React.createElement('div',{
+                              style:{position:'absolute',bottom:4,right:4,fontSize:8,color:'#ef4444',fontFamily:MONO,background:'rgba(0,0,0,0.8)',borderRadius:2,padding:'1px 4px',cursor:'pointer',zIndex:2},
+                              onClick:e=>{e.stopPropagation();const ns=[...trophySlots];ns[i]=null;setTrophySlots(ns);}
+                            },'✕')
+                          ),
+                          React.createElement('div',{style:{padding:'5px 6px',background:'#0e0b00',display:'flex',flexDirection:'column',gap:1}},
+                            React.createElement('div',{style:{fontSize:isMobile?7:8,fontWeight:700,color:'rgba(255,255,255,0.85)',lineHeight:1.2,overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}},card.player),
+                            React.createElement('div',{style:{fontSize:isMobile?6:7,color:'#888',fontFamily:MONO,overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}},card.set.split(' ').slice(0,2).join(' ')),
+                            React.createElement('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'center',marginTop:1}},
+                              React.createElement('div',{style:{fontSize:isMobile?7:8,fontWeight:900,fontFamily:MONO,color:'#FFD700'}},'$'+card.estValue.toLocaleString()),
+                              React.createElement('div',{style:{fontSize:6,fontWeight:700,color:sc,fontFamily:MONO}},card.signal)
+                            )
+                          )
+                        )
+                      : React.createElement('div',{style:{flex:1,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:5}},
+                          React.createElement('div',{style:{fontSize:isMobile?22:28,filter:isH?'drop-shadow(0 0 8px #FFD700)':'none',opacity:isH?1:0.22,transition:'all 0.2s'}},'🏆'),
+                          React.createElement('div',{style:{fontSize:7,color:isH?'#FFD700':'#2a2000',fontFamily:MONO,letterSpacing:'0.08em',transition:'color 0.15s'}},isH?'+ ADD CARD':'EMPTY')
+                        )
+                  ),
+                  // Signal label under filled slot
+                  card && React.createElement('div',{style:{fontSize:6,color:'#FFD70066',fontFamily:MONO,letterSpacing:'0.06em'}},card.grade||'RAW')
+                );
+              })
+            )
+          )
+        ),
+
+        // ── THE BINDER ───────────────────────────────────────────────────
+        React.createElement('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'flex-end',marginBottom:14}},
+          React.createElement('div',null,
+            React.createElement('div',{style:{fontSize:8,color:'#555',fontFamily:MONO,letterSpacing:'0.18em',marginBottom:4}},'FULL COLLECTION'),
+            React.createElement('div',{style:{fontSize:isMobile?20:26,fontWeight:400,fontFamily:BB,letterSpacing:'0.04em',color:'rgba(255,255,255,0.6)',lineHeight:1}},'The Binder')
+          ),
+          React.createElement('div',{style:{fontSize:9,color:'#444',fontFamily:MONO,paddingBottom:2}},cards.length+' CARDS')
+        ),
         React.createElement('div',{style:{
           display:'grid',
           gridTemplateColumns:isMobile?'repeat(3,1fr)':'repeat(6,1fr)',
@@ -2223,24 +2601,28 @@ const PageHero = ({label,title,subtitle,right}) =>
           borderRadius:10,
           padding:isMobile?14:20,
         }},
-
-          // Filled cards
           ...cards.map((card,i)=>{
             const sc = sigColor(card.signal);
-            const gain = card.estValue - (card.purchasePrice||0);
             return React.createElement('div',{key:card.id,
               style:{aspectRatio:'2.5/3.5',background:'#080808',border:'1px solid #141414',borderTop:'2px solid '+sc+'55',borderRadius:4,cursor:'pointer',transition:'all 0.15s',overflow:'hidden',display:'flex',flexDirection:'column',position:'relative'},
               onClick:()=>setSelectedCard(card),
               onMouseEnter:e=>{e.currentTarget.style.transform='scale(1.05)';e.currentTarget.style.borderTopColor=sc+'cc';e.currentTarget.style.zIndex='2';},
               onMouseLeave:e=>{e.currentTarget.style.transform='';e.currentTarget.style.borderTopColor=sc+'55';e.currentTarget.style.zIndex='';},
             },
-              // Art
-              React.createElement('div',{style:{flex:1,background:'linear-gradient(145deg,#0f0f0f,#1a1a1a)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:isMobile?20:26,borderBottom:'1px solid #111',position:'relative'}},
-                card.sport==='Football'?'🏈':card.sport==='Basketball'?'🏀':card.sport==='Baseball'?'⚾':card.sport==='Hockey'?'🏒':'⚽',
+              React.createElement('div',{style:{flex:1,background:'#0d0d0d',borderBottom:'1px solid #111',position:'relative',overflow:'hidden'}},
+                // ESPN headshot
+                espnImg(card.player)
+                  ? React.createElement('img',{src:espnImg(card.player),alt:card.player,style:{width:'100%',height:'100%',objectFit:'cover',objectPosition:'top center'},onError:e=>{e.target.style.display='none';e.target.nextSibling.style.display='flex';}})
+                  : null,
+                // Emoji fallback
+                React.createElement('div',{style:{display:espnImg(card.player)?'none':'flex',position:'absolute',inset:0,alignItems:'center',justifyContent:'center',fontSize:isMobile?18:22,background:'linear-gradient(145deg,#0f0f0f,#1a1a1a)'}},sportIcon(card.sport)),
+                // Bottom gradient
+                React.createElement('div',{style:{position:'absolute',bottom:0,left:0,right:0,height:'35%',background:'linear-gradient(to top,rgba(0,0,0,0.8),transparent)',pointerEvents:'none'}}),
                 // Signal dot
-                React.createElement('div',{style:{position:'absolute',top:4,right:4,width:6,height:6,borderRadius:3,background:sc,boxShadow:'0 0 4px '+sc+'88'}})
+                React.createElement('div',{style:{position:'absolute',top:4,right:4,width:6,height:6,borderRadius:3,background:sc,boxShadow:'0 0 4px '+sc+'88'}}),
+                // Brand badge
+                getBrand(card.set) && React.createElement('div',{style:{position:'absolute',bottom:3,left:3,fontSize:5,fontWeight:800,fontFamily:MONO,letterSpacing:'0.06em',background:getBrand(card.set).bg,color:getBrand(card.set).color,borderRadius:2,padding:'1px 3px',border:'1px solid '+getBrand(card.set).color+'33'}},getBrand(card.set).label)
               ),
-              // Label
               React.createElement('div',{style:{padding:isMobile?'4px 5px':'6px 7px',background:'#060606',display:'flex',flexDirection:'column',gap:1}},
                 React.createElement('div',{style:{fontSize:isMobile?7:8,fontWeight:700,color:'rgba(255,255,255,0.8)',lineHeight:1.2,overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}},card.player),
                 React.createElement('div',{style:{fontSize:isMobile?6:7,color:'#999',fontFamily:MONO,overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}},card.set.split(' ').slice(0,2).join(' ')+(card.parallel?' · '+card.parallel.split(' ')[0]:'')),
@@ -2251,8 +2633,6 @@ const PageHero = ({label,title,subtitle,right}) =>
               )
             );
           }),
-
-          // Empty sleeves
           ...Array.from({length:empties}).map((_,i)=>React.createElement('div',{key:'e'+i,
             style:{aspectRatio:'2.5/3.5',border:'1px dashed '+(hoveredSlot===i?'#C41E1E55':'#0d0d0d'),borderRadius:4,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',cursor:'pointer',transition:'all 0.15s',background:hoveredSlot===i?'rgba(196,30,30,0.03)':'transparent'},
             onClick:()=>setShowAddCard(true),
@@ -2581,71 +2961,208 @@ const CollectorIQSubPage = ({onBack}) => {
 
 const CollectionStorySubPage = ({onBack}) => {
     const isEmpty = cards.length === 0;
+    const [activeTab, setActiveTab]       = React.useState('legacy'); // 'legacy' | 'timeline'
+    const [recipientName, setRecipient]   = React.useState('');
+    const [legacyLetter, setLegacyLetter] = React.useState('');
+    const [legacySaved,  setLegacySaved]  = React.useState(false);
+    const [editingIdx,   setEditingIdx]   = React.useState(null);
+    const [cardNotes,    setCardNotes]    = React.useState({});
+    const [draftNote,    setDraftNote]    = React.useState('');
+
+    const totalValue = cards.reduce((s,c)=>s+c.estValue,0);
+    const sportIcon  = s => s==='Football'?'🏈':s==='Basketball'?'🏀':s==='Baseball'?'⚾':s==='Hockey'?'🏒':'⚽';
+
+    const PLACEHOLDER_LETTER = `Every card in this collection has a story.\n\nI started collecting because I loved the game — the stats on the back, the feel of a new pack, the rush of pulling something special. These cards aren't just cardboard. They're moments. They're the players we watched together, the ones we argued about, the ones who made us believe.\n\nWhen you open this collection, I want you to know: every card I chose, I chose on purpose. Take care of them. Add to them. Or sell them — I won't hold it against you. But know that each one meant something to me.\n\nTake it from here.`;
+
     const timeline = [
       {date:'Mar 2024',label:'WON AUCTION',card:'Wembanyama Prizm Silver RC',paid:'$480',now:'$520',delta:'+$40',color:'#22c55e',icon:'⚡',note:'First Wemby — bought right as the hype started cooling. Pop still low.'},
       {date:'Sep 2023',label:'TRADE',card:'Gave Zion · Got Luka Base RC',paid:'Even',now:'↑ $860',delta:'+$580',color:'#a78bfa',icon:'🤝',note:'Still think about this one. Luka went to the Lakers a month later.'},
       {date:'May 2023',label:'EBAY BIN',card:'Ohtani 2018 Bowman Chrome Auto',paid:'$1,800',now:'$2,700',delta:'+$900',color:'#4FC3F7',icon:'🔗',note:'Bought the week before his Dodgers announcement. Lucky timing.'},
       {date:'Jan 2022',label:'FIRST CARD',card:'Mahomes 2017 Prizm RC · PSA 10',paid:'$180',now:'$330',delta:'+$150',color:'#C41E1E',icon:'🌟',note:'The card that started everything. Still in the book.'},
     ];
+
+    const TabBtn = ({id,label,icon}) => React.createElement('button',{
+      onClick:()=>setActiveTab(id),
+      style:{padding:'9px 18px',background:activeTab===id?'#111':'transparent',border:'1px solid '+(activeTab===id?'#222':'#0d0d0d'),borderRadius:4,color:activeTab===id?'#fff':'#555',fontSize:10,fontFamily:MONO,letterSpacing:'0.08em',cursor:'pointer',display:'flex',alignItems:'center',gap:6,transition:'all 0.15s'}
+    },icon,' ',label);
+
     return React.createElement('div',{style:{paddingTop:72,minHeight:'100vh',background:'#000'}},
       React.createElement('div',{style:{maxWidth:900,margin:'0 auto',padding:isMobile?'32px 20px 80px':'48px 40px 80px'}},
+
+        // Back
         React.createElement('button',{onClick:onBack,style:{fontSize:11,color:'#999',fontFamily:MONO,letterSpacing:'0.08em',background:'none',border:'none',cursor:'pointer',marginBottom:28,padding:0}},'← COLLECTION'),
-        React.createElement('div',{style:{marginBottom:36}},
-          React.createElement('div',{style:{fontSize:isMobile?28:40,fontWeight:400,fontFamily:BB,letterSpacing:'0.02em',color:'#fff',marginBottom:8}},'Collection Story'),
-          React.createElement('p',{style:{fontSize:13,color:'#888',fontFamily:MONO,lineHeight:1.7}},isEmpty?'This is the beginning of your story. Every great collection starts with one card.':'Every card you\'ve ever owned. Even the ones you let go.')
+
+        // Header
+        React.createElement('div',{style:{marginBottom:28}},
+          React.createElement('div',{style:{fontSize:8,color:'#a78bfa',fontFamily:MONO,letterSpacing:'0.18em',marginBottom:6}},'✦ YOUR LEGACY'),
+          React.createElement('div',{style:{fontSize:isMobile?28:40,fontWeight:400,fontFamily:BB,letterSpacing:'0.02em',color:'#fff',lineHeight:1,marginBottom:10}},'Collection Story'),
+          React.createElement('p',{style:{fontSize:13,color:'#666',fontFamily:MONO,lineHeight:1.7,maxWidth:540}},'Turn your collection into something that outlasts you. Leave behind a message, a memory, a piece of who you are.')
         ),
-        isEmpty
-          ? React.createElement('div',{style:{textAlign:'center',padding:'80px 20px',border:'1px dashed #141414',borderRadius:10}},
-              React.createElement('div',{style:{fontSize:48,marginBottom:16}},'🌟'),
-              React.createElement('div',{style:{fontSize:20,fontWeight:400,fontFamily:BB,letterSpacing:'0.04em',marginBottom:12,color:'rgba(255,255,255,0.8)'}},'Your Story Starts Here'),
-              React.createElement('p',{style:{fontSize:13,color:'#888',lineHeight:1.75,maxWidth:420,margin:'0 auto 28px'}},'Connect your eBay account, upload purchase records, or manually log your first card. We\'ll build your timeline from there.'),
-              React.createElement('p',{style:{fontSize:12,color:'#666',lineHeight:1.7,maxWidth:380,margin:'0 auto 32px'}},'Years from now you\'ll look back at this moment — the beginning of something real. What cards did you start with? What did you pay? What are they worth now?'),
-              React.createElement('div',{style:{display:'flex',gap:10,justifyContent:'center',flexWrap:'wrap'}},
-                React.createElement('button',{onClick:()=>setShowAddCard(true),style:{padding:'12px 28px',background:'#C41E1E',color:'#fff',border:'none',borderRadius:2,fontSize:11,fontFamily:MONO,fontWeight:700,letterSpacing:'0.1em',cursor:'pointer'}},'ADD YOUR FIRST CARD'),
-                React.createElement('button',{style:{padding:'12px 28px',background:'transparent',border:'1px solid #1e1e1e',color:'#999',borderRadius:2,fontSize:11,fontFamily:MONO,cursor:'pointer',letterSpacing:'0.1em'}},'CONNECT EBAY')
-              )
+
+        // Tabs
+        React.createElement('div',{style:{display:'flex',gap:8,marginBottom:28}},
+          React.createElement(TabBtn,{id:'legacy', label:'LEGACY LETTER', icon:'✉️'}),
+          React.createElement(TabBtn,{id:'timeline',label:'CARD TIMELINE',  icon:'📋'})
+        ),
+
+        // ── LEGACY TAB ───────────────────────────────────────────────────
+        activeTab==='legacy' && React.createElement('div',null,
+
+          // For whom
+          React.createElement('div',{style:{marginBottom:20}},
+            React.createElement('div',{style:{fontSize:8,color:'#888',fontFamily:MONO,letterSpacing:'0.12em',marginBottom:8}},'THIS COLLECTION IS FOR'),
+            React.createElement('input',{
+              value:recipientName,
+              onChange:e=>setRecipient(e.target.value),
+              placeholder:'e.g. My son Marcus, My daughter Ava, My family…',
+              style:{width:'100%',background:'#080808',border:'1px solid #1e1e1e',borderRadius:4,padding:'12px 16px',color:'#fff',fontSize:13,fontFamily:'Inter,sans-serif',outline:'none',boxSizing:'border-box'},
+              onFocus:e=>{e.target.style.borderColor='#a78bfa55';},
+              onBlur:e=>{e.target.style.borderColor='#1e1e1e';}
+            })
+          ),
+
+          // Letter
+          React.createElement('div',{style:{marginBottom:20}},
+            React.createElement('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:8}},
+              React.createElement('div',{style:{fontSize:8,color:'#888',fontFamily:MONO,letterSpacing:'0.12em'}},'YOUR MESSAGE'),
+              React.createElement('div',{style:{fontSize:8,color:'#444',fontFamily:MONO}},(legacyLetter||'').length+' chars')
+            ),
+            React.createElement('div',{style:{position:'relative'}},
+              React.createElement('textarea',{
+                value:legacyLetter,
+                onChange:e=>{setLegacyLetter(e.target.value);setLegacySaved(false);},
+                placeholder:PLACEHOLDER_LETTER,
+                rows:12,
+                style:{width:'100%',background:'#080808',border:'1px solid #1e1e1e',borderRadius:4,padding:'16px',color:'rgba(255,255,255,0.85)',fontSize:13,fontFamily:"'Georgia','DM Serif Display',serif",lineHeight:1.85,outline:'none',resize:'vertical',boxSizing:'border-box'},
+                onFocus:e=>{e.target.style.borderColor='#a78bfa44';},
+                onBlur:e=>{e.target.style.borderColor='#1e1e1e';}
+              })
             )
-          : React.createElement('div',null,
-              // Collection value banner
-              React.createElement('div',{style:{background:'#080808',border:'1px solid #141414',borderRadius:8,padding:'20px 24px',marginBottom:28,display:'flex',justifyContent:'space-between',alignItems:'center'}},
-                React.createElement('div',null,
-                  React.createElement('div',{style:{fontSize:9,color:'#C41E1E',fontFamily:MONO,letterSpacing:'0.14em',marginBottom:6}},'YOUR COLLECTION · 2022 → NOW'),
-                  React.createElement('div',{style:{fontSize:13,color:'#999',fontFamily:MONO}},cards.length+' cards tracked across your history')
-                ),
-                React.createElement('div',{style:{textAlign:'right'}},
-                  React.createElement('div',{style:{fontSize:8,color:'#888',fontFamily:MONO,marginBottom:2}},'STARTED AT'),
-                  React.createElement('div',{style:{fontSize:13,fontFamily:MONO,color:'#999',fontWeight:700}},'$3,200'),
-                  React.createElement('div',{style:{fontSize:8,color:'#888',fontFamily:MONO,marginTop:6,marginBottom:2}},'TODAY'),
-                  React.createElement('div',{style:{fontSize:18,fontFamily:MONO,color:'#22c55e',fontWeight:900}},'$12,480')
-                )
-              ),
-              // Timeline
-              React.createElement('div',{style:{position:'relative',paddingLeft:24}},
-                React.createElement('div',{style:{position:'absolute',left:8,top:6,bottom:0,width:1,background:'linear-gradient(180deg,#C41E1E,#C41E1E55 70%,transparent)'}}),
-                React.createElement('div',{style:{display:'flex',flexDirection:'column',gap:12}},
-                  timeline.map((item,i)=>React.createElement('div',{key:i,style:{position:'relative'}},
-                    React.createElement('div',{style:{position:'absolute',left:-20,top:16,width:10,height:10,borderRadius:5,background:item.color,boxShadow:'0 0 10px '+item.color+'88'}}),
-                    React.createElement('div',{style:{background:'#080808',border:'1px solid #141414',borderRadius:6,overflow:'hidden'}},
-                      React.createElement('div',{style:{padding:'12px 16px',borderBottom:'1px solid #0d0d0d',display:'flex',justifyContent:'space-between',alignItems:'center'}},
-                        React.createElement('div',{style:{display:'flex',gap:8,alignItems:'center'}},
-                          React.createElement('span',{style:{fontSize:13}},item.icon),
-                          React.createElement('span',{style:{fontSize:8,color:item.color,fontFamily:MONO,letterSpacing:'0.1em',fontWeight:700}},item.label)
-                        ),
-                        React.createElement('span',{style:{fontSize:8,color:'#666',fontFamily:MONO}},item.date)
-                      ),
-                      React.createElement('div',{style:{padding:'12px 16px'}},
-                        React.createElement('div',{style:{fontSize:13,fontWeight:700,color:'rgba(255,255,255,0.8)',marginBottom:4}},item.card),
-                        React.createElement('div',{style:{display:'flex',justifyContent:'space-between',marginBottom:8}},
-                          React.createElement('span',{style:{fontSize:9,color:'#888',fontFamily:MONO}},'Paid '+item.paid),
-                          React.createElement('span',{style:{fontSize:10,color:item.color,fontFamily:MONO,fontWeight:700}},'Now '+item.delta)
-                        ),
-                        React.createElement('div',{style:{fontSize:11,color:'#888',lineHeight:1.6,fontStyle:'italic'}},'"'+item.note+'"')
-                      )
+          ),
+
+          // Save button
+          React.createElement('div',{style:{display:'flex',gap:10,alignItems:'center',marginBottom:36}},
+            React.createElement('button',{
+              onClick:()=>setLegacySaved(true),
+              style:{padding:'11px 28px',background:legacySaved?'#1a3a1a':'#a78bfa',color:'#fff',border:'none',borderRadius:2,fontSize:10,fontWeight:700,fontFamily:MONO,letterSpacing:'0.1em',cursor:'pointer',transition:'background 0.2s'}
+            },legacySaved?'✓ LETTER SAVED':'SAVE LETTER'),
+            legacySaved && React.createElement('div',{style:{fontSize:10,color:'#22c55e',fontFamily:MONO}},'Saved to your story')
+          ),
+
+          // Card-by-card story section
+          cards.length > 0 && React.createElement('div',null,
+            React.createElement('div',{style:{fontSize:8,color:'#888',fontFamily:MONO,letterSpacing:'0.14em',marginBottom:14}},'CARD STORIES — ADD A NOTE TO EACH CARD'),
+            React.createElement('div',{style:{display:'flex',flexDirection:'column',gap:10}},
+              cards.map((card,i)=>{
+                const isEditing = editingIdx===i;
+                const hasNote   = cardNotes[card.id];
+                return React.createElement('div',{key:card.id,
+                  style:{background:'#080808',border:'1px solid '+(isEditing?'#a78bfa33':'#141414'),borderRadius:6,overflow:'hidden',transition:'border-color 0.15s'}
+                },
+                  // Card row
+                  React.createElement('div',{style:{padding:'12px 16px',display:'flex',alignItems:'center',gap:12,cursor:'pointer'},
+                    onClick:()=>{setEditingIdx(isEditing?null:i);setDraftNote(cardNotes[card.id]||'');}
+                  },
+                    React.createElement('div',{style:{fontSize:20,flexShrink:0}},sportIcon(card.sport)),
+                    React.createElement('div',{style:{flex:1,minWidth:0}},
+                      React.createElement('div',{style:{fontSize:12,fontWeight:700,color:'rgba(255,255,255,0.85)',marginBottom:1,whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}},card.player),
+                      React.createElement('div',{style:{fontSize:9,color:'#666',fontFamily:MONO}},card.set+(card.grade?' · '+card.grade:''))
+                    ),
+                    React.createElement('div',{style:{textAlign:'right',flexShrink:0}},
+                      hasNote
+                        ? React.createElement('div',{style:{fontSize:8,color:'#a78bfa',fontFamily:MONO,letterSpacing:'0.06em'}},'✓ HAS STORY')
+                        : React.createElement('div',{style:{fontSize:8,color:'#333',fontFamily:MONO,letterSpacing:'0.06em'}},'+ ADD STORY'),
+                      React.createElement('div',{style:{fontSize:8,color:'#444',fontFamily:MONO,marginTop:2}},isEditing?'▲ CLOSE':'▼ EDIT')
                     )
-                  ))
-                )
+                  ),
+                  // Note editor (expanded)
+                  isEditing && React.createElement('div',{style:{borderTop:'1px solid #141414',padding:'12px 16px',background:'#050505'}},
+                    React.createElement('div',{style:{fontSize:8,color:'#a78bfa',fontFamily:MONO,letterSpacing:'0.1em',marginBottom:8}},'WHAT DOES THIS CARD MEAN TO YOU?'),
+                    React.createElement('textarea',{
+                      autoFocus:true,
+                      value:draftNote,
+                      onChange:e=>setDraftNote(e.target.value),
+                      placeholder:'Why did you buy this? What does it remind you of? What do you want them to know about it?',
+                      rows:4,
+                      style:{width:'100%',background:'#080808',border:'1px solid #222',borderRadius:3,padding:'10px 12px',color:'rgba(255,255,255,0.8)',fontSize:12,fontFamily:"'Georgia',serif",lineHeight:1.75,outline:'none',resize:'none',boxSizing:'border-box'},
+                      onFocus:e=>{e.target.style.borderColor='#a78bfa44';},
+                      onBlur:e=>{e.target.style.borderColor='#222';}
+                    }),
+                    React.createElement('div',{style:{display:'flex',gap:8,marginTop:10}},
+                      React.createElement('button',{
+                        onClick:()=>{const n={...cardNotes};n[card.id]=draftNote;setCardNotes(n);setEditingIdx(null);},
+                        style:{padding:'7px 18px',background:'#a78bfa',color:'#fff',border:'none',borderRadius:2,fontSize:9,fontWeight:700,fontFamily:MONO,letterSpacing:'0.1em',cursor:'pointer'}
+                      },'SAVE NOTE'),
+                      React.createElement('button',{
+                        onClick:()=>setEditingIdx(null),
+                        style:{padding:'7px 14px',background:'none',border:'1px solid #222',color:'#666',borderRadius:2,fontSize:9,fontFamily:MONO,cursor:'pointer'}
+                      },'CANCEL')
+                    )
+                  ),
+                  // Show saved note (not editing)
+                  !isEditing && hasNote && React.createElement('div',{style:{borderTop:'1px solid #0d0d0d',padding:'10px 16px',background:'#050505'}},
+                    React.createElement('div',{style:{fontSize:11,color:'#888',lineHeight:1.7,fontStyle:'italic',fontFamily:"'Georgia',serif"}},'"'+cardNotes[card.id]+'"')
+                  )
+                );
+              })
+            )
+          ),
+
+          // Empty state prompt
+          isEmpty && React.createElement('div',{style:{textAlign:'center',padding:'60px 20px',border:'1px dashed #141414',borderRadius:10,marginTop:16}},
+            React.createElement('div',{style:{fontSize:44,marginBottom:14}},'✉️'),
+            React.createElement('div',{style:{fontSize:20,fontWeight:400,fontFamily:BB,letterSpacing:'0.04em',marginBottom:10,color:'rgba(255,255,255,0.7)'}},'Start Your Legacy'),
+            React.createElement('p',{style:{fontSize:12,color:'#666',lineHeight:1.8,maxWidth:400,margin:'0 auto 24px'}},'Add your first card, then come back here to write the story behind it. Every great collection deserves to be passed on with meaning.'),
+            React.createElement('button',{onClick:()=>setShowAddCard(true),style:{padding:'12px 28px',background:'#C41E1E',color:'#fff',border:'none',borderRadius:2,fontSize:11,fontFamily:MONO,fontWeight:700,letterSpacing:'0.1em',cursor:'pointer'}},'ADD YOUR FIRST CARD')
+          )
+        ),
+
+        // ── TIMELINE TAB ─────────────────────────────────────────────────
+        activeTab==='timeline' && React.createElement('div',null,
+          // Value banner
+          React.createElement('div',{style:{background:'#080808',border:'1px solid #141414',borderRadius:8,padding:'20px 24px',marginBottom:28,display:'flex',justifyContent:'space-between',alignItems:'center',flexWrap:'wrap',gap:12}},
+            React.createElement('div',null,
+              React.createElement('div',{style:{fontSize:9,color:'#C41E1E',fontFamily:MONO,letterSpacing:'0.14em',marginBottom:6}},'COLLECTION JOURNEY · 2022 → NOW'),
+              React.createElement('div',{style:{fontSize:13,color:'#999',fontFamily:MONO}},cards.length+' cards tracked · '+timeline.length+' milestone events')
+            ),
+            React.createElement('div',{style:{display:'flex',gap:24}},
+              React.createElement('div',{style:{textAlign:'right'}},
+                React.createElement('div',{style:{fontSize:8,color:'#888',fontFamily:MONO,marginBottom:2}},'STARTED AT'),
+                React.createElement('div',{style:{fontSize:13,fontFamily:MONO,color:'#999',fontWeight:700}},'$3,200')
+              ),
+              React.createElement('div',{style:{textAlign:'right'}},
+                React.createElement('div',{style:{fontSize:8,color:'#888',fontFamily:MONO,marginBottom:2}},'TODAY'),
+                React.createElement('div',{style:{fontSize:18,fontFamily:MONO,color:'#22c55e',fontWeight:900}},'$'+(totalValue||12480).toLocaleString())
               )
             )
+          ),
+          // Timeline
+          React.createElement('div',{style:{position:'relative',paddingLeft:24}},
+            React.createElement('div',{style:{position:'absolute',left:8,top:6,bottom:0,width:1,background:'linear-gradient(180deg,#C41E1E,#C41E1E55 70%,transparent)'}}),
+            React.createElement('div',{style:{display:'flex',flexDirection:'column',gap:12}},
+              timeline.map((item,i)=>React.createElement('div',{key:i,style:{position:'relative'}},
+                React.createElement('div',{style:{position:'absolute',left:-20,top:16,width:10,height:10,borderRadius:5,background:item.color,boxShadow:'0 0 10px '+item.color+'88'}}),
+                React.createElement('div',{style:{background:'#080808',border:'1px solid #141414',borderRadius:6,overflow:'hidden'}},
+                  React.createElement('div',{style:{padding:'12px 16px',borderBottom:'1px solid #0d0d0d',display:'flex',justifyContent:'space-between',alignItems:'center'}},
+                    React.createElement('div',{style:{display:'flex',gap:8,alignItems:'center'}},
+                      React.createElement('span',{style:{fontSize:13}},item.icon),
+                      React.createElement('span',{style:{fontSize:8,color:item.color,fontFamily:MONO,letterSpacing:'0.1em',fontWeight:700}},item.label)
+                    ),
+                    React.createElement('span',{style:{fontSize:8,color:'#666',fontFamily:MONO}},item.date)
+                  ),
+                  React.createElement('div',{style:{padding:'12px 16px'}},
+                    React.createElement('div',{style:{fontSize:13,fontWeight:700,color:'rgba(255,255,255,0.8)',marginBottom:4}},item.card),
+                    React.createElement('div',{style:{display:'flex',justifyContent:'space-between',marginBottom:8}},
+                      React.createElement('span',{style:{fontSize:9,color:'#888',fontFamily:MONO}},'Paid '+item.paid),
+                      React.createElement('span',{style:{fontSize:10,color:item.color,fontFamily:MONO,fontWeight:700}},'Now '+item.delta)
+                    ),
+                    React.createElement('div',{style:{fontSize:11,color:'#888',lineHeight:1.6,fontStyle:'italic'}},'"'+item.note+'"')
+                  )
+                )
+              ))
+            )
+          )
+        )
       )
     );
   };
@@ -3303,6 +3820,9 @@ const CollectionStorySubPage = ({onBack}) => {
     const [selPlayer,   setSelPlayer]  = React.useState(null);
     const [selProduct,  setSelProduct] = React.useState(null);
     const [selYear,     setSelYear]    = React.useState(null);
+    const [liveQuery,   setLiveQuery]  = React.useState('');
+    const [liveResult,  setLiveResult] = React.useState(null); // matched player or 'notfound'
+    const [liveLoading, setLiveLoading]= React.useState(false);
 
     const BREAK_ODDS = [
       {set:'2024 Panini Prizm Basketball',type:'Hobby Box',hits:'2 autos + 1 memo',rookieOdds:'1:3 packs',boxCost:220,hitVal:285,roi:29},
@@ -3445,6 +3965,96 @@ const CollectionStorySubPage = ({onBack}) => {
               React.createElement('div',{style:{fontSize:18,fontWeight:900,fontFamily:mono,color:k.c,lineHeight:1,marginBottom:3}},k.v),
               React.createElement('div',{style:{fontSize:8,color:'#666',fontFamily:mono}},k.s)
             ))
+          ),
+
+          // ── Universal Card Search ────────────────────────────────────────
+          React.createElement('div',{style:{marginBottom:14}},
+            React.createElement(Panel,{style:{padding:isMobile?'16px 14px':'20px 24px'}},
+              React.createElement('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'flex-start',marginBottom:14,flexWrap:'wrap',gap:8}},
+                React.createElement('div',null,
+                  React.createElement('div',{style:{fontSize:9,color:'#4FC3F7',fontFamily:mono,letterSpacing:'0.16em',marginBottom:5}},'🔍 UNIVERSAL CARD LOOKUP'),
+                  React.createElement('div',{style:{fontSize:isMobile?15:18,fontWeight:400,fontFamily:bb,letterSpacing:'0.04em',color:'#fff'}},'Search Any Player · Any Set · Any Year')
+                ),
+                React.createElement('div',{style:{fontSize:9,color:'#333',fontFamily:mono,letterSpacing:'0.06em',paddingTop:4}},PLAYER_TRENDS.length+' TRACKED + LIVE LOOKUP')
+              ),
+              // Search input row
+              React.createElement('div',{style:{display:'flex',gap:8,marginBottom:liveResult?14:0}},
+                React.createElement('input',{
+                  value:liveQuery,
+                  onChange:e=>{setLiveQuery(e.target.value);setLiveResult(null);},
+                  onKeyDown:e=>{
+                    if(e.key==='Enter'&&liveQuery.trim()){
+                      setLiveLoading(true);
+                      const q=liveQuery.trim().toLowerCase();
+                      const hit=PLAYER_TRENDS.find(p=>p.name.toLowerCase().includes(q)||p.id.includes(q));
+                      setTimeout(()=>{setLiveLoading(false);setLiveResult(hit||'notfound');},600);
+                    }
+                  },
+                  placeholder:'e.g. "Victor Wembanyama", "2024 Bowman Chrome", "Paul Skenes auto"…',
+                  style:{flex:1,background:'#060606',border:'1px solid #222',borderRadius:4,padding:'11px 16px',color:'#fff',fontSize:13,fontFamily:'Inter,sans-serif',outline:'none',minWidth:0},
+                  onFocus:e=>{e.target.style.borderColor='#4FC3F755';},
+                  onBlur:e=>{e.target.style.borderColor='#222';}
+                }),
+                React.createElement('button',{
+                  onClick:()=>{
+                    if(!liveQuery.trim()) return;
+                    setLiveLoading(true);
+                    const q=liveQuery.trim().toLowerCase();
+                    const hit=PLAYER_TRENDS.find(p=>p.name.toLowerCase().includes(q)||p.id.includes(q));
+                    setTimeout(()=>{setLiveLoading(false);setLiveResult(hit||'notfound');},600);
+                  },
+                  style:{padding:'11px 22px',background:'#C41E1E',color:'#fff',border:'none',borderRadius:4,fontSize:11,fontWeight:700,fontFamily:mono,letterSpacing:'0.08em',cursor:'pointer',whiteSpace:'nowrap',flexShrink:0}
+                },liveLoading?'SEARCHING…':'SEARCH')
+              ),
+              // Search result
+              liveResult && liveResult!=='notfound' && React.createElement('div',{style:{
+                background:'rgba(34,197,94,0.04)',border:'1px solid rgba(34,197,94,0.15)',borderRadius:6,padding:'14px 16px',display:'flex',justifyContent:'space-between',alignItems:'center',flexWrap:'wrap',gap:10
+              }},
+                React.createElement('div',null,
+                  React.createElement('div',{style:{fontSize:9,color:'#22c55e',fontFamily:mono,letterSpacing:'0.1em',marginBottom:4}},'✓ FOUND IN DATABASE'),
+                  React.createElement('div',{style:{fontSize:14,fontWeight:700,color:'#fff',marginBottom:2}},liveResult.name),
+                  React.createElement('div',{style:{fontSize:9,color:'#888',fontFamily:mono}},liveResult.sport+' · '+liveResult.team+' · '+liveResult.change+' 30D')
+                ),
+                React.createElement('button',{
+                  onClick:()=>{setSelPlayer(liveResult);setView('players');},
+                  style:{padding:'9px 20px',background:'#22c55e',color:'#000',border:'none',borderRadius:3,fontSize:10,fontWeight:800,fontFamily:mono,letterSpacing:'0.08em',cursor:'pointer'}
+                },'VIEW ANALYSIS →')
+              ),
+              liveResult==='notfound' && React.createElement('div',{style:{
+                background:'#060606',border:'1px solid #1e1e1e',borderRadius:6,padding:'16px 18px'
+              }},
+                React.createElement('div',{style:{fontSize:9,color:'#f59e0b',fontFamily:mono,letterSpacing:'0.1em',marginBottom:10}},'📡 NOT IN CURRENT DATABASE — LIVE LOOKUP OPTIONS'),
+                React.createElement('div',{style:{display:'grid',gridTemplateColumns:isMobile?'1fr':'repeat(3,1fr)',gap:10,marginBottom:12}},
+                  [
+                    {icon:'🛒',name:'eBay Sold Listings',status:'AVAILABLE',color:'#22c55e',desc:'Real-time sold comps for any card via eBay Finding API. Returns last 90 days of completed sales.',api:'eBay Browse API — Free tier available. Requires API key.',action:'Connect eBay API'},
+                    {icon:'📊',name:'130point / CardLadder',status:'NO PUBLIC API',color:'#ef4444',desc:'Best-in-class analytics but no developer API. Data must be manually sourced or licensed.',api:'Contact 130point.com for data partnership.',action:'Request Access'},
+                    {icon:'🏆',name:'Beckett / PSA Pop',status:'PAID API',color:'#f59e0b',desc:'Beckett offers licensing for price guide data. PSA pop reports are publicly scrapeable.',api:'Beckett: licensing@beckett.com · PSA: psacard.com/pop',action:'Get License'},
+                  ].map((s,i)=>React.createElement('div',{key:i,style:{background:'#0a0a0a',border:'1px solid #141414',borderRadius:6,padding:'12px 14px'}},
+                    React.createElement('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'flex-start',marginBottom:8}},
+                      React.createElement('div',{style:{fontSize:18}},s.icon),
+                      React.createElement('div',{style:{fontSize:7,padding:'2px 7px',background:s.color+'15',color:s.color,border:'1px solid '+s.color+'33',borderRadius:2,fontFamily:mono,fontWeight:700,letterSpacing:'0.06em'}},s.status)
+                    ),
+                    React.createElement('div',{style:{fontSize:11,fontWeight:700,color:'rgba(255,255,255,0.8)',marginBottom:4}},s.name),
+                    React.createElement('div',{style:{fontSize:9,color:'#666',lineHeight:1.65,marginBottom:8}},s.desc),
+                    React.createElement('div',{style:{fontSize:8,color:'#444',fontFamily:mono,lineHeight:1.5,borderTop:'1px solid #141414',paddingTop:6}},s.api)
+                  ))
+                ),
+                // eBay mock preview
+                React.createElement('div',{style:{background:'#080808',border:'1px solid #C41E1E22',borderLeft:'2px solid #C41E1E',borderRadius:'0 6px 6px 0',padding:'12px 14px'}},
+                  React.createElement('div',{style:{fontSize:8,color:'#C41E1E',fontFamily:mono,letterSpacing:'0.12em',marginBottom:6}},'EBAY API — WHAT A LIVE RESULT WOULD LOOK LIKE'),
+                  React.createElement('div',{style:{fontSize:9,color:'#666',fontFamily:mono,lineHeight:1.7,marginBottom:8}},
+                    'GET https://api.ebay.com/buy/browse/v1/item_summary/search'
+                  ),
+                  React.createElement('div',{style:{background:'#040404',border:'1px solid #0d0d0d',borderRadius:4,padding:'10px 12px',fontFamily:mono,fontSize:9,color:'#555',lineHeight:1.9}},
+                    React.createElement('div',{style:{color:'#4FC3F7'}},'query: "'+liveQuery+' PSA 10"'),
+                    React.createElement('div',null,'filter: buyingOptions:{FIXED_PRICE}, completedItems:true'),
+                    React.createElement('div',null,'sort: -price'),
+                    React.createElement('div',{style:{color:'#22c55e',marginTop:4}},'→ Returns: last 90 days sold · avg price · price range · volume'),
+                    React.createElement('div',{style:{color:'#22c55e'}},'→ Combined with PSA pop: full market picture for any card')
+                  )
+                )
+              )
+            )
           ),
 
           // ── Row 2: Main charts ───────────────────────────────────────────
@@ -4094,6 +4704,836 @@ const CollectionStorySubPage = ({onBack}) => {
 
 
   
+  // ══════════════════════════════════════════════════════════════════════════
+  // INTELLIGENCE HUB + 7 SUB-PAGES
+  // ══════════════════════════════════════════════════════════════════════════
+
+  const PortfolioIntelSubPage = () => {
+    const mono = MONO, bb = BB;
+    const totalValue = cards.reduce((s,c)=>s+c.estValue,0);
+    const totalCost  = cards.reduce((s,c)=>s+(c.purchasePrice||0),0);
+    const totalGain  = totalValue - totalCost;
+    // Exposure breakdown
+    const sportExp = {};
+    cards.forEach(c=>{ sportExp[c.sport]=(sportExp[c.sport]||0)+c.estValue; });
+    const sportSlices = Object.entries(sportExp).map(([s,v],i)=>({label:s,pct:Math.round(v/totalValue*100),color:['#C41E1E','#22c55e','#38bdf8','#f59e0b','#a78bfa'][i%5]}));
+    const eraExp = cards.reduce((a,c)=>{ const era=parseInt(c.year||'2023')>=2020?'Modern':parseInt(c.year||'2023')>=2000?'Contemporary':'Vintage'; a[era]=(a[era]||0)+c.estValue; return a; },{});
+    const eraSlices = Object.entries(eraExp).map(([e,v],i)=>({label:e,pct:Math.round(v/totalValue*100),color:['#C41E1E','#FFD700','#38bdf8'][i]}));
+    const gradExp = cards.reduce((a,c)=>{ const g=c.condition.includes('PSA')?'PSA':c.condition.includes('BGS')?'BGS':'Raw'; a[g]=(a[g]||0)+c.estValue; return a; },{});
+    const gradSlices = Object.entries(gradExp).map(([g,v],i)=>({label:g,pct:Math.round(v/totalValue*100),color:['#22c55e','#38bdf8','#888'][i]}));
+    // Risk score
+    const modernPct = eraSlices.find(e=>e.label==='Modern')?.pct||0;
+    const topSportPct = Math.max(...sportSlices.map(s=>s.pct));
+    const avgVol = cards.reduce((s,c)=>s+Math.abs(parseFloat(c.momentum||'0')),0)/cards.length;
+    const riskScore = Math.min(100, Math.round((modernPct*0.4)+(topSportPct*0.3)+(avgVol*2)));
+    const riskColor = riskScore>=70?'#ef4444':riskScore>=45?'#f59e0b':'#22c55e';
+    const riskLabel = riskScore>=70?'HIGH':'MED';
+    // Alerts
+    const alerts = [];
+    if (modernPct>=60) alerts.push({icon:'⚠️',msg:`You are ${modernPct}% exposed to Modern cards — high volatility era.`,color:'#f59e0b'});
+    if (topSportPct>=60) alerts.push({icon:'⚠️',msg:`${sportSlices.find(s=>s.pct===topSportPct)?.label} is ${topSportPct}% of your portfolio. Consider diversifying.`,color:'#ef4444'});
+    const sellCards = cards.filter(c=>c.signal==='SELL');
+    if (sellCards.length) alerts.push({icon:'🚨',msg:`${sellCards.length} card${sellCards.length>1?'s':''} carrying SELL signal: ${sellCards.map(c=>c.player).join(', ')}.`,color:'#ef4444'});
+    if (alerts.length===0) alerts.push({icon:'✅',msg:'Portfolio is well-diversified. No concentration alerts.',color:'#22c55e'});
+    // Per-card metrics
+    const cardMetrics = cards.map(c=>({
+      ...c,
+      volatility: Math.abs(parseFloat(c.momentum||'0')),
+      liquidity: c.signal==='BUY'||c.signal==='SELL'?'HIGH':c.signal==='HOLD'?'MED':'LOW',
+      risk: c.sport==='Football'&&parseInt(c.year||'2023')>=2020?'HIGH':c.sport==='Basketball'&&parseInt(c.year||'2023')>=2020?'HIGH':'MED',
+    }));
+    const DonutMini = ({slices,label,sublabel}) => {
+      const size=80, cx=40, cy=40, r=28, stroke=10;
+      let start=0;
+      const arcs = slices.map(s=>{
+        const angle=s.pct/100*360, end=start+angle;
+        const toRad=d=>d*Math.PI/180;
+        const x1=cx+r*Math.sin(toRad(start)),y1=cy-r*Math.cos(toRad(start));
+        const x2=cx+r*Math.sin(toRad(end)),y2=cy-r*Math.cos(toRad(end));
+        const large=angle>180?1:0;
+        const d=`M ${x1} ${y1} A ${r} ${r} 0 ${large} 1 ${x2} ${y2}`;
+        start=end;
+        return React.createElement('path',{key:s.label,d,fill:'none',stroke:s.color,strokeWidth:stroke,strokeLinecap:'butt'});
+      });
+      return React.createElement('div',{style:{display:'flex',flexDirection:'column',alignItems:'center',gap:6}},
+        React.createElement('svg',{width:size,height:size,viewBox:`0 0 ${size} ${size}`},
+          React.createElement('circle',{cx,cy,r,fill:'none',stroke:'#111',strokeWidth:stroke}),
+          ...arcs,
+          React.createElement('text',{x:cx,y:cy+1,textAnchor:'middle',dominantBaseline:'middle',fill:'#fff',fontSize:9,fontWeight:700,fontFamily:mono},label),
+          React.createElement('text',{x:cx,y:cy+11,textAnchor:'middle',dominantBaseline:'middle',fill:'#555',fontSize:7,fontFamily:mono},sublabel)
+        ),
+        React.createElement('div',{style:{display:'flex',flexWrap:'wrap',gap:4,justifyContent:'center'}},
+          slices.map(s=>React.createElement('div',{key:s.label,style:{display:'flex',alignItems:'center',gap:3}},
+            React.createElement('div',{style:{width:6,height:6,borderRadius:1,background:s.color}}),
+            React.createElement('span',{style:{fontSize:9,color:'#555',fontFamily:mono}},`${s.label} ${s.pct}%`)
+          ))
+        )
+      );
+    };
+    return React.createElement('div',{style:{maxWidth:900,margin:'0 auto',padding:'72px 20px 60px'}},
+      React.createElement('div',{style:{display:'flex',alignItems:'flex-start',justifyContent:'space-between',marginBottom:6}},
+        React.createElement('div',null,
+          React.createElement('div',{style:{fontSize:11,letterSpacing:'0.15em',color:'#C41E1E',fontFamily:mono,textTransform:'uppercase',marginBottom:4}},'← INTELLIGENCE'),
+          React.createElement('h1',{style:{fontFamily:bb,fontSize:48,letterSpacing:'0.04em',margin:0}},'PORTFOLIO INTEL'),
+          React.createElement('p',{style:{color:'#555',fontSize:13,marginTop:4}},'Risk. Exposure. Alpha.')
+        ),
+        React.createElement('div',{style:{textAlign:'right'}},
+          React.createElement('div',{style:{fontSize:11,color:'#555',fontFamily:mono,marginBottom:4}},'PORTFOLIO RISK SCORE'),
+          React.createElement('div',{style:{fontSize:48,fontWeight:800,color:riskColor,fontFamily:bb,letterSpacing:'0.02em'}},riskScore),
+          React.createElement('div',{style:{fontSize:11,color:riskColor,fontFamily:mono,letterSpacing:'0.15em'}},riskLabel+' RISK')
+        )
+      ),
+      // Alerts
+      React.createElement('div',{style:{display:'flex',flexDirection:'column',gap:8,marginBottom:24}},
+        alerts.map((a,i)=>React.createElement('div',{key:i,style:{background:'#0a0a0a',border:`1px solid ${a.color}33`,borderLeft:`3px solid ${a.color}`,borderRadius:8,padding:'10px 14px',display:'flex',gap:10,alignItems:'center'}},
+          React.createElement('span',{style:{fontSize:16}},a.icon),
+          React.createElement('span',{style:{fontSize:13,color:'#ccc',fontFamily:mono}},a.msg)
+        ))
+      ),
+      // Stats row
+      React.createElement('div',{style:{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:12,marginBottom:28}},
+        [['TOTAL VALUE','$'+totalValue.toLocaleString(),'#fff'],['TOTAL GAIN',totalGain>=0?'+$'+totalGain.toLocaleString():'-$'+Math.abs(totalGain).toLocaleString(),totalGain>=0?'#22c55e':'#ef4444'],['AVG VOLATILITY',avgVol.toFixed(1)+'%','#f59e0b'],['PORTFOLIO BETA','1.4x NBA','#38bdf8']].map(([l,v,c])=>
+          React.createElement('div',{key:l,style:{...S.statBox,padding:'14px 16px'}},
+            React.createElement('div',{style:{...S.statLabel,marginBottom:4}},l),
+            React.createElement('div',{style:{fontSize:22,fontWeight:700,color:c,letterSpacing:'-0.02em'}},v)
+          )
+        )
+      ),
+      // Exposure donuts
+      React.createElement('div',{style:{...S.statBox,marginBottom:24}},
+        React.createElement('div',{style:{fontSize:11,letterSpacing:'0.15em',fontFamily:mono,color:'#555',textTransform:'uppercase',marginBottom:16}},'EXPOSURE BREAKDOWN'),
+        React.createElement('div',{style:{display:'flex',gap:32,justifyContent:'space-around',flexWrap:'wrap'}},
+          React.createElement(DonutMini,{slices:sportSlices,label:'SPORT',sublabel:'MIX'}),
+          React.createElement(DonutMini,{slices:eraSlices,label:'ERA',sublabel:'SPLIT'}),
+          React.createElement(DonutMini,{slices:gradSlices,label:'GRADE',sublabel:'TYPE'})
+        )
+      ),
+      // Per-card metrics table
+      React.createElement('div',{style:{...S.statBox,marginBottom:24}},
+        React.createElement('div',{style:{fontSize:11,letterSpacing:'0.15em',fontFamily:mono,color:'#555',textTransform:'uppercase',marginBottom:14}},'CARD RISK MATRIX'),
+        React.createElement('div',{style:{display:'grid',gridTemplateColumns:'1fr 80px 80px 70px 70px',gap:0}},
+          ['CARD','VOLATILITY','LIQUIDITY','SIGNAL','RISK'].map(h=>React.createElement('div',{key:h,style:{fontSize:9,letterSpacing:'0.12em',fontFamily:mono,color:'#444',padding:'6px 8px',borderBottom:'1px solid #111',textTransform:'uppercase'}},h)),
+          cardMetrics.map(c=>[
+            React.createElement('div',{key:c.id+'n',style:{fontSize:12,color:'#ccc',padding:'8px 8px',borderBottom:'1px solid #0d0d0d',display:'flex',alignItems:'center',gap:8}},
+              espnImg(c.player)&&React.createElement('img',{src:espnImg(c.player),style:{width:20,height:20,borderRadius:10,objectFit:'cover',objectPosition:'top'}}),
+              c.player
+            ),
+            React.createElement('div',{key:c.id+'v',style:{fontSize:12,fontFamily:mono,color:c.volatility>15?'#ef4444':c.volatility>8?'#f59e0b':'#22c55e',padding:'8px 8px',borderBottom:'1px solid #0d0d0d'}},c.volatility.toFixed(1)+'%'),
+            React.createElement('div',{key:c.id+'l',style:{fontSize:10,fontFamily:mono,color:c.liquidity==='HIGH'?'#22c55e':c.liquidity==='MED'?'#f59e0b':'#888',padding:'8px 8px',borderBottom:'1px solid #0d0d0d',letterSpacing:'0.06em'}},c.liquidity),
+            React.createElement('div',{key:c.id+'s',style:{fontSize:10,fontFamily:mono,color:c.signal==='BUY'?'#22c55e':c.signal==='SELL'?'#ef4444':c.signal==='HOLD'?'#f59e0b':'#888',padding:'8px 8px',borderBottom:'1px solid #0d0d0d',letterSpacing:'0.06em'}},c.signal),
+            React.createElement('div',{key:c.id+'r',style:{fontSize:10,fontFamily:mono,color:c.risk==='HIGH'?'#ef4444':'#f59e0b',padding:'8px 8px',borderBottom:'1px solid #0d0d0d',letterSpacing:'0.06em'}},c.risk),
+          ]).flat()
+        )
+      ),
+      // Rebalance suggestions
+      React.createElement('div',{style:{...S.statBox}},
+        React.createElement('div',{style:{fontSize:11,letterSpacing:'0.15em',fontFamily:mono,color:'#555',textTransform:'uppercase',marginBottom:14}},'REBALANCE SUGGESTIONS'),
+        React.createElement('div',{style:{display:'flex',flexDirection:'column',gap:10}},
+          [
+            {icon:'🏒',text:'Add Hockey exposure. Your collection has 0% hockey — historically low correlation to NFL/NBA volatility.'},
+            {icon:'📜',text:'Consider one vintage card (pre-1990). Inflation-resistant. Low volatility. Portfolio stabilizer.'},
+            {icon:'🎯',text:'Your BUY SIGNALS: 0 of 5. Market says to watch for entry points on Wembanyama Prizm under $500.'},
+          ].map((s,i)=>React.createElement('div',{key:i,style:{display:'flex',gap:12,alignItems:'flex-start',padding:'10px 12px',background:'#080808',borderRadius:8,border:'1px solid #141414'}},
+            React.createElement('span',{style:{fontSize:18,flexShrink:0}},s.icon),
+            React.createElement('span',{style:{fontSize:13,color:'#aaa',lineHeight:1.5}},s.text)
+          ))
+        )
+      )
+    );
+  };
+
+  const LifecycleTrackerSubPage = () => {
+    const mono = MONO, bb = BB;
+    const [selPlayer, setSelPlayer] = React.useState(PLAYER_TRENDS[0]?.name||'');
+    const player = PLAYER_TRENDS.find(p=>p.name===selPlayer)||PLAYER_TRENDS[0];
+    const phaseIdx = PLAYER_LIFECYCLE_PHASE[player?.name] ?? 2;
+    const currentPhase = LIFECYCLE_EVENTS[phaseIdx];
+    const correlations = STAT_CORRELATIONS[player?.sport||'Football']||[];
+    // Build price history based on lifecycle shape
+    const basePrice = player ? (player.keyCards?.[0]?.val||100) : 100;
+    const priceHistory = LIFECYCLE_EVENTS.slice(0,8).map((e,i)=>{
+      const noise = (Math.random()-0.5)*0.1;
+      return Math.round(basePrice*(i<=phaseIdx?e.priceMult:LIFECYCLE_EVENTS[phaseIdx].priceMult*(0.85+noise)));
+    });
+    // SVG lifecycle timeline
+    const timelineW = 680, timelineH = 60;
+    const segW = timelineW / (LIFECYCLE_EVENTS.length);
+    return React.createElement('div',{style:{maxWidth:900,margin:'0 auto',padding:'72px 20px 60px'}},
+      React.createElement('div',{style:{marginBottom:24}},
+        React.createElement('div',{style:{fontSize:11,letterSpacing:'0.15em',color:'#C41E1E',fontFamily:mono,textTransform:'uppercase',marginBottom:4}},'← INTELLIGENCE'),
+        React.createElement('h1',{style:{fontFamily:bb,fontSize:48,letterSpacing:'0.04em',margin:0}},'CARD LIFECYCLE'),
+        React.createElement('p',{style:{color:'#555',fontSize:13,marginTop:4}},'Market timing intelligence. Know exactly where you are in the cycle.')
+      ),
+      // Player selector
+      React.createElement('div',{style:{display:'flex',gap:12,alignItems:'center',marginBottom:24,flexWrap:'wrap'}},
+        React.createElement('select',{value:selPlayer,onChange:e=>setSelPlayer(e.target.value),style:{background:'#111',border:'1px solid #222',color:'#fff',padding:'10px 14px',borderRadius:8,fontSize:13,fontFamily:mono,cursor:'pointer',flex:1,maxWidth:320}},
+          PLAYER_TRENDS.map(p=>React.createElement('option',{key:p.name,value:p.name},p.name+' ('+p.sport+')'))
+        ),
+        espnImg(player?.name)&&React.createElement('img',{src:espnImg(player.name),alt:player.name,style:{width:44,height:44,borderRadius:22,objectFit:'cover',objectPosition:'top center',border:'2px solid #333'}}),
+        React.createElement('div',{style:{display:'flex',flexDirection:'column'}},
+          React.createElement('div',{style:{fontSize:13,color:'#fff',fontWeight:700}},player?.name),
+          React.createElement('div',{style:{fontSize:11,color:'#555',fontFamily:mono}},player?.team+' · '+player?.sport)
+        )
+      ),
+      // Current phase callout
+      React.createElement('div',{style:{background:currentPhase.color+'11',border:`1px solid ${currentPhase.color}44`,borderLeft:`4px solid ${currentPhase.color}`,borderRadius:8,padding:'14px 18px',marginBottom:24,display:'flex',gap:16,alignItems:'center',flexWrap:'wrap'}},
+        React.createElement('div',null,
+          React.createElement('div',{style:{fontSize:10,letterSpacing:'0.15em',fontFamily:mono,color:currentPhase.color,textTransform:'uppercase',marginBottom:4}},'CURRENT PHASE'),
+          React.createElement('div',{style:{fontSize:22,fontWeight:700,color:'#fff',letterSpacing:'-0.02em'}},currentPhase.phase),
+          React.createElement('div',{style:{fontSize:13,color:'#aaa',marginTop:4}},currentPhase.desc)
+        ),
+        React.createElement('div',{style:{textAlign:'right',marginLeft:'auto'}},
+          React.createElement('div',{style:{fontSize:10,letterSpacing:'0.15em',fontFamily:mono,color:'#555',marginBottom:4}},'HISTORICAL AVG RETURN'),
+          React.createElement('div',{style:{fontSize:32,fontWeight:700,color:currentPhase.color,fontFamily:bb}},'+'+(currentPhase.priceMult*100-100).toFixed(0)+'%'),
+          React.createElement('div',{style:{fontSize:10,color:'#555',fontFamily:mono}},'FROM DRAFT PRICE')
+        )
+      ),
+      // Lifecycle timeline SVG
+      React.createElement('div',{style:{...S.statBox,marginBottom:24,overflowX:'auto'}},
+        React.createElement('div',{style:{fontSize:11,letterSpacing:'0.15em',fontFamily:mono,color:'#555',textTransform:'uppercase',marginBottom:14}},'LIFECYCLE TIMELINE'),
+        React.createElement('div',{style:{minWidth:560}},
+          React.createElement('svg',{viewBox:`0 0 ${timelineW} ${timelineH+40}`,style:{width:'100%',maxWidth:timelineW}},
+            // Track line
+            React.createElement('line',{x1:segW/2,y1:30,x2:timelineW-segW/2,y2:30,stroke:'#222',strokeWidth:2}),
+            // Phase dots and labels
+            LIFECYCLE_EVENTS.map((e,i)=>{
+              const cx=segW/2+i*segW, active=i===phaseIdx, past=i<phaseIdx;
+              return React.createElement('g',{key:e.phase},
+                React.createElement('circle',{cx,cy:30,r:active?10:6,fill:active?e.color:past?'#333':'#111',stroke:active?e.color:'#333',strokeWidth:2}),
+                active&&React.createElement('circle',{cx,cy:30,r:16,fill:'none',stroke:e.color,strokeWidth:1,opacity:0.4}),
+                React.createElement('text',{x:cx,y:55,textAnchor:'middle',fill:active?e.color:past?'#555':'#333',fontSize:7,fontFamily:mono,textTransform:'uppercase'},e.phase.split(' ')[0]),
+                React.createElement('text',{x:cx,y:65,textAnchor:'middle',fill:active?e.color:past?'#555':'#333',fontSize:7,fontFamily:mono},e.phase.split(' ').slice(1).join(' '))
+              );
+            })
+          )
+        )
+      ),
+      // Price history chart
+      React.createElement('div',{style:{...S.statBox,marginBottom:24}},
+        React.createElement('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:14}},
+          React.createElement('div',{style:{fontSize:11,letterSpacing:'0.15em',fontFamily:mono,color:'#555',textTransform:'uppercase'}},'ESTIMATED PRICE CURVE'),
+          React.createElement('div',{style:{fontSize:11,color:'#22c55e',fontFamily:mono}},'BASED ON LIFECYCLE MODEL')
+        ),
+        React.createElement('svg',{viewBox:'0 0 680 80',style:{width:'100%',height:80}},
+          (()=>{
+            const mn=Math.min(...priceHistory), mx=Math.max(...priceHistory);
+            const pts=priceHistory.map((v,i)=>`${i*(680/(priceHistory.length-1))},${80-(v-mn)/(mx-mn+1)*70}`).join(' ');
+            const fillPts=`0,80 ${pts} ${680},80`;
+            return [
+              React.createElement('defs',{key:'d'},React.createElement('linearGradient',{id:'lcg',x1:0,y1:0,x2:0,y2:1},React.createElement('stop',{offset:'0%',stopColor:'#22c55e',stopOpacity:0.3}),React.createElement('stop',{offset:'100%',stopColor:'#22c55e',stopOpacity:0}))),
+              React.createElement('polygon',{key:'f',points:fillPts,fill:'url(#lcg)'}),
+              React.createElement('polyline',{key:'l',points:pts,fill:'none',stroke:'#22c55e',strokeWidth:2}),
+              // Current phase dot
+              React.createElement('circle',{key:'dot',cx:phaseIdx*(680/(priceHistory.length-1)),cy:80-(priceHistory[phaseIdx]-mn)/(mx-mn+1)*70,r:5,fill:currentPhase.color,stroke:'#000',strokeWidth:2}),
+            ];
+          })()
+        )
+      ),
+      // Stat correlations
+      React.createElement('div',{style:{...S.statBox}},
+        React.createElement('div',{style:{fontSize:11,letterSpacing:'0.15em',fontFamily:mono,color:'#555',textTransform:'uppercase',marginBottom:14}},player?.sport+' STAT PRICE CORRELATIONS'),
+        React.createElement('div',{style:{display:'grid',gridTemplateColumns:'repeat(2,1fr)',gap:10}},
+          correlations.map(c=>React.createElement('div',{key:c.stat,style:{background:'#080808',border:'1px solid #141414',borderRadius:8,padding:'12px 14px'}},
+            React.createElement('div',{style:{fontSize:12,color:'#ccc',marginBottom:6}},c.stat),
+            React.createElement('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'center'}},
+              React.createElement('span',{style:{fontSize:22,fontWeight:700,color:c.spike.startsWith('-')?'#ef4444':'#22c55e',fontFamily:bb}},c.spike),
+              React.createElement('span',{style:{fontSize:10,color:'#555',fontFamily:mono}},'AVG · '+c.window)
+            )
+          ))
+        )
+      )
+    );
+  };
+
+  const GradingOptimizerSubPage = () => {
+    const mono = MONO, bb = BB;
+    const [selCard, setSelCard] = React.useState(0);
+    const [gradingTier, setGradingTier] = React.useState(1);
+    const card = cards[selCard];
+    const cost = GRADING_TIERS[gradingTier].cost;
+    // Mock grade values
+    const rawVal = card?.estValue||285;
+    const psa9Val = Math.round(rawVal*1.4);
+    const psa10Val = Math.round(rawVal*2.8);
+    const netPsa9 = psa9Val - rawVal - cost;
+    const netPsa10 = psa10Val - rawVal - cost;
+    // Probabilities per card condition
+    const condMap = {'PSA 10':0,'PSA 9':0,'BGS 9.5':0,'BGS 9':0,'Raw':1,'Ungraded':1};
+    const alreadyGraded = condMap[card?.condition||'Raw']===0;
+    const psa10prob = alreadyGraded?0:34, psa9prob=alreadyGraded?0:48, psa8prob=alreadyGraded?0:14, lowProb=alreadyGraded?0:4;
+    const expNet = alreadyGraded?0:Math.round(psa10prob/100*netPsa10+psa9prob/100*netPsa9);
+    const verdict = alreadyGraded?null:expNet>50?{label:'WORTH GRADING',color:'#22c55e'}:expNet>0?{label:'MARGINAL',color:'#f59e0b'}:{label:'NOT WORTH IT',color:'#ef4444'};
+    // Pop growth data
+    const popData = [120,145,178,210,248,290,338,380];
+    return React.createElement('div',{style:{maxWidth:900,margin:'0 auto',padding:'72px 20px 60px'}},
+      React.createElement('div',{style:{marginBottom:24}},
+        React.createElement('div',{style:{fontSize:11,letterSpacing:'0.15em',color:'#C41E1E',fontFamily:mono,textTransform:'uppercase',marginBottom:4}},'← INTELLIGENCE'),
+        React.createElement('h1',{style:{fontFamily:bb,fontSize:48,letterSpacing:'0.04em',margin:0}},'GRADING OPTIMIZER'),
+        React.createElement('p',{style:{color:'#555',fontSize:13,marginTop:4}},'Should you grade this card? Let the numbers decide.')
+      ),
+      // Card + tier selectors
+      React.createElement('div',{style:{display:'flex',gap:12,marginBottom:24,flexWrap:'wrap'}},
+        React.createElement('div',{style:{flex:1,minWidth:220}},
+          React.createElement('div',{style:{fontSize:10,letterSpacing:'0.12em',fontFamily:mono,color:'#555',textTransform:'uppercase',marginBottom:6}},'SELECT CARD'),
+          React.createElement('select',{value:selCard,onChange:e=>setSelCard(+e.target.value),style:{width:'100%',background:'#111',border:'1px solid #222',color:'#fff',padding:'10px 14px',borderRadius:8,fontSize:13,fontFamily:mono,cursor:'pointer'}},
+            cards.map((c,i)=>React.createElement('option',{key:c.id,value:i},c.player+' — '+c.set+' ('+c.condition+')'))
+          )
+        ),
+        React.createElement('div',{style:{flex:1,minWidth:220}},
+          React.createElement('div',{style:{fontSize:10,letterSpacing:'0.12em',fontFamily:mono,color:'#555',textTransform:'uppercase',marginBottom:6}},'GRADING SERVICE TIER'),
+          React.createElement('select',{value:gradingTier,onChange:e=>setGradingTier(+e.target.value),style:{width:'100%',background:'#111',border:'1px solid #222',color:'#fff',padding:'10px 14px',borderRadius:8,fontSize:13,fontFamily:mono,cursor:'pointer'}},
+            GRADING_TIERS.map((t,i)=>React.createElement('option',{key:t.name,value:i},'$'+t.cost+' '+t.name+' ('+t.turnaround+')'))
+          )
+        )
+      ),
+      alreadyGraded
+        ? React.createElement('div',{style:{...S.statBox,padding:'24px',textAlign:'center',marginBottom:24}},
+            React.createElement('div',{style:{fontSize:28,marginBottom:8}},'🏅'),
+            React.createElement('div',{style:{fontSize:18,color:'#fff',fontWeight:700,marginBottom:4}},'Already Graded'),
+            React.createElement('div',{style:{fontSize:13,color:'#555',fontFamily:mono}},card?.condition+' — No further grading needed for this card.')
+          )
+        : React.createElement(React.Fragment,null,
+          // Verdict
+          verdict&&React.createElement('div',{style:{background:verdict.color+'11',border:`2px solid ${verdict.color}44`,borderRadius:12,padding:'16px 20px',marginBottom:24,display:'flex',alignItems:'center',justifyContent:'space-between',flexWrap:'wrap',gap:12}},
+            React.createElement('div',null,
+              React.createElement('div',{style:{fontSize:10,letterSpacing:'0.15em',fontFamily:mono,color:verdict.color,textTransform:'uppercase',marginBottom:4}},'GRADING VERDICT'),
+              React.createElement('div',{style:{fontSize:28,fontWeight:800,color:verdict.color,fontFamily:bb,letterSpacing:'0.04em'}},verdict.label),
+              React.createElement('div',{style:{fontSize:13,color:'#aaa',marginTop:4}},'At '+GRADING_TIERS[gradingTier].name+' tier · Expected net: '+(expNet>=0?'+':'')+' $'+expNet)
+            ),
+            React.createElement('div',{style:{textAlign:'right'}},
+              React.createElement('div',{style:{fontSize:10,fontFamily:mono,color:'#555',marginBottom:2}},'GRADING COST'),
+              React.createElement('div',{style:{fontSize:28,fontWeight:700,color:'#fff',fontFamily:bb}},'-$'+cost)
+            )
+          ),
+          // Grade value comparison
+          React.createElement('div',{style:{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:12,marginBottom:24}},
+            [['RAW','Current',rawVal,'#888'],['PSA 9','Estimate',psa9Val,'#f59e0b'],['PSA 10','Estimate',psa10Val,'#22c55e']].map(([g,sub,v,c])=>
+              React.createElement('div',{key:g,style:{...S.statBox,textAlign:'center',padding:'16px'}},
+                React.createElement('div',{style:{fontSize:10,letterSpacing:'0.12em',fontFamily:mono,color:'#444',marginBottom:4,textTransform:'uppercase'}},sub),
+                React.createElement('div',{style:{fontSize:11,letterSpacing:'0.15em',fontFamily:mono,color:c,textTransform:'uppercase',marginBottom:8}},g),
+                React.createElement('div',{style:{fontSize:28,fontWeight:700,color:c,fontFamily:bb}}, '$'+v),
+                React.createElement('div',{style:{fontSize:11,color:'#555',fontFamily:mono,marginTop:4}},'Net: '+(v-rawVal-cost>=0?'+':'')+' $'+(v-rawVal-cost))
+              )
+            )
+          ),
+          // Grade probability bars
+          React.createElement('div',{style:{...S.statBox,marginBottom:24}},
+            React.createElement('div',{style:{fontSize:11,letterSpacing:'0.15em',fontFamily:mono,color:'#555',textTransform:'uppercase',marginBottom:14}},'GRADE PROBABILITY (BASED ON SET/ERA)'),
+            [[psa10prob,'PSA 10','#22c55e'],[psa9prob,'PSA 9','#f59e0b'],[psa8prob,'PSA 8','#f97316'],[lowProb,'PSA 7 or lower','#ef4444']].map(([pct,label,color])=>
+              React.createElement('div',{key:label,style:{marginBottom:12}},
+                React.createElement('div',{style:{display:'flex',justifyContent:'space-between',marginBottom:4}},
+                  React.createElement('span',{style:{fontSize:12,color:'#aaa',fontFamily:mono}},label),
+                  React.createElement('span',{style:{fontSize:12,color,fontFamily:mono,fontWeight:700}},pct+'%')
+                ),
+                React.createElement('div',{style:{background:'#111',borderRadius:4,height:6,overflow:'hidden'}},
+                  React.createElement('div',{style:{width:pct+'%',height:'100%',background:color,borderRadius:4,transition:'width 0.5s'}})
+                )
+              )
+            )
+          ),
+          // Pop growth chart
+          React.createElement('div',{style:{...S.statBox}},
+            React.createElement('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:14}},
+              React.createElement('div',{style:{fontSize:11,letterSpacing:'0.15em',fontFamily:mono,color:'#555',textTransform:'uppercase'}},'PSA 10 POP GROWTH (8 MONTHS)'),
+              React.createElement('div',{style:{fontSize:11,color:'#ef4444',fontFamily:mono}},'↑ RISING POP = ERODING PREMIUM')
+            ),
+            React.createElement('svg',{viewBox:'0 0 400 60',style:{width:'100%',height:60}},
+              (()=>{
+                const mn=Math.min(...popData), mx=Math.max(...popData);
+                const pts=popData.map((v,i)=>`${i*(400/7)},${60-(v-mn)/(mx-mn+1)*50}`).join(' ');
+                return [
+                  React.createElement('polyline',{key:'l',points:pts,fill:'none',stroke:'#ef4444',strokeWidth:2}),
+                  popData.map((v,i)=>React.createElement('circle',{key:i,cx:i*(400/7),cy:60-(v-mn)/(mx-mn+1)*50,r:3,fill:'#ef4444'}))
+                ];
+              })()
+            ),
+            React.createElement('div',{style:{display:'flex',justifyContent:'space-between',marginTop:6}},
+              ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug'].map(m=>React.createElement('span',{key:m,style:{fontSize:9,color:'#333',fontFamily:mono}},m))
+            )
+          )
+        )
+    );
+  };
+
+  const CollectorStatusSubPage = () => {
+    const mono = MONO, bb = BB;
+    const [isPublic, setIsPublic] = React.useState(false);
+    const [tradeStatus, setTradeStatus] = React.useState(cards.reduce((a,c)=>({...a,[c.id]:'hold'}),{}));
+    const totalValue = cards.reduce((s,c)=>s+c.estValue,0);
+    const totalGain = totalValue - cards.reduce((s,c)=>s+(c.purchasePrice||0),0);
+    const gainPct = Math.round(totalGain/cards.reduce((s,c)=>s+(c.purchasePrice||0),0)*100);
+    const tiers = ['ROOKIE','COLLECTOR','ANALYST','PRO','EXPERT','ELITE'];
+    const tierColors = ['#888','#38bdf8','#f59e0b','#C41E1E','#a78bfa','#FFD700'];
+    const tierIdx = totalValue>=100000?5:totalValue>=50000?4:totalValue>=10000?3:totalValue>=2000?2:totalValue>=500?1:0;
+    const tier = tiers[tierIdx], tierColor = tierColors[tierIdx];
+    const xp = Math.min(100, Math.round((totalValue%(totalValue<500?500:totalValue<2000?2000:totalValue<10000?10000:totalValue<50000?50000:100000))/( totalValue<500?500:totalValue<2000?2000:totalValue<10000?10000:totalValue<50000?50000:100000)*100));
+    const achievements = [
+      {icon:'🃏',label:'First Card',unlocked:cards.length>=1,xp:50},
+      {icon:'📦',label:'Starter Set (5)',unlocked:cards.length>=5,xp:100},
+      {icon:'💰',label:'$1K Collection',unlocked:totalValue>=1000,xp:150},
+      {icon:'📈',label:'First Profit',unlocked:totalGain>0,xp:200},
+      {icon:'🔥',label:'Hot Streak',unlocked:cards.some(c=>c.signal==='BUY'),xp:250},
+      {icon:'🏆',label:'$5K Milestone',unlocked:totalValue>=5000,xp:500},
+      {icon:'⭐',label:'Multi-Sport',unlocked:new Set(cards.map(c=>c.sport)).size>=3,xp:300},
+      {icon:'💎',label:'Graded Stack',unlocked:cards.filter(c=>c.condition.includes('PSA')||c.condition.includes('BGS')).length>=3,xp:400},
+    ];
+    const tradeLabels = {hold:'🔒 Hold',trade:'🤝 Trade',offer:'💬 Offer'};
+    return React.createElement('div',{style:{maxWidth:900,margin:'0 auto',padding:'72px 20px 60px'}},
+      React.createElement('div',{style:{marginBottom:24}},
+        React.createElement('div',{style:{fontSize:11,letterSpacing:'0.15em',color:'#C41E1E',fontFamily:mono,textTransform:'uppercase',marginBottom:4}},'← INTELLIGENCE'),
+        React.createElement('h1',{style:{fontFamily:bb,fontSize:48,letterSpacing:'0.04em',margin:0}},'COLLECTOR STATUS'),
+        React.createElement('p',{style:{color:'#555',fontSize:13,marginTop:4}},'Recognition. Prestige. Community rank.')
+      ),
+      // Profile card
+      React.createElement('div',{style:{...S.statBox,marginBottom:24,display:'flex',gap:20,alignItems:'center',flexWrap:'wrap'}},
+        React.createElement('div',{style:{width:64,height:64,borderRadius:32,background:tierColor+'22',border:`2px solid ${tierColor}`,display:'flex',alignItems:'center',justifyContent:'center',fontSize:24,fontWeight:700,color:tierColor,fontFamily:bb,flexShrink:0}},user?.name?.charAt(0)||'R'),
+        React.createElement('div',{style:{flex:1}},
+          React.createElement('div',{style:{fontSize:20,fontWeight:700,color:'#fff',marginBottom:2}},user?.name||'Rico V.'),
+          React.createElement('div',{style:{display:'flex',alignItems:'center',gap:10,marginBottom:10,flexWrap:'wrap'}},
+            React.createElement('div',{style:{background:tierColor+'22',border:`1px solid ${tierColor}44`,borderRadius:4,padding:'2px 10px',fontSize:10,fontFamily:mono,letterSpacing:'0.15em',color:tierColor,textTransform:'uppercase'}},tier),
+            React.createElement('div',{style:{fontSize:11,color:'#555',fontFamily:mono}},user?.plan+' Plan')
+          ),
+          React.createElement('div',{style:{display:'flex',alignItems:'center',gap:8}},
+            React.createElement('div',{style:{flex:1,background:'#111',borderRadius:4,height:6,overflow:'hidden'}},
+              React.createElement('div',{style:{width:xp+'%',height:'100%',background:tierColor,borderRadius:4}})
+            ),
+            React.createElement('div',{style:{fontSize:10,color:'#555',fontFamily:mono,whiteSpace:'nowrap'}},xp+'% to '+tiers[Math.min(tierIdx+1,tiers.length-1)])
+          )
+        ),
+        React.createElement('div',{style:{display:'flex',flexDirection:'column',gap:8,alignItems:'flex-end'}},
+          React.createElement('button',{onClick:()=>setIsPublic(!isPublic),style:{background:isPublic?'#22c55e22':'transparent',border:`1px solid ${isPublic?'#22c55e':'#333'}`,borderRadius:6,padding:'6px 14px',color:isPublic?'#22c55e':'#555',fontSize:11,fontFamily:mono,letterSpacing:'0.08em',cursor:'pointer'}},isPublic?'🌐 PUBLIC':'🔒 PRIVATE'),
+          React.createElement('div',{style:{fontSize:10,color:'#444',fontFamily:mono}},isPublic?'Profile visible to community':'Only you can see this')
+        )
+      ),
+      // Stats row
+      React.createElement('div',{style:{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:12,marginBottom:24}},
+        [['COLLECTION VALUE','$'+totalValue.toLocaleString(),'#fff'],['TOTAL GAIN',(totalGain>=0?'+$':'-$')+Math.abs(totalGain).toLocaleString(),totalGain>=0?'#22c55e':'#ef4444'],['GAIN %',(gainPct>=0?'+':'')+gainPct+'%',gainPct>=0?'#22c55e':'#ef4444'],['CARDS OWNED',cards.length,'#f59e0b']].map(([l,v,c])=>
+          React.createElement('div',{key:l,style:{...S.statBox,padding:'14px 16px'}},
+            React.createElement('div',{style:{...S.statLabel,marginBottom:4}},l),
+            React.createElement('div',{style:{fontSize:22,fontWeight:700,color:c,letterSpacing:'-0.02em'}},v)
+          )
+        )
+      ),
+      // Achievement badges
+      React.createElement('div',{style:{...S.statBox,marginBottom:24}},
+        React.createElement('div',{style:{fontSize:11,letterSpacing:'0.15em',fontFamily:mono,color:'#555',textTransform:'uppercase',marginBottom:14}},'ACHIEVEMENT BADGES'),
+        React.createElement('div',{style:{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:10}},
+          achievements.map(a=>React.createElement('div',{key:a.label,style:{background:a.unlocked?'#0d0d0d':'#080808',border:`1px solid ${a.unlocked?'#222':'#0d0d0d'}`,borderRadius:8,padding:'12px',textAlign:'center',opacity:a.unlocked?1:0.35}},
+            React.createElement('div',{style:{fontSize:24,marginBottom:6,filter:a.unlocked?'none':'grayscale(1)'}},a.icon),
+            React.createElement('div',{style:{fontSize:10,color:a.unlocked?'#aaa':'#333',fontFamily:mono,letterSpacing:'0.06em',marginBottom:4}},a.label),
+            React.createElement('div',{style:{fontSize:9,color:a.unlocked?'#f59e0b':'#222',fontFamily:mono}},'+'+a.xp+' XP')
+          ))
+        )
+      ),
+      // Leaderboard
+      React.createElement('div',{style:{...S.statBox,marginBottom:24}},
+        React.createElement('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:14}},
+          React.createElement('div',{style:{fontSize:11,letterSpacing:'0.15em',fontFamily:mono,color:'#555',textTransform:'uppercase'}},'COLLECTOR LEADERBOARD'),
+          React.createElement('div',{style:{fontSize:10,color:'#333',fontFamily:mono}},'2,847 TOTAL COLLECTORS')
+        ),
+        LEADERBOARD.map(e=>React.createElement('div',{key:e.rank,style:{display:'flex',alignItems:'center',gap:12,padding:'8px 10px',marginBottom:4,background:e.isYou?'#0d1f0d':'transparent',border:e.isYou?'1px solid #22c55e22':'1px solid transparent',borderRadius:6}},
+          React.createElement('div',{style:{width:22,fontSize:12,color:e.rank<=3?'#FFD700':'#444',fontFamily:mono,fontWeight:700,textAlign:'center'}},e.rank<=3?['🥇','🥈','🥉'][e.rank-1]:e.rank),
+          React.createElement('div',{style:{flex:1,fontSize:12,color:e.isYou?'#22c55e':'#aaa',fontFamily:mono}},e.handle+(e.isYou?' (you)':'')+(e.verified?' ✓':'')),
+          React.createElement('div',{style:{fontSize:11,color:'#555',fontFamily:mono}},e.sport),
+          React.createElement('div',{style:{fontSize:12,color:'#fff',fontFamily:mono,textAlign:'right'}}, '$'+e.val.toLocaleString())
+        ))
+      ),
+      // Trade interest per card
+      React.createElement('div',{style:{...S.statBox}},
+        React.createElement('div',{style:{fontSize:11,letterSpacing:'0.15em',fontFamily:mono,color:'#555',textTransform:'uppercase',marginBottom:14}},'TRADE INTEREST FLAGS'),
+        React.createElement('div',{style:{display:'flex',flexDirection:'column',gap:8}},
+          cards.map(c=>React.createElement('div',{key:c.id,style:{display:'flex',alignItems:'center',gap:12,padding:'8px 12px',background:'#080808',borderRadius:8,border:'1px solid #111'}},
+            espnImg(c.player)&&React.createElement('img',{src:espnImg(c.player),style:{width:28,height:28,borderRadius:14,objectFit:'cover',objectPosition:'top'}}),
+            React.createElement('div',{style:{flex:1,fontSize:12,color:'#ccc'}},c.player,' · ',c.set),
+            React.createElement('div',{style:{display:'flex',gap:6}},
+              ['hold','trade','offer'].map(s=>React.createElement('button',{key:s,onClick:()=>setTradeStatus(prev=>({...prev,[c.id]:s})),style:{fontSize:10,fontFamily:mono,padding:'4px 10px',borderRadius:4,border:`1px solid ${tradeStatus[c.id]===s?'#22c55e':'#1a1a1a'}`,background:tradeStatus[c.id]===s?'#22c55e22':'transparent',color:tradeStatus[c.id]===s?'#22c55e':'#444',cursor:'pointer',letterSpacing:'0.04em'}},s.toUpperCase()))
+            )
+          ))
+        )
+      )
+    );
+  };
+
+  const InsiderIndexesSubPage = () => {
+    const mono = MONO, bb = BB;
+    const [expanded, setExpanded] = React.useState(null);
+    const SparkInline = ({data,color,h=36}) => {
+      const mn=Math.min(...data), mx=Math.max(...data);
+      const pts=data.map((v,i)=>`${i*(120/(data.length-1))},${h-(v-mn)/(mx-mn+1)*(h-4)}`).join(' ');
+      return React.createElement('svg',{viewBox:`0 0 120 ${h}`,style:{width:120,height:h}},
+        React.createElement('polyline',{points:pts,fill:'none',stroke:color,strokeWidth:1.5})
+      );
+    };
+    const corr = [[1,.2,-.3,.7,.5],[.2,1,-.1,.3,.8],[-.3,-.1,1,-.4,-.2],[.7,.3,-.4,1,.4],[.5,.8,-.2,.4,1]];
+    const corrColor = v => v>0.5?`rgba(34,197,94,${v}))`:v<-0.2?`rgba(239,68,68,${Math.abs(v)})`:`rgba(100,100,100,0.3)`;
+    return React.createElement('div',{style:{maxWidth:900,margin:'0 auto',padding:'72px 20px 60px'}},
+      React.createElement('div',{style:{marginBottom:24}},
+        React.createElement('div',{style:{fontSize:11,letterSpacing:'0.15em',color:'#C41E1E',fontFamily:mono,textTransform:'uppercase',marginBottom:4}},'← INTELLIGENCE'),
+        React.createElement('h1',{style:{fontFamily:bb,fontSize:48,letterSpacing:'0.04em',margin:0}},'INSIDER INDEXES'),
+        React.createElement('p',{style:{color:'#555',fontSize:13,marginTop:4}},'5 proprietary market indexes. The signal layer above the noise.')
+      ),
+      // Portfolio exposure callout
+      React.createElement('div',{style:{background:'#C41E1E11',border:'1px solid #C41E1E33',borderLeft:'4px solid #C41E1E',borderRadius:8,padding:'12px 16px',marginBottom:24}},
+        React.createElement('span',{style:{fontSize:13,color:'#ccc',fontFamily:mono}},'📊 Your portfolio beta to '),
+        React.createElement('span',{style:{color:'#C41E1E',fontWeight:700,fontFamily:mono}},'Modern Hype Index'),
+        React.createElement('span',{style:{fontSize:13,color:'#ccc',fontFamily:mono}},': 1.6x — You are running '),
+        React.createElement('span',{style:{color:'#ef4444',fontWeight:700,fontFamily:mono}},'HOT.')
+      ),
+      // Index cards
+      React.createElement('div',{style:{display:'flex',flexDirection:'column',gap:10,marginBottom:24}},
+        INSIDER_INDEXES.map(idx=>React.createElement(React.Fragment,{key:idx.id},
+          React.createElement('div',{
+            onClick:()=>setExpanded(expanded===idx.id?null:idx.id),
+            style:{...S.statBox,cursor:'pointer',padding:'16px 20px',borderColor:expanded===idx.id?idx.color+'44':'#161616',transition:'border-color 0.2s',display:'flex',alignItems:'center',gap:16}
+          },
+            React.createElement('div',{style:{flex:1}},
+              React.createElement('div',{style:{display:'flex',alignItems:'center',gap:10,marginBottom:4}},
+                React.createElement('span',{style:{fontSize:14,fontWeight:700,color:'#fff'}},idx.name),
+                React.createElement('span',{style:{fontSize:11,color:idx.change.startsWith('-')?'#ef4444':'#22c55e',fontFamily:mono}},idx.change+' 30D')
+              ),
+              React.createElement('div',{style:{fontSize:11,color:'#555',fontFamily:mono}},idx.desc)
+            ),
+            React.createElement('div',{style:{textAlign:'right',marginRight:8}},
+              React.createElement('div',{style:{fontSize:26,fontWeight:700,color:idx.color,fontFamily:bb}},idx.val),
+              React.createElement('div',{style:{fontSize:9,color:'#444',fontFamily:mono,letterSpacing:'0.1em'}},'INDEX VALUE')
+            ),
+            React.createElement(SparkInline,{data:idx.data,color:idx.color}),
+            React.createElement('div',{style:{fontSize:16,color:'#333',marginLeft:4}},expanded===idx.id?'▲':'▼')
+          ),
+          expanded===idx.id&&React.createElement('div',{style:{background:'#080808',border:`1px solid ${idx.color}22`,borderRadius:8,padding:'20px',marginTop:-8}},
+            React.createElement('div',{style:{marginBottom:14}},
+              React.createElement('svg',{viewBox:'0 0 600 80',style:{width:'100%',height:80}},
+                (()=>{
+                  const mn=Math.min(...idx.data), mx=Math.max(...idx.data);
+                  const pts=idx.data.map((v,i)=>`${i*(600/7)},${80-(v-mn)/(mx-mn+1)*70}`).join(' ');
+                  const fill=`0,80 ${pts} ${600},80`;
+                  return [
+                    React.createElement('defs',{key:'d'},React.createElement('linearGradient',{id:'ig'+idx.id,x1:0,y1:0,x2:0,y2:1},React.createElement('stop',{offset:'0%',stopColor:idx.color,stopOpacity:0.25}),React.createElement('stop',{offset:'100%',stopColor:idx.color,stopOpacity:0}))),
+                    React.createElement('polygon',{key:'f',points:fill,fill:'url(#ig'+idx.id+')'}),
+                    React.createElement('polyline',{key:'l',points:pts,fill:'none',stroke:idx.color,strokeWidth:2}),
+                  ];
+                })()
+              ),
+              React.createElement('div',{style:{display:'flex',justifyContent:'space-between',marginTop:4}},
+                ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug'].map(m=>React.createElement('span',{key:m,style:{fontSize:9,color:'#333',fontFamily:mono}},m))
+              )
+            ),
+            React.createElement('div',{style:{fontSize:11,letterSpacing:'0.12em',fontFamily:mono,color:'#555',textTransform:'uppercase',marginBottom:8}},'KEY DRIVERS'),
+            React.createElement('div',{style:{display:'flex',flexDirection:'column',gap:6}},
+              idx.drivers.map((d,i)=>React.createElement('div',{key:i,style:{fontSize:12,color:'#aaa',paddingLeft:12,borderLeft:`2px solid ${idx.color}44`}},d))
+            )
+          )
+        ))
+      ),
+      // Correlation matrix
+      React.createElement('div',{style:{...S.statBox}},
+        React.createElement('div',{style:{fontSize:11,letterSpacing:'0.15em',fontFamily:mono,color:'#555',textTransform:'uppercase',marginBottom:14}},'INDEX CORRELATION MATRIX'),
+        React.createElement('div',{style:{overflowX:'auto'}},
+          React.createElement('table',{style:{borderCollapse:'collapse',minWidth:360}},
+            React.createElement('thead',null,
+              React.createElement('tr',null,
+                React.createElement('th',{style:{width:80}}),
+                INSIDER_INDEXES.map(i=>React.createElement('th',{key:i.id,style:{fontSize:8,color:'#444',fontFamily:mono,padding:'4px 6px',textTransform:'uppercase',letterSpacing:'0.08em',textAlign:'center'}},i.name.split(' ')[0]))
+              )
+            ),
+            React.createElement('tbody',null,
+              INSIDER_INDEXES.map((row,ri)=>React.createElement('tr',{key:row.id},
+                React.createElement('td',{style:{fontSize:8,color:'#444',fontFamily:mono,padding:'4px 6px',textTransform:'uppercase',letterSpacing:'0.06em',textAlign:'right',paddingRight:8}},row.name.split(' ')[0]),
+                corr[ri].map((v,ci)=>React.createElement('td',{key:ci,style:{width:52,height:32,background:ci===ri?'#1a1a1a':v>0.5?'rgba(34,197,94,0.2)':v<-0.2?'rgba(239,68,68,0.2)':'rgba(60,60,60,0.15)',textAlign:'center',borderRadius:2}},
+                  React.createElement('span',{style:{fontSize:9,fontFamily:mono,color:ci===ri?'#555':v>0.5?'#22c55e':v<-0.2?'#ef4444':'#555'}},ci===ri?'—':v.toFixed(1))
+                ))
+              ))
+            )
+          )
+        )
+      )
+    );
+  };
+
+  const AICardScoutSubPage = () => {
+    const mono = MONO, bb = BB;
+    const [query, setQuery] = React.useState('');
+    const [result, setResult] = React.useState(null);
+    const [loading, setLoading] = React.useState(false);
+    const runScout = (q) => {
+      const qc = (q||query).toLowerCase();
+      setLoading(true);
+      setResult(null);
+      setTimeout(()=>{
+        let resp;
+        if (qc.includes('mahomes')||qc.includes('collection')) {
+          resp = {...SCOUT_RESPONSES['mahomes']};
+          resp.comps = resp.comps.map(c=>({...c, price:c.price}));
+          if (qc.includes('collection')) {
+            resp.verdict='HOLD';
+            resp.verdictReason='3 of 5 cards are HOLD. No urgent buy/sell signals. Monitor Wembanyama for re-entry.';
+          }
+        } else if (qc.includes('wemby')||qc.includes('wembanyama')) {
+          resp = SCOUT_RESPONSES['wemby'];
+        } else if (qc.includes('under $200')||qc.includes('best buy')) {
+          resp = {...SCOUT_RESPONSES['wemby'], verdict:'STRONG BUY', verdictReason:'Wembanyama Prizm Base RC PSA 10 at ~$520 is the best value proposition. Lifecycle: HOT STREAK.'};
+        } else if (qc.includes('rookie')||qc.includes('upside')) {
+          resp = {...SCOUT_RESPONSES['wemby'], verdict:'STRONG BUY', verdictReason:'Wembanyama and Bedard both in HOT STREAK phase. Wembanyama has better sport-level tailwinds.'};
+        } else if (qc.includes('sell')||qc.includes('soften')) {
+          resp = {...SCOUT_RESPONSES['mahomes'], verdict:'TRIM', verdictReason:'Luka Doncic: trade volatility risk. Consider reducing exposure before playoff push.'};
+        } else {
+          resp = SCOUT_RESPONSES['default'];
+        }
+        setResult(resp);
+        setLoading(false);
+      },1200);
+    };
+    const verdictColors = {'STRONG BUY':'#22c55e','BUY ZONE':'#22c55e','HOLD':'#f59e0b','WAIT ZONE':'#f59e0b','TRIM':'#f97316','SELL':'#ef4444'};
+    return React.createElement('div',{style:{maxWidth:900,margin:'0 auto',padding:'72px 20px 60px'}},
+      React.createElement('div',{style:{marginBottom:24}},
+        React.createElement('div',{style:{fontSize:11,letterSpacing:'0.15em',color:'#C41E1E',fontFamily:mono,textTransform:'uppercase',marginBottom:4}},'← INTELLIGENCE'),
+        React.createElement('h1',{style:{fontFamily:bb,fontSize:48,letterSpacing:'0.04em',margin:0}},'AI CARD SCOUT'),
+        React.createElement('p',{style:{color:'#555',fontSize:13,marginTop:4}},'Not advice. Decision framing. Ask anything about any card.')
+      ),
+      // Query input
+      React.createElement('div',{style:{...S.statBox,padding:'16px',marginBottom:14}},
+        React.createElement('div',{style:{display:'flex',gap:10}},
+          React.createElement('input',{
+            value:query, onChange:e=>setQuery(e.target.value),
+            onKeyDown:e=>e.key==='Enter'&&query.trim()&&runScout(),
+            placeholder:'e.g. "Should I buy Wembanyama Prizm PSA 10 at $520?" or "What should I sell?"',
+            style:{flex:1,background:'transparent',border:'none',outline:'none',color:'#fff',fontSize:14,fontFamily:'inherit'}
+          }),
+          React.createElement('button',{onClick:()=>query.trim()&&runScout(),style:{...S.btnPrimary,padding:'8px 20px',fontSize:12}},loading?'…':'SCOUT')
+        )
+      ),
+      // Preset quick-asks
+      React.createElement('div',{style:{display:'flex',gap:8,flexWrap:'wrap',marginBottom:24}},
+        SCOUT_PRESETS.map(p=>React.createElement('button',{key:p.label,onClick:()=>{setQuery(p.query);runScout(p.query);},style:{fontSize:11,fontFamily:mono,padding:'6px 12px',borderRadius:6,border:'1px solid #222',background:'transparent',color:'#666',cursor:'pointer',letterSpacing:'0.04em'}},p.label))
+      ),
+      // Loading
+      loading&&React.createElement('div',{style:{...S.statBox,padding:'32px',textAlign:'center'}},
+        React.createElement('div',{style:{fontSize:13,color:'#555',fontFamily:mono,letterSpacing:'0.1em'}},'SCOUT ANALYZING …'),
+        React.createElement('div',{style:{marginTop:12,width:40,height:40,border:'2px solid #1a1a1a',borderTop:'2px solid #C41E1E',borderRadius:20,animation:'spin 0.8s linear infinite',margin:'12px auto 0'}})
+      ),
+      // Result
+      result&&!loading&&React.createElement('div',{style:{display:'flex',flexDirection:'column',gap:12,animation:'fadeIn 0.4s ease'}},
+        // Verdict
+        React.createElement('div',{style:{background:(verdictColors[result.verdict]||'#888')+'11',border:`2px solid ${(verdictColors[result.verdict]||'#888')}44`,borderRadius:12,padding:'20px 24px',display:'flex',alignItems:'center',gap:20,flexWrap:'wrap'}},
+          React.createElement('div',{style:{flex:1}},
+            React.createElement('div',{style:{fontSize:10,letterSpacing:'0.15em',fontFamily:mono,color:verdictColors[result.verdict]||'#888',textTransform:'uppercase',marginBottom:4}},'SCOUT VERDICT'),
+            React.createElement('div',{style:{fontSize:36,fontWeight:800,color:verdictColors[result.verdict]||'#fff',fontFamily:bb,letterSpacing:'0.04em'}},result.verdict),
+            React.createElement('div',{style:{fontSize:13,color:'#aaa',marginTop:6,lineHeight:1.5}},result.verdictReason)
+          )
+        ),
+        // 5-panel breakdown
+        React.createElement('div',{style:{display:'grid',gridTemplateColumns:'repeat(2,1fr)',gap:12}},
+          // Comparable sales
+          React.createElement('div',{style:{...S.statBox}},
+            React.createElement('div',{style:{fontSize:10,letterSpacing:'0.12em',fontFamily:mono,color:'#555',textTransform:'uppercase',marginBottom:10}},'COMPARABLE SALES'),
+            result.comps.map((c,i)=>React.createElement('div',{key:i,style:{display:'flex',justifyContent:'space-between',padding:'6px 0',borderBottom:i<result.comps.length-1?'1px solid #0d0d0d':'none'}},
+              React.createElement('span',{style:{fontSize:11,color:'#555',fontFamily:mono}},c.date+' · '+c.grade),
+              React.createElement('span',{style:{fontSize:13,color:'#fff',fontFamily:mono,fontWeight:700}},c.price?'$'+c.price:'—')
+            ))
+          ),
+          // Liquidity
+          React.createElement('div',{style:{...S.statBox}},
+            React.createElement('div',{style:{fontSize:10,letterSpacing:'0.12em',fontFamily:mono,color:'#555',textTransform:'uppercase',marginBottom:10}},'LIQUIDITY RISK'),
+            React.createElement('div',{style:{fontSize:22,fontWeight:700,fontFamily:bb,color:result.liquidity==='HIGH'?'#22c55e':result.liquidity==='MED'?'#f59e0b':'#ef4444',marginBottom:6}},result.liquidity),
+            React.createElement('div',{style:{fontSize:12,color:'#aaa'}},result.liquidityReason)
+          ),
+          // Pop trend
+          React.createElement('div',{style:{...S.statBox}},
+            React.createElement('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:10}},
+              React.createElement('div',{style:{fontSize:10,letterSpacing:'0.12em',fontFamily:mono,color:'#555',textTransform:'uppercase'}},'PSA 10 POP TREND'),
+              React.createElement('div',{style:{fontSize:11,color:'#f59e0b',fontFamily:mono}},result.popTrend)
+            ),
+            React.createElement('svg',{viewBox:'0 0 200 40',style:{width:'100%',height:40}},
+              (()=>{
+                const d=result.popData, mn=Math.min(...d), mx=Math.max(...d);
+                const pts=d.map((v,i)=>`${i*(200/(d.length-1))},${40-(v-mn)/(mx-mn+1)*34}`).join(' ');
+                return React.createElement('polyline',{points:pts,fill:'none',stroke:'#f59e0b',strokeWidth:1.5});
+              })()
+            )
+          ),
+          // Player trajectory + macro
+          React.createElement('div',{style:{...S.statBox}},
+            React.createElement('div',{style:{fontSize:10,letterSpacing:'0.12em',fontFamily:mono,color:'#555',textTransform:'uppercase',marginBottom:10}},'CONTEXT'),
+            React.createElement('div',{style:{marginBottom:8}},
+              React.createElement('div',{style:{fontSize:10,color:'#444',fontFamily:mono,marginBottom:2}},'LIFECYCLE PHASE'),
+              React.createElement('div',{style:{fontSize:14,color:'#38bdf8',fontWeight:700}},result.trajectory)
+            ),
+            React.createElement('div',null,
+              React.createElement('div',{style:{fontSize:10,color:'#444',fontFamily:mono,marginBottom:2}},'MACRO SPORT TREND'),
+              React.createElement('div',{style:{fontSize:12,color:'#aaa'}},result.macroTrend)
+            )
+          )
+        )
+      )
+    );
+  };
+
+  const ExitPlannerSubPage = () => {
+    const mono = MONO, bb = BB;
+    const [sellMode, setSellMode] = React.useState('individual'); // individual | lot
+    const [selectedCards, setSelectedCards] = React.useState([]);
+    const [purchaseYear, setPurchaseYear] = React.useState('2022');
+    const toggleCard = (id) => setSelectedCards(prev=>prev.includes(id)?prev.filter(x=>x!==id):[...prev,id]);
+    const selCards = cards.filter(c=>selectedCards.includes(c.id));
+    const totalSelVal = selCards.reduce((s,c)=>s+c.estValue,0);
+    const lotDiscount = 0.87;
+    const saleValue = sellMode==='lot'?Math.round(totalSelVal*lotDiscount):totalSelVal;
+    const currentYear = 2025;
+    const holdYears = currentYear - parseInt(purchaseYear);
+    const totalCost = selCards.reduce((s,c)=>s+(c.purchasePrice||0),0);
+    const gain = saleValue - totalCost;
+    const isLTCG = holdYears >= 1;
+    const capGainsRate = isLTCG ? 0.15 : 0.22;
+    const taxEst = Math.max(0, Math.round(gain * capGainsRate));
+    const netAfterTax = saleValue - taxEst;
+    return React.createElement('div',{style:{maxWidth:900,margin:'0 auto',padding:'72px 20px 60px'}},
+      React.createElement('div',{style:{marginBottom:24}},
+        React.createElement('div',{style:{fontSize:11,letterSpacing:'0.15em',color:'#C41E1E',fontFamily:mono,textTransform:'uppercase',marginBottom:4}},'← INTELLIGENCE'),
+        React.createElement('h1',{style:{fontFamily:bb,fontSize:48,letterSpacing:'0.04em',margin:0}},'EXIT PLANNER'),
+        React.createElement('p',{style:{color:'#555',fontSize:13,marginTop:4}},'How to sell smart. Maximize net proceeds. Know your tax exposure.'),
+        React.createElement('div',{style:{marginTop:8,fontSize:11,color:'#444',fontFamily:mono,fontStyle:'italic'}},'⚠️ Not financial or tax advice. Estimates only — consult a tax professional.')
+      ),
+      // Card selection
+      React.createElement('div',{style:{...S.statBox,marginBottom:24}},
+        React.createElement('div',{style:{fontSize:11,letterSpacing:'0.15em',fontFamily:mono,color:'#555',textTransform:'uppercase',marginBottom:14}},'SELECT CARDS TO SELL'),
+        React.createElement('div',{style:{display:'flex',flexDirection:'column',gap:8}},
+          cards.map(c=>React.createElement('label',{key:c.id,style:{display:'flex',alignItems:'center',gap:12,padding:'10px 12px',background:selectedCards.includes(c.id)?'#0d1a0d':'#080808',border:`1px solid ${selectedCards.includes(c.id)?'#22c55e33':'#111'}`,borderRadius:8,cursor:'pointer'}},
+            React.createElement('input',{type:'checkbox',checked:selectedCards.includes(c.id),onChange:()=>toggleCard(c.id),style:{accentColor:'#22c55e',width:16,height:16,cursor:'pointer'}}),
+            espnImg(c.player)&&React.createElement('img',{src:espnImg(c.player),style:{width:28,height:28,borderRadius:14,objectFit:'cover',objectPosition:'top'}}),
+            React.createElement('div',{style:{flex:1}},
+              React.createElement('div',{style:{fontSize:13,color:'#ccc'}},c.player,' — ',c.set),
+              React.createElement('div',{style:{fontSize:11,color:'#555',fontFamily:mono}},c.condition,' · ',c.parallel)
+            ),
+            React.createElement('div',{style:{textAlign:'right'}},
+              React.createElement('div',{style:{fontSize:14,color:'#fff',fontWeight:700}}, '$'+c.estValue.toLocaleString()),
+              React.createElement('div',{style:{fontSize:10,color:c.signal==='BUY'?'#22c55e':c.signal==='SELL'?'#ef4444':'#f59e0b',fontFamily:mono}},c.signal)
+            )
+          ))
+        )
+      ),
+      selCards.length>0&&React.createElement(React.Fragment,null,
+        // Sell mode + tax inputs
+        React.createElement('div',{style:{display:'flex',gap:12,marginBottom:24,flexWrap:'wrap'}},
+          React.createElement('div',{style:{flex:1,minWidth:200}},
+            React.createElement('div',{style:{fontSize:10,letterSpacing:'0.12em',fontFamily:mono,color:'#555',textTransform:'uppercase',marginBottom:6}},'SELL STRATEGY'),
+            React.createElement('div',{style:{display:'flex',gap:0,border:'1px solid #222',borderRadius:8,overflow:'hidden'}},
+              ['individual','lot'].map(m=>React.createElement('button',{key:m,onClick:()=>setSellMode(m),style:{flex:1,padding:'10px',background:sellMode===m?'#C41E1E':'transparent',border:'none',color:sellMode===m?'#fff':'#555',fontSize:12,fontFamily:mono,cursor:'pointer',letterSpacing:'0.06em',textTransform:'uppercase'}},m==='individual'?'Individual':'As a Lot'))
+            ),
+            sellMode==='lot'&&React.createElement('div',{style:{fontSize:10,color:'#f59e0b',fontFamily:mono,marginTop:6}},'Lot discount: -13% vs. individual sales')
+          ),
+          React.createElement('div',{style:{flex:1,minWidth:200}},
+            React.createElement('div',{style:{fontSize:10,letterSpacing:'0.12em',fontFamily:mono,color:'#555',textTransform:'uppercase',marginBottom:6}},'PURCHASE YEAR (FOR TAX EST.)'),
+            React.createElement('select',{value:purchaseYear,onChange:e=>setPurchaseYear(e.target.value),style:{width:'100%',background:'#111',border:'1px solid #222',color:'#fff',padding:'10px 14px',borderRadius:8,fontSize:13,fontFamily:mono,cursor:'pointer'}},
+              ['2017','2018','2019','2020','2021','2022','2023','2024','2025'].map(y=>React.createElement('option',{key:y,value:y},y))
+            )
+          )
+        ),
+        // Summary
+        React.createElement('div',{style:{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:12,marginBottom:24}},
+          [['SALE PRICE','$'+saleValue.toLocaleString(),'#fff'],['TAXABLE GAIN',gain>=0?'+$'+gain.toLocaleString():'-$'+Math.abs(gain),'#f59e0b'],['TAX EST. ('+Math.round(capGainsRate*100)+'%)','-$'+taxEst.toLocaleString(),'#ef4444'],['NET PROCEEDS','$'+netAfterTax.toLocaleString(),'#22c55e']].map(([l,v,c])=>
+            React.createElement('div',{key:l,style:{...S.statBox,padding:'14px 16px'}},
+              React.createElement('div',{style:{...S.statLabel,marginBottom:4}},l),
+              React.createElement('div',{style:{fontSize:20,fontWeight:700,color:c,letterSpacing:'-0.02em'}},v)
+            )
+          )
+        ),
+        // Tax note
+        React.createElement('div',{style:{background:'#0a0a0a',border:'1px solid #1a1a1a',borderRadius:8,padding:'10px 14px',marginBottom:24,fontSize:11,color:'#555',fontFamily:mono}},
+          isLTCG?'✓ Held '+holdYears+' year(s). Qualifies for LONG-TERM capital gains rate (~15%).':'⚠️ Held < 1 year. SHORT-TERM capital gains apply (~22%). Consider holding longer.'
+        ),
+        // Auction house comparison
+        React.createElement('div',{style:{...S.statBox,marginBottom:24}},
+          React.createElement('div',{style:{fontSize:11,letterSpacing:'0.15em',fontFamily:mono,color:'#555',textTransform:'uppercase',marginBottom:14}},'AUCTION HOUSE COMPARISON'),
+          React.createElement('div',{style:{display:'grid',gridTemplateColumns:'1fr 90px 90px 90px 120px',gap:0,marginBottom:8}},
+            ['PLATFORM','SELLER FEE','TIMELINE','REACH','NET PROCEEDS'].map(h=>React.createElement('div',{key:h,style:{fontSize:9,letterSpacing:'0.1em',fontFamily:mono,color:'#444',padding:'6px 8px',borderBottom:'1px solid #111',textTransform:'uppercase'}},h))
+          ),
+          AUCTION_HOUSES.map(h=>{
+            const net = Math.round(saleValue*(1-h.sellerFee));
+            const best = net===Math.max(...AUCTION_HOUSES.map(x=>Math.round(saleValue*(1-x.sellerFee))));
+            return React.createElement('div',{key:h.name,style:{display:'grid',gridTemplateColumns:'1fr 90px 90px 90px 120px',background:best?'#0d1f0d':'transparent',border:best?'1px solid #22c55e22':'1px solid transparent',borderRadius:best?6:0,marginBottom:2}},
+              React.createElement('div',{style:{fontSize:12,color:best?'#22c55e':'#aaa',padding:'8px 8px',display:'flex',alignItems:'center',gap:6}},best&&React.createElement('span',{style:{fontSize:10,color:'#22c55e'}}, '★ '),h.name),
+              React.createElement('div',{style:{fontSize:12,fontFamily:mono,color:'#888',padding:'8px 8px'}},(h.sellerFee*100).toFixed(2)+'%'),
+              React.createElement('div',{style:{fontSize:11,fontFamily:mono,color:'#555',padding:'8px 8px'}},h.minDays+'+ days'),
+              React.createElement('div',{style:{fontSize:11,fontFamily:mono,color:'#555',padding:'8px 8px'}},h.reach),
+              React.createElement('div',{style:{fontSize:13,color:best?'#22c55e':'#fff',fontWeight:best?700:400,fontFamily:mono,padding:'8px 8px'}},'$'+net.toLocaleString())
+            );
+          }),
+          React.createElement('div',{style:{fontSize:10,color:'#333',fontFamily:mono,padding:'8px',marginTop:4}},'★ = Best net proceeds for your selected cards.')
+        ),
+        // Optimal timing
+        React.createElement('div',{style:{...S.statBox}},
+          React.createElement('div',{style:{fontSize:11,letterSpacing:'0.15em',fontFamily:mono,color:'#555',textTransform:'uppercase',marginBottom:14}},'OPTIMAL EXIT TIMING'),
+          React.createElement('div',{style:{display:'flex',flexDirection:'column',gap:10}},
+            selCards.map(c=>{
+              const phase = LIFECYCLE_EVENTS[PLAYER_LIFECYCLE_PHASE[c.player]??2];
+              const timing = phase.phase==='Peak'||phase.phase==='Hot Streak'?{label:'SELL NOW',color:'#22c55e',reason:'At or near lifecycle peak. Strong exit window.'}:phase.phase==='Regression'?{label:'HOLD — WAIT',color:'#f59e0b',reason:'Correction phase. Wait for breakout confirmation.'}:{label:'MONITOR',color:'#38bdf8',reason:'Not at peak. Hold for '+phase.phase+' → next phase.'};
+              return React.createElement('div',{key:c.id,style:{display:'flex',alignItems:'center',gap:12,padding:'10px 12px',background:'#080808',borderRadius:8,border:'1px solid #0d0d0d'}},
+                espnImg(c.player)&&React.createElement('img',{src:espnImg(c.player),style:{width:28,height:28,borderRadius:14,objectFit:'cover',objectPosition:'top'}}),
+                React.createElement('div',{style:{flex:1}},
+                  React.createElement('div',{style:{fontSize:12,color:'#ccc',marginBottom:2}},c.player),
+                  React.createElement('div',{style:{fontSize:10,color:'#555',fontFamily:mono}},phase.phase+' phase · '+timing.reason)
+                ),
+                React.createElement('div',{style:{fontSize:11,fontFamily:mono,color:timing.color,fontWeight:700,letterSpacing:'0.08em'}},timing.label)
+              );
+            })
+          )
+        )
+      ),
+      selCards.length===0&&React.createElement('div',{style:{...S.statBox,padding:'32px',textAlign:'center',color:'#333',fontFamily:mono,fontSize:13}},'Select cards above to see exit analysis.')
+    );
+  };
+
+  const IntelligencePage = () => {
+    const mono = MONO, bb = BB;
+    const [intellView, setIntelView] = React.useState('hub');
+    const intellFeats = [
+      {id:'portfolio', icon:'📊', label:'Portfolio Intel',   sub:'Risk. Exposure. Alpha.',         desc:'Full portfolio risk analysis — exposure breakdown, volatility scoring, concentration alerts, and rebalance suggestions. Brutally honest.', color:'#22c55e', cta:'Run Analysis'},
+      {id:'lifecycle', icon:'📈', label:'Card Lifecycle',    sub:'Market timing intelligence.',     desc:'Track where any player sits in their card lifecycle — from Draft Hype to HOF. Overlay price data with real stat correlations.', color:'#38bdf8', cta:'View Timeline'},
+      {id:'grading',   icon:'🔬', label:'Grading Optimizer', sub:'Should you grade this card?',    desc:'PSA 9 vs 10 probability modeling, ROI calculator, break-even analysis, and pop growth curves. Let the numbers decide.', color:'#f59e0b', cta:'Optimize'},
+      {id:'status',    icon:'🏅', label:'Collector Status',  sub:'Recognition. Prestige.',          desc:'Your tier ranking, achievement badges, community leaderboard position, and trade interest signals. Prestige-focused.', color:'#FFD700', cta:'View Profile'},
+      {id:'indexes',   icon:'📰', label:'Insider Indexes',   sub:'5 proprietary market indexes.',  desc:'Modern Hype, Vintage Stability, Breaker Integrity, Prospect Momentum, and Grading Inflation indexes. If people reference your index on Twitter, you win.', color:'#a78bfa', cta:'View Indexes'},
+      {id:'scout',     icon:'🤖', label:'AI Card Scout',     sub:'Buy zone or wait zone?',          desc:'Ask anything. Get historical comps, liquidity risk, pop trends, player trajectory, and a clear buy/wait/sell verdict. Decision framing, not advice.', color:'#C41E1E', cta:'Ask Scout'},
+      {id:'exit',      icon:'🚪', label:'Exit Planner',      sub:'How to sell smart.',             desc:'Auction house comparison, lot vs individual analysis, tax implication estimator, and optimal exit timing per card. Grown-up functionality.', color:'#fb923c', cta:'Plan Exit'},
+    ];
+    if (intellView==='portfolio') return React.createElement(React.Fragment,null, React.createElement('button',{onClick:()=>setIntelView('hub'),style:{position:'fixed',top:66,left:20,zIndex:50,background:'transparent',border:'none',color:'#555',fontSize:12,fontFamily:mono,cursor:'pointer',letterSpacing:'0.08em'}},'← INTEL HUB'), React.createElement(PortfolioIntelSubPage,null));
+    if (intellView==='lifecycle') return React.createElement(React.Fragment,null, React.createElement('button',{onClick:()=>setIntelView('hub'),style:{position:'fixed',top:66,left:20,zIndex:50,background:'transparent',border:'none',color:'#555',fontSize:12,fontFamily:mono,cursor:'pointer',letterSpacing:'0.08em'}},'← INTEL HUB'), React.createElement(LifecycleTrackerSubPage,null));
+    if (intellView==='grading')   return React.createElement(React.Fragment,null, React.createElement('button',{onClick:()=>setIntelView('hub'),style:{position:'fixed',top:66,left:20,zIndex:50,background:'transparent',border:'none',color:'#555',fontSize:12,fontFamily:mono,cursor:'pointer',letterSpacing:'0.08em'}},'← INTEL HUB'), React.createElement(GradingOptimizerSubPage,null));
+    if (intellView==='status')    return React.createElement(React.Fragment,null, React.createElement('button',{onClick:()=>setIntelView('hub'),style:{position:'fixed',top:66,left:20,zIndex:50,background:'transparent',border:'none',color:'#555',fontSize:12,fontFamily:mono,cursor:'pointer',letterSpacing:'0.08em'}},'← INTEL HUB'), React.createElement(CollectorStatusSubPage,null));
+    if (intellView==='indexes')   return React.createElement(React.Fragment,null, React.createElement('button',{onClick:()=>setIntelView('hub'),style:{position:'fixed',top:66,left:20,zIndex:50,background:'transparent',border:'none',color:'#555',fontSize:12,fontFamily:mono,cursor:'pointer',letterSpacing:'0.08em'}},'← INTEL HUB'), React.createElement(InsiderIndexesSubPage,null));
+    if (intellView==='scout')     return React.createElement(React.Fragment,null, React.createElement('button',{onClick:()=>setIntelView('hub'),style:{position:'fixed',top:66,left:20,zIndex:50,background:'transparent',border:'none',color:'#555',fontSize:12,fontFamily:mono,cursor:'pointer',letterSpacing:'0.08em'}},'← INTEL HUB'), React.createElement(AICardScoutSubPage,null));
+    if (intellView==='exit')      return React.createElement(React.Fragment,null, React.createElement('button',{onClick:()=>setIntelView('hub'),style:{position:'fixed',top:66,left:20,zIndex:50,background:'transparent',border:'none',color:'#555',fontSize:12,fontFamily:mono,cursor:'pointer',letterSpacing:'0.08em'}},'← INTEL HUB'), React.createElement(ExitPlannerSubPage,null));
+    // Hub view
+    return React.createElement('div',{style:{maxWidth:1100,margin:'0 auto',padding:'72px 20px 80px'}},
+      React.createElement('div',{style:{marginBottom:32}},
+        React.createElement('div',{style:{fontSize:11,letterSpacing:'0.2em',color:'#C41E1E',fontFamily:mono,textTransform:'uppercase',marginBottom:6}},'INTELLIGENCE SUITE'),
+        React.createElement('h1',{style:{fontFamily:bb,fontSize:isMobile?48:72,letterSpacing:'0.04em',margin:0,lineHeight:0.9}},'INTELLIGENCE'),
+        React.createElement('p',{style:{color:'#555',fontSize:15,marginTop:10,maxWidth:480}},'Beyond the binder. Risk analysis, market timing, grading optimization, and AI-powered decision tools.')
+      ),
+      React.createElement('div',{style:{display:'grid',gridTemplateColumns:isMobile?'1fr':'repeat(2,1fr)',gap:14}},
+        intellFeats.map(f=>React.createElement('div',{
+          key:f.id,
+          onClick:()=>setIntelView(f.id),
+          style:{background:'#080808',border:'1px solid #141414',borderTop:`2px solid ${f.color}66`,borderRadius:12,padding:'20px 22px',cursor:'pointer',transition:'all 0.2s',position:'relative',overflow:'hidden'},
+          onMouseEnter:e=>{e.currentTarget.style.borderColor=f.color+'88';e.currentTarget.style.transform='translateY(-2px)';},
+          onMouseLeave:e=>{e.currentTarget.style.borderColor='#141414';e.currentTarget.style.borderTopColor=f.color+'66';e.currentTarget.style.transform='translateY(0)';},
+        },
+          React.createElement('div',{style:{display:'flex',justifyContent:'space-between',alignItems:'flex-start',marginBottom:10}},
+            React.createElement('div',{style:{display:'flex',alignItems:'center',gap:10}},
+              React.createElement('span',{style:{fontSize:22}},f.icon),
+              React.createElement('div',null,
+                React.createElement('div',{style:{fontFamily:bb,fontSize:22,color:'#fff',letterSpacing:'0.04em',lineHeight:1}},f.label),
+                React.createElement('div',{style:{fontSize:10,color:f.color,fontFamily:mono,letterSpacing:'0.1em',textTransform:'uppercase',marginTop:2}},f.sub)
+              )
+            ),
+            React.createElement('div',{style:{background:f.color+'22',border:`1px solid ${f.color}44`,borderRadius:6,padding:'4px 12px',fontSize:10,color:f.color,fontFamily:mono,letterSpacing:'0.08em',cursor:'pointer',whiteSpace:'nowrap'}},f.cta+' →')
+          ),
+          React.createElement('p',{style:{fontSize:12,color:'#555',lineHeight:1.6,margin:0}},f.desc)
+        ))
+      )
+    );
+  };
+
+
   const BreakersPage = () => {
     const mono = MONO;
     const bb   = BB;
@@ -4617,6 +6057,7 @@ const CollectionStorySubPage = ({onBack}) => {
       , page==="home"&&React.createElement(HomePage, {isMobile, setPage: navigateTo, setAuthModal, user})
       , (page==="collection"||page==="book")&&React.createElement(CollectionPage, null)
       , page==="market"&&React.createElement(MarketPage, {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1707}})
+      , page==="intelligence"&&React.createElement(IntelligencePage, null)
       , page==="breaks"&&React.createElement(BreakersPage, {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1708}})
       , React.createElement(Footer, {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1709}})
       , React.createElement(AuthModal, {__self: this, __source: {fileName: _jsxFileName2, lineNumber: 1710}})
